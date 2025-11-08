@@ -6655,7 +6655,7 @@
         "id": 56,
         "name": "Quintuplet",
         "upgradeMessage": "",
-        "levelRequirement": 60,
+        "levelRequirement": 45,
         "upgrades": [],
         "flags": {
             "invisibility": false,
@@ -6825,7 +6825,7 @@
         "id": 57,
         "name": "Hepta Shot",
         "upgradeMessage": "",
-        "levelRequirement": 60,
+        "levelRequirement": 45,
         "upgrades": [],
         "flags": {
             "invisibility": false,
@@ -7039,7 +7039,7 @@
         "id": 58,
         "name": "Auto 6",
         "upgradeMessage": "",
-        "levelRequirement": 60,
+        "levelRequirement": 45,
         "upgrades": [],
         "flags": {
             "invisibility": false,
@@ -7098,7 +7098,7 @@
         "id": 59,
         "name": "Deca Tank",
         "upgradeMessage": "",
-        "levelRequirement": 60,
+        "levelRequirement": 45,
         "upgrades": [],
         "flags": {
             "invisibility": false,
@@ -7378,7 +7378,7 @@
         "id": 60,
         "name": "Vindicator",
         "upgradeMessage": "",
-        "levelRequirement": 60,
+        "levelRequirement": 45,
         "upgrades": [],
         "flags": {
             "invisibility": false,
@@ -7542,7 +7542,7 @@
         "id": 62,
         "name": "Overczar",
         "upgradeMessage": "",
-        "levelRequirement": 60,
+        "levelRequirement": 45,
         "upgrades": [],
         "flags": {
             "invisibility": false,
@@ -7746,7 +7746,7 @@
         "id": 63,
         "name": "Rationalizer",
         "upgradeMessage": "",
-        "levelRequirement": 60,
+        "levelRequirement": 45,
         "upgrades": [],
         "flags": {
             "invisibility": false,
