@@ -20,6 +20,7 @@ import ArenaEntity from "../../Native/Arena";
 import GameServer from "../../Game";
 
 import Crasher from "./Crasher";
+import Hexagon from "./Hexagon";
 import Pentagon from "./Pentagon";
 import Triangle from "./Triangle";
 import Square from "./Square";
@@ -49,53 +50,52 @@ export default class ShapeManager {
      * Determines shape type by the random position chosen.
      */
     protected spawnShape(): AbstractShape {
-        let shape: AbstractShape;
-        const {x, y} = this.arena.findSpawnLocation();
-        const rightX = this.arena.arenaData.values.rightX;
-        const leftX = this.arena.arenaData.values.leftX;
+        let shape: AbstractShape
+        const {x, y} = this.arena.findSpawnLocation()
+        const rightX = this.arena.arenaData.values.rightX
+        const leftX = this.arena.arenaData.values.leftX
+
         if (Math.max(x, y) < rightX / 10 && Math.min(x, y) > leftX / 10) {
             // Pentagon Nest
-            shape = new Pentagon(this.game, Math.random() <= 0.05);
+            const nestRand = Math.random()
+            if (nestRand < 0.04) {
+                shape = new Hexagon(this.game)
+            } else {
+                shape = new Pentagon(this.game, Math.random() <= 0.05)
+            }
 
-            shape.positionData.values.x = x;
-            shape.positionData.values.y = y;
-            shape.relationsData.values.owner = shape.relationsData.values.team = this.arena;
+            shape.positionData.values.x = x
+            shape.positionData.values.y = y
+            shape.relationsData.values.owner = shape.relationsData.values.team = this.arena
         } else if (Math.max(x, y) < rightX / 5 && Math.min(x, y) > leftX / 5) {
             // Crasher Zone
-            const isBig = Math.random() < .2;
+            const isBig = Math.random() < 0.2
+            shape = new Crasher(this.game, isBig)
 
-            shape = new Crasher(this.game, isBig);
-            
-            shape.positionData.values.x = x;
-            shape.positionData.values.y = y;
-            shape.relationsData.values.owner = shape.relationsData.values.team = this.arena;
+            shape.positionData.values.x = x
+            shape.positionData.values.y = y
+            shape.relationsData.values.owner = shape.relationsData.values.team = this.arena
         } else {
             // Fields of Shapes
-            const rand = Math.random();
-            if (rand < .04) {
-                shape = new Pentagon(this.game);
-
-                shape.positionData.values.x = x;
-                shape.positionData.values.y = y;
-                shape.relationsData.values.owner = shape.relationsData.values.team = this.arena;
-            } else if (rand < .20) { // < 16%
-                shape = new Triangle(this.game);
-
-                shape.positionData.values.x = x;
-                shape.positionData.values.y = y;
-                shape.relationsData.values.owner = shape.relationsData.values.team = this.arena;
-            } else { // if rand < 80%
-                shape = new Square(this.game);
-
-                shape.positionData.values.x = x;
-                shape.positionData.values.y = y;
-                shape.relationsData.values.owner = shape.relationsData.values.team = this.arena;
+            const rand = Math.random()
+            if (rand < 0.035) {
+                shape = new Pentagon(this.game)
+            } else if (rand < 0.045) {
+                shape = new Hexagon(this.game)
+            } else if (rand < 0.205) {
+                shape = new Triangle(this.game)
+            } else {
+                shape = new Square(this.game)
             }
+
+            shape.positionData.values.x = x
+            shape.positionData.values.y = y
+            shape.relationsData.values.owner = shape.relationsData.values.team = this.arena
         }
 
-        shape.scoreReward *= this.arena.shapeScoreRewardMultiplier;
+        shape.scoreReward *= this.arena.shapeScoreRewardMultiplier
 
-        return shape;
+        return shape
     }
 
     /** Kills all shapes in the arena */

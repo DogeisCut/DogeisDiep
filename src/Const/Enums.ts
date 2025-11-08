@@ -40,8 +40,9 @@ export const enum Color {
     EnemyTank = 15,
     NecromancerSquare = 16,
     Fallen = 17,
+    EnemyHexagon = 18,
 
-    kMaxColors = 18
+    kMaxColors = 19
 }
 
 /**
@@ -66,6 +67,7 @@ export const ColorsHexCode: Record<Color, number> = {
     [Color.EnemyTank]: 0xF14E54,
     [Color.NecromancerSquare]: 0xFCC376,
     [Color.Fallen]: 0xC0C0C0,
+    [Color.EnemyHexagon]: 0x7ADBBC,
     [Color.kMaxColors]: 0x000000
 }
 
@@ -125,7 +127,14 @@ export const enum Tank {
     Spike         = 51,
     Factory       = 52,
     Skimmer       = 54,
-    Rocketeer     = 55
+    Rocketeer     = 55,
+    Quintuplet    = 56,
+    HeptaShot     = 57,
+    Auto6         = 58,
+    DecaTank      = 59, 
+    Vindicator    = 60,
+    AutoTank      = 61,
+    Overczar      = 62
 }
 
 /**
