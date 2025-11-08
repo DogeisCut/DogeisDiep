@@ -134,7 +134,11 @@ export const enum Tank {
     DecaTank      = 59, 
     Vindicator    = 60,
     AutoTank      = 61,
-    Overczar      = 62
+    Overczar      = 62,
+    Rationalizer  = 63,
+    Obliterator   = 64,
+    Compound      = 65,
+    Warship       = 66
 }
 
 /**
