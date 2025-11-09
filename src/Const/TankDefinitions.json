@@ -8048,7 +8048,7 @@
         "id": 65,
         "name": "Compound",
         "upgradeMessage": "",
-        "levelRequirement": 45,
+        "levelRequirement": 60,
         "upgrades": [],
         "flags": {
             "invisibility": false,

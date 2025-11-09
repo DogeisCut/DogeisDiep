@@ -29,7 +29,7 @@ import { getTankById } from "../Const/TankDefinitions";
 import { removeFast } from "../util";
 
 import { compileCreation, compileUpdate } from "./UpcreateCompiler";
-import { maxPlayerLevel } from "../config";
+import { maxPlayerLevel, maxPlayerTankLevel } from "../config";
 
 /**
  * Represents any entity with a camera field group.
@@ -48,7 +48,7 @@ export class CameraEntity extends Entity {
     public setLevel(level: number) {
         const previousLevel = this.cameraData.values.level;
         this.cameraData.level = level;
-        this.sizeFactor = Math.pow(1.01, level - 1);
+        this.sizeFactor = Math.pow(1.01, Math.min(level, maxPlayerTankLevel) - 1);
         this.cameraData.levelbarMax = level < maxPlayerLevel ? 1 : 0; // quick hack, not correct values
         if (level <= maxPlayerLevel) {
             this.cameraData.score = levelToScore(level);
@@ -61,7 +61,7 @@ export class CameraEntity extends Entity {
         }
 
         // Update stats available
-        const statIncrease = ClientCamera.calculateStatCount(level) - ClientCamera.calculateStatCount(previousLevel);
+        const statIncrease = ClientCamera.calculateStatCount(Math.min(level, maxPlayerTankLevel)) - ClientCamera.calculateStatCount(Math.min(previousLevel,maxPlayerTankLevel));
         this.cameraData.statsAvailable += statIncrease;
 
         this.setFieldFactor(getTankById(this.cameraData.values.tank)?.fieldFactor || 1);
@@ -74,7 +74,7 @@ export class CameraEntity extends Entity {
 
     /** Sets the current FOV by field factor. */
     public setFieldFactor(fieldFactor: number) {
-        this.cameraData.FOV = (.55 * fieldFactor) / Math.pow(1.01, (this.cameraData.values.level - 1) / 2);
+        this.cameraData.FOV = (.55 * fieldFactor) / Math.pow(1.01, (Math.min(this.cameraData.values.level, maxPlayerTankLevel) - 1) / 2);
     }
 
     public tick(tick: number) {
