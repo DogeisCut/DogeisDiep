@@ -104,7 +104,7 @@ export class CameraEntity extends Entity {
                     this.cameraData.levelbarProgress = score - levelScore;
                 }
 
-                this.cameraData.movementSpeed = player.definition.speed * 2.55 * Math.pow(1.07, this.cameraData.values.statLevels.values[Stat.MovementSpeed]) / Math.pow(1.015, this.cameraData.values.level - 1)
+                this.cameraData.movementSpeed = player.definition.speed * 2.55 * Math.pow(1.07, this.cameraData.values.statLevels.values[Stat.MovementSpeed]) / Math.pow(1.015, Math.min(this.cameraData.values.level, maxPlayerTankLevel) - 1)
             }
         } else {
             this.cameraData.flags |= CameraFlags.usesCameraCoords;
