@@ -153,6 +153,9 @@ export const enum Tank {
     Auto3Tank         = 78,
     Auto3Trapper      = 79,
     Trapperlord       = 80,
+    Flamer            = 81,
+    Flamethrower      = 82,
+    Incinerator       = 83,
     
 }
 

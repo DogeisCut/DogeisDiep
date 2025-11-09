@@ -95,6 +95,8 @@ export default class ObjectEntity extends Entity {
     /** Velocity used for physics. */
     public velocity = new Vector();
 
+    public allowInfiniteScaling: boolean = false;
+
     /** For internal spatial hash grid */
     private _queryId: number = -1;
 

@@ -10,8 +10,7 @@
             7,
             8,
             36,
-            61,
-            81
+            61
         ],
         "flags": {
             "invisibility": false,
@@ -941,7 +940,8 @@
             10,
             20,
             29,
-            11
+            11,
+            81
         ],
         "flags": {
             "invisibility": false,
@@ -2048,6 +2048,7 @@
         "postAddon": null,
         "sides": 1,
         "borderWidth": 15,
+        "allowInfiniteScaling": true,
         "barrels": [
             {
                 "angle": 0,
@@ -3397,6 +3398,7 @@
         "postAddon": null,
         "sides": 16,
         "borderWidth": 140,
+        "allowInfiniteScaling": true,
         "barrels": [
             {
                 "angle": 0.19634954084936207,
@@ -5588,6 +5590,7 @@
         "postAddon": "dompronounced",
         "sides": 1,
         "borderWidth": 15,
+        "allowInfiniteScaling": true,
         "barrels": [
             {
                 "angle": 0,
@@ -5670,6 +5673,7 @@
         "postAddon": "dompronounced",
         "sides": 1,
         "borderWidth": 15,
+        "allowInfiniteScaling": true,
         "barrels": [
             {
                 "angle": 0,
@@ -5796,6 +5800,7 @@
         "postAddon": null,
         "sides": 1,
         "borderWidth": 15,
+        "allowInfiniteScaling": true,
         "barrels": [
             {
                 "angle": 0,

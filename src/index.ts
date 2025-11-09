@@ -28,6 +28,10 @@ import { ColorsHexCode } from "./Const/Enums";
 
 import FFAArena from "./Gamemodes/FFA";
 import SandboxArena from "./Gamemodes/Sandbox";
+import MothershipArena from "./Gamemodes/Mothership";
+import DominationArena from "./Gamemodes/Domination";
+import Teams2Arena from "./Gamemodes/Team2";
+import MazeArena from "./Gamemodes/Maze";
 
 const PORT = config.serverPort;
 const ENABLE_API = config.enableApi && config.apiLocation;
@@ -155,10 +159,12 @@ app.listen(PORT, (success) => {
     // RULES(0): No two game servers should share the same endpoint
     //
     // NOTES(0): As of now, both servers run on the same process (and thread) here
-    const ffa = new GameServer(FFAArena, "FFA");
+    const maze = new GameServer(MazeArena, "Maze");
+    const teams2 = new GameServer(Teams2Arena, "2 Teams");
+    const dom = new GameServer(DominationArena, "Domination");
     const sbx = new GameServer(SandboxArena, "Sandbox");
     
-    games.push(ffa, sbx);
+    games.push(maze, teams2, dom, sbx);
 
     util.saveToLog("Servers up", "All servers booted up.", 0x37F554);
     util.log("Dumping endpoint -> gamemode routing table");

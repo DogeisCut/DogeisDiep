@@ -167,6 +167,8 @@ export interface TankDefinition {
     barrels: BarrelDefinition[];
     /** The tank's stat names and limits. */
     stats: StatDefinition[];
+    /** IFf this tank continues to grow after maxPlayerTankLevel **/
+    allowInfiniteScaling?: boolean;
 }
 
 /**

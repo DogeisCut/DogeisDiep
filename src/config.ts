@@ -104,5 +104,5 @@ export const unbannableLevelMinimum: AccessLevel = AccessLevel.FullAccess;
 export const defaultAccessLevel: AccessLevel = AccessLevel.BetaAccess;
 
 /** Maximum level that player tanks can have. Default: 45 */
-export const maxPlayerLevel = 100000;
+export const maxPlayerLevel = 60;
 export const maxPlayerTankLevel = 45;
