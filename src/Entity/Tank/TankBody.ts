@@ -35,7 +35,7 @@ import { getTankById, TankDefinition, visibilityRateDamage } from "../../Const/T
 import { DevTank } from "../../Const/DevTankDefinitions";
 import { Inputs } from "../AI";
 import { ArenaState } from "../../Native/Arena";
-import { AccessLevel, maxPlayerLevel } from "../../config";
+import { AccessLevel, maxPlayerLevel, maxPlayerTankLevel } from "../../config";
 
 /**
  * Abstract type of entity which barrels can connect to.
@@ -331,7 +331,7 @@ export default class TankBody extends LivingEntity implements BarrelBase {
             // Max Health
             const maxHealthCache = this.healthData.values.maxHealth;
 
-            this.healthData.maxHealth = this.definition.maxHealth + 2 * (this.cameraEntity.cameraData.values.level - 1) + this.cameraEntity.cameraData.values.statLevels.values[Stat.MaxHealth] * 20;
+            this.healthData.maxHealth = this.definition.maxHealth + 2 * (Math.min(this.cameraEntity.cameraData.values.level, maxPlayerTankLevel) - 1) + this.cameraEntity.cameraData.values.statLevels.values[Stat.MaxHealth] * 20;
             if (this.healthData.values.health === maxHealthCache) this.healthData.health = this.healthData.maxHealth; // just in case
             else if (this.healthData.values.maxHealth !== maxHealthCache) {
                 this.healthData.health *= this.healthData.values.maxHealth / maxHealthCache
