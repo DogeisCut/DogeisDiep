@@ -16,35 +16,16 @@
     along with this program. If not, see <https://www.gnu.org/licenses/>
 */
 
-import Barrel from "../Barrel";
-import Bullet from "./Bullet";
-
+import { PhysicsFlags } from "../../../Const/Enums";
 import { TankDefinition } from "../../../Const/TankDefinitions";
+import Barrel from "../Barrel";
 import { BarrelBase } from "../TankBody";
+import Minion from "./Minion";
 
-export default class Flame extends Bullet {
-    public constructor(barrel: Barrel, tank: BarrelBase, tankDefinition: TankDefinition | null, shootAngle: number) {
+export class SwarmMinion extends Minion {
+    public constructor(barrel: Barrel,  tank: BarrelBase, tankDefinition: TankDefinition | null, shootAngle: number) {
         super(barrel, tank, tankDefinition, shootAngle);
-
-        this.baseSpeed *= 2;
-        this.baseAccel = 0;
-        this.damageReduction = 1;
-        
-        this.physicsData.values.sides = 4;
-        this.physicsData.values.absorbtionFactor = this.physicsData.values.pushFactor = 0;
-        this.lifeLength = 25 * barrel.definition.bullet.lifeLength;
-    }
-
-    public destroy(animate?: boolean): void {
-        super.destroy(false);
-    }
-
-    public tick(tick: number) {
-        super.tick(tick);
-
-        this.damageReduction += 1 / 10;
-        this.physicsData.size *= 1.2;
-        this.styleData.opacity -= 1 / 10;
-        this.damagePerTick /= 2
+        this.ai.viewRange = 2000;
+        this.physicsData.values.flags |= PhysicsFlags.canEscapeArena | PhysicsFlags.noOwnTeamCollision;
     }
 }

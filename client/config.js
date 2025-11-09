@@ -275,6 +275,7 @@ const ADDON_MAP = {
     "dombase": 159,
     "dompronounced": 160, // Dom1 (160) & Dom2 (161) 
     "auto6": 161,
+    "tripleAutoturret": 162,
 };
 
 const CUSTOM_ADDONS = {
@@ -408,7 +409,53 @@ const CUSTOM_ADDONS = {
         rect2.physicsData.width = entity.physicsData.width * 1.25;
         rect2.physicsData.size = entity.physicsData.size * (35 / 50);
         rect2.positionData.x = (-entity.physicsData.size + rect2.physicsData.size) / 2;
-    }
+    },
+    "tripleAutoturret": entity => {
+        // This if statement isnt totally necessary but might help your IDE recognize the type of "entity" which simplifies development later. It can be removed.
+        if (!(entity instanceof $Entity)) return;
+        
+        const turretCount = 3;
+		const rotationOffset = 0.6;
+
+        for (let i = 0; i < turretCount; i++) {
+            const angle = (Math.PI * 2 * i) / turretCount;
+
+            const socket = entity.createChild(false);
+            socket.defaults();
+            
+            socket.styleData.showsAboveParent = true;
+            socket.positionData.angle = angle;
+            socket.positionData.x = Math.cos(socket.positionData.angle) * 40 * rotationOffset;
+            socket.positionData.y = Math.sin(socket.positionData.angle) * 40 * rotationOffset;
+            socket.physicsData.size = 25 * 0.6;
+            socket.styleData.color = 1;
+
+            const barrel = socket.createChild(true);
+            barrel.defaults();
+            barrel.physicsData.size = 55 * 0.6;
+            barrel.physicsData.sides = 2;
+            barrel.physicsData.width = 0.7 * 42 * 0.6;
+            barrel.positionData.angle = 0;
+            barrel.positionData.x = Math.cos(0) * (barrel.physicsData.size / 2 + 0) - Math.sin(0) * 0;
+            barrel.positionData.y = Math.sin(0) * (barrel.physicsData.size / 2 + 0) - Math.cos(0) * 0;
+            barrel.styleData.color = 1;
+        }
+    },
+    
+    "flameLauncher": entity => {
+        if(!(entity instanceof $Entity)) return;
+
+        const rect1 = entity.createChild(false);
+        rect1.defaults();
+        rect1.styleData.color = 1;
+        rect1.styleData.showsAboveParent = true;
+        rect1.styleData.isTrapezoid = true;
+        rect1.physicsData.sides = 2;
+        rect1.physicsData.width = entity.physicsData.width;
+        rect1.physicsData.size = entity.physicsData.width * (20 / 42);
+        rect1.positionData.x = (entity.physicsData.size - rect1.physicsData.size) / 2;
+        rect1.positionData.angle = 3.141592653589793;
+    },
 }
 
 const CUSTOM_COMMANDS = [

@@ -278,6 +278,47 @@ class AutoTurretAddon extends Addon {
     }
 }
 
+
+const AutoTurretTripleDefinition: BarrelDefinition = {
+    angle: 0,
+    offset: 0,
+    size: 55 * 0.6,
+    width: 42 * 0.7 * 0.6,
+    delay: 0.01,
+    reload: 1,
+    recoil: 0.3,
+    isTrapezoid: false,
+    trapezoidDirection: 0,
+    addon: null,
+    bullet: {
+        type: "bullet",
+        health: 1,
+        damage: 0.4,
+        speed: 1.2,
+        scatterRate: 1,
+        lifeLength: 1,
+        sizeRatio: 1,
+        absorbtionFactor: 1
+    }
+};
+
+/* Three Evenly Spaced Centered Auto Turrets */
+class TripleAutoTurretAddon extends Addon {
+	public constructor(owner: BarrelBase) {
+		super(owner);
+
+		const turretCount = 3;
+		const rotationOffset = 0.5;
+
+		for (let i = 0; i < turretCount; i++) {
+			const angle = (Math.PI * 2 * i) / turretCount;
+			const turret = new AutoTurret(owner, AutoTurretTripleDefinition, 15);
+			turret.positionData.values.x = this.owner.physicsData.values.size * Math.cos(angle) * rotationOffset;
+            turret.positionData.values.y = this.owner.physicsData.values.size * Math.sin(angle) * rotationOffset;
+		}
+	}
+}
+
 /** Smasher + Centered Auto Turret addon. */
 class AutoSmasherAddon extends Addon {
     public constructor(owner: BarrelBase) {
@@ -463,6 +504,7 @@ export const AddonById: Record<addonId, typeof Addon | null> = {
     smasher: SmasherAddon,
     landmine: LandmineAddon,
     autoturret: AutoTurretAddon,
+    tripleAutoturret: TripleAutoTurretAddon,
     // not part of diep
     weirdspike: WeirdSpikeAddon,
     auto7: Auto7Addon,

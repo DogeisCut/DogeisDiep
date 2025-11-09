@@ -16,7 +16,7 @@
     along with this program. If not, see <https://www.gnu.org/licenses/>
 */
 
-import { Color, PhysicsFlags } from "../../Const/Enums";
+import { Color, PhysicsFlags, StyleFlags } from "../../Const/Enums";
 import { barrelAddonId } from "../../Const/TankDefinitions";
 import GameServer from "../../Game";
 import ObjectEntity from "../Object";
@@ -93,6 +93,52 @@ export class TrapLauncherAddon extends BarrelAddon {
     }
 }
 
+
+export class FlameLauncher extends ObjectEntity {
+    public barrelEntity: Barrel;
+
+    public constructor(barrel: Barrel) {
+        super(barrel.game);
+
+        this.barrelEntity = barrel;
+        this.setParent(barrel);
+        this.relationsData.values.team = barrel;
+        this.physicsData.values.flags = PhysicsFlags.isTrapezoid | PhysicsFlags.doChildrenCollision;
+        this.styleData.values.color = Color.Barrel;
+        this.positionData.angle = 3.141592653589793
+        this.styleData.flags ^= StyleFlags.showsAboveParent
+
+        this.physicsData.values.sides = 2;
+        this.physicsData.values.width = barrel.physicsData.values.width;
+        this.physicsData.values.size = barrel.physicsData.values.width * (20 / 42);
+        this.positionData.values.x = (barrel.physicsData.values.size + this.physicsData.values.size) / 2;
+    }
+
+    public resize() {
+        this.physicsData.sides = 2;
+        this.physicsData.width = this.barrelEntity.physicsData.values.width;
+        this.physicsData.size = this.barrelEntity.physicsData.values.width * (20 / 42);
+        this.positionData.x = (this.barrelEntity.physicsData.values.size + this.physicsData.values.size) / 2
+    }
+
+
+    public tick(tick: number) {
+        super.tick(tick);
+
+        this.resize();
+    }
+}
+
+export class FlameLauncherAddon extends BarrelAddon {
+    public launcherEntity: FlameLauncher;
+
+    public constructor(owner: Barrel) {
+        super(owner);
+
+        this.launcherEntity = new FlameLauncher(owner);
+    }
+}
+
 export class PurpleBarrelAddon extends BarrelAddon {
     public constructor(owner: Barrel) {
         super(owner);
@@ -105,5 +151,6 @@ export class PurpleBarrelAddon extends BarrelAddon {
  */
  export const BarrelAddonById: Record<barrelAddonId, typeof BarrelAddon | null> = {
     trapLauncher: TrapLauncherAddon,
-    purplebarrel: PurpleBarrelAddon
+    purplebarrel: PurpleBarrelAddon,
+    flameLauncher: FlameLauncherAddon    
 }
