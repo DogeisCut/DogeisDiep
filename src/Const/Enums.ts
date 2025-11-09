@@ -138,7 +138,13 @@ export const enum Tank {
     Rationalizer  = 63,
     Obliterator   = 64,
     Compound      = 65,
-    Warship       = 66
+    Warship       = 66,
+    Rocket        = 67,
+    Brawler       = 68,
+    Hawker        = 69,
+    HexaTrapper   = 70,
+    Spewer        = 71,
+    Eradicator    = 72,
 }
 
 /**
