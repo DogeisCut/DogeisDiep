@@ -36,6 +36,10 @@ import { DevTank } from "../../Const/DevTankDefinitions";
 import { Inputs } from "../AI";
 import { ArenaState } from "../../Native/Arena";
 import { AccessLevel, maxPlayerLevel, maxPlayerTankLevel } from "../../config";
+import PentamancerPentagon from "./Projectile/PentamancerPentagon";
+import Pentagon from "../Shape/Pentagon";
+import WraithSquare from "./Projectile/WraithSquare";
+import AbstractShape from "../Shape/AbstractShape";
 
 /**
  * Abstract type of entity which barrels can connect to.
@@ -185,6 +189,34 @@ export default class TankBody extends LivingEntity implements BarrelBase {
         this.cameraEntity.cameraData.tankOverride = tank.name;
         camera.setFieldFactor(tank.fieldFactor);
     }
+
+    // TODO(ABC):
+    // This is actually not how necromancers claim squares.
+    public claimEntity<T extends LivingEntity>(entity: T, canClaimFlag: keyof typeof this.definition.flags, droneType: string, maxDronesBase: number, fromShapeClass: { fromShape(barrel: Barrel, owner: any, definition: any, entity: T): any }, extraCondition: (entity: T) => boolean = () => true, failChance: number = 0, duplicateChance: number = 0): void {
+        if (!(this.definition.flags[canClaimFlag] && this.barrels.length && extraCondition(entity))) return;
+
+        const MAX_DRONES_PER_BARREL = maxDronesBase + this.cameraEntity.cameraData.values.statLevels.values[Stat.Reload];
+        const barrelsToShoot = this.barrels.filter((barrel) => barrel.definition.bullet.type === droneType && barrel.droneCount < MAX_DRONES_PER_BARREL);
+
+        if (!barrelsToShoot.length) return;
+
+        const barrelToShoot = barrelsToShoot[~~(Math.random() * barrelsToShoot.length)];
+
+        entity.destroy(true);
+        if (entity.deletionAnimation) {
+            entity.deletionAnimation.frame = 0;
+            entity.styleData.opacity = 1;
+            entity.healthData.flags = HealthFlags.hiddenHealthbar;
+        }
+
+        if (Math.random() > failChance) {
+            fromShapeClass.fromShape(barrelToShoot, this, this.definition, entity);
+            if (Math.random() < duplicateChance) {
+                fromShapeClass.fromShape(barrelToShoot, this, this.definition, entity);
+            }
+        }
+    }
+
     /** See LivingEntity.onKill */
     public onKill(entity: LivingEntity) {
         if (Entity.exists(this.cameraEntity.cameraData.values.player) && entity !== this) this.scoreData.score = this.cameraEntity.cameraData.score += entity.scoreReward;
@@ -194,27 +226,14 @@ export default class TankBody extends LivingEntity implements BarrelBase {
             if (client) client.notify("You've killed " + (entity.nameData.values.name || "an unnamed tank"));
         }
 
-        // TODO(ABC):
-        // This is actually not how necromancers claim squares.
-        if (entity instanceof Square && this.definition.flags.canClaimSquares && this.barrels.length) {
-            // If can claim, pick a random barrel that has drones it can still shoot, then shoot
-            const MAX_DRONES_PER_BARREL = 11 + this.cameraEntity.cameraData.values.statLevels.values[Stat.Reload];
-            const barrelsToShoot = this.barrels.filter((e) => e.definition.bullet.type === "necrodrone" && e.droneCount < MAX_DRONES_PER_BARREL);
-
-            if (barrelsToShoot.length) {
-                const barrelToShoot = barrelsToShoot[~~(Math.random()*barrelsToShoot.length)];
-
-                // No destroy it on the next tick to make it look more like the way diep does it.
-                entity.destroy(true);
-                if (entity.deletionAnimation) {
-                    entity.deletionAnimation.frame = 0;
-                    entity.styleData.opacity = 1;
-                    entity.healthData.flags = HealthFlags.hiddenHealthbar
-                }
-
-                const sunchip = NecromancerSquare.fromShape(barrelToShoot, this, this.definition, entity);
-            }
+        if (entity instanceof Square) {
+            this.claimEntity<Square>(entity, "canClaimSquares", "necrodrone", 11, NecromancerSquare);
+            this.claimEntity<Square>(entity, "canClaimSquaresWraith", "wraithdrone", 2, WraithSquare, undefined, 0.5);
         }
+
+        if (entity instanceof Pentagon)
+            this.claimEntity<Pentagon>(entity, "canClaimPentagons", "pentadrone", 6, PentamancerPentagon, (e) => !e.isAlpha, undefined, 0.75);
+            
     }
 
     /** See TankBody.isInvulnerable */

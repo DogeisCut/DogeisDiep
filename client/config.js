@@ -441,6 +441,11 @@ const CUSTOM_ADDONS = {
 
         entity.positionData.x += -50 / Math.SQRT2
     },
+    "pentagonBody": entity => {
+        if (!(entity instanceof $Entity)) return;
+
+        entity.physicsData.sides = 5;
+    },
 }
 
 const CUSTOM_COMMANDS = [

@@ -38,6 +38,8 @@ import { BarrelAddon, BarrelAddonById } from "./BarrelAddons";
 import { Swarm } from "./Projectile/Swarm";
 import { SwarmMinion } from "./Projectile/SwarmMinion"
 import NecromancerSquare from "./Projectile/NecromancerSquare";
+import PentamancerPentagon from "./Projectile/PentamancerPentagon";
+import WraithSquare from "./Projectile/WraithSquare";
 /**
  * Class that determines when barrels can shoot, and when they can't.
  */
@@ -191,9 +193,6 @@ export default class Barrel extends ObjectEntity {
             case 'minion':
                 projectile = new Minion(this, this.tank, tankDefinition, angle);
                 break;
-            case 'swarmMinion':
-                projectile = new SwarmMinion(this, this.tank, tankDefinition, angle);
-                break;
             case 'flame':
                 projectile = new Flame(this, this.tank, tankDefinition, angle);
                 break;
@@ -206,6 +205,15 @@ export default class Barrel extends ObjectEntity {
             }
             case "croc": 
                 projectile = new CrocSkimmer(this, this.tank, tankDefinition, angle);
+                break;
+            case 'swarmMinion':
+                projectile = new SwarmMinion(this, this.tank, tankDefinition, angle);
+                break;
+            case 'pentadrone':
+                projectile = new PentamancerPentagon(this, this.tank, tankDefinition, angle);
+                break;
+            case 'wraithdrone':
+                projectile = new WraithSquare(this, this.tank, tankDefinition, angle);
                 break;
             default:
                 util.log('Ignoring attempt to spawn projectile of type ' + this.definition.bullet.type);

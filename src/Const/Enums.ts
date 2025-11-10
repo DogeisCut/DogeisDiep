@@ -41,8 +41,9 @@ export const enum Color {
     NecromancerSquare = 16,
     Fallen = 17,
     EnemyHexagon = 18,
+    PentamancerPentagon = 19,
 
-    kMaxColors = 19
+    kMaxColors = 20
 }
 
 /**
@@ -68,6 +69,7 @@ export const ColorsHexCode: Record<Color, number> = {
     [Color.NecromancerSquare]: 0xFCC376,
     [Color.Fallen]: 0xC0C0C0,
     [Color.EnemyHexagon]: 0x7ADBBC,
+    [Color.PentamancerPentagon]: 0xa276fc,
     [Color.kMaxColors]: 0x000000
 }
 
@@ -245,7 +247,12 @@ export const enum Tank {
     Adds a second pair of side barrels, like the original concept art.
     */
     President         = 86,
-    OmegaTrapper      = 87
+    OmegaTrapper      = 87,
+    Pentamancer       = 88,
+    Wraith = 89
+    /* TODO:
+    Unique Look
+    */
 }
 
 /**

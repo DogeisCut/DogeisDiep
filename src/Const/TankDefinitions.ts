@@ -28,7 +28,7 @@ export type preAddonId = "dombase" | "launcher"
 export type addonId = preAddonId | postAddonId;
 
 /** The types of projectiles in the game */
-export type projectileId = "bullet" | "drone" | "trap" | "necrodrone" | "minion" | "skimmer" | "rocket" | "swarm" | "swarmMinion" | "flame" | "wall" | "croc";
+export type projectileId = "bullet" | "drone" | "trap" | "necrodrone" | "minion" | "skimmer" | "rocket" | "swarm" | "flame" | "wall" | "croc" | "swarmMinion" | "pentadrone" | "wraithdrone";
 
 /** The types of barrel addons that exist in the game */
 export type barrelAddonId = "trapLauncher" | "flameLauncher";
@@ -130,6 +130,8 @@ export interface TankDefinition {
         zoomAbility: boolean;
         /** If the tank can claim squares by killing them (necro). */
         canClaimSquares?: boolean;
+        canClaimPentagons?: boolean;
+        canClaimSquaresWraith?: boolean;
         /** If the tank requires devmode to access (unused). */
         devOnly: boolean;
         /** If the tank should be rendered as a star (eg. traps are stars with 3 sides). */
