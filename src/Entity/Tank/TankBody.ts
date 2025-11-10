@@ -76,14 +76,16 @@ export default class TankBody extends LivingEntity implements BarrelBase {
     /** Sets tanks to be invulnerable - example, godmode, or AC */
     public isInvulnerable: boolean = false;
 
-    public constructor(game: GameServer, camera: CameraEntity, inputs: Inputs) {
+    public isShiny: boolean = false;
+
+    public constructor(game: GameServer, camera: CameraEntity, inputs: Inputs, shiny=Math.random() < 0.000001) {
         super(game);
         this.cameraEntity = camera;
         this.inputs = inputs;
 
         this.physicsData.values.size = 50;
         this.physicsData.values.sides = 1;
-        this.styleData.values.color = Color.Tank;
+        this.styleData.values.color = shiny ? Color.Shiny : Color.Tank;
 
         this.relationsData.values.team = camera;
         this.relationsData.values.owner = camera;
@@ -100,6 +102,12 @@ export default class TankBody extends LivingEntity implements BarrelBase {
         this.damagePerTick = 5;
         this.maxDamageMultiplier = 6;
         this.setTank(Tank.Basic);
+        this.isShiny = shiny
+
+		if (shiny) {
+			this.scoreReward *= 100
+			this.healthData.values.health = this.healthData.values.maxHealth *= 10
+		}
     }
 
     /** The active change in size from the base size to the current. Contributes to barrel and addon sizes. */

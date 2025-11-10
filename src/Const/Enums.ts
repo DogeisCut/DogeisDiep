@@ -112,10 +112,6 @@ export const enum Tank {
     Fighter           = 24,
     Hybrid            = 25,
     Manager           = 26,
-    /* Ideas
-    - President
-    Extra drones + cannon
-    */
     Mothership        = 27,
     /* Ideas
     - Flagship
@@ -127,6 +123,10 @@ export const enum Tank {
     GunnerTrapper     = 32,
     Overtrapper       = 33,
     MegaTrapper       = 34,
+    /* Ideas
+    - ????
+    launched out at higher velcoity, a whole trapper branch for this would be nice actually
+    */
     TriTrapper        = 35,
     Smasher           = 36,
     /* Ideas
@@ -244,6 +244,8 @@ export const enum Tank {
     - Supreme Jet
     Adds a second pair of side barrels, like the original concept art.
     */
+    President         = 86,
+    OmegaTrapper      = 87
 }
 
 /**
