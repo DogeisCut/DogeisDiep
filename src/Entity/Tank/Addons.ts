@@ -418,76 +418,50 @@ class PronouncedDomAddon extends Addon {
         }
     }
 }
-/** Weird spike addon. Based on the arrasio Original. */
-class WeirdSpikeAddon extends Addon {
-    public constructor(owner: BarrelBase) {
-        super(owner);
 
-        this.createGuard(3, 1.5, 0, 0.17);
-        this.createGuard(3, 1.5, 0, -0.16);
-    }
+class WingsAddon extends Addon {
+	public constructor(owner: BarrelBase) {
+		super(owner)
+
+		const sizeRatio = 65.5 * Math.SQRT2 / 50
+		const widthRatio = 33.6 / 50
+		const size = this.owner.physicsData.values.size
+
+		const createWing = (angleOffset: number) => {
+			const wing = new ObjectEntity(this.game)
+
+			wing.setParent(this.owner)
+			wing.relationsData.values.owner = this.owner
+			wing.relationsData.values.team = this.owner.relationsData.values.team
+
+			wing.physicsData.values.size = sizeRatio * size
+			wing.physicsData.values.width = widthRatio * size
+			wing.physicsData.values.sides = 2
+			wing.styleData.values.color = this.owner.styleData.values.color
+
+			const radians = (Math.PI / 180) * angleOffset
+			const distance = size * 0.8
+
+			wing.positionData.values.x = Math.cos(radians) * distance
+			wing.positionData.values.y = Math.sin(radians) * distance
+			wing.positionData.values.angle = radians
+
+			wing.tick = () => {
+				const newSize = this.owner.physicsData.values.size
+				wing.physicsData.values.size = sizeRatio * newSize
+				wing.physicsData.values.width = widthRatio * newSize
+				const updatedDistance = newSize * 0.8
+				wing.positionData.values.x = Math.cos(radians) * updatedDistance
+				wing.positionData.values.y = Math.sin(radians) * updatedDistance
+			}
+
+			return wing
+		}
+
+		const leftWing = createWing(120)
+		const rightWing = createWing(-120)
+	}
 }
-/** 2 Auto Turrets */
-class Auto2Addon extends Addon {
-    public constructor(owner: BarrelBase) {
-        super(owner);
-
-        this.createAutoTurrets(2);
-    }
-}
-/** 7 Auto Turrets */
-class Auto7Addon extends Addon {
-    public constructor(owner: BarrelBase) {
-        super(owner);
-
-        this.createAutoTurrets(7);
-    }
-}
-
-/** Centered Auto Rocket addon. */
-class AutoRocketAddon extends Addon {
-    public constructor(owner: BarrelBase) {
-        super(owner);
-
-        const base = new AutoTurret(owner, {
-            angle: 0,
-            offset: 0,
-            size: 40,
-            width: 26.25,
-            delay: 0,
-            reload: 2,
-            recoil: 0.75,
-            isTrapezoid: true,
-            trapezoidDirection: 3.141592653589793,
-            addon: null,
-            bullet: {
-                type: "rocket",
-                sizeRatio: 1,
-                health: 2.5,
-                damage: 0.5,
-                speed: 0.3,
-                scatterRate: 1,
-                lifeLength: 0.75,
-                absorbtionFactor: 0.1
-            }
-        });
-
-        new LauncherAddon(base);
-
-        base.turret.styleData.zIndex += 2;
-    }
-}
-/** SPIESK addon. */
-class SpieskAddon extends Addon {
-    public constructor(owner: BarrelBase) {
-        super(owner);
-
-        this.createGuard(4, 1.3, 0, 0.17);
-        this.createGuard(4, 1.3, Math.PI / 6, 0.17);
-        this.createGuard(4, 1.3, 2 * Math.PI / 6, 0.17);
-    }
-}
-
 /**
  * All addons in the game by their ID.
  */
@@ -496,7 +470,6 @@ export const AddonById: Record<addonId, typeof Addon | null> = {
     dombase: DomBaseAddon,
     launcher: LauncherAddon,
     dompronounced: PronouncedDomAddon,
-    auto6: Auto6Addon,
     auto5: Auto5Addon,
     auto3: Auto3Addon,
     autosmasher: AutoSmasherAddon,
@@ -504,11 +477,7 @@ export const AddonById: Record<addonId, typeof Addon | null> = {
     smasher: SmasherAddon,
     landmine: LandmineAddon,
     autoturret: AutoTurretAddon,
+    auto6: Auto6Addon,
     tripleAutoturret: TripleAutoTurretAddon,
-    // not part of diep
-    weirdspike: WeirdSpikeAddon,
-    auto7: Auto7Addon,
-    auto2: Auto2Addon,
-    autorocket: AutoRocketAddon,
-    spiesk: SpieskAddon,
+    wings: WingsAddon
 }

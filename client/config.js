@@ -276,6 +276,7 @@ const ADDON_MAP = {
     "dompronounced": 160, // Dom1 (160) & Dom2 (161) 
     "auto6": 161,
     "tripleAutoturret": 162,
+    "WingsAddon": 163,
 };
 
 const CUSTOM_ADDONS = {
