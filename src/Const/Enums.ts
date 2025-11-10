@@ -117,6 +117,10 @@ export const enum Tank {
     Extra drones + cannon
     */
     Mothership        = 27,
+    /* Ideas
+    - Flagship
+    Flagship from arras, has minions lol
+    */
     Predator          = 28,
     Sprayer           = 29,
     Trapper           = 30,
@@ -141,12 +145,26 @@ export const enum Tank {
     Auto3             = 41,
     SpreadShot        = 42,
     /* Ideas
+    - Zone Denier
+    Spreadier Spread shot + more barrels
     */
     Streamliner       = 43,
     AutoTrapper       = 44,
     DominatorD        = 45,
+    /* Ideas
+    - Double Destroyer Dominator
+    has two destroyer cannons on a mounted base
+    */
     DominatorG        = 46,
-    DominatorT        = 47,
+    /* Ideas
+    - Streamliner Dominator
+    self epxlanitory
+    */
+    DominatorT = 47,
+    /* Ideas
+    - Auto Trapper Dominator
+    self explanitory
+    */
     Battleship        = 48,
     Annihilator       = 49,
     AutoSmasher       = 50,
