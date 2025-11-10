@@ -8040,7 +8040,7 @@
                 "bullet": {
                     "type": "bullet",
                     "sizeRatio": 1,
-                    "health": 2,
+                    "health": 2.4,
                     "damage": 3,
                     "speed": 0.7,
                     "scatterRate": 1,
@@ -10510,7 +10510,7 @@
     {
         "id": 81,
         "name": "Flamer",
-        "upgradeMessage": "",
+        "upgradeMessage": "Flame launchers have infinite penetration, maximum stats have been adjusted.",
         "levelRequirement": 30,
         "upgrades": [
             82,
@@ -10560,7 +10560,7 @@
         "stats": [
             {
                 "name": "Movement Speed",
-                "max": 7
+                "max": 10
             },
             {
                 "name": "Reload",
@@ -10580,15 +10580,15 @@
             },
             {
                 "name": "Body Damage",
-                "max": 7
+                "max": 10
             },
             {
                 "name": "Max Health",
-                "max": 7
+                "max": 10
             },
             {
                 "name": "Health Regen",
-                "max": 7
+                "max": 10
             }
         ]
     },
@@ -10643,7 +10643,7 @@
         "stats": [
             {
                 "name": "Movement Speed",
-                "max": 7
+                "max": 10
             },
             {
                 "name": "Reload",
@@ -10663,15 +10663,15 @@
             },
             {
                 "name": "Body Damage",
-                "max": 7
+                "max": 10
             },
             {
                 "name": "Max Health",
-                "max": 7
+                "max": 10
             },
             {
                 "name": "Health Regen",
-                "max": 7
+                "max": 10
             }
         ]
     },
@@ -10725,7 +10725,7 @@
         "stats": [
             {
                 "name": "Movement Speed",
-                "max": 7
+                "max": 10
             },
             {
                 "name": "Reload",
@@ -10745,15 +10745,15 @@
             },
             {
                 "name": "Body Damage",
-                "max": 7
+                "max": 10
             },
             {
                 "name": "Max Health",
-                "max": 7
+                "max": 10
             },
             {
                 "name": "Health Regen",
-                "max": 7
+                "max": 10
             }
         ]
     },
