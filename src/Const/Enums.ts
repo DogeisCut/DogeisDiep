@@ -93,6 +93,16 @@ export const enum Tank {
     Assassin          = 15,
     ArenaCloser       = 16,
     Necromancer       = 17,
+    /* Ideas
+    - Buff
+    First we buff the Necromancer... thas it.
+    - Pentamancer
+    This should be obvious...
+    - Mancerdrive
+    The drones have auto guns!
+    - Wraith
+    Necro Factory.
+    */
     TripleTwin        = 18,
     Hunter            = 19,
     Gunner            = 20,
@@ -102,6 +112,10 @@ export const enum Tank {
     Fighter           = 24,
     Hybrid            = 25,
     Manager           = 26,
+    /* Ideas
+    - President
+    Extra drones + cannon
+    */
     Mothership        = 27,
     Predator          = 28,
     Sprayer           = 29,
@@ -111,11 +125,23 @@ export const enum Tank {
     MegaTrapper       = 34,
     TriTrapper        = 35,
     Smasher           = 36,
+    /* Ideas
+    - Hammer
+    Big hammer, you can swing it around and it does damage :3
+    */
     Landmine          = 37,
+    /* Ideas
+    - Claymore
+    Spike + Landmine
+    - Booby
+    Goes invisible faster.
+    */
     AutoGunner        = 39,
     Auto5             = 40,
     Auto3             = 41,
     SpreadShot        = 42,
+    /* Ideas
+    */
     Streamliner       = 43,
     AutoTrapper       = 44,
     DominatorD        = 45,
@@ -124,13 +150,37 @@ export const enum Tank {
     Battleship        = 48,
     Annihilator       = 49,
     AutoSmasher       = 50,
+    /* Ideas
+    - Triple Auto Smasher
+    obvious
+    */
     Spike             = 51,
+    /* Ideas
+    - Razor
+    Spikier Spike
+    */
     Factory           = 52,
     Skimmer           = 54,
+    /* Ideas
+    - Skeeter
+    more skimmer bullet cannons (4? 5?)
+    - Infestor
+    swarm cannons instead of bullet
+    */
     Rocketeer         = 55,
+    /* Ideas
+    - Missile Commander
+    faster rockets/double cannon rockets
+    - Bazooka
+    Bigger rockets
+    - RPG
+    Exploding rockets
+    - Artillery
+    machine gun + rocketeer
+    */
     Quintuplet        = 56,
     HeptaShot         = 57,
-    Auto6             = 58,
+    Auto7             = 58,
     DecaTank          = 59, 
     Vindicator        = 60,
     AutoTank          = 61,
@@ -149,14 +199,33 @@ export const enum Tank {
     Complex           = 74,
     Workshop          = 75,  
     QuadTwin          = 76,
-    Auto3Gunner       = 77,
-    Auto3Tank         = 78,
-    Auto3Trapper      = 79,
+    TripleAutoGunner  = 77,
+    TripleAutoTank    = 78,
+    TripleAutoTrapper = 79,
     Trapperlord       = 80,
     Flamer            = 81,
     Flamethrower      = 82,
     Incinerator       = 83,
-    
+    Plane             = 84,
+    /* Ideas
+     - Jet
+    Adds a second machine gun cannon on the back for extra speed
+    - Gunner Plane
+    This should be obvious lol
+    - Auto Plane
+    This should also be obvious.
+    */
+    FighterJet        = 85,
+    /* Ideas
+    - Fumigator
+    Replaces side barrels with flamers
+    - Bomber Plane
+    Replaces side barrels with pounder adjacent barrels
+    - Supply Dropper
+    Replaces side barrels with back facing trapper barrels
+    - Supreme Jet
+    Adds a second pair of side barrels, like the original concept art.
+    */
 }
 
 /**

@@ -274,7 +274,7 @@ const ADDON_MAP = {
     "launcher": 157, // Skimmer (157) & Rocketeer (158)
     "dombase": 159,
     "dompronounced": 160, // Dom1 (160) & Dom2 (161) 
-    "auto6": 161,
+    "auto7": 161,
     "tripleAutoturret": 162,
     "WingsAddon": 163,
 };
@@ -316,7 +316,7 @@ const CUSTOM_ADDONS = {
         So don't do this: "someEntity.positionData = someOtherEntity.positionData;", but instead do this: "someEntity.positionData.clone(someOtherEntity.positionData);".
         */
     },
-    "auto2": entity => {
+    "auto7": entity => {
         if(!(entity instanceof $Entity)) return;
                 
         const rotator = entity.createChild(false);
@@ -326,7 +326,7 @@ const CUSTOM_ADDONS = {
         rotator.positionData.isAngleAbsolute = true;
         rotator.styleData.isVisible = false;
 
-        const count = 2;
+        const count = 7;
         for(let i = 0; i < count; ++i) {
             const socket = rotator.createChild(false);
             socket.defaults();
@@ -352,64 +352,6 @@ const CUSTOM_ADDONS = {
             // Color.Barrel
             barrel.styleData.color = 1;
         }
-    },
-    "auto6": entity => {
-        if(!(entity instanceof $Entity)) return;
-                
-        const rotator = entity.createChild(false);
-        rotator.defaults();
-        rotator.physicsData.size = 5;
-        rotator.positionData.angle = 0.01;
-        rotator.positionData.isAngleAbsolute = true;
-        rotator.styleData.isVisible = false;
-
-        const count = 6;
-        for(let i = 0; i < count; ++i) {
-            const socket = rotator.createChild(false);
-            socket.defaults();
-            
-            socket.positionData.angle = i * Math.PI * 2 / count;
-            socket.positionData.x = Math.cos(socket.positionData.angle) * 40;
-            socket.positionData.y = Math.sin(socket.positionData.angle) * 40;
-            socket.physicsData.size = 25;
-            // Color.Barrel
-            socket.styleData.color = 1;
-
-            const barrel = socket.createChild(true);
-            barrel.defaults();
-            barrel.physicsData.size = 55;
-            barrel.physicsData.sides = 2;
-            barrel.physicsData.width = 0.7 * 42;
-            // angle + shootingAngle
-            barrel.positionData.angle = 0;
-            // Math.cos(angle) * (size / 2 + distance) - Math.sin(angle) * offset
-            barrel.positionData.x = Math.cos(0) * (barrel.physicsData.size / 2 + 0) - Math.sin(0) * 0;
-            // Math.sin(angle) * (size / 2 + distance) - Math.cos(angle) * offset
-            barrel.positionData.y = Math.sin(0) * (barrel.physicsData.size / 2 + 0) - Math.cos(0) * 0;
-            // Color.Barrel
-            barrel.styleData.color = 1;
-        }
-    },
-    "arrasspawnerbarrel": entity => {
-        if(!(entity instanceof $Entity)) return;
-
-        const rect1 = entity.createChild(false);
-        rect1.defaults();
-        rect1.styleData.color = 1;
-        rect1.styleData.showsAboveParent = true;
-        rect1.physicsData.sides = 2;
-        rect1.physicsData.width = entity.physicsData.width * 1.25;
-        rect1.physicsData.size = entity.physicsData.size * (10 / 50);
-        rect1.positionData.x = (entity.physicsData.size - rect1.physicsData.size) / 2;
-
-        const rect2 = entity.createChild(false);
-        rect2.defaults();
-        rect2.styleData.color = 1;
-        rect2.styleData.showsAboveParent = true;
-        rect2.physicsData.sides = 2;
-        rect2.physicsData.width = entity.physicsData.width * 1.25;
-        rect2.physicsData.size = entity.physicsData.size * (35 / 50);
-        rect2.positionData.x = (-entity.physicsData.size + rect2.physicsData.size) / 2;
     },
     "tripleAutoturret": entity => {
         // This if statement isnt totally necessary but might help your IDE recognize the type of "entity" which simplifies development later. It can be removed.
@@ -442,9 +384,8 @@ const CUSTOM_ADDONS = {
             barrel.styleData.color = 1;
         }
     },
-    
     "flameLauncher": entity => {
-        if(!(entity instanceof $Entity)) return;
+        if (!(entity instanceof $Entity)) return;
 
         const rect1 = entity.createChild(false);
         rect1.defaults();
@@ -456,6 +397,49 @@ const CUSTOM_ADDONS = {
         rect1.physicsData.size = entity.physicsData.width * (20 / 42);
         rect1.positionData.x = (entity.physicsData.size - rect1.physicsData.size) / 2;
         rect1.positionData.angle = 3.141592653589793;
+    },
+    "wings": entity => {
+        if (!(entity instanceof $Entity)) return;
+
+        const sizeRatio = 100 * Math.SQRT2 / 50;
+        const widthRatio = 28 / 50;
+        const size = entity.physicsData.size;
+
+        const createWing = (angleOffset) => {
+            const wing = entity.createChild(false);
+            wing.defaults();
+
+            wing.styleData.color = entity.styleData.color;
+            wing.physicsData.sides = 2;
+            wing.physicsData.size = sizeRatio * size;
+            wing.physicsData.width = widthRatio * size;
+
+            const radians = (Math.PI / 180) * angleOffset;
+            const distance = size * 0.8;
+
+            wing.positionData.x = Math.cos(radians) * distance;
+            wing.positionData.y = Math.sin(radians) * distance;
+            wing.positionData.angle = radians;
+
+            wing.tick = () => {
+                const newSize = entity.physicsData.size;
+                wing.physicsData.size = sizeRatio * newSize;
+                wing.physicsData.width = widthRatio * newSize;
+                const updatedDistance = newSize * 0.8;
+                wing.positionData.x = Math.cos(radians) * updatedDistance;
+                wing.positionData.y = Math.sin(radians) * updatedDistance;
+            };
+
+            return wing;
+        };
+
+        const leftWing = createWing(120);
+        const rightWing = createWing(-120);
+    },
+    "-50Distance": entity => {
+        if (!(entity instanceof $Entity)) return;
+
+        entity.positionData.x += -50 / Math.SQRT2
     },
 }
 
