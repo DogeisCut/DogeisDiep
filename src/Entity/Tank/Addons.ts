@@ -471,6 +471,7 @@ class TripleAutoTurretAddon extends Addon {
 }
 
 /* little wing lookin things, purely cosmetic */
+//TODO: fix so these scale properly
 class WingsAddon extends Addon {
 	public constructor(owner: BarrelBase) {
 		super(owner)

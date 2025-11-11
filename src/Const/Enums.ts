@@ -251,6 +251,14 @@ export const enum Tank {
     Unique Look
     */
     General           = 90
+    
+
+    /* General Ideas 
+    - Split
+    Two tanks that share one health bar and you can swap between them
+    - Station
+    orbiting auto cannons around a basic tank/two gunner
+    */
 }
 
 /**
