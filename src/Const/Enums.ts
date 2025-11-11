@@ -96,14 +96,8 @@ export const enum Tank {
     ArenaCloser       = 16,
     Necromancer       = 17,
     /* Ideas
-    - Buff
-    First we buff the Necromancer... thas it.
-    - Pentamancer
-    This should be obvious...
     - Mancerdrive
     The drones have auto guns!
-    - Wraith
-    Necro Factory.
     */
     TripleTwin        = 18,
     Hunter            = 19,
