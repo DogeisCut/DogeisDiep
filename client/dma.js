@@ -66,6 +66,56 @@ class $Entity {
         return entity;
     }
 
+    createDecoChild(
+        sides,
+        size,
+        angle = 0,
+        width = size,
+        distance = 0,
+        offset = 0,
+        topper = true,
+        color = this.styleData.color
+    ) {
+        const sizeRatio = size * Math.SQRT2 / 50;
+        const widthRatio = width / 50;
+
+        const deco = this.createChild(false);
+        deco.defaults();
+
+        deco.styleData.color = color;
+        deco.physicsData.sides = sides;
+        deco.physicsData.size = sizeRatio * this.physicsData.size;
+        deco.physicsData.width = widthRatio * size;
+        if (topper)
+            deco.styleData.showsAboveParent = true;
+
+        const radians = (Math.PI / 180) * angle;
+
+        const forwardX = Math.cos(radians);
+        const forwardY = Math.sin(radians);
+        const rightX = Math.cos(radians + Math.PI / 2);
+        const rightY = Math.sin(radians + Math.PI / 2);
+
+        deco.positionData.x = forwardX * distance + rightX * offset;
+        deco.positionData.y = forwardY * distance + rightY * offset;
+        deco.positionData.angle = radians;
+
+        deco.tick = () => {
+            const ownerSize = this.physicsData.size;
+
+            deco.physicsData.size = sizeRatio * ownerSize;
+            deco.physicsData.width = widthRatio * ownerSize;
+
+            const scaledDistance = ownerSize * (distance / 50);
+            const scaledOffset = ownerSize * (offset / 50);
+
+            deco.positionData.x = forwardX * scaledDistance + rightX * scaledOffset;
+            deco.positionData.y = forwardY * scaledDistance + rightY * scaledOffset;
+        };
+
+        return deco;
+    }
+
     get positionData() {
         return this.#$position ? new $Position(this.#$position) : null;
     }

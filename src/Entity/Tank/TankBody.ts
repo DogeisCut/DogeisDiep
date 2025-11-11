@@ -40,6 +40,8 @@ import PentamancerPentagon from "./Projectile/PentamancerPentagon";
 import Pentagon from "../Shape/Pentagon";
 import WraithSquare from "./Projectile/WraithSquare";
 import AbstractShape from "../Shape/AbstractShape";
+import TrimancerTriangle from "./Projectile/TrimancerTriangle";
+import Triangle from "../Shape/Triangle";
 
 /**
  * Abstract type of entity which barrels can connect to.
@@ -202,14 +204,14 @@ export default class TankBody extends LivingEntity implements BarrelBase {
 
         const barrelToShoot = barrelsToShoot[~~(Math.random() * barrelsToShoot.length)];
 
-        entity.destroy(true);
-        if (entity.deletionAnimation) {
-            entity.deletionAnimation.frame = 0;
-            entity.styleData.opacity = 1;
-            entity.healthData.flags = HealthFlags.hiddenHealthbar;
-        }
-
-        if (Math.random() > failChance) {
+        if (Math.random() > failChance || barrelToShoot.droneCount == 0) {
+            entity.destroy(true);
+            if (entity.deletionAnimation) {
+                entity.deletionAnimation.frame = 0;
+                entity.styleData.opacity = 1;
+                entity.healthData.flags = HealthFlags.hiddenHealthbar;
+            }
+            
             fromShapeClass.fromShape(barrelToShoot, this, this.definition, entity);
             if (Math.random() < duplicateChance) {
                 fromShapeClass.fromShape(barrelToShoot, this, this.definition, entity);
@@ -230,6 +232,9 @@ export default class TankBody extends LivingEntity implements BarrelBase {
             this.claimEntity<Square>(entity, "canClaimSquares", "necrodrone", 11, NecromancerSquare);
             this.claimEntity<Square>(entity, "canClaimSquaresWraith", "wraithdrone", 2, WraithSquare, undefined, 0.5);
         }
+
+        // if (entity instanceof Triangle)
+        //     this.claimEntity<Triangle>(entity, "canClaimTriangles", "tridrone", 6, TrimancerTriangle, undefined, undefined, 0.25);
 
         if (entity instanceof Pentagon)
             this.claimEntity<Pentagon>(entity, "canClaimPentagons", "pentadrone", 6, PentamancerPentagon, (e) => !e.isAlpha, undefined, 0.75);

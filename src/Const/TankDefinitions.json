@@ -6399,7 +6399,8 @@
         "levelRequirement": 45,
         "upgrades": [
             74,
-            75
+            75,
+            90
         ],
         "flags": {
             "invisibility": false,
@@ -11338,7 +11339,7 @@
         "speed": 1,
         "maxHealth": 50,
         "preAddon": null,
-        "postAddon": null,
+        "postAddon": "wraith",
         "sides": 4,
         "borderWidth": 15,
         "barrels": [
@@ -11398,6 +11399,90 @@
             },
             {
                 "name": "Drone Count",
+                "max": 7
+            },
+            {
+                "name": "Drone Damage",
+                "max": 7
+            },
+            {
+                "name": "Drone Health",
+                "max": 7
+            },
+            {
+                "name": "Drone Speed",
+                "max": 7
+            },
+            {
+                "name": "Body Damage",
+                "max": 7
+            },
+            {
+                "name": "Max Health",
+                "max": 7
+            },
+            {
+                "name": "Health Regen",
+                "max": 7
+            }
+        ]
+    },
+    {
+        "id": 90,
+        "name": "General",
+        "upgradeMessage": "",
+        "levelRequirement": 60,
+        "upgrades": [],
+        "flags": {
+            "invisibility": false,
+            "zoomAbility": false,
+            "canClaimSquares": false,
+            "devOnly": false
+        },
+        "visibilityRateShooting": 0.23,
+        "visibilityRateMoving": 0.08,
+        "invisibilityRate": 0.03,
+        "fieldFactor": 0.9,
+        "absorbtionFactor": 1,
+        "speed": 1,
+        "maxHealth": 50,
+        "preAddon": null,
+        "postAddon": "wraith",
+        "sides": 4,
+        "borderWidth": 15,
+        "barrels": [
+            {
+                "angle": 0,
+                "offset": 0,
+                "size": 70,
+                "width": 42,
+                "delay": 0,
+                "reload": 3,
+                "recoil": 1,
+                "isTrapezoid": true,
+                "trapezoidDirection": 0,
+                "addon": null,
+                "droneCount": 6,
+                "canControlDrones": true,
+                "bullet": {
+                    "type": "leigon",
+                    "sizeRatio": 1,
+                    "health": 4,
+                    "damage": 0.7,
+                    "speed": 0.56,
+                    "scatterRate": 1,
+                    "lifeLength": -1,
+                    "absorbtionFactor": 1
+                }
+            }
+        ],
+        "stats": [
+            {
+                "name": "Movement Speed",
+                "max": 7
+            },
+            {
+                "name": "Reload",
                 "max": 7
             },
             {

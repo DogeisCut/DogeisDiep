@@ -249,10 +249,14 @@ export const enum Tank {
     President         = 86,
     OmegaTrapper      = 87,
     Pentamancer       = 88,
-    Wraith = 89
+    /* Ideas:
+    Allow Claiming of any shape, shapes can touch and merge into higher tiers (e.g. square + square = triangle)
+    */
+    Wraith            = 89,
     /* TODO:
     Unique Look
     */
+    General           = 90
 }
 
 /**

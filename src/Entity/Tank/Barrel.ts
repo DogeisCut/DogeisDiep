@@ -40,6 +40,7 @@ import { SwarmMinion } from "./Projectile/SwarmMinion"
 import NecromancerSquare from "./Projectile/NecromancerSquare";
 import PentamancerPentagon from "./Projectile/PentamancerPentagon";
 import WraithSquare from "./Projectile/WraithSquare";
+import Leigon from "./Projectile/Leigon";
 /**
  * Class that determines when barrels can shoot, and when they can't.
  */
@@ -64,7 +65,7 @@ export class ShootCycle {
             this.reloadTime = reloadTime;
         }
 
-        const alwaysShoot = (this.barrelEntity.definition.forceFire) || (this.barrelEntity.definition.bullet.type === 'drone') || (this.barrelEntity.definition.bullet.type === 'minion');
+        const alwaysShoot = (this.barrelEntity.definition.forceFire) || (this.barrelEntity.definition.bullet.type === 'drone') || (this.barrelEntity.definition.bullet.type === 'minion') || (this.barrelEntity.definition.bullet.type === 'leigon');
 
         if (this.pos >= reloadTime) {
             // When its not shooting dont shoot, unless its a drone
@@ -214,6 +215,9 @@ export default class Barrel extends ObjectEntity {
                 break;
             case 'wraithdrone':
                 projectile = new WraithSquare(this, this.tank, tankDefinition, angle);
+                break;
+            case 'leigon':
+                projectile = new Leigon(this, this.tank, tankDefinition, angle);
                 break;
             default:
                 util.log('Ignoring attempt to spawn projectile of type ' + this.definition.bullet.type);

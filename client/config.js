@@ -279,6 +279,8 @@ const ADDON_MAP = {
     "WingsAddon": 163,
 };
 
+
+
 const CUSTOM_ADDONS = {
     // This is a tutorial addon made for showcasing how custom addon renders are to be defined.
     "tutorial": entity => {
@@ -391,7 +393,7 @@ const CUSTOM_ADDONS = {
         rect1.defaults();
         rect1.styleData.color = 1;
         rect1.styleData.showsAboveParent = true;
-        rect1.styleData.isTrapezoid = true;
+        rect1.physicsData.isTrapezoid = true;
         rect1.physicsData.sides = 2;
         rect1.physicsData.width = entity.physicsData.width;
         rect1.physicsData.size = entity.physicsData.width * (20 / 42);
@@ -445,6 +447,11 @@ const CUSTOM_ADDONS = {
         if (!(entity instanceof $Entity)) return;
 
         entity.physicsData.sides = 5;
+    },
+    "wraith": entity => {
+        if (!(entity instanceof $Entity)) return;
+        entity.createDecoChild(3,15,0,  undefined,20,0,true, 1)
+        entity.createDecoChild(3,15,180,undefined,20,0,true, 1)
     },
 }
 

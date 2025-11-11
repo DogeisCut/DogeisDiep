@@ -110,6 +110,54 @@ export class Addon {
 
         return rotator;
     }
+
+    protected createDeco(sides: number, size: number, angle: number = 0, width: number = size, distance: number = 0, offset: number = 0, topper: boolean = true, color: Color = this.owner.styleData.values.color) {
+        const sizeRatio = size * Math.SQRT2 / 50
+        const widthRatio = width / 50
+        const deco = new ObjectEntity(this.game)
+
+        deco.setParent(this.owner)
+        deco.relationsData.values.owner = this.owner
+        deco.relationsData.values.team = this.owner.relationsData.values.team
+
+        deco.physicsData.values.size = sizeRatio * size
+        deco.physicsData.values.width = widthRatio * size
+        deco.physicsData.values.sides = sides
+        deco.styleData.values.color = color
+        if (topper)
+            deco.styleData.values.flags ^= StyleFlags.showsAboveParent
+
+        const radians = (Math.PI / 180) * angle
+
+        const forwardX = Math.cos(radians)
+        const forwardY = Math.sin(radians)
+        const rightX = Math.cos(radians + Math.PI / 2)
+        const rightY = Math.sin(radians + Math.PI / 2)
+
+        deco.positionData.values.x = forwardX * distance + rightX * offset
+        deco.positionData.values.y = forwardY * distance + rightY * offset
+        deco.positionData.values.angle = radians
+
+        deco.tick = () => {
+            const ownerSize = this.owner.physicsData.values.size
+
+            deco.physicsData.values.size = sizeRatio * ownerSize
+            deco.physicsData.values.width = widthRatio * ownerSize
+
+            const newForwardX = Math.cos(radians)
+            const newForwardY = Math.sin(radians)
+            const newRightX = Math.cos(radians + Math.PI / 2)
+            const newRightY = Math.sin(radians + Math.PI / 2)
+
+            const scaledDistance = ownerSize * (distance / 50)
+            const scaledOffset = ownerSize * (offset / 50)
+
+            deco.positionData.values.x = newForwardX * scaledDistance + newRightX * scaledOffset
+            deco.positionData.values.y = newForwardY * scaledDistance + newRightY * scaledOffset
+        }
+
+        return deco
+    }
 }
 
 
@@ -367,32 +415,7 @@ class PronouncedDomAddon extends Addon {
     public constructor(owner: BarrelBase) {
         super(owner);
 
-        const pronounce = new ObjectEntity(this.game);
-        const sizeRatio = 22 / 50;
-        const widthRatio = 35 / 50;
-        const offsetRatio = 50 / 50;
-        const size = this.owner.physicsData.values.size;
-
-        pronounce.setParent(this.owner);
-        pronounce.relationsData.values.owner = this.owner;
-        pronounce.relationsData.values.team = this.owner.relationsData.values.team
-
-        pronounce.physicsData.values.size = sizeRatio * size;
-        pronounce.physicsData.values.width = widthRatio * size;
-        pronounce.positionData.values.x = offsetRatio * size;
-        pronounce.positionData.values.angle = Math.PI;
         
-        pronounce.styleData.values.color = Color.Barrel;
-        pronounce.physicsData.values.flags |= PhysicsFlags.isTrapezoid;
-        pronounce.physicsData.values.sides = 2;
-
-        pronounce.tick = () => {
-            const size = this.owner.physicsData.values.size;
-
-            pronounce.physicsData.size = sizeRatio * size;
-            pronounce.physicsData.width = widthRatio * size;
-            pronounce.positionData.x = offsetRatio * size;
-        }
     }
 }
 
@@ -448,9 +471,9 @@ class WingsAddon extends Addon {
 
 			wing.positionData.values.x = Math.cos(radians) * distance
 			wing.positionData.values.y = Math.sin(radians) * distance
-			wing.positionData.values.angle = radians
-
-			wing.tick = () => {
+            wing.positionData.values.angle = radians
+            
+            wing.tick = () => {
 				const newSize = this.owner.physicsData.values.size
 				wing.physicsData.values.size = sizeRatio * newSize
 				wing.physicsData.values.width = widthRatio * newSize
@@ -466,6 +489,16 @@ class WingsAddon extends Addon {
 		const rightWing = createWing(-120)
 	}
 }
+
+class WraithAffon extends Addon{
+    public constructor(owner: BarrelBase) {
+		super(owner)
+
+		this.createDeco(3,15,0,  undefined,20,0,true,Color.Barrel)
+		this.createDeco(3,15,180,undefined,20,0,true,Color.Barrel)
+	}
+}
+
 /**
  * All addons in the game by their ID.
  */
@@ -483,5 +516,6 @@ export const AddonById: Record<addonId, typeof Addon | null> = {
     autoturret: AutoTurretAddon,
     auto7: Auto7Addon,
     tripleAutoturret: TripleAutoTurretAddon,
-    wings: WingsAddon
+    wings: WingsAddon,
+    wraith: WraithAffon
 }
