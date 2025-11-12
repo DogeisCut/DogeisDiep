@@ -100,8 +100,22 @@ export const enum AccessLevel {
 /** Every access level, including and above this one is unbannable via client.ban() */
 export const unbannableLevelMinimum: AccessLevel = AccessLevel.FullAccess;
 
+type Cheats = "levelup" | "superLevelup" | "suicide"
+
+export const cheatsMinimum: Record<Cheats, AccessLevel> = {
+    levelup: AccessLevel.PublicAccess,
+    superLevelup: AccessLevel.BetaAccess,
+    suicide: AccessLevel.BetaAccess
+};
+export const cheatsIsCheating: Record<Cheats, boolean> = {
+    levelup: false,
+    superLevelup: true,
+    suicide: false
+};
+
+
 /** Default access level, client's without valid password's will get set to this */
-export const defaultAccessLevel: AccessLevel = AccessLevel.BetaAccess;
+export const defaultAccessLevel: AccessLevel = AccessLevel.PublicAccess;
 
 /** Maximum level that player tanks can have. Default: 45 */
 export const maxPlayerLevel = 60;
