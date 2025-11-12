@@ -92,7 +92,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 1,
+        "id": Tank.Twin,
         "name": "Twin",
         "upgradeMessage": "",
         "levelRequirement": 15,
@@ -201,7 +201,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 2,
+        "id": Tank.Triplet,
         "name": "Triplet",
         "upgradeMessage": "",
         "levelRequirement": 45,
@@ -329,7 +329,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 3,
+        "id": Tank.TripleShot,
         "name": "Triple Shot",
         "upgradeMessage": "",
         "levelRequirement": 30,
@@ -357,7 +357,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "borderWidth": 15,
         "barrels": [
             {
-                "angle": -0.7853981633974483,
+                "angle": -45 * Math.PI/180,
                 "offset": 0,
                 "size": 95,
                 "width": 42,
@@ -379,7 +379,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 0.7853981633974483,
+                "angle": 45 * Math.PI/180,
                 "offset": 0,
                 "size": 95,
                 "width": 42,
@@ -459,7 +459,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 4,
+        "id": Tank.QuadTank,
         "name": "Quad Tank",
         "upgradeMessage": "",
         "levelRequirement": 30,
@@ -486,7 +486,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "borderWidth": 15,
         "barrels": [
             {
-                "angle": 3.141592653589793,
+                "angle": 180 * Math.PI/180,
                 "offset": 0,
                 "size": 95,
                 "width": 42,
@@ -508,7 +508,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": -1.5707963267948966,
+                "angle": -90 * Math.PI/180,
                 "offset": 0,
                 "size": 95,
                 "width": 42,
@@ -530,7 +530,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 1.5707963267948966,
+                "angle": 90 * Math.PI/180,
                 "offset": 0,
                 "size": 95,
                 "width": 42,
@@ -610,7 +610,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 5,
+        "id": Tank.OctoTank,
         "name": "Octo Tank",
         "upgradeMessage": "",
         "levelRequirement": 45,
@@ -636,7 +636,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "borderWidth": 15,
         "barrels": [
             {
-                "angle": -0.7853981633974483,
+                "angle": -45 * Math.PI/180,
                 "offset": 0,
                 "size": 95,
                 "width": 42,
@@ -658,7 +658,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 0.7853981633974483,
+                "angle": 45 * Math.PI/180,
                 "offset": 0,
                 "size": 95,
                 "width": 42,
@@ -680,7 +680,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": -2.356194490192345,
+                "angle": -135 * Math.PI/180,
                 "offset": 0,
                 "size": 95,
                 "width": 42,
@@ -702,7 +702,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 2.356194490192345,
+                "angle": 135 * Math.PI/180,
                 "offset": 0,
                 "size": 95,
                 "width": 42,
@@ -724,7 +724,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 3.141592653589793,
+                "angle": 180 * Math.PI/180,
                 "offset": 0,
                 "size": 95,
                 "width": 42,
@@ -746,7 +746,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": -1.5707963267948966,
+                "angle": -90 * Math.PI/180,
                 "offset": 0,
                 "size": 95,
                 "width": 42,
@@ -768,7 +768,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 1.5707963267948966,
+                "angle": 90 * Math.PI/180,
                 "offset": 0,
                 "size": 95,
                 "width": 42,
@@ -848,7 +848,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 6,
+        "id": Tank.Sniper,
         "name": "Sniper",
         "upgradeMessage": "",
         "levelRequirement": 15,
@@ -935,7 +935,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 7,
+        "id": Tank.MachineGun,
         "name": "Machine Gun",
         "upgradeMessage": "",
         "levelRequirement": 15,
@@ -1024,7 +1024,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 8,
+        "id": Tank.FlankGuard,
         "name": "Flank Guard",
         "upgradeMessage": "",
         "levelRequirement": 15,
@@ -1076,7 +1076,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 3.141592653589793,
+                "angle": 180 * Math.PI/180,
                 "offset": 0,
                 "size": 80,
                 "width": 42,
@@ -1134,7 +1134,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 9,
+        "id": Tank.TriAngle,
         "name": "Tri-Angle",
         "upgradeMessage": "",
         "levelRequirement": 30,
@@ -1263,7 +1263,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 10,
+        "id": Tank.Destroyer,
         "name": "Destroyer",
         "upgradeMessage": "",
         "levelRequirement": 30,
@@ -1350,7 +1350,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 11,
+        "id": Tank.Overseer,
         "name": "Overseer",
         "upgradeMessage": "Use your left mouse button to control the drones",
         "levelRequirement": 30,
@@ -1381,7 +1381,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "borderWidth": 15,
         "barrels": [
             {
-                "angle": -1.5707963267948966,
+                "angle": -90 * Math.PI/180,
                 "offset": 0,
                 "size": 70,
                 "width": 42,
@@ -1405,7 +1405,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 1.5707963267948966,
+                "angle": 90 * Math.PI/180,
                 "offset": 0,
                 "size": 70,
                 "width": 42,
@@ -1465,7 +1465,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 12,
+        "id": Tank.Overlord,
         "name": "Overlord",
         "upgradeMessage": "",
         "levelRequirement": 45,
@@ -1491,7 +1491,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "borderWidth": 15,
         "barrels": [
             {
-                "angle": -1.5707963267948966,
+                "angle": -90 * Math.PI/180,
                 "offset": 0,
                 "size": 70,
                 "width": 42,
@@ -1515,7 +1515,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 1.5707963267948966,
+                "angle": 90 * Math.PI/180,
                 "offset": 0,
                 "size": 70,
                 "width": 42,
@@ -1563,7 +1563,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 3.141592653589793,
+                "angle": 180 * Math.PI/180,
                 "offset": 0,
                 "size": 70,
                 "width": 42,
@@ -1623,7 +1623,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 13,
+        "id": Tank.TwinFlank,
         "name": "Twin Flank",
         "upgradeMessage": "",
         "levelRequirement": 30,
@@ -1694,7 +1694,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 3.141592653589793,
+                "angle": 180 * Math.PI/180,
                 "offset": -26,
                 "size": 95,
                 "width": 42,
@@ -1716,7 +1716,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 3.141592653589793,
+                "angle": 180 * Math.PI/180,
                 "offset": 26,
                 "size": 95,
                 "width": 42,
@@ -1774,7 +1774,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 14,
+        "id": Tank.PentaShot,
         "name": "Penta Shot",
         "upgradeMessage": "",
         "levelRequirement": 45,
@@ -1800,7 +1800,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "borderWidth": 15,
         "barrels": [
             {
-                "angle": -0.7853981633974483,
+                "angle": -45 * Math.PI/180,
                 "offset": 0,
                 "size": 80,
                 "width": 42,
@@ -1822,7 +1822,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 0.7853981633974483,
+                "angle": 45 * Math.PI/180,
                 "offset": 0,
                 "size": 80,
                 "width": 42,
@@ -1946,7 +1946,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 15,
+        "id": Tank.Assassin,
         "name": "Assassin",
         "upgradeMessage": "",
         "levelRequirement": 30,
@@ -2031,7 +2031,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 16,
+        "id": Tank.ArenaCloser,
         "name": "Arena Closer",
         "upgradeMessage": "",
         "levelRequirement": 0,
@@ -2114,7 +2114,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 17,
+        "id": Tank.Necromancer,
         "name": "Necromancer",
         "upgradeMessage": "",
         "levelRequirement": 45,
@@ -2141,7 +2141,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "borderWidth": 15,
         "barrels": [
             {
-                "angle": -1.5707963267948966,
+                "angle": -90 * Math.PI/180,
                 "offset": 0,
                 "size": 70,
                 "width": 42,
@@ -2165,7 +2165,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 1.5707963267948966,
+                "angle": 90 * Math.PI/180,
                 "offset": 0,
                 "size": 70,
                 "width": 42,
@@ -2225,7 +2225,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 18,
+        "id": Tank.TripleTwin,
         "name": "Triple Twin",
         "upgradeMessage": "",
         "levelRequirement": 45,
@@ -2295,7 +2295,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 2.0943951023931953,
+                "angle": 120 * Math.PI/180,
                 "offset": -26,
                 "size": 95,
                 "width": 42,
@@ -2317,7 +2317,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 2.0943951023931953,
+                "angle": 120 * Math.PI/180,
                 "offset": 26,
                 "size": 95,
                 "width": 42,
@@ -2339,7 +2339,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": -2.0943951023931953,
+                "angle": -120 * Math.PI/180,
                 "offset": -26,
                 "size": 95,
                 "width": 42,
@@ -2361,7 +2361,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": -2.0943951023931953,
+                "angle": -120 * Math.PI/180,
                 "offset": 26,
                 "size": 95,
                 "width": 42,
@@ -2419,7 +2419,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 19,
+        "id": Tank.Hunter,
         "name": "Hunter",
         "upgradeMessage": "",
         "levelRequirement": 30,
@@ -2526,7 +2526,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 20,
+        "id": Tank.Gunner,
         "name": "Gunner",
         "upgradeMessage": "",
         "levelRequirement": 30,
@@ -2678,7 +2678,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 21,
+        "id": Tank.Stalker,
         "name": "Stalker",
         "upgradeMessage": "",
         "levelRequirement": 45,
@@ -2712,7 +2712,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "reload": 2,
                 "recoil": 3,
                 "isTrapezoid": true,
-                "trapezoidDirection": 3.141592653589793,
+                "trapezoidDirection": 180 * Math.PI/180,
                 "addon": null,
                 "bullet": {
                     "type": "bullet",
@@ -2762,7 +2762,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 22,
+        "id": Tank.Ranger,
         "name": "Ranger",
         "upgradeMessage": "",
         "levelRequirement": 45,
@@ -2847,7 +2847,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 23,
+        "id": Tank.Booster,
         "name": "Booster",
         "upgradeMessage": "",
         "levelRequirement": 45,
@@ -2896,7 +2896,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 3.9269908169872414,
+                "angle": 225 * Math.PI/180,
                 "offset": 0,
                 "size": 70,
                 "width": 42,
@@ -2918,7 +2918,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 2.356194490192345,
+                "angle": 135 * Math.PI/180,
                 "offset": 0,
                 "size": 70,
                 "width": 42,
@@ -3020,7 +3020,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 24,
+        "id": Tank.Fighter,
         "name": "Fighter",
         "upgradeMessage": "",
         "levelRequirement": 45,
@@ -3068,7 +3068,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 1.5707963267948966,
+                "angle": 90 * Math.PI/180,
                 "offset": 0,
                 "size": 80,
                 "width": 42,
@@ -3090,7 +3090,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": -1.5707963267948966,
+                "angle": -90 * Math.PI/180,
                 "offset": 0,
                 "size": 80,
                 "width": 42,
@@ -3192,7 +3192,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 25,
+        "id": Tank.Hybrid,
         "name": "Hybrid",
         "upgradeMessage": "",
         "levelRequirement": 45,
@@ -3240,7 +3240,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 3.141592653589793,
+                "angle": 180 * Math.PI/180,
                 "offset": 0,
                 "size": 70,
                 "width": 42,
@@ -3300,7 +3300,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 26,
+        "id": Tank.Manager,
         "name": "Manager",
         "upgradeMessage": "",
         "levelRequirement": 45,
@@ -3386,7 +3386,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 27,
+        "id": Tank.Mothership,
         "name": "Mothership",
         "upgradeMessage": "",
         "levelRequirement": 0,
@@ -3831,7 +3831,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 28,
+        "id": Tank.Predator,
         "name": "Predator",
         "upgradeMessage": "Use your right mouse button to look further in the direction you're facing",
         "levelRequirement": 45,
@@ -3959,7 +3959,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 29,
+        "id": Tank.Sprayer,
         "name": "Sprayer",
         "upgradeMessage": "",
         "levelRequirement": 45,
@@ -4066,7 +4066,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
     },
     null,
     {
-        "id": 31,
+        "id": Tank.Trapper,
         "name": "Trapper",
         "upgradeMessage": "",
         "levelRequirement": 30,
@@ -4154,7 +4154,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 32,
+        "id": Tank.GunnerTrapper,
         "name": "Gunner Trapper",
         "upgradeMessage": "",
         "levelRequirement": 45,
@@ -4224,7 +4224,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 3.141592653589793,
+                "angle": 180 * Math.PI/180,
                 "offset": 0,
                 "size": 60,
                 "width": 54.6,
@@ -4282,7 +4282,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 33,
+        "id": Tank.Overtrapper,
         "name": "Overtrapper",
         "upgradeMessage": "",
         "levelRequirement": 45,
@@ -4330,7 +4330,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 2.0943951023931953,
+                "angle": 120 * Math.PI/180,
                 "offset": 0,
                 "size": 70,
                 "width": 42,
@@ -4354,7 +4354,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 4.1887902047863905,
+                "angle": 240 * Math.PI/180,
                 "offset": 0,
                 "size": 70,
                 "width": 42,
@@ -4546,7 +4546,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 2.0943951023931953,
+                "angle": 120 * Math.PI/180,
                 "offset": 0,
                 "size": 60,
                 "width": 42,
@@ -4568,7 +4568,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 4.1887902047863905,
+                "angle": 240 * Math.PI/180,
                 "offset": 0,
                 "size": 60,
                 "width": 42,
@@ -5046,7 +5046,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "borderWidth": 15,
         "barrels": [
             {
-                "angle": 1.3089969389957472,
+                "angle": 75 * Math.PI/180,
                 "offset": 0,
                 "size": 65,
                 "width": 29.4,
@@ -5068,7 +5068,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": -1.3089969389957472,
+                "angle": -75 * Math.PI/180,
                 "offset": 0,
                 "size": 65,
                 "width": 29.4,
@@ -5134,7 +5134,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 0.7853981633974483,
+                "angle": 45 * Math.PI/180,
                 "offset": 0,
                 "size": 77,
                 "width": 29.4,
@@ -5156,7 +5156,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": -0.7853981633974483,
+                "angle": -45 * Math.PI/180,
                 "offset": 0,
                 "size": 77,
                 "width": 29.4,
@@ -5838,7 +5838,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 0.7853981633974483,
+                "angle": 45 * Math.PI/180,
                 "offset": 0,
                 "size": 60,
                 "width": 21,
@@ -5861,7 +5861,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 1.5707963267948966,
+                "angle": 90 * Math.PI/180,
                 "offset": 0,
                 "size": 60,
                 "width": 21,
@@ -5884,7 +5884,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 2.356194490192345,
+                "angle": 135 * Math.PI/180,
                 "offset": 0,
                 "size": 60,
                 "width": 21,
@@ -5907,7 +5907,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 3.141592653589793,
+                "angle": 180 * Math.PI/180,
                 "offset": 0,
                 "size": 60,
                 "width": 21,
@@ -5930,7 +5930,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 3.9269908169872414,
+                "angle": 225 * Math.PI/180,
                 "offset": 0,
                 "size": 60,
                 "width": 21,
@@ -5953,7 +5953,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 4.71238898038469,
+                "angle": 270 * Math.PI/180,
                 "offset": 0,
                 "size": 60,
                 "width": 21,
@@ -5976,7 +5976,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 5.497787143782138,
+                "angle": 315 * Math.PI/180,
                 "offset": 0,
                 "size": 60,
                 "width": 21,
@@ -6062,7 +6062,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "borderWidth": 15,
         "barrels": [
             {
-                "angle": 1.5707963267948966,
+                "angle": 90 * Math.PI/180,
                 "offset": -20,
                 "size": 75,
                 "width": 29.4,
@@ -6070,7 +6070,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "reload": 1,
                 "recoil": 1,
                 "isTrapezoid": true,
-                "trapezoidDirection": 3.141592653589793,
+                "trapezoidDirection": 180 * Math.PI/180,
                 "addon": null,
                 "droneCount": 4294967295,
                 "canControlDrones": false,
@@ -6086,7 +6086,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 4.71238898038469,
+                "angle": 270 * Math.PI/180,
                 "offset": -20,
                 "size": 75,
                 "width": 29.4,
@@ -6094,7 +6094,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "reload": 1,
                 "recoil": 1,
                 "isTrapezoid": true,
-                "trapezoidDirection": 3.141592653589793,
+                "trapezoidDirection": 180 * Math.PI/180,
                 "addon": null,
                 "droneCount": 4294967295,
                 "canControlDrones": false,
@@ -6110,7 +6110,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 1.5707963267948966,
+                "angle": 90 * Math.PI/180,
                 "offset": 20,
                 "size": 75,
                 "width": 29.4,
@@ -6118,7 +6118,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "reload": 1,
                 "recoil": 1,
                 "isTrapezoid": true,
-                "trapezoidDirection": 3.141592653589793,
+                "trapezoidDirection": 180 * Math.PI/180,
                 "addon": null,
                 "droneCount": 4294967295,
                 "canControlDrones": true,
@@ -6134,7 +6134,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 4.71238898038469,
+                "angle": 270 * Math.PI/180,
                 "offset": 20,
                 "size": 75,
                 "width": 29.4,
@@ -6142,7 +6142,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "reload": 1,
                 "recoil": 1,
                 "isTrapezoid": true,
-                "trapezoidDirection": 3.141592653589793,
+                "trapezoidDirection": 180 * Math.PI/180,
                 "addon": null,
                 "droneCount": 4294967295,
                 "canControlDrones": true,
@@ -6657,7 +6657,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "reload": 4,
                 "recoil": 3,
                 "isTrapezoid": true,
-                "trapezoidDirection": 3.141592653589793,
+                "trapezoidDirection": 180 * Math.PI/180,
                 "addon": null,
                 "bullet": {
                     "type": "rocket",
@@ -6945,7 +6945,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": -0.7853981633974483,
+                "angle": -45 * Math.PI/180,
                 "offset": 0,
                 "size": 80,
                 "width": 42,
@@ -6967,7 +6967,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 0.7853981633974483,
+                "angle": 45 * Math.PI/180,
                 "offset": 0,
                 "size": 80,
                 "width": 42,
@@ -7218,7 +7218,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": -3.141592653589793,
+                "angle": -180 * Math.PI/180,
                 "offset": 0,
                 "size": 95,
                 "width": 42,
@@ -7644,7 +7644,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 3.141592653589793,
+                "angle": 180 * Math.PI/180,
                 "offset": 0,
                 "size": 70,
                 "width": 42,
@@ -7716,7 +7716,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 2.0943951023931953,
+                "angle": 120 * Math.PI/180,
                 "offset": 0,
                 "size": 70,
                 "width": 42,
@@ -7740,7 +7740,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 4.1887902047863905,
+                "angle": 240 * Math.PI/180,
                 "offset": 0,
                 "size": 70,
                 "width": 42,
@@ -8142,7 +8142,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 3.141592653589793,
+                "angle": 180 * Math.PI/180,
                 "offset": 0,
                 "size": 70,
                 "width": 42,
@@ -8226,7 +8226,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "borderWidth": 15,
         "barrels": [
             {
-                "angle": 1.5707963267948966,
+                "angle": 90 * Math.PI/180,
                 "offset": -20,
                 "size": 75,
                 "width": 29.4,
@@ -8234,7 +8234,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "reload": 1,
                 "recoil": 1,
                 "isTrapezoid": true,
-                "trapezoidDirection": 3.141592653589793,
+                "trapezoidDirection": 180 * Math.PI/180,
                 "addon": null,
                 "droneCount": 4294967295,
                 "canControlDrones": false,
@@ -8250,7 +8250,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 4.71238898038469,
+                "angle": 270 * Math.PI/180,
                 "offset": -20,
                 "size": 75,
                 "width": 29.4,
@@ -8258,7 +8258,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "reload": 1,
                 "recoil": 1,
                 "isTrapezoid": true,
-                "trapezoidDirection": 3.141592653589793,
+                "trapezoidDirection": 180 * Math.PI/180,
                 "addon": null,
                 "droneCount": 4294967295,
                 "canControlDrones": false,
@@ -8274,7 +8274,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 1.5707963267948966,
+                "angle": 90 * Math.PI/180,
                 "offset": 20,
                 "size": 75,
                 "width": 29.4,
@@ -8282,7 +8282,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "reload": 1,
                 "recoil": 1,
                 "isTrapezoid": true,
-                "trapezoidDirection": 3.141592653589793,
+                "trapezoidDirection": 180 * Math.PI/180,
                 "addon": null,
                 "droneCount": 4294967295,
                 "canControlDrones": true,
@@ -8298,7 +8298,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 4.71238898038469,
+                "angle": 270 * Math.PI/180,
                 "offset": 20,
                 "size": 75,
                 "width": 29.4,
@@ -8306,7 +8306,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "reload": 1,
                 "recoil": 1,
                 "isTrapezoid": true,
-                "trapezoidDirection": 3.141592653589793,
+                "trapezoidDirection": 180 * Math.PI/180,
                 "addon": null,
                 "droneCount": 4294967295,
                 "canControlDrones": true,
@@ -8330,7 +8330,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "reload": 1,
                 "recoil": 1,
                 "isTrapezoid": true,
-                "trapezoidDirection": 3.141592653589793,
+                "trapezoidDirection": 180 * Math.PI/180,
                 "addon": null,
                 "droneCount": 4294967295,
                 "canControlDrones": false,
@@ -8354,7 +8354,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "reload": 1,
                 "recoil": 1,
                 "isTrapezoid": true,
-                "trapezoidDirection": 3.141592653589793,
+                "trapezoidDirection": 180 * Math.PI/180,
                 "addon": null,
                 "droneCount": 4294967295,
                 "canControlDrones": false,
@@ -8378,7 +8378,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "reload": 1,
                 "recoil": 1,
                 "isTrapezoid": true,
-                "trapezoidDirection": 3.141592653589793,
+                "trapezoidDirection": 180 * Math.PI/180,
                 "addon": null,
                 "droneCount": 4294967295,
                 "canControlDrones": true,
@@ -8402,7 +8402,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "reload": 1,
                 "recoil": 1,
                 "isTrapezoid": true,
-                "trapezoidDirection": 3.141592653589793,
+                "trapezoidDirection": 180 * Math.PI/180,
                 "addon": null,
                 "droneCount": 4294967295,
                 "canControlDrones": true,
@@ -8500,7 +8500,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 4.1887902047863905,
+                "angle": 240 * Math.PI/180,
                 "offset": 0,
                 "size": 60,
                 "width": 42,
@@ -8522,7 +8522,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 2.0943951023931953,
+                "angle": 120 * Math.PI/180,
                 "offset": 0,
                 "size": 60,
                 "width": 42,
@@ -8544,7 +8544,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 3.9269908169872414,
+                "angle": 225 * Math.PI/180,
                 "offset": 0,
                 "size": 70,
                 "width": 42,
@@ -8566,7 +8566,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 2.356194490192345,
+                "angle": 135 * Math.PI/180,
                 "offset": 0,
                 "size": 70,
                 "width": 42,
@@ -8714,7 +8714,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 3.9269908169872414,
+                "angle": 225 * Math.PI/180,
                 "offset": 0,
                 "size": 70,
                 "width": 42,
@@ -8736,7 +8736,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 2.356194490192345,
+                "angle": 135 * Math.PI/180,
                 "offset": 0,
                 "size": 70,
                 "width": 42,
@@ -8758,7 +8758,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 1.5707963267948966,
+                "angle": 90 * Math.PI/180,
                 "offset": 0,
                 "size": 80,
                 "width": 42,
@@ -8780,7 +8780,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": -1.5707963267948966,
+                "angle": -90 * Math.PI/180,
                 "offset": 0,
                 "size": 80,
                 "width": 42,
@@ -8914,7 +8914,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "reload": 2,
                 "recoil": 3,
                 "isTrapezoid": true,
-                "trapezoidDirection": 3.141592653589793,
+                "trapezoidDirection": 180 * Math.PI/180,
                 "addon": null,
                 "bullet": {
                     "type": "bullet",
@@ -9010,7 +9010,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 2.0943951023931953,
+                "angle": 120 * Math.PI/180,
                 "offset": 0,
                 "size": 60,
                 "width": 42,
@@ -9032,7 +9032,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 4.1887902047863905,
+                "angle": 240 * Math.PI/180,
                 "offset": 0,
                 "size": 60,
                 "width": 42,
@@ -9076,7 +9076,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 3.141592653589793,
+                "angle": 180 * Math.PI/180,
                 "offset": 0,
                 "size": 60,
                 "width": 42,
@@ -9542,7 +9542,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 3.141592653589793,
+                "angle": 180 * Math.PI/180,
                 "offset": 0,
                 "size": 60,
                 "width": 54.6,
@@ -9624,7 +9624,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "borderWidth": 15,
         "barrels": [
             {
-                "angle": 0.7853981633974483,
+                "angle": 45 * Math.PI/180,
                 "offset": 0,
                 "size": 70,
                 "width": 42,
@@ -9648,7 +9648,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": -0.7853981633974483,
+                "angle": -45 * Math.PI/180,
                 "offset": 0,
                 "size": 70,
                 "width": 42,
@@ -9740,7 +9740,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "reload": 1,
                 "recoil": 1,
                 "isTrapezoid": true,
-                "trapezoidDirection": 3.141592653589793,
+                "trapezoidDirection": 180 * Math.PI/180,
                 "addon": null,
                 "droneCount": 4294967295,
                 "canControlDrones": false,
@@ -9764,7 +9764,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "reload": 1,
                 "recoil": 1,
                 "isTrapezoid": true,
-                "trapezoidDirection": 3.141592653589793,
+                "trapezoidDirection": 180 * Math.PI/180,
                 "addon": null,
                 "droneCount": 4294967295,
                 "canControlDrones": true,
@@ -9840,7 +9840,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "borderWidth": 15,
         "barrels": [
             {
-                "angle": 1.5707963267948966,
+                "angle": 90 * Math.PI/180,
                 "offset": -26,
                 "size": 95,
                 "width": 42,
@@ -9862,7 +9862,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 1.5707963267948966,
+                "angle": 90 * Math.PI/180,
                 "offset": 26,
                 "size": 95,
                 "width": 42,
@@ -9884,7 +9884,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 4.71238898038469,
+                "angle": 270 * Math.PI/180,
                 "offset": -26,
                 "size": 95,
                 "width": 42,
@@ -9906,7 +9906,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 4.71238898038469,
+                "angle": 270 * Math.PI/180,
                 "offset": 26,
                 "size": 95,
                 "width": 42,
@@ -9972,7 +9972,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 3.141592653589793,
+                "angle": 180 * Math.PI/180,
                 "offset": -26,
                 "size": 95,
                 "width": 42,
@@ -9994,7 +9994,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 3.141592653589793,
+                "angle": 180 * Math.PI/180,
                 "offset": 26,
                 "size": 95,
                 "width": 42,
@@ -10411,7 +10411,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 1.5707963267948966,
+                "angle": 90 * Math.PI/180,
                 "offset": 0,
                 "size": 70,
                 "width": 42,
@@ -10435,7 +10435,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": -1.5707963267948966,
+                "angle": -90 * Math.PI/180,
                 "offset": 0,
                 "size": 70,
                 "width": 42,
@@ -10459,7 +10459,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 3.141592653589793,
+                "angle": 180 * Math.PI/180,
                 "offset": 0,
                 "size": 70,
                 "width": 42,
@@ -10817,7 +10817,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 3.141592653589793,
+                "angle": 180 * Math.PI/180,
                 "offset": 0,
                 "size": 95,
                 "width": 42,
@@ -10921,7 +10921,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 3.141592653589793,
+                "angle": 180 * Math.PI/180,
                 "offset": 0,
                 "size": 95,
                 "width": 42,
@@ -11073,7 +11073,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 3.141592653589793,
+                "angle": 180 * Math.PI/180,
                 "offset": 0,
                 "size": 70,
                 "width": 42,
@@ -11239,7 +11239,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "borderWidth": 15,
         "barrels": [
             {
-                "angle": -1.5707963267948966,
+                "angle": -90 * Math.PI/180,
                 "offset": 0,
                 "size": 70,
                 "width": 42,
@@ -11263,7 +11263,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 1.5707963267948966,
+                "angle": 90 * Math.PI/180,
                 "offset": 0,
                 "size": 70,
                 "width": 42,
@@ -11347,7 +11347,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "borderWidth": 15,
         "barrels": [
             {
-                "angle": -1.5707963267948966,
+                "angle": -90 * Math.PI/180,
                 "offset": 0,
                 "size": 70,
                 "width": 42,
@@ -11371,7 +11371,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 1.5707963267948966,
+                "angle": 90 * Math.PI/180,
                 "offset": 0,
                 "size": 70,
                 "width": 42,
