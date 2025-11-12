@@ -4414,7 +4414,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 34,
+        "id": Tank.MegaTrapper,
         "name": "Mega Trapper",
         "upgradeMessage": "",
         "levelRequirement": 45,
@@ -4498,7 +4498,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 35,
+        "id": Tank.TriTrapper,
         "name": "Tri-Trapper",
         "upgradeMessage": "",
         "levelRequirement": 45,
@@ -4626,7 +4626,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 36,
+        "id": Tank.Smasher,
         "name": "Smasher",
         "upgradeMessage": "",
         "levelRequirement": 30,
@@ -4690,7 +4690,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
     },
     null,
     {
-        "id": 38,
+        "id": Tank.Landmine,
         "name": "Landmine",
         "upgradeMessage": "",
         "levelRequirement": 45,
@@ -4749,7 +4749,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 39,
+        "id": Tank.AutoGunner,
         "name": "Auto Gunner",
         "upgradeMessage": "",
         "levelRequirement": 45,
@@ -4899,7 +4899,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 40,
+        "id": Tank.Auto5,
         "name": "Auto 5",
         "upgradeMessage": "",
         "levelRequirement": 45,
@@ -4960,7 +4960,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 41,
+        "id": Tank.Auto3,
         "name": "Auto 3",
         "upgradeMessage": "",
         "levelRequirement": 30,
@@ -5022,7 +5022,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 42,
+        "id": Tank.SpreadShot,
         "name": "Spread Shot",
         "upgradeMessage": "",
         "levelRequirement": 45,
@@ -5324,7 +5324,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 43,
+        "id": Tank.Streamliner,
         "name": "Streamliner",
         "upgradeMessage": "",
         "levelRequirement": 45,
@@ -5496,7 +5496,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 44,
+        "id": Tank.AutoTrapper,
         "name": "Auto Trapper",
         "upgradeMessage": "",
         "levelRequirement": 45,
@@ -5580,7 +5580,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 45,
+        "id": Tank.DominatorD,
         "name": "Dominator",
         "upgradeMessage": "",
         "levelRequirement": 0,
@@ -5663,7 +5663,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 46,
+        "id": Tank.DominatorG,
         "name": "Dominator",
         "upgradeMessage": "",
         "levelRequirement": 0,
@@ -5790,7 +5790,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 47,
+        "id": Tank.DominatorT,
         "name": "Dominator",
         "upgradeMessage": "",
         "levelRequirement": 0,
@@ -6035,7 +6035,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 48,
+        "id": Tank.Battleship,
         "name": "Battleship",
         "upgradeMessage": "",
         "levelRequirement": 45,
@@ -6194,7 +6194,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 49,
+        "id": Tank.Annihilator,
         "name": "Annihilator",
         "upgradeMessage": "",
         "levelRequirement": 45,
@@ -6278,7 +6278,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 50,
+        "id": Tank.AutoSmasher,
         "name": "Auto Smasher",
         "upgradeMessage": "",
         "levelRequirement": 45,
@@ -6337,7 +6337,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 51,
+        "id": Tank.Spike,
         "name": "Spike",
         "upgradeMessage": "",
         "levelRequirement": 45,
@@ -6396,7 +6396,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 52,
+        "id": Tank.Factory,
         "name": "Factory",
         "upgradeMessage": "",
         "levelRequirement": 45,
@@ -6543,7 +6543,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 54,
+        "id": Tank.Skimmer,
         "name": "Skimmer",
         "upgradeMessage": "",
         "levelRequirement": 45,
@@ -6625,7 +6625,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 55,
+        "id": Tank.Rocketeer,
         "name": "Rocketeer",
         "upgradeMessage": "",
         "levelRequirement": 45,
@@ -6707,7 +6707,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 56,
+        "id": Tank.Quintuplet,
         "name": "Quintuplet",
         "upgradeMessage": "",
         "levelRequirement": 60,
@@ -6877,7 +6877,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 57,
+        "id": Tank.HeptaShot,
         "name": "Hepta Shot",
         "upgradeMessage": "",
         "levelRequirement": 60,
@@ -7091,7 +7091,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 58,
+        "id": Tank.Auto7,
         "name": "Auto 7",
         "upgradeMessage": "",
         "levelRequirement": 60,
@@ -7150,7 +7150,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 59,
+        "id": Tank.DecaTank,
         "name": "Deca Tank",
         "upgradeMessage": "",
         "levelRequirement": 60,
@@ -7430,7 +7430,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 60,
+        "id": Tank.Vindicator,
         "name": "Vindicator",
         "upgradeMessage": "",
         "levelRequirement": 60,
@@ -7512,7 +7512,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 61,
+        "id": Tank.AutoTank,
         "name": "Auto Tank",
         "upgradeMessage": "",
         "levelRequirement": 45,
@@ -7596,7 +7596,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 62,
+        "id": Tank.Overczar,
         "name": "Overczar",
         "upgradeMessage": "",
         "levelRequirement": 60,
@@ -7800,7 +7800,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 63,
+        "id": Tank.Rationalizer,
         "name": "Rationalizer",
         "upgradeMessage": "",
         "levelRequirement": 60,
@@ -8014,7 +8014,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 64,
+        "id": Tank.Obliterator,
         "name": "Obliterator",
         "upgradeMessage": "",
         "levelRequirement": 60,
@@ -8096,7 +8096,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 65,
+        "id": Tank.Compound,
         "name": "Compound",
         "upgradeMessage": "",
         "levelRequirement": 60,
@@ -8202,7 +8202,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 66,
+        "id": Tank.Warship,
         "name": "Warship",
         "upgradeMessage": "",
         "levelRequirement": 60,
@@ -8454,7 +8454,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 67,
+        "id": Tank.Rocket,
         "name": "Rocket",
         "upgradeMessage": "",
         "levelRequirement": 60,
@@ -8668,7 +8668,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 68,
+        "id": Tank.Brawler,
         "name": "Brawler",
         "upgradeMessage": "",
         "levelRequirement": 60,
@@ -8882,7 +8882,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 69,
+        "id": Tank.Hawker,
         "name": "Hawker",
         "upgradeMessage": "",
         "levelRequirement": 60,
@@ -8964,7 +8964,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 70,
+        "id": Tank.HexaTrapper,
         "name": "Hexa-Trapper",
         "upgradeMessage": "",
         "levelRequirement": 60,
@@ -9156,7 +9156,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 71,
+        "id": Tank.Spewer,
         "name": "Spewer",
         "upgradeMessage": "",
         "levelRequirement": 60,
@@ -9282,7 +9282,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 72,
+        "id": Tank.Eradicator,
         "name": "Eradicator",
         "upgradeMessage": "Use your right mouse button to look further in the direction you're facing",
         "levelRequirement": 60,
@@ -9430,7 +9430,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 73,
+        "id": Tank.FullGunnerTrapper,
         "name": "Full Gunner Trapper",
         "upgradeMessage": "",
         "levelRequirement": 60,
@@ -9600,7 +9600,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 74,
+        "id": Tank.Complex,
         "name": "Complex",
         "upgradeMessage": "",
         "levelRequirement": 60,
@@ -9708,7 +9708,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 75,
+        "id": Tank.Workshop,
         "name": "Workshop",
         "upgradeMessage": "",
         "levelRequirement": 60,
@@ -9816,7 +9816,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 76,
+        "id": Tank.QuadTwin,
         "name": "Quad Twin",
         "upgradeMessage": "",
         "levelRequirement": 60,
@@ -10052,7 +10052,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 77,
+        "id": Tank.TripleAutoGunner,
         "name": "Triple Auto Gunner",
         "upgradeMessage": "",
         "levelRequirement": 60,
@@ -10200,7 +10200,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 78,
+        "id": Tank.TripleAutoTank,
         "name": "Triple Auto Tank",
         "upgradeMessage": "",
         "levelRequirement": 60,
@@ -10282,7 +10282,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 79,
+        "id": Tank.TripleAutoTrapper,
         "name": "Triple Auto Trapper",
         "upgradeMessage": "",
         "levelRequirement": 60,
@@ -10363,9 +10363,8 @@ const TankDefinitions: (TankDefinition|null)[] = [
             }
         ]
     },
-    
     {
-        "id": 80,
+        "id": Tank.Trapperlord,
         "name": "Trapperlord",
         "upgradeMessage": "",
         "levelRequirement": 60,
@@ -10519,7 +10518,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 81,
+        "id": Tank.Flamer,
         "name": "Flamer",
         "upgradeMessage": "Flame launchers have infinite penetration, maximum stats have been adjusted.",
         "levelRequirement": 30,
@@ -10603,9 +10602,8 @@ const TankDefinitions: (TankDefinition|null)[] = [
             }
         ]
     },
-    
     {
-        "id": 82,
+        "id": Tank.Flamethrower,
         "name": "Flamethrower",
         "upgradeMessage": "",
         "levelRequirement": 45,
@@ -10687,7 +10685,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 83,
+        "id": Tank.Incinerator,
         "name": "Incinerator",
         "upgradeMessage": "",
         "levelRequirement": 45,
@@ -10769,7 +10767,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 84,
+        "id": Tank.Plane,
         "name": "Plane",
         "upgradeMessage": "",
         "levelRequirement": 30,
@@ -10875,7 +10873,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 85,
+        "id": Tank.FighterJet,
         "name": "Fighter Jet",
         "upgradeMessage": "",
         "levelRequirement": 45,
@@ -11025,7 +11023,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 86,
+        "id": Tank.President,
         "name": "President",
         "upgradeMessage": "",
         "levelRequirement": 60,
@@ -11133,7 +11131,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 87,
+        "id": Tank.OmegaTrapper,
         "name": "Omega Trapper",
         "upgradeMessage": "",
         "levelRequirement": 60,
@@ -11215,7 +11213,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 88,
+        "id": Tank.Pentamancer,
         "name": "Pentamancer",
         "upgradeMessage": "",
         "levelRequirement": 60,
@@ -11323,7 +11321,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     {
-        "id": 89,
+        "id": Tank.Wraith,
         "name": "Wraith",
         "upgradeMessage": "",
         "levelRequirement": 60,
