@@ -1183,7 +1183,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 3.665191429188092,
+                "angle": 210 * Math.PI/180,
                 "offset": 0,
                 "size": 80,
                 "width": 42,
@@ -1205,7 +1205,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 2.6179938779914944,
+                "angle": 150 * Math.PI/180,
                 "offset": 0,
                 "size": 80,
                 "width": 42,
@@ -1844,7 +1844,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": -0.39269908169872414,
+                "angle": -22.5 * Math.PI/180,
                 "offset": 0,
                 "size": 95,
                 "width": 42,
@@ -1866,7 +1866,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 0.39269908169872414,
+                "angle": 22.5 * Math.PI/180,
                 "offset": 0,
                 "size": 95,
                 "width": 42,
@@ -2940,7 +2940,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 3.665191429188092,
+                "angle": 210 * Math.PI/180,
                 "offset": 0,
                 "size": 80,
                 "width": 42,
@@ -2962,7 +2962,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 2.6179938779914944,
+                "angle": 150 * Math.PI/180,
                 "offset": 0,
                 "size": 80,
                 "width": 42,
@@ -3112,7 +3112,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 3.665191429188092,
+                "angle": 210 * Math.PI/180,
                 "offset": 0,
                 "size": 80,
                 "width": 42,
@@ -3134,7 +3134,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 2.6179938779914944,
+                "angle": 150 * Math.PI/180,
                 "offset": 0,
                 "size": 80,
                 "width": 42,
@@ -5090,7 +5090,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 1.0471975511965976,
+                "angle": 60 * Math.PI/180,
                 "offset": 0,
                 "size": 71,
                 "width": 29.4,
@@ -5112,7 +5112,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": -1.0471975511965976,
+                "angle": -60 * Math.PI/180,
                 "offset": 0,
                 "size": 71,
                 "width": 29.4,
@@ -5178,7 +5178,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 0.5235987755982988,
+                "angle": 30 * Math.PI/180,
                 "offset": 0,
                 "size": 83,
                 "width": 29.4,
@@ -5200,7 +5200,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": -0.5235987755982988,
+                "angle": -30 * Math.PI/180,
                 "offset": 0,
                 "size": 83,
                 "width": 29.4,
@@ -5222,7 +5222,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 0.2617993877991494,
+                "angle": 15 * Math.PI/180,
                 "offset": 0,
                 "size": 89,
                 "width": 29.4,
@@ -5244,7 +5244,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": -0.2617993877991494,
+                "angle": -15 * Math.PI/180,
                 "offset": 0,
                 "size": 89,
                 "width": 29.4,
@@ -6901,7 +6901,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "borderWidth": 15,
         "barrels": [
             {
-                "angle": -1.1780972450961724,
+                "angle": -67.5 * Math.PI/180,
                 "offset": 0,
                 "size": 65,
                 "width": 42,
@@ -6923,7 +6923,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 1.1780972450961724,
+                "angle": 67.5 * Math.PI/180,
                 "offset": 0,
                 "size": 65,
                 "width": 42,
@@ -6989,7 +6989,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": -0.39269908169872414,
+                "angle": -22.5 * Math.PI/180,
                 "offset": 0,
                 "size": 95,
                 "width": 42,
@@ -7011,7 +7011,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 0.39269908169872414,
+                "angle": 22.5 * Math.PI/180,
                 "offset": 0,
                 "size": 95,
                 "width": 42,
@@ -7174,7 +7174,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "borderWidth": 15,
         "barrels": [
             {
-                "angle": 0.6283185307179586,
+                "angle": 36 * Math.PI/180,
                 "offset": 0,
                 "size": 95,
                 "width": 42,
@@ -7196,7 +7196,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 1.8849555921538759,
+                "angle": 108 * Math.PI/180,
                 "offset": 0,
                 "size": 95,
                 "width": 42,
@@ -7240,7 +7240,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": -1.8849555921538759,
+                "angle": -108 * Math.PI/180,
                 "offset": 0,
                 "size": 95,
                 "width": 42,
@@ -7262,7 +7262,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": -0.6283185307179586,
+                "angle": -36 * Math.PI/180,
                 "offset": 0,
                 "size": 95,
                 "width": 42,
@@ -7306,7 +7306,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 1.2566370614359172,
+                "angle": 72 * Math.PI/180,
                 "offset": 0,
                 "size": 95,
                 "width": 42,
@@ -7328,7 +7328,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 2.5132741228718345,
+                "angle": 144 * Math.PI/180,
                 "offset": 0,
                 "size": 95,
                 "width": 42,
@@ -7350,7 +7350,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": -2.5132741228718345,
+                "angle": -144 * Math.PI/180,
                 "offset": 0,
                 "size": 95,
                 "width": 42,
@@ -7372,7 +7372,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": -1.2566370614359172,
+                "angle": -72 * Math.PI/180,
                 "offset": 0,
                 "size": 95,
                 "width": 42,
@@ -7620,7 +7620,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "borderWidth": 15,
         "barrels": [
             {
-                "angle": 1.0471975511965976,
+                "angle": 60 * Math.PI/180,
                 "offset": 0,
                 "size": 70,
                 "width": 42,
@@ -7668,7 +7668,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 5.235987755982989,
+                "angle": 300 * Math.PI/180,
                 "offset": 0,
                 "size": 70,
                 "width": 42,
@@ -8588,7 +8588,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 3.665191429188092,
+                "angle": 210 * Math.PI/180,
                 "offset": 0,
                 "size": 80,
                 "width": 42,
@@ -8610,7 +8610,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 2.6179938779914944,
+                "angle": 150 * Math.PI/180,
                 "offset": 0,
                 "size": 80,
                 "width": 42,
@@ -8802,7 +8802,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 3.665191429188092,
+                "angle": 210 * Math.PI/180,
                 "offset": 0,
                 "size": 80,
                 "width": 42,
@@ -8824,7 +8824,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 2.6179938779914944,
+                "angle": 150 * Math.PI/180,
                 "offset": 0,
                 "size": 80,
                 "width": 42,
@@ -9054,7 +9054,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 1.0471975511965976,
+                "angle": 60 * Math.PI/180,
                 "offset": 0,
                 "size": 60,
                 "width": 42,
@@ -9098,7 +9098,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 5.235987755982989,
+                "angle": 300 * Math.PI/180,
                 "offset": 0,
                 "size": 60,
                 "width": 42,
