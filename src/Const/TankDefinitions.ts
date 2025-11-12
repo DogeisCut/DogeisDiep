@@ -1,5 +1,5 @@
 import { Tank } from "./Enums";
-import { TankDefinition } from "./TankDefinitionsUtil";
+import { BarrelDefinition, BulletDefinition, TankDefinition } from "./TankDefinitionsUtil";
 
 const TankDefinitions: (TankDefinition|null)[] = [
     {
@@ -3409,392 +3409,39 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "sides": 16,
         "borderWidth": 140,
         "allowInfiniteScaling": true,
-        "barrels": [
-            {
-                "angle": 0.19634954084936207,
-                "offset": 0,
-                "size": 60,
-                "width": 10.5,
-                "delay": 0,
-                "reload": 6,
-                "recoil": 0,
-                "isTrapezoid": true,
-                "trapezoidDirection": 0,
-                "addon": null,
-                "droneCount": 2,
-                "canControlDrones": true,
-                "bullet": {
-                    "type": "drone",
-                    "sizeRatio": 1,
-                    "health": 2,
-                    "damage": 0.7,
-                    "speed": 0.48,
-                    "scatterRate": 1,
-                    "lifeLength": -1,
-                    "absorbtionFactor": 1
-                }
-            },
-            {
-                "angle": 0.5890486225480862,
-                "offset": 0,
-                "size": 60,
-                "width": 10.5,
-                "delay": 0,
-                "reload": 6,
-                "recoil": 0,
-                "isTrapezoid": true,
-                "trapezoidDirection": 0,
-                "addon": null,
-                "droneCount": 2,
-                "canControlDrones": false,
-                "bullet": {
-                    "type": "drone",
-                    "sizeRatio": 1,
-                    "health": 2,
-                    "damage": 0.7,
-                    "speed": 0.48,
-                    "scatterRate": 1,
-                    "lifeLength": -1,
-                    "absorbtionFactor": 1
-                }
-            },
-            {
-                "angle": 0.9817477042468103,
-                "offset": 0,
-                "size": 60,
-                "width": 10.5,
-                "delay": 0,
-                "reload": 6,
-                "recoil": 0,
-                "isTrapezoid": true,
-                "trapezoidDirection": 0,
-                "addon": null,
-                "droneCount": 2,
-                "canControlDrones": true,
-                "bullet": {
-                    "type": "drone",
-                    "sizeRatio": 1,
-                    "health": 2,
-                    "damage": 0.7,
-                    "speed": 0.48,
-                    "scatterRate": 1,
-                    "lifeLength": -1,
-                    "absorbtionFactor": 1
-                }
-            },
-            {
-                "angle": 1.3744467859455345,
-                "offset": 0,
-                "size": 60,
-                "width": 10.5,
-                "delay": 0,
-                "reload": 6,
-                "recoil": 0,
-                "isTrapezoid": true,
-                "trapezoidDirection": 0,
-                "addon": null,
-                "droneCount": 2,
-                "canControlDrones": false,
-                "bullet": {
-                    "type": "drone",
-                    "sizeRatio": 1,
-                    "health": 2,
-                    "damage": 0.7,
-                    "speed": 0.48,
-                    "scatterRate": 1,
-                    "lifeLength": -1,
-                    "absorbtionFactor": 1
-                }
-            },
-            {
-                "angle": 1.7671458676442586,
-                "offset": 0,
-                "size": 60,
-                "width": 10.5,
-                "delay": 0,
-                "reload": 6,
-                "recoil": 0,
-                "isTrapezoid": true,
-                "trapezoidDirection": 0,
-                "addon": null,
-                "droneCount": 2,
-                "canControlDrones": true,
-                "bullet": {
-                    "type": "drone",
-                    "sizeRatio": 1,
-                    "health": 2,
-                    "damage": 0.7,
-                    "speed": 0.48,
-                    "scatterRate": 1,
-                    "lifeLength": -1,
-                    "absorbtionFactor": 1
-                }
-            },
-            {
-                "angle": 2.159844949342983,
-                "offset": 0,
-                "size": 60,
-                "width": 10.5,
-                "delay": 0,
-                "reload": 6,
-                "recoil": 0,
-                "isTrapezoid": true,
-                "trapezoidDirection": 0,
-                "addon": null,
-                "droneCount": 2,
-                "canControlDrones": false,
-                "bullet": {
-                    "type": "drone",
-                    "sizeRatio": 1,
-                    "health": 2,
-                    "damage": 0.7,
-                    "speed": 0.48,
-                    "scatterRate": 1,
-                    "lifeLength": -1,
-                    "absorbtionFactor": 1
-                }
-            },
-            {
-                "angle": 2.552544031041707,
-                "offset": 0,
-                "size": 60,
-                "width": 10.5,
-                "delay": 0,
-                "reload": 6,
-                "recoil": 0,
-                "isTrapezoid": true,
-                "trapezoidDirection": 0,
-                "addon": null,
-                "droneCount": 2,
-                "canControlDrones": true,
-                "bullet": {
-                    "type": "drone",
-                    "sizeRatio": 1,
-                    "health": 2,
-                    "damage": 0.7,
-                    "speed": 0.48,
-                    "scatterRate": 1,
-                    "lifeLength": -1,
-                    "absorbtionFactor": 1
-                }
-            },
-            {
-                "angle": 2.9452431127404313,
-                "offset": 0,
-                "size": 60,
-                "width": 10.5,
-                "delay": 0,
-                "reload": 6,
-                "recoil": 0,
-                "isTrapezoid": true,
-                "trapezoidDirection": 0,
-                "addon": null,
-                "droneCount": 2,
-                "canControlDrones": false,
-                "bullet": {
-                    "type": "drone",
-                    "sizeRatio": 1,
-                    "health": 2,
-                    "damage": 0.7,
-                    "speed": 0.48,
-                    "scatterRate": 1,
-                    "lifeLength": -1,
-                    "absorbtionFactor": 1
-                }
-            },
-            {
-                "angle": 3.3379421944391554,
-                "offset": 0,
-                "size": 60,
-                "width": 10.5,
-                "delay": 0,
-                "reload": 6,
-                "recoil": 0,
-                "isTrapezoid": true,
-                "trapezoidDirection": 0,
-                "addon": null,
-                "droneCount": 2,
-                "canControlDrones": true,
-                "bullet": {
-                    "type": "drone",
-                    "sizeRatio": 1,
-                    "health": 2,
-                    "damage": 0.7,
-                    "speed": 0.48,
-                    "scatterRate": 1,
-                    "lifeLength": -1,
-                    "absorbtionFactor": 1
-                }
-            },
-            {
-                "angle": 3.7306412761378795,
-                "offset": 0,
-                "size": 60,
-                "width": 10.5,
-                "delay": 0,
-                "reload": 6,
-                "recoil": 0,
-                "isTrapezoid": true,
-                "trapezoidDirection": 0,
-                "addon": null,
-                "droneCount": 2,
-                "canControlDrones": false,
-                "bullet": {
-                    "type": "drone",
-                    "sizeRatio": 1,
-                    "health": 2,
-                    "damage": 0.7,
-                    "speed": 0.48,
-                    "scatterRate": 1,
-                    "lifeLength": -1,
-                    "absorbtionFactor": 1
-                }
-            },
-            {
-                "angle": 4.12333992150429,
-                "offset": 0,
-                "size": 60,
-                "width": 10.5,
-                "delay": 0,
-                "reload": 6,
-                "recoil": 0,
-                "isTrapezoid": true,
-                "trapezoidDirection": 0,
-                "addon": null,
-                "droneCount": 2,
-                "canControlDrones": true,
-                "bullet": {
-                    "type": "drone",
-                    "sizeRatio": 1,
-                    "health": 2,
-                    "damage": 0.7,
-                    "speed": 0.48,
-                    "scatterRate": 1,
-                    "lifeLength": -1,
-                    "absorbtionFactor": 1
-                }
-            },
-            {
-                "angle": 4.516039439535327,
-                "offset": 0,
-                "size": 60,
-                "width": 10.5,
-                "delay": 0,
-                "reload": 6,
-                "recoil": 0,
-                "isTrapezoid": true,
-                "trapezoidDirection": 0,
-                "addon": null,
-                "droneCount": 2,
-                "canControlDrones": false,
-                "bullet": {
-                    "type": "drone",
-                    "sizeRatio": 1,
-                    "health": 2,
-                    "damage": 0.7,
-                    "speed": 0.48,
-                    "scatterRate": 1,
-                    "lifeLength": -1,
-                    "absorbtionFactor": 1
-                }
-            },
-            {
-                "angle": 4.908738521234052,
-                "offset": 0,
-                "size": 60,
-                "width": 10.5,
-                "delay": 0,
-                "reload": 6,
-                "recoil": 0,
-                "isTrapezoid": true,
-                "trapezoidDirection": 0,
-                "addon": null,
-                "droneCount": 2,
-                "canControlDrones": true,
-                "bullet": {
-                    "type": "drone",
-                    "sizeRatio": 1,
-                    "health": 2,
-                    "damage": 0.7,
-                    "speed": 0.48,
-                    "scatterRate": 1,
-                    "lifeLength": -1,
-                    "absorbtionFactor": 1
-                }
-            },
-            {
-                "angle": 5.301437166600463,
-                "offset": 0,
-                "size": 60,
-                "width": 10.5,
-                "delay": 0,
-                "reload": 6,
-                "recoil": 0,
-                "isTrapezoid": true,
-                "trapezoidDirection": 0,
-                "addon": null,
-                "droneCount": 2,
-                "canControlDrones": false,
-                "bullet": {
-                    "type": "drone",
-                    "sizeRatio": 1,
-                    "health": 2,
-                    "damage": 0.7,
-                    "speed": 0.48,
-                    "scatterRate": 1,
-                    "lifeLength": -1,
-                    "absorbtionFactor": 1
-                }
-            },
-            {
-                "angle": 5.6941366846315,
-                "offset": 0,
-                "size": 60,
-                "width": 10.5,
-                "delay": 0,
-                "reload": 6,
-                "recoil": 0,
-                "isTrapezoid": true,
-                "trapezoidDirection": 0,
-                "addon": null,
-                "droneCount": 2,
-                "canControlDrones": true,
-                "bullet": {
-                    "type": "drone",
-                    "sizeRatio": 1,
-                    "health": 2,
-                    "damage": 0.7,
-                    "speed": 0.48,
-                    "scatterRate": 1,
-                    "lifeLength": -1,
-                    "absorbtionFactor": 1
-                }
-            },
-            {
-                "angle": 6.086835766330224,
-                "offset": 0,
-                "size": 60,
-                "width": 10.5,
-                "delay": 0,
-                "reload": 6,
-                "recoil": 0,
-                "isTrapezoid": true,
-                "trapezoidDirection": 0,
-                "addon": null,
-                "droneCount": 2,
-                "canControlDrones": false,
-                "bullet": {
-                    "type": "drone",
-                    "sizeRatio": 1,
-                    "health": 2,
-                    "damage": 0.7,
-                    "speed": 0.48,
-                    "scatterRate": 1,
-                    "lifeLength": -1,
-                    "absorbtionFactor": 1
-                }
+        "barrels": ((): BarrelDefinition[] => {
+            const totalBarrels = 16
+            const baseAngle = Math.PI * 2 / totalBarrels
+            const bullet: BulletDefinition = {
+                type: "drone",
+                sizeRatio: 1,
+                health: 2,
+                damage: 0.7,
+                speed: 0.48,
+                scatterRate: 1,
+                lifeLength: -1,
+                absorbtionFactor: 1
             }
-        ],
+            const barrels = []
+            for (let i = 0; i < totalBarrels; i++) {
+                barrels.push({
+                    angle: baseAngle * i + baseAngle / 8,
+                    offset: 0,
+                    size: 60,
+                    width: 10.5,
+                    delay: 0,
+                    reload: 6,
+                    recoil: 0,
+                    isTrapezoid: true,
+                    trapezoidDirection: 0,
+                    addon: null,
+                    droneCount: 2,
+                    canControlDrones: i % 2 === 0,
+                    bullet
+                } as BarrelDefinition)
+            }
+            return barrels
+        })(),
         "stats": [
             {
                 "name": "Movement Speed",
