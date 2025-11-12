@@ -22,7 +22,7 @@ import AbstractBoss from "./AbstractBoss";
 
 import { Color, Tank } from "../../Const/Enums";
 import { AIState } from "../AI";
-import { BarrelDefinition } from "../../Const/TankDefinitions";
+import { BarrelDefinition } from "../../Const/TankDefinitionsUtil";
 
 const GuardianSpawnerDefinition: BarrelDefinition = {
     angle: Math.PI,

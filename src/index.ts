@@ -22,7 +22,7 @@ import Client, { ClientWrapper } from "./Client";
 import * as config from "./config"
 import * as util from "./util";
 import GameServer from "./Game";
-import TankDefinitions from "./Const/TankDefinitions";
+import TankDefinitions from "./Const/TankDefinitionsUtil";
 import { commandDefinitions } from "./Const/Commands";
 import { ColorsHexCode } from "./Const/Enums";
 

@@ -17,7 +17,7 @@
 */
 
 import { Color, PhysicsFlags, StyleFlags } from "../../Const/Enums";
-import { barrelAddonId } from "../../Const/TankDefinitions";
+import { barrelAddonId } from "../../Const/TankDefinitionsUtil";
 import GameServer from "../../Game";
 import ObjectEntity from "../Object";
 import Barrel from "./Barrel";

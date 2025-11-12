@@ -19,7 +19,7 @@
 import Barrel from "../Barrel";
 import Bullet from "./Bullet";
 
-import { TankDefinition } from "../../../Const/TankDefinitions";
+import { TankDefinition } from "../../../Const/TankDefinitionsUtil";
 import { BarrelBase } from "../TankBody";
 
 export default class Flame extends Bullet {

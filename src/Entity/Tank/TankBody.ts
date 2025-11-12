@@ -31,7 +31,7 @@ import { Color, StyleFlags, StatCount, Tank, CameraFlags, Stat, InputFlags, Phys
 import { Entity } from "../../Native/Entity";
 import { NameGroup, ScoreGroup } from "../../Native/FieldGroups";
 import { Addon, AddonById } from "./Addons";
-import { getTankById, TankDefinition, visibilityRateDamage } from "../../Const/TankDefinitions";
+import { getTankById, TankDefinition, visibilityRateDamage } from "../../Const/TankDefinitionsUtil";
 import { DevTank } from "../../Const/DevTankDefinitions";
 import { Inputs } from "../AI";
 import { ArenaState } from "../../Native/Arena";

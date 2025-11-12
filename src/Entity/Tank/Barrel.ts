@@ -29,7 +29,7 @@ import TankBody, { BarrelBase } from "./TankBody";
 
 import { Color, PositionFlags, PhysicsFlags, BarrelFlags, Stat, Tank } from "../../Const/Enums";
 import { BarrelGroup } from "../../Native/FieldGroups";
-import { BarrelDefinition, TankDefinition } from "../../Const/TankDefinitions";
+import { BarrelDefinition, TankDefinition } from "../../Const/TankDefinitionsUtil";
 import { DevTank } from "../../Const/DevTankDefinitions";
 import Flame from "./Projectile/Flame";
 import MazeWall from "../Misc/MazeWall";

@@ -22,7 +22,7 @@ import AutoTurret from "./AutoTurret";
 
 import { Color, PositionFlags, PhysicsFlags, StyleFlags } from "../../Const/Enums";
 import { BarrelBase } from "./TankBody";
-import { addonId, BarrelDefinition } from "../../Const/TankDefinitions";
+import { addonId, BarrelDefinition } from "../../Const/TankDefinitionsUtil";
 import { AI, AIState, Inputs } from "../AI";
 import LivingEntity from "../Live";
 import { normalizeAngle, PI2 } from "../../util";

@@ -20,7 +20,7 @@ import LivingEntity from "../../Live";
 import Barrel from "../Barrel";
 
 import { HealthFlags, PositionFlags, PhysicsFlags, Stat, StyleFlags } from "../../../Const/Enums";
-import { TankDefinition } from "../../../Const/TankDefinitions";
+import { TankDefinition } from "../../../Const/TankDefinitionsUtil";
 import { BarrelBase } from "../TankBody";
 import { EntityStateFlags } from "../../../Native/Entity";
 

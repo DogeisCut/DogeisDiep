@@ -17,7 +17,7 @@
 */
 
 import { PI2 } from "../util";
-import { TankDefinition } from "./TankDefinitions";
+import { TankDefinition } from "./TankDefinitionsUtil";
 
 /**
  * The IDs for all the dev tanks, by name.

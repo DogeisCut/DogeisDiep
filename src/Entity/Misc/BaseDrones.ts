@@ -22,7 +22,7 @@ import TeamBase from "./TeamBase";
 
 import { BarrelBase } from "../Tank/TankBody";
 import { Color, StyleFlags, PhysicsFlags } from "../../Const/Enums";
-import { BarrelDefinition } from "../../Const/TankDefinitions";
+import { BarrelDefinition } from "../../Const/TankDefinitionsUtil";
 import { Inputs } from "../AI";
 import { CameraEntity } from "../../Native/Camera";
 

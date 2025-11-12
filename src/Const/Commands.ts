@@ -26,7 +26,7 @@ import { AIState } from "../Entity/AI";
 import { Entity, EntityStateFlags } from "../Native/Entity";
 import { saveToVLog } from "../util";
 import { ClientBound, Stat, StatCount, PhysicsFlags, StyleFlags, Tank } from "./Enums";
-import { getTankByName } from "./TankDefinitions";
+import { getTankByName } from "./TankDefinitionsUtil";
 import Hexagon from "../Entity/Shape/Hexagon";
 
 const RELATIVE_POS_REGEX = new RegExp(/~(-?\d+)?/);

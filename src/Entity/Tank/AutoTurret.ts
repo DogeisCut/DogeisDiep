@@ -21,7 +21,7 @@ import Barrel from "./Barrel";
 
 import { BarrelBase } from "./TankBody";
 import { Color, InputFlags, PositionFlags, NameFlags, PhysicsFlags, Stat, StyleFlags } from "../../Const/Enums";
-import { BarrelDefinition } from "../../Const/TankDefinitions";
+import { BarrelDefinition } from "../../Const/TankDefinitionsUtil";
 import { AI, AIState, Inputs } from "../AI";
 import { Entity } from "../../Native/Entity";
 import { NameGroup } from "../../Native/FieldGroups";

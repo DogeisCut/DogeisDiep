@@ -20,7 +20,7 @@ import Barrel from "../Barrel";
 import Bullet from "./Bullet";
 
 import { InputFlags } from "../../../Const/Enums";
-import { BarrelDefinition, TankDefinition } from "../../../Const/TankDefinitions";
+import { BarrelDefinition, TankDefinition } from "../../../Const/TankDefinitionsUtil";
 import { Inputs } from "../../AI";
 import { BarrelBase } from "../TankBody";
 import { CameraEntity } from "../../../Native/Camera";

@@ -26,7 +26,7 @@ import GameServer from "./Game";
 import ClientCamera from "./Native/Camera";
 import { ArenaState } from "./Native/Arena";
 import ObjectEntity from "./Entity/Object";
-import TankDefinitions, { getTankById, TankCount } from "./Const/TankDefinitions";
+import TankDefinitions, { getTankById, TankCount } from "./Const/TankDefinitionsUtil";
 import DevTankDefinitions, { DevTank } from "./Const/DevTankDefinitions";
 import TankBody from "./Entity/Tank/TankBody";
 import Vector, { VectorAbstract } from "./Physics/Vector";

@@ -20,7 +20,7 @@ import Barrel from "../Barrel";
 import Drone from "./Drone";
 
 import { Color, PhysicsFlags, Tank } from "../../../Const/Enums";
-import { TankDefinition } from "../../../Const/TankDefinitions";
+import { TankDefinition } from "../../../Const/TankDefinitionsUtil";
 import { AI } from "../../AI";
 import { BarrelBase } from "../TankBody";
 import LivingEntity from "../../Live";

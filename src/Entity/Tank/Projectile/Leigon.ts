@@ -20,7 +20,7 @@ import Barrel from "../Barrel";
 import Drone from "./Drone";
 
 import { InputFlags, PhysicsFlags } from "../../../Const/Enums";
-import { BarrelDefinition, TankDefinition } from "../../../Const/TankDefinitions";
+import { BarrelDefinition, TankDefinition } from "../../../Const/TankDefinitionsUtil";
 import { AIState, Inputs } from "../../AI";
 import { BarrelBase } from "../TankBody";
 import { CameraEntity } from "../../../Native/Camera";

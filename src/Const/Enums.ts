@@ -115,7 +115,7 @@ export const enum Tank {
     */
     Predator          = 28,
     Sprayer           = 29,
-    Trapper           = 30,
+    Trapper           = 31,
     GunnerTrapper     = 32,
     Overtrapper       = 33,
     MegaTrapper       = 34,
@@ -129,7 +129,7 @@ export const enum Tank {
     - Hammer
     Big hammer, you can swing it around and it does damage :3
     */
-    Landmine          = 37,
+    Landmine          = 38,
     /* Ideas
     - Claymore
     Spike + Landmine
@@ -174,6 +174,7 @@ export const enum Tank {
     Spikier Spike
     */
     Factory           = 52,
+    ""                = 53, // Used internally by a bunch of stuff.
     Skimmer           = 54,
     /* Ideas
     - Skeeter

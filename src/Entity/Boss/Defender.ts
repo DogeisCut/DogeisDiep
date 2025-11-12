@@ -24,7 +24,7 @@ import AbstractBoss from "./AbstractBoss";
 import { Color, Tank, PositionFlags } from "../../Const/Enums";
 import { AIState } from "../AI";
 
-import { BarrelDefinition } from "../../Const/TankDefinitions";
+import { BarrelDefinition } from "../../Const/TankDefinitionsUtil";
 import { PI2 } from "../../util";
 
 /**

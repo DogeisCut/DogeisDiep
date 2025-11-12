@@ -17,7 +17,7 @@
 */
 
 import { PhysicsFlags } from "../../../Const/Enums";
-import { TankDefinition } from "../../../Const/TankDefinitions";
+import { TankDefinition } from "../../../Const/TankDefinitionsUtil";
 import Barrel from "../Barrel";
 import { BarrelBase } from "../TankBody";
 import Minion from "./Minion";

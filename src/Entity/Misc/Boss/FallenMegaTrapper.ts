@@ -18,7 +18,7 @@
 
 import GameServer from "../../../Game";
 import Barrel from "../../Tank/Barrel";
-import TankDefinitions from "../../../Const/TankDefinitions";
+import TankDefinitions from "../../../Const/TankDefinitionsUtil";
 import AbstractBoss from "../../Boss/AbstractBoss";
 
 import { Tank } from "../../../Const/Enums";
