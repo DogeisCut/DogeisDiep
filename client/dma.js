@@ -77,7 +77,7 @@ class $Entity {
         color = this.styleData.color
     ) {
         const sizeRatio = size * Math.SQRT2 / 50;
-        const widthRatio = width / 50;
+        const widthRatio = width * Math.SQRT1_2 / 50;
 
         const deco = this.createChild(false);
         deco.defaults();
@@ -115,6 +115,16 @@ class $Entity {
 
         return deco;
     }
+
+    // I have to do this because the server+client sucks and doesnt sync the `distance` values of barrels to the client.
+    offsetDistance(amount) {
+        const rotation = this.positionData.rotation ?? 0;
+        const distance = amount * (this.physicsData.size / 50);
+
+        this.positionData.x += Math.cos(rotation) * distance;
+        this.positionData.y += Math.sin(rotation) * distance;
+    }
+	
 
     get positionData() {
         return this.#$position ? new $Position(this.#$position) : null;

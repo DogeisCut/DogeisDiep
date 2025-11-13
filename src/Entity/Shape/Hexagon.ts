@@ -19,27 +19,25 @@
 import GameServer from "../../Game"
 import AbstractShape from "./AbstractShape"
 import { Color } from "../../Const/Enums"
+import { shinyRarity } from "../../config"
 
 export default class Hexagon extends AbstractShape {
-	public constructor(game: GameServer, shiny=Math.random() < 0.000001) {
+	public constructor(game: GameServer, isAlpha=false, isShiny=Math.random() < shinyRarity) {
 		super(game)
 
 		this.nameData.values.name = "Hexagon"
 		this.healthData.values.health = this.healthData.values.maxHealth = 250
 		this.physicsData.values.size = 95 * Math.SQRT1_2
 		this.physicsData.values.sides = 6
-		this.styleData.values.color = shiny ? Color.Shiny : Color.EnemyHexagon
+		this.styleData.values.color = Color.EnemyHexagon
 
 		this.physicsData.values.absorbtionFactor = 0.4
 		this.physicsData.values.pushFactor = 13
 
 		this.damagePerTick = 4
 		this.scoreReward = 400
-		this.isShiny = shiny
 
-		if (shiny) {
-			this.scoreReward *= 100
-			this.healthData.values.health = this.healthData.values.maxHealth *= 10
-		}
+		this.constructAlpha(isAlpha);
+        this.constructShiny(isShiny);
 	}
 }

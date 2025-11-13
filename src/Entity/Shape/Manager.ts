@@ -25,95 +25,82 @@ import Pentagon from "./Pentagon";
 import Triangle from "./Triangle";
 import Square from "./Square";
 import AbstractShape from "./AbstractShape";
-import { removeFast } from "../../util";
 
-/**
- * Used to balance out shape count in the arena, as well
- * as determines where each type of shape spawns around the arena.
- */
+function pickWeightedRandomShape(shapes: { weight: number, create: () => AbstractShape }[]): AbstractShape {
+	let totalWeight = 0;
+	for (const entry of shapes) totalWeight += entry.weight;
+	let choice = Math.random() * totalWeight;
+	for (const entry of shapes) {
+		choice -= entry.weight;
+		if (choice <= 0) return entry.create();
+	}
+	return shapes[shapes.length - 1].create();
+}
 
 export default class ShapeManager {
-    /** Current game server */
-    protected game: GameServer;
-    /** Arena whose shapes are being managed */
-    protected arena: ArenaEntity;
-    /** Stores all shapes */
-    protected shapes: AbstractShape[] = [];
+	protected game: GameServer;
+	protected arena: ArenaEntity;
+	protected shapes: AbstractShape[] = [];
 
-    public constructor(arena: ArenaEntity) {
-        this.arena = arena;
-        this.game = arena.game;
-    }
+	protected fieldShapes: { weight: number, create: () => AbstractShape }[] = [];
+	protected pentagonNestShapes: { weight: number, create: () => AbstractShape }[] = [];
+	protected crasherZoneShapes: { weight: number, create: () => AbstractShape }[] = [];
 
-    /**
-     * Spawns a shape in a random location on the map.
-     * Determines shape type by the random position chosen.
-     */
-    protected spawnShape(): AbstractShape {
-        let shape: AbstractShape
-        const {x, y} = this.arena.findSpawnLocation()
-        const rightX = this.arena.arenaData.values.rightX
-        const leftX = this.arena.arenaData.values.leftX
+	public constructor(arena: ArenaEntity) {
+		this.arena = arena;
+		this.game = arena.game;
 
-        if (Math.max(x, y) < rightX / 10 && Math.min(x, y) > leftX / 10) {
-            // Pentagon Nest
-            const nestRand = Math.random()
-            if (nestRand < 0.04) {
-                shape = new Hexagon(this.game)
-            } else {
-                shape = new Pentagon(this.game, Math.random() <= 0.05)
-            }
+        this.fieldShapes = [
+            { weight: 1, create: () => new Hexagon(this.game) },
+            { weight: 3, create: () => new Pentagon(this.game) },
+            { weight: 16, create: () => new Triangle(this.game) },
+            { weight: 70, create: () => new Square(this.game) }
+        ];
 
-            shape.positionData.values.x = x
-            shape.positionData.values.y = y
-            shape.relationsData.values.owner = shape.relationsData.values.team = this.arena
-        } else if (Math.max(x, y) < rightX / 5 && Math.min(x, y) > leftX / 5) {
-            // Crasher Zone
-            const isBig = Math.random() < 0.2
-            shape = new Crasher(this.game, isBig)
+        this.pentagonNestShapes = [
+            { weight: 0.1, create: () => new Hexagon(this.game) },
+			{ weight: 1, create: () => new Pentagon(this.game, Math.random() <= 0.05) },
+		];
 
-            shape.positionData.values.x = x
-            shape.positionData.values.y = y
-            shape.relationsData.values.owner = shape.relationsData.values.team = this.arena
-        } else {
-            // Fields of Shapes
-            const rand = Math.random()
-            if (rand < 0.035) {
-                shape = new Pentagon(this.game)
-            } else if (rand < 0.045) {
-                shape = new Hexagon(this.game)
-            } else if (rand < 0.205) {
-                shape = new Triangle(this.game)
-            } else {
-                shape = new Square(this.game)
-            }
+		this.crasherZoneShapes = [
+			{ weight: 1, create: () => new Crasher(this.game, Math.random() < 0.2) }
+		];
+	}
 
-            shape.positionData.values.x = x
-            shape.positionData.values.y = y
-            shape.relationsData.values.owner = shape.relationsData.values.team = this.arena
-        }
+	protected spawnShape(): AbstractShape {
+		let shape: AbstractShape;
+		const { x, y } = this.arena.findSpawnLocation();
+		const rightX = this.arena.arenaData.values.rightX;
+		const leftX = this.arena.arenaData.values.leftX;
 
-        shape.scoreReward *= this.arena.shapeScoreRewardMultiplier
+		if (Math.max(x, y) < rightX / 10 && Math.min(x, y) > leftX / 10) {
+			shape = pickWeightedRandomShape(this.pentagonNestShapes);
+		} else if (Math.max(x, y) < rightX / 5 && Math.min(x, y) > leftX / 5) {
+			shape = pickWeightedRandomShape(this.crasherZoneShapes);
+		} else {
+			shape = pickWeightedRandomShape(this.fieldShapes);
+		}
 
-        return shape
-    }
+		shape.positionData.values.x = x;
+		shape.positionData.values.y = y;
+		shape.relationsData.values.owner = shape.relationsData.values.team = this.arena;
+		shape.scoreReward *= this.arena.shapeScoreRewardMultiplier;
 
-    /** Kills all shapes in the arena */
-    public killAll() {
-        for(let i = 0; i < this.shapes.length; ++i) {
-            this.shapes[i]?.delete();
-        }
-    }
+		return shape;
+	}
 
-    protected get wantedShapes() {
-        return 1000;
-    }
+	public killAll() {
+		for (let i = 0; i < this.shapes.length; ++i) this.shapes[i]?.delete();
+	}
 
-    public tick() {
-        for (let i = this.wantedShapes; i --> 0;) {
-            const shape = this.shapes[i];
-            // Alternatively, Entity.exists(shape), though this is probably faster
-            if (!shape || shape.hash === 0) this.shapes[i] = this.spawnShape();
-        }
-    }
+	protected get wantedShapes() {
+		return 1000;
+	}
+
+	public tick() {
+		for (let i = this.wantedShapes; i-- > 0;) {
+			const shape = this.shapes[i];
+			if (!shape || shape.hash === 0) this.shapes[i] = this.spawnShape();
+		}
+	}
 }

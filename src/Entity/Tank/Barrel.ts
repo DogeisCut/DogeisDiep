@@ -135,8 +135,8 @@ export default class Barrel extends ObjectEntity {
 
         this.physicsData.values.width = this.definition.width * sizeFactor;
         this.positionData.values.angle = this.definition.angle + (this.definition.trapezoidDirection);
-        this.positionData.values.x = Math.cos(this.definition.angle) * (size / 2 + (this.definition.distance || 0)) - Math.sin(this.definition.angle) * this.definition.offset * sizeFactor;
-        this.positionData.values.y = Math.sin(this.definition.angle) * (size / 2 + (this.definition.distance || 0)) + Math.cos(this.definition.angle) * this.definition.offset * sizeFactor;
+        this.positionData.values.x = Math.cos(this.definition.angle) * (size / 2 + ((this.definition.distance ?? 0) * sizeFactor)) - Math.sin(this.definition.angle) * this.definition.offset * sizeFactor;
+        this.positionData.values.y = Math.sin(this.definition.angle) * (size / 2 + ((this.definition.distance ?? 0) * sizeFactor)) + Math.cos(this.definition.angle) * this.definition.offset * sizeFactor;
 
         // addons are below barrel, use StyleFlags.aboveParent to go above parent
         if (barrelDefinition.addon) {
@@ -176,7 +176,7 @@ export default class Barrel extends ObjectEntity {
             case 'bullet': {
                 projectile = new Bullet(this, this.tank, tankDefinition, angle);
 
-                if (tankDefinition && (tankDefinition.id === Tank.ArenaCloser || tankDefinition.id === DevTank.Squirrel)) projectile.positionData.flags |= PositionFlags.canMoveThroughWalls;
+                if (tankDefinition && (tankDefinition.id === Tank.ArenaCloser)) projectile.positionData.flags |= PositionFlags.canMoveThroughWalls;
                 break;
             }
             case 'trap':
@@ -238,8 +238,8 @@ export default class Barrel extends ObjectEntity {
 
         this.physicsData.width = this.definition.width * sizeFactor;
         this.positionData.angle = this.definition.angle + (this.definition.trapezoidDirection);
-        this.positionData.x = Math.cos(this.definition.angle) * (size / 2 + (this.definition.distance || 0)) - Math.sin(this.definition.angle) * this.definition.offset * sizeFactor;
-        this.positionData.y = Math.sin(this.definition.angle) * (size / 2 + (this.definition.distance || 0)) + Math.cos(this.definition.angle) * this.definition.offset * sizeFactor;
+        this.positionData.x = Math.cos(this.definition.angle) * (size / 2 + ((this.definition.distance ?? 0) * sizeFactor)) - Math.sin(this.definition.angle) * this.definition.offset * sizeFactor;
+        this.positionData.y = Math.sin(this.definition.angle) * (size / 2 + ((this.definition.distance ?? 0) * sizeFactor)) + Math.cos(this.definition.angle) * this.definition.offset * sizeFactor;
 
         // Updates bullet accel too
         this.bulletAccel = (20 + (this.tank.cameraEntity.cameraData?.values.statLevels.values[Stat.BulletSpeed] || 0) * 3) * this.definition.bullet.speed;

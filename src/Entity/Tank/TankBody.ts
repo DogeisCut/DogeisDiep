@@ -35,7 +35,7 @@ import { getTankById, TankDefinition, visibilityRateDamage } from "../../Const/T
 import { DevTank } from "../../Const/DevTankDefinitions";
 import { Inputs } from "../AI";
 import { ArenaState } from "../../Native/Arena";
-import { AccessLevel, maxPlayerLevel, maxPlayerTankLevel } from "../../config";
+import { AccessLevel, maxPlayerLevel, maxPlayerTankLevel, shinyRarity } from "../../config";
 import PentamancerPentagon from "./Projectile/PentamancerPentagon";
 import Pentagon from "../Shape/Pentagon";
 import WraithSquare from "./Projectile/WraithSquare";
@@ -84,14 +84,14 @@ export default class TankBody extends LivingEntity implements BarrelBase {
 
     public isShiny: boolean = false;
 
-    public constructor(game: GameServer, camera: CameraEntity, inputs: Inputs, shiny=Math.random() < 0.000001) {
+    public constructor(game: GameServer, camera: CameraEntity, inputs: Inputs, isShiny=Math.random() < shinyRarity) {
         super(game);
         this.cameraEntity = camera;
         this.inputs = inputs;
 
         this.physicsData.values.size = 50;
         this.physicsData.values.sides = 1;
-        this.styleData.values.color = shiny ? Color.Shiny : Color.Tank;
+        this.styleData.values.color = Color.Tank;
 
         this.relationsData.values.team = camera;
         this.relationsData.values.owner = camera;
@@ -108,12 +108,18 @@ export default class TankBody extends LivingEntity implements BarrelBase {
         this.damagePerTick = 5;
         this.maxDamageMultiplier = 6;
         this.setTank(Tank.Basic);
-        this.isShiny = shiny
+        
+        this.constructShiny(isShiny)
+    }
 
-		if (shiny) {
-			this.scoreReward *= 100
-			this.healthData.values.health = this.healthData.values.maxHealth *= 10
-		}
+    public constructShiny(isShiny: boolean) {
+        this.isShiny = isShiny;
+        if (isShiny) {
+            this.scoreReward *= 100;
+            this.healthData.values.health = this.healthData.values.maxHealth *= 10;
+            this.styleData.values.color = Color.Shiny
+            this.nameData.values.name = "Shiny " + this.nameData.values.name;
+        }
     }
 
     /** The active change in size from the base size to the current. Contributes to barrel and addon sizes. */
@@ -359,6 +365,7 @@ export default class TankBody extends LivingEntity implements BarrelBase {
             // Damage
             this.damagePerTick = this.cameraEntity.cameraData.statLevels[Stat.BodyDamage] + 5;
             if (this._currentTank === Tank.Spike) this.damagePerTick += 2;
+            if (this._currentTank === Tank.Razor) this.damagePerTick += 4;
 
             // Max Health
             const maxHealthCache = this.healthData.values.maxHealth;

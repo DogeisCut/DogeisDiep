@@ -22,7 +22,7 @@ import AbstractShape from "./AbstractShape";
 
 import { Color, PositionFlags } from "../../Const/Enums";
 import { AI, AIState } from "../AI";
-import { tps } from "../../config";
+import { shinyRarity, tps } from "../../config";
 
 /**
  * Crasher entity class.
@@ -36,7 +36,7 @@ export default class Crasher extends AbstractShape {
     /** The max speed the crasher can move when targetting a player.s */
     private targettingSpeed: number;
 
-    public constructor(game: GameServer, large=false) {
+    public constructor(game: GameServer, large=false, isShiny=Math.random() < shinyRarity) {
         super(game);
 
         this.nameData.values.name = "Crasher";
@@ -59,6 +59,8 @@ export default class Crasher extends AbstractShape {
         this.ai.viewRange = 2000;
         this.ai.aimSpeed = (this.ai.movementSpeed = this.targettingSpeed);
         this.ai['_findTargetInterval'] = tps;
+
+        this.constructShiny(isShiny)
     }
 
     tick(tick: number) {

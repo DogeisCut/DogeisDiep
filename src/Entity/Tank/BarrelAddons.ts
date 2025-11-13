@@ -144,5 +144,6 @@ export class FlameLauncherAddon extends BarrelAddon {
  */
  export const BarrelAddonById: Record<barrelAddonId, typeof BarrelAddon | null> = {
     trapLauncher: TrapLauncherAddon,
-    flameLauncher: FlameLauncherAddon    
-}
+    flameLauncher: FlameLauncherAddon,
+    "-50Distance": null
+ }

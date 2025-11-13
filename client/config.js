@@ -402,46 +402,14 @@ const CUSTOM_ADDONS = {
     },
     "wings": entity => {
         if (!(entity instanceof $Entity)) return;
-
-        const sizeRatio = 100 * Math.SQRT2 / 50;
-        const widthRatio = 28 / 50;
-        const size = entity.physicsData.size;
-
-        const createWing = (angleOffset) => {
-            const wing = entity.createChild(false);
-            wing.defaults();
-
-            wing.styleData.color = entity.styleData.color;
-            wing.physicsData.sides = 2;
-            wing.physicsData.size = sizeRatio * size;
-            wing.physicsData.width = widthRatio * size;
-
-            const radians = (Math.PI / 180) * angleOffset;
-            const distance = size * 0.8;
-
-            wing.positionData.x = Math.cos(radians) * distance;
-            wing.positionData.y = Math.sin(radians) * distance;
-            wing.positionData.angle = radians;
-
-            wing.tick = () => {
-                const newSize = entity.physicsData.size;
-                wing.physicsData.size = sizeRatio * newSize;
-                wing.physicsData.width = widthRatio * newSize;
-                const updatedDistance = newSize * 0.8;
-                wing.positionData.x = Math.cos(radians) * updatedDistance;
-                wing.positionData.y = Math.sin(radians) * updatedDistance;
-            };
-
-            return wing;
-        };
-
-        const leftWing = createWing(120);
-        const rightWing = createWing(-120);
+        entity.createDecoChild(2,65, 120,28,65,0,false,entity.styleData.color)
+        entity.createDecoChild(2,65,-120,28,65,0,false,entity.styleData.color)
     },
     "-50Distance": entity => {
         if (!(entity instanceof $Entity)) return;
 
-        entity.positionData.x += -50 / Math.SQRT2
+        //TODO: this isnt correct somehow... I suspect it has something to do with the half offset barrels have.
+        entity.offsetDistance(-50)
     },
     "pentagonBody": entity => {
         if (!(entity instanceof $Entity)) return;

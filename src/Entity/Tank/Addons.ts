@@ -141,8 +141,8 @@ export class Addon {
         deco.tick = () => {
             const ownerSize = this.owner.physicsData.values.size
 
-            deco.physicsData.values.size = sizeRatio * ownerSize
-            deco.physicsData.values.width = widthRatio * ownerSize
+            deco.physicsData.size = sizeRatio * ownerSize
+            deco.physicsData.width = widthRatio * ownerSize
 
             const newForwardX = Math.cos(radians)
             const newForwardY = Math.sin(radians)
@@ -152,8 +152,8 @@ export class Addon {
             const scaledDistance = ownerSize * (distance / 50)
             const scaledOffset = ownerSize * (offset / 50)
 
-            deco.positionData.values.x = newForwardX * scaledDistance + newRightX * scaledOffset
-            deco.positionData.values.y = newForwardY * scaledDistance + newRightY * scaledOffset
+            deco.positionData.x = newForwardX * scaledDistance + newRightX * scaledOffset
+            deco.positionData.y = newForwardY * scaledDistance + newRightY * scaledOffset
         }
 
         return deco
@@ -476,43 +476,8 @@ class WingsAddon extends Addon {
 	public constructor(owner: BarrelBase) {
 		super(owner)
 
-		const sizeRatio = 100 * Math.SQRT2 / 50
-		const widthRatio = 28 / 50
-		const size = this.owner.physicsData.values.size
-
-		const createWing = (angleOffset: number) => {
-			const wing = new ObjectEntity(this.game)
-
-			wing.setParent(this.owner)
-			wing.relationsData.values.owner = this.owner
-			wing.relationsData.values.team = this.owner.relationsData.values.team
-
-			wing.physicsData.values.size = sizeRatio * size
-			wing.physicsData.values.width = widthRatio * size
-			wing.physicsData.values.sides = 2
-			wing.styleData.values.color = this.owner.styleData.values.color
-
-			const radians = (Math.PI / 180) * angleOffset
-			const distance = size * 0.8
-
-			wing.positionData.values.x = Math.cos(radians) * distance
-			wing.positionData.values.y = Math.sin(radians) * distance
-            wing.positionData.values.angle = radians
-            
-            wing.tick = () => {
-				const newSize = this.owner.physicsData.values.size
-				wing.physicsData.values.size = sizeRatio * newSize
-				wing.physicsData.values.width = widthRatio * newSize
-				const updatedDistance = newSize * 0.8
-				wing.positionData.values.x = Math.cos(radians) * updatedDistance
-				wing.positionData.values.y = Math.sin(radians) * updatedDistance
-			}
-
-			return wing
-		}
-
-		const leftWing = createWing(120)
-		const rightWing = createWing(-120)
+        this.createDeco(2,65, 120,28,65,0,false,this.owner.styleData.values.color)
+        this.createDeco(2,65,-120,28,65,0,false,this.owner.styleData.values.color)
 	}
 }
 
@@ -543,5 +508,6 @@ export const AddonById: Record<addonId, typeof Addon | null> = {
     auto7: Auto7Addon,
     tripleAutoturret: TripleAutoTurretAddon,
     wings: WingsAddon,
-    wraith: WraithAffon
+    wraith: WraithAffon,
+    pentagonBody: null
 }

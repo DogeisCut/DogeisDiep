@@ -1,6 +1,8 @@
 import { Tank } from "./Enums";
 import { BarrelDefinition, BulletDefinition, TankDefinition } from "./TankDefinitionsUtil";
 
+
+//TODO: fix stat names so multi weapon classes use the term "Weapon" and trap classes use the term "Trap"
 const TankDefinitions: (TankDefinition|null)[] = [
     {
         "id": Tank.Basic,
@@ -5929,7 +5931,9 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "name": "Auto Smasher",
         "upgradeMessage": "",
         "levelRequirement": 45,
-        "upgrades": [],
+        "upgrades": [
+            Tank.TripleAutoSmasher
+        ],
         "flags": {
             "invisibility": false,
             "zoomAbility": false,
@@ -5988,7 +5992,9 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "name": "Spike",
         "upgradeMessage": "",
         "levelRequirement": 45,
-        "upgrades": [],
+        "upgrades": [
+            Tank.Razor
+        ],
         "flags": {
             "invisibility": false,
             "zoomAbility": false,
@@ -10220,11 +10226,11 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "max": 10
             },
             {
-                "name": "Reload",
+                "name": "Flame Density",
                 "max": 10
             },
             {
-                "name": "Bullet Damage",
+                "name": "Flame Damage",
                 "max": 10
             },
             {
@@ -10232,7 +10238,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "max": 0
             },
             {
-                "name": "Bullet Speed",
+                "name": "Flame Distance",
                 "max": 10
             },
             {
@@ -10302,11 +10308,11 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "max": 10
             },
             {
-                "name": "Reload",
+                "name": "Flame Density",
                 "max": 10
             },
             {
-                "name": "Bullet Damage",
+                "name": "Flame Damage",
                 "max": 10
             },
             {
@@ -10314,7 +10320,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "max": 0
             },
             {
-                "name": "Bullet Speed",
+                "name": "Flame Distance",
                 "max": 10
             },
             {
@@ -10384,11 +10390,11 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "max": 10
             },
             {
-                "name": "Reload",
+                "name": "Flame Density",
                 "max": 10
             },
             {
-                "name": "Bullet Damage",
+                "name": "Flame Damage",
                 "max": 10
             },
             {
@@ -10396,7 +10402,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "max": 0
             },
             {
-                "name": "Bullet Speed",
+                "name": "Flame Distance",
                 "max": 10
             },
             {
@@ -10591,7 +10597,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "angle": 0,
                 "offset": -75,
                 "distance": -50,
-                "size": 45,
+                "size": 55,
                 "width": 21,
                 "delay": 0.5,
                 "reload": 1,
@@ -10614,7 +10620,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "angle": 0,
                 "offset": 75,
                 "distance": -50,
-                "size": 45,
+                "size": 55,
                 "width": 21,
                 "delay": 0.0,
                 "reload": 1,
@@ -11046,7 +11052,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "max": 7
             },
             {
-                "name": "Drone Count",
+                "name": "Drone Count/Reload",
                 "max": 7
             },
             {
@@ -11158,6 +11164,124 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "max": 7
             }
         ]
-    }
+    },
+    {
+        "id": Tank.TripleAutoSmasher,
+        "name": "Triple Auto Smasher",
+        "upgradeMessage": "",
+        "levelRequirement": 60,
+        "upgrades": [],
+        "flags": {
+            "invisibility": false,
+            "zoomAbility": false,
+            "canClaimSquares": false,
+            "devOnly": false
+        },
+        "visibilityRateShooting": 0.23,
+        "visibilityRateMoving": 0.08,
+        "invisibilityRate": 0.03,
+        "fieldFactor": 0.9,
+        "absorbtionFactor": 1,
+        "speed": 1,
+        "maxHealth": 50,
+        "preAddon": null,
+        "postAddon": "tripleAutosmasher",
+        "sides": 1,
+        "borderWidth": 15,
+        "barrels": [],
+        "stats": [
+            {
+                "name": "Movement Speed",
+                "max": 10
+            },
+            {
+                "name": "Reload",
+                "max": 10
+            },
+            {
+                "name": "Bullet Damage",
+                "max": 10
+            },
+            {
+                "name": "Bullet Penetration",
+                "max": 10
+            },
+            {
+                "name": "Bullet Speed",
+                "max": 10
+            },
+            {
+                "name": "Body Damage",
+                "max": 10
+            },
+            {
+                "name": "Max Health",
+                "max": 10
+            },
+            {
+                "name": "Health Regen",
+                "max": 10
+            }
+        ]
+    },
+    {
+        "id": Tank.Razor,
+        "name": "Razor",
+        "upgradeMessage": "",
+        "levelRequirement": 45,
+        "upgrades": [],
+        "flags": {
+            "invisibility": false,
+            "zoomAbility": false,
+            "canClaimSquares": false,
+            "devOnly": false
+        },
+        "visibilityRateShooting": 0.23,
+        "visibilityRateMoving": 0.08,
+        "invisibilityRate": 0.03,
+        "fieldFactor": 0.9,
+        "absorbtionFactor": 1,
+        "speed": 1,
+        "maxHealth": 50,
+        "preAddon": null,
+        "postAddon": "razor",
+        "sides": 1,
+        "borderWidth": 15,
+        "barrels": [],
+        "stats": [
+            {
+                "name": "Movement Speed",
+                "max": 10
+            },
+            {
+                "name": "Reload",
+                "max": 0
+            },
+            {
+                "name": "Bullet Damage",
+                "max": 0
+            },
+            {
+                "name": "Bullet Penetration",
+                "max": 0
+            },
+            {
+                "name": "Bullet Speed",
+                "max": 0
+            },
+            {
+                "name": "Body Damage",
+                "max": 10
+            },
+            {
+                "name": "Max Health",
+                "max": 10
+            },
+            {
+                "name": "Health Regen",
+                "max": 10
+            }
+        ]
+    },
 ]
 export default TankDefinitions

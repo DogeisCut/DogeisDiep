@@ -20,40 +20,33 @@ import GameServer from "../../Game";
 import AbstractShape from "./AbstractShape";
 
 import { Color } from "../../Const/Enums";
+import { shinyRarity } from "../../config";
 
 /**
  * Pentagon entity class.
  */
 export default class Pentagon extends AbstractShape {
-    /** If the pentagon is an alpha pentagon or not */
-    public isAlpha: boolean;
-
     protected static BASE_ROTATION = AbstractShape.BASE_ROTATION / 2;
     protected static BASE_ORBIT = AbstractShape.BASE_ORBIT / 2;
     protected static BASE_VELOCITY = AbstractShape.BASE_VELOCITY / 2;
 
-    public constructor(game: GameServer, isAlpha=false, shiny=(Math.random() < 0.000001) && !isAlpha) {
+    public constructor(game: GameServer, isAlpha=false, isShiny=Math.random() < shinyRarity) {
         super(game);
         
-        this.nameData.values.name = isAlpha ? "Alpha Pentagon" : "Pentagon";
+        this.nameData.values.name = "Pentagon";
 
-        this.healthData.values.health = this.healthData.values.maxHealth = (isAlpha ? 3000 : 100);
-        this.physicsData.values.size = (isAlpha ? 200 : 75) * Math.SQRT1_2;
+        this.healthData.values.health = this.healthData.values.maxHealth = 100;
+        this.physicsData.values.size = 75 * Math.SQRT1_2;
         this.physicsData.values.sides = 5;
-        this.styleData.values.color = shiny ? Color.Shiny : Color.EnemyPentagon;
+        this.styleData.values.color = Color.EnemyPentagon;
 
-        this.physicsData.values.absorbtionFactor = isAlpha ? 0.05 : 0.5;
+        this.physicsData.values.absorbtionFactor = 0.5;
         this.physicsData.values.pushFactor = 11;
 
-        this.isAlpha = isAlpha;
-        this.isShiny = shiny;
+        this.damagePerTick = 3;
+        this.scoreReward = 130;
 
-        this.damagePerTick = isAlpha ? 5 : 3;
-        this.scoreReward = isAlpha ? 3000 : 130;
-        
-        if (shiny) {
-            this.scoreReward *= 100;
-            this.healthData.values.health = this.healthData.values.maxHealth *= 10;
-        }
+        this.constructAlpha(isAlpha);
+        this.constructShiny(isShiny);
     }
 }

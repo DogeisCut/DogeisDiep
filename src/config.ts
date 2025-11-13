@@ -20,7 +20,7 @@
 export const buildHash: string = "6f59094d60f98fafc14371671d3ff31ef4d75d9e";
 
 /** The port the server is hosting its game server on. */
-export const serverPort: number = parseInt(process.env.PORT || "3151");
+export const serverPort: number = parseInt(process.env.PORT || "19132");
 
 /** Milliseconds per tick in the game. */
 export const mspt: number = 40;
@@ -88,6 +88,13 @@ export const devPasswordHash: string | undefined = process.env.DEV_PASSWORD_HASH
 /** Whether or not Verbose Logs should be logged */
 export const doVerboseLogs: boolean = false;
 
+type Shiny = "shiny"
+
+export const shinyRarity = 0.001//0.000001
+export const shinyRarities: Record<Shiny, number> = {
+    shiny: 1
+}
+
 /** Access levels of each client. */
 export const enum AccessLevel {
     FullAccess   = 3,
@@ -105,7 +112,7 @@ type Cheats = "levelup" | "superLevelup" | "suicide"
 export const cheatsMinimum: Record<Cheats, AccessLevel> = {
     levelup: AccessLevel.PublicAccess,
     superLevelup: AccessLevel.BetaAccess,
-    suicide: AccessLevel.BetaAccess
+    suicide: AccessLevel.PublicAccess
 };
 export const cheatsIsCheating: Record<Cheats, boolean> = {
     levelup: false,

@@ -251,7 +251,9 @@ export const enum Tank {
     /* TODO:
     Unique Look
     */
-    General           = 90
+    General           = 90,
+    TripleAutoSmasher = 91,
+    Razor             = 92
     
 
     /* General Ideas 

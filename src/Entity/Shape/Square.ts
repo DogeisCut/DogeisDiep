@@ -20,23 +20,21 @@ import GameServer from "../../Game";
 import AbstractShape from "./AbstractShape";
 
 import { Color } from "../../Const/Enums";
+import { shinyRarity } from "../../config";
 
 export default class Square extends AbstractShape {
-    public constructor(game: GameServer, shiny=Math.random() < 0.000001) {
+    public constructor(game: GameServer, isAlpha=false, isShiny=Math.random() < shinyRarity) {
         super(game);
         this.nameData.values.name = "Square";
         this.healthData.values.health = this.healthData.values.maxHealth = 10;
         this.physicsData.values.size = 55 * Math.SQRT1_2;
         this.physicsData.values.sides = 4;
-        this.styleData.values.color = shiny ? Color.Shiny : Color.EnemySquare;
+        this.styleData.values.color =  Color.EnemySquare;
 
         this.damagePerTick = 2;
         this.scoreReward = 10;
-        this.isShiny = shiny;
 
-        if (shiny) {
-            this.scoreReward *= 100;
-            this.healthData.values.health = this.healthData.values.maxHealth *= 10;
-        }
+        this.constructAlpha(isAlpha);
+        this.constructShiny(isShiny);
     }
 }

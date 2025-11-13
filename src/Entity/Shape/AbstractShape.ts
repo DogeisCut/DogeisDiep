@@ -46,6 +46,8 @@ export default class AbstractShape extends LivingEntity {
     public nameData: NameGroup = new NameGroup(this);
     /** If the shape is shiny or not */
     public isShiny: boolean = false;
+    /** If the shape is an alpha s or not */
+    public isAlpha: boolean = false;
 
     /** Wether or not to do idle movements */
     protected doIdleRotate: boolean = true;
@@ -74,6 +76,28 @@ export default class AbstractShape extends LivingEntity {
         this.orbitAngle = this.positionData.values.angle = (Math.random() * PI2);
         
         this.maxDamageMultiplier = 4.0;
+    }
+
+    public constructShiny(isShiny: boolean) {
+        this.isShiny = isShiny;
+        if (isShiny) {
+            this.scoreReward *= 100;
+            this.healthData.values.health = this.healthData.values.maxHealth *= 10;
+            this.styleData.values.color = Color.Shiny
+            this.nameData.values.name = "Shiny " + this.nameData.values.name;
+        }
+    }
+
+    public constructAlpha(isAlpha: boolean) {
+        this.isAlpha = isAlpha;
+        if (isAlpha) {
+            this.healthData.values.health = (this.healthData.values.maxHealth *= 30);
+            this.damagePerTick *= 5 / 3;
+            this.scoreReward *= 300 / 13;
+            this.physicsData.values.size *= 8 / 3
+            this.physicsData.values.absorbtionFactor *= 0.1;
+            this.nameData.values.name = "Alpha " + this.nameData.values.name;
+        }
     }
 
     protected turnTo(angle: number) {
