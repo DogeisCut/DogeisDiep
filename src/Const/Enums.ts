@@ -156,7 +156,7 @@ export const enum Tank {
     - Streamliner Dominator
     self epxlanitory
     */
-    DominatorT = 47,
+    DominatorT        = 47,
     /* Ideas
     - Auto Trapper Dominator
     self explanitory
@@ -253,7 +253,13 @@ export const enum Tank {
     */
     General           = 90,
     TripleAutoSmasher = 91,
-    Razor             = 92
+    Razor             = 92,
+    Scavenger         = 93,
+    Ravenger          = 94,
+    FlameGuard        = 95,
+    TriFlamer         = 96,
+    Atomizer          = 97,
+    Fumigator         = 98,
     
 
     /* General Ideas 

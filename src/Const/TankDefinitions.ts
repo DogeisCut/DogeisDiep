@@ -855,10 +855,11 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "upgradeMessage": "",
         "levelRequirement": 15,
         "upgrades": [
-            15,
-            11,
-            19,
-            31
+            Tank.Assassin,
+            Tank.Overseer,
+            Tank.Hunter,
+            Tank.Trapper,
+            Tank.Flamer
         ],
         "flags": {
             "invisibility": false,
@@ -1031,11 +1032,12 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "upgradeMessage": "",
         "levelRequirement": 15,
         "upgrades": [
-            9,
-            4,
-            13,
-            41,
-            84
+            Tank.TriAngle,
+            Tank.QuadTank,
+            Tank.TwinFlank,
+            Tank.Auto3,
+            Tank.Plane,
+            Tank.FlameGuard
         ],
         "flags": {
             "invisibility": false,
@@ -4282,7 +4284,8 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "upgrades": [
             38,
             50,
-            51
+            51,
+            Tank.Scavenger
         ],
         "flags": {
             "invisibility": false,
@@ -6007,7 +6010,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "fieldFactor": 0.9,
         "absorbtionFactor": 1,
         "speed": 1,
-        "maxHealth": 50,
+        "maxHealth": 45,
         "preAddon": null,
         "postAddon": "spike",
         "sides": 1,
@@ -10176,8 +10179,10 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "upgradeMessage": "Flame launchers have infinite penetration, maximum stats have been adjusted.",
         "levelRequirement": 30,
         "upgrades": [
-            82,
-            83
+            Tank.Flamethrower,
+            Tank.Incinerator,
+            Tank.FlameGuard,
+            Tank.Fumigator
         ],
         "flags": {
             "invisibility": false,
@@ -10204,14 +10209,14 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "width": 42,
                 "delay": 0,
                 "reload": 0.2,
-                "recoil": 0.6,
+                "recoil": 0.4,
                 "isTrapezoid": false,
                 "trapezoidDirection": 0,
                 "addon": "flameLauncher",
                 "bullet": {
                     "type": "flame",
                     "sizeRatio": 0.8,
-                    "health": 100,
+                    "health": Infinity,
                     "damage": 1,
                     "speed": 2,
                     "scatterRate": 1.8,
@@ -10286,14 +10291,14 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "width": 42,
                 "delay": 0,
                 "reload": 0.1,
-                "recoil": 0.6,
+                "recoil": 0.4,
                 "isTrapezoid": true,
                 "trapezoidDirection": 0,
                 "addon": "flameLauncher",
                 "bullet": {
                     "type": "flame",
                     "sizeRatio": 0.8,
-                    "health": 100,
+                    "health": Infinity,
                     "damage": 1,
                     "speed": 2,
                     "scatterRate": 1.8,
@@ -10342,7 +10347,9 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "name": "Incinerator",
         "upgradeMessage": "",
         "levelRequirement": 45,
-        "upgrades": [],
+        "upgrades": [
+            Tank.Atomizer
+        ],
         "flags": {
             "invisibility": false,
             "zoomAbility": false,
@@ -10368,14 +10375,14 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "width": 65,
                 "delay": 0,
                 "reload": 0.2,
-                "recoil": 0.6,
+                "recoil": 0.4,
                 "isTrapezoid": false,
                 "trapezoidDirection": 0,
                 "addon": "flameLauncher",
                 "bullet": {
                     "type": "flame",
                     "sizeRatio": 1,
-                    "health": 100,
+                    "health": Infinity,
                     "damage": 1.1,
                     "speed": 2,
                     "scatterRate": 2.4,
@@ -11168,7 +11175,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
     {
         "id": Tank.TripleAutoSmasher,
         "name": "Triple Auto Smasher",
-        "upgradeMessage": "This tank is currently broken.",
+        "upgradeMessage": "",
         "levelRequirement": 60,
         "upgrades": [],
         "flags": {
@@ -11185,7 +11192,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "speed": 1,
         "maxHealth": 50,
         "preAddon": null,
-        "postAddon": null,//"tripleAutosmasher",
+        "postAddon": "tripleAutosmasher",
         "sides": 1,
         "borderWidth": 15,
         "barrels": [],
@@ -11227,7 +11234,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
     {
         "id": Tank.Razor,
         "name": "Razor",
-        "upgradeMessage": "This tank currently has broken visuals.",
+        "upgradeMessage": "",
         "levelRequirement": 60,
         "upgrades": [],
         "flags": {
@@ -11242,9 +11249,9 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "fieldFactor": 0.9,
         "absorbtionFactor": 1,
         "speed": 1,
-        "maxHealth": 50,
+        "maxHealth": 40,
         "preAddon": null,
-        "postAddon": null,//"razor",
+        "postAddon": "razor",
         "sides": 1,
         "borderWidth": 15,
         "barrels": [],
@@ -11268,6 +11275,494 @@ const TankDefinitions: (TankDefinition|null)[] = [
             {
                 "name": "Bullet Speed",
                 "max": 0
+            },
+            {
+                "name": "Body Damage",
+                "max": 10
+            },
+            {
+                "name": "Max Health",
+                "max": 10
+            },
+            {
+                "name": "Health Regen",
+                "max": 10
+            }
+        ]
+    },
+    {
+        "id": Tank.Scavenger,
+        "name": "Scavenger",
+        "upgradeMessage": "",
+        "levelRequirement": 45,
+        "upgrades": [
+            Tank.Ravenger
+        ],
+        "flags": {
+            "invisibility": false,
+            "zoomAbility": false,
+            "canClaimSquares": false,
+            "devOnly": false
+        },
+        "visibilityRateShooting": 0.23,
+        "visibilityRateMoving": 0.08,
+        "invisibilityRate": 0.03,
+        "fieldFactor": 0.8,
+        "absorbtionFactor": 1,
+        "speed": 1.2,
+        "maxHealth": 50,
+        "preAddon": null,
+        "postAddon": "scavenger",
+        "sides": 1,
+        "borderWidth": 15,
+        "barrels": [],
+        "stats": [
+            {
+                "name": "Movement Speed",
+                "max": 10
+            },
+            {
+                "name": "Reload",
+                "max": 0
+            },
+            {
+                "name": "Bullet Damage",
+                "max": 0
+            },
+            {
+                "name": "Bullet Penetration",
+                "max": 0
+            },
+            {
+                "name": "Bullet Speed",
+                "max": 0
+            },
+            {
+                "name": "Body Damage",
+                "max": 10
+            },
+            {
+                "name": "Max Health",
+                "max": 10
+            },
+            {
+                "name": "Health Regen",
+                "max": 10
+            }
+        ]
+    },
+    {
+        "id": Tank.Ravenger,
+        "name": "Ravenger",
+        "upgradeMessage": "",
+        "levelRequirement": 60,
+        "upgrades": [],
+        "flags": {
+            "invisibility": false,
+            "zoomAbility": false,
+            "canClaimSquares": false,
+            "devOnly": false
+        },
+        "visibilityRateShooting": 0.23,
+        "visibilityRateMoving": 0.08,
+        "invisibilityRate": 0.03,
+        "fieldFactor": 0.7,
+        "absorbtionFactor": 1,
+        "speed": 1.4,
+        "maxHealth": 50,
+        "preAddon": null,
+        "postAddon": "ravenger",
+        "sides": 1,
+        "borderWidth": 15,
+        "barrels": [],
+        "stats": [
+            {
+                "name": "Movement Speed",
+                "max": 10
+            },
+            {
+                "name": "Reload",
+                "max": 0
+            },
+            {
+                "name": "Bullet Damage",
+                "max": 0
+            },
+            {
+                "name": "Bullet Penetration",
+                "max": 0
+            },
+            {
+                "name": "Bullet Speed",
+                "max": 0
+            },
+            {
+                "name": "Body Damage",
+                "max": 10
+            },
+            {
+                "name": "Max Health",
+                "max": 10
+            },
+            {
+                "name": "Health Regen",
+                "max": 10
+            }
+        ]
+    },
+    {
+        "id": Tank.FlameGuard,
+        "name": "Flame Guard",
+        "upgradeMessage": "",
+        "levelRequirement": 45,
+        "upgrades": [
+            Tank.TriFlamer
+        ],
+        "flags": {
+            "invisibility": false,
+            "zoomAbility": false,
+            "canClaimSquares": false,
+            "devOnly": false
+        },
+        "visibilityRateShooting": 0.23,
+        "visibilityRateMoving": 0.08,
+        "invisibilityRate": 0.03,
+        "fieldFactor": 1,
+        "absorbtionFactor": 1,
+        "speed": 1,
+        "maxHealth": 50,
+        "preAddon": null,
+        "postAddon": null,
+        "sides": 1,
+        "borderWidth": 15,
+        "barrels": (() => {
+            const numberOfFlameLaunchers = 2
+            const barrelAngleOffset = (Math.PI * 2) / numberOfFlameLaunchers
+            const barrelArray: BarrelDefinition[] = []
+
+            for (let i = 0; i < numberOfFlameLaunchers; i++) {
+                barrelArray.push({
+                    angle: i * barrelAngleOffset,
+                    offset: 0,
+                    size: 95,
+                    width: 42,
+                    delay: 0,
+                    reload: 0.2,
+                    recoil: 0.4,
+                    isTrapezoid: false,
+                    trapezoidDirection: 0,
+                    addon: "flameLauncher",
+                    bullet: {
+                        type: "flame",
+                        sizeRatio: 0.8,
+                        health: Infinity,
+                        damage: 1,
+                        speed: 2,
+                        scatterRate: 1.8,
+                        lifeLength: 0.3,
+                        absorbtionFactor: 1
+                    }
+                })
+            }
+
+            return barrelArray
+        })(),
+        "stats": [
+            {
+                "name": "Movement Speed",
+                "max": 10
+            },
+            {
+                "name": "Flame Density",
+                "max": 10
+            },
+            {
+                "name": "Flame Damage",
+                "max": 10
+            },
+            {
+                "name": "Bullet Penetration",
+                "max": 0
+            },
+            {
+                "name": "Flame Distance",
+                "max": 10
+            },
+            {
+                "name": "Body Damage",
+                "max": 10
+            },
+            {
+                "name": "Max Health",
+                "max": 10
+            },
+            {
+                "name": "Health Regen",
+                "max": 10
+            }
+        ]
+    },
+    {
+        "id": Tank.TriFlamer,
+        "name": "Tri Flamer",
+        "upgradeMessage": "",
+        "levelRequirement": 60,
+        "upgrades": [],
+        "flags": {
+            "invisibility": false,
+            "zoomAbility": false,
+            "canClaimSquares": false,
+            "devOnly": false
+        },
+        "visibilityRateShooting": 0.23,
+        "visibilityRateMoving": 0.08,
+        "invisibilityRate": 0.03,
+        "fieldFactor": 1,
+        "absorbtionFactor": 1,
+        "speed": 1,
+        "maxHealth": 50,
+        "preAddon": null,
+        "postAddon": null,
+        "sides": 1,
+        "borderWidth": 15,
+        "barrels": (() => {
+            const numberOfFlameLaunchers = 3
+            const barrelAngleOffset = (Math.PI * 2) / numberOfFlameLaunchers
+            const barrelArray: BarrelDefinition[] = []
+
+            for (let i = 0; i < numberOfFlameLaunchers; i++) {
+                barrelArray.push({
+                    angle: i * barrelAngleOffset,
+                    offset: 0,
+                    size: 95,
+                    width: 42,
+                    delay: 0,
+                    reload: 0.2,
+                    recoil: 0.4,
+                    isTrapezoid: false,
+                    trapezoidDirection: 0,
+                    addon: "flameLauncher",
+                    bullet: {
+                        type: "flame",
+                        sizeRatio: 0.8,
+                        health: Infinity,
+                        damage: 1,
+                        speed: 2,
+                        scatterRate: 1.8,
+                        lifeLength: 0.3,
+                        absorbtionFactor: 1
+                    }
+                })
+            }
+
+            return barrelArray
+        })(),
+        "stats": [
+            {
+                "name": "Movement Speed",
+                "max": 10
+            },
+            {
+                "name": "Flame Density",
+                "max": 10
+            },
+            {
+                "name": "Flame Damage",
+                "max": 10
+            },
+            {
+                "name": "Bullet Penetration",
+                "max": 0
+            },
+            {
+                "name": "Flame Distance",
+                "max": 10
+            },
+            {
+                "name": "Body Damage",
+                "max": 10
+            },
+            {
+                "name": "Max Health",
+                "max": 10
+            },
+            {
+                "name": "Health Regen",
+                "max": 10
+            }
+        ]
+    },
+    {
+        "id": Tank.Atomizer,
+        "name": "Atomizer",
+        "upgradeMessage": "",
+        "levelRequirement": 60,
+        "upgrades": [],
+        "flags": {
+            "invisibility": false,
+            "zoomAbility": false,
+            "canClaimSquares": false,
+            "devOnly": false
+        },
+        "visibilityRateShooting": 0.23,
+        "visibilityRateMoving": 0.08,
+        "invisibilityRate": 0.03,
+        "fieldFactor": 1,
+        "absorbtionFactor": 1,
+        "speed": 1,
+        "maxHealth": 50,
+        "preAddon": null,
+        "postAddon": null,
+        "sides": 1,
+        "borderWidth": 15,
+        "barrels": [
+            {
+                "angle": 0,
+                "offset": 0,
+                "size": 95,
+                "width": 75,
+                "delay": 0,
+                "reload": 0.2,
+                "recoil": 0.4,
+                "isTrapezoid": false,
+                "trapezoidDirection": 0,
+                "addon": "flameLauncher",
+                "bullet": {
+                    "type": "flame",
+                    "sizeRatio": 1,
+                    "health": Infinity,
+                    "damage": 1.2,
+                    "speed": 2,
+                    "scatterRate": 2.4,
+                    "lifeLength": 0.3,
+                    "absorbtionFactor": 1
+                }
+            }
+        ],
+        "stats": [
+            {
+                "name": "Movement Speed",
+                "max": 10
+            },
+            {
+                "name": "Flame Density",
+                "max": 10
+            },
+            {
+                "name": "Flame Damage",
+                "max": 10
+            },
+            {
+                "name": "Bullet Penetration",
+                "max": 0
+            },
+            {
+                "name": "Flame Distance",
+                "max": 10
+            },
+            {
+                "name": "Body Damage",
+                "max": 10
+            },
+            {
+                "name": "Max Health",
+                "max": 10
+            },
+            {
+                "name": "Health Regen",
+                "max": 10
+            }
+        ]
+    },
+    {
+        "id": Tank.Fumigator,
+        "name": "Fumigator",
+        "upgradeMessage": "",
+        "levelRequirement": 45,
+        "upgrades": [],
+        "flags": {
+            "invisibility": false,
+            "zoomAbility": false,
+            "canClaimSquares": false,
+            "devOnly": false
+        },
+        "visibilityRateShooting": 0.23,
+        "visibilityRateMoving": 0.08,
+        "invisibilityRate": 0.03,
+        "fieldFactor": 1,
+        "absorbtionFactor": 1,
+        "speed": 1,
+        "maxHealth": 50,
+        "preAddon": null,
+        "postAddon": null,
+        "sides": 1,
+        "borderWidth": 15,
+        "barrels": [
+            {
+                "angle": 0,
+                "offset": -26,
+                "size": 95,
+                "width": 42,
+                "delay": 0,
+                "reload": 0.2,
+                "recoil": 0.2,
+                "isTrapezoid": false,
+                "trapezoidDirection": 0,
+                "addon": "flameLauncher",
+                "bullet": {
+                    "type": "flame",
+                    "sizeRatio": 0.8,
+                    "health": Infinity,
+                    "damage": 0.8,
+                    "speed": 2,
+                    "scatterRate": 1.8,
+                    "lifeLength": 0.3,
+                    "absorbtionFactor": 1
+                }
+            },
+            {
+                "angle": 0,
+                "offset": 26,
+                "size": 95,
+                "width": 42,
+                "delay": 0.5,
+                "reload": 0.2,
+                "recoil": 0.2,
+                "isTrapezoid": false,
+                "trapezoidDirection": 0,
+                "addon": "flameLauncher",
+                "bullet": {
+                    "type": "flame",
+                    "sizeRatio": 0.8,
+                    "health": Infinity,
+                    "damage": 0.8,
+                    "speed": 2,
+                    "scatterRate": 1.8,
+                    "lifeLength": 0.3,
+                    "absorbtionFactor": 1
+                }
+            }
+        ],
+        "stats": [
+            {
+                "name": "Movement Speed",
+                "max": 10
+            },
+            {
+                "name": "Flame Density",
+                "max": 10
+            },
+            {
+                "name": "Flame Damage",
+                "max": 10
+            },
+            {
+                "name": "Bullet Penetration",
+                "max": 0
+            },
+            {
+                "name": "Flame Distance",
+                "max": 10
             },
             {
                 "name": "Body Damage",

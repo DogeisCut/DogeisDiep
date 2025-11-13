@@ -456,16 +456,30 @@ class Auto7Addon extends Addon {
 /* Three Evenly Spaced Centered Auto Turrets */
 class TripleAutoTurretAddon extends Addon {
 	public constructor(owner: BarrelBase) {
-		super(owner);
-
+        super(owner);
+        
+        const rotator = this.createGuard(1, 1, 0, 0) as GuardObject;
+        rotator.styleData.values.flags &= ~StyleFlags.isVisible
+        rotator.positionData.values.flags &= ~PositionFlags.absoluteRotation
+        rotator.styleData.values.flags |= StyleFlags.showsAboveParent
+        rotator.tick = () => {}
+ 
 		const turretCount = 3;
-		const rotationOffset = 0.5;
+		const distance = 0.5;
 
 		for (let i = 0; i < turretCount; i++) {
 			const angle = (Math.PI * 2 * i) / turretCount;
-			const turret = new AutoTurret(owner, AutoTurretTripleDefinition, 15);
-			turret.positionData.values.x = this.owner.physicsData.values.size * Math.cos(angle) * rotationOffset;
-            turret.positionData.values.y = this.owner.physicsData.values.size * Math.sin(angle) * rotationOffset;
+			const turret = new AutoTurret(rotator, AutoTurretTripleDefinition, 15);
+			turret.positionData.values.x = this.owner.physicsData.values.size * Math.cos(angle) * distance;
+            turret.positionData.values.y = this.owner.physicsData.values.size * Math.sin(angle) * distance;
+            
+            const tickBase = turret.tick;
+            turret.tick = (tick: number) => {
+                turret.positionData.y = this.owner.physicsData.values.size * Math.sin(angle) * distance;
+                turret.positionData.x = this.owner.physicsData.values.size * Math.cos(angle) * distance;
+
+                tickBase.call(turret, tick);
+            }
 		}
 	}
 }
@@ -490,6 +504,44 @@ class WraithAffon extends Addon{
 	}
 }
 
+class TripleAutoSmasherAddon extends Addon {
+    public constructor(owner: BarrelBase) {
+        super(owner);
+
+        this.createGuard(6, 1.15, 0, .1);
+        new TripleAutoTurretAddon(owner);
+    }
+}
+
+class RazorAddon extends Addon {
+	public constructor(owner: BarrelBase) {
+		super(owner);
+
+        const numberOfGuards = 8
+		const angleStep = (Math.PI * 2) / numberOfGuards;
+		for (let i = 0; i < numberOfGuards; i++) {
+			const currentAngle = angleStep * i;
+			this.createGuard(3, 1.3, currentAngle, 0.17);
+		}
+	}
+}
+
+class ScavengerAddon extends Addon {
+    public constructor(owner: BarrelBase) {
+        super(owner);
+
+        this.createGuard(5, 1.30, 0, .2);
+    }
+}
+
+class RavengerAddon extends Addon {
+    public constructor(owner: BarrelBase) {
+        super(owner);
+
+        this.createGuard(5, 1.30, 0, .4);
+    }
+}
+
 /**
  * All addons in the game by their ID.
  */
@@ -508,6 +560,10 @@ export const AddonById: Record<addonId, typeof Addon | null> = {
     auto7: Auto7Addon,
     tripleAutoturret: TripleAutoTurretAddon,
     wings: WingsAddon,
+    pentagonBody: null,
     wraith: WraithAffon,
-    pentagonBody: null
+    tripleAutosmasher: TripleAutoSmasherAddon,
+    razor: RazorAddon,
+    scavenger: ScavengerAddon,
+    ravenger: RavengerAddon
 }

@@ -21,7 +21,9 @@ import { Tank, Color } from "./Enums";
 import _TankDefinitions from "./TankDefinitions";
 
 /** The types of post addons that exist in the game, by their id. */
-export type postAddonId = "dompronounced" | "auto5" | "auto3" | "autosmasher" | "spike" | "pronounced" | "smasher" | "landmine" | "autoturret" | "auto7" | "tripleAutoturret" | "wings" | "wraith"
+export type postAddonId = "dompronounced" | "auto5" | "auto3" | "autosmasher" | "spike" | "pronounced"
+    | "smasher" | "landmine" | "autoturret" | "auto7" | "tripleAutoturret" | "wings" | "wraith" | "tripleAutosmasher"
+    | "razor" | "scavenger" | "ravenger"
 /** The types of post addons that exist in the game, by their id. */
 export type preAddonId = "dombase" | "launcher" | "pentagonBody"
 /** A joint list of all post addon ids and pre addon ids. */

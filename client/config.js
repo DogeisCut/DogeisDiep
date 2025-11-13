@@ -20,8 +20,33 @@ const BUILD = "6f59094d60f98fafc14371671d3ff31ef4d75d9e";
 const CDN = "https://static.diep.io/";
 const API_URL = `${window.location.href}api/`;
 
+// may need to start commenting out logs as i run out of space
 const CHANGELOG = [
-    "Hello world!",
+    "Welcome to Dogeis Diep, a diep.io private server created with diepcustom!",
+    "There are over 50+ tanks, features and additions for you to play around with,",
+    "And more features are being added almost every day!",
+    "",
+    "You can level up to level 60 but stop growing at level 45,",
+    "Level 60 tanks/Tier 4 tanks are avialable!",
+    "Hold K to level up and press O to retry.",
+    "",
+    "Discord: N/A (May change later)",
+    "GitHub Repository: https://github.com/DogeisCut/DogeisDiep",
+    "",
+    "Novemeber 13th, 2025",
+    "- New title menu background! This will be replaced with a custom render at some point.",
+    "- New Incinerator tank: Atomizer",
+    "- New Flamer tank: Flame Guard",
+    "- New Flame Guard tank: Tri flamer",
+    "- New Flamer tank: Fumigator",
+    "- Flamer can now upgrade from Sniper",
+    "- Fixed Flamer branch looking incorrect in upgrades.",
+    "- Fixed new Smasher branch tanks.",
+    "- Fixed Triple Auto Turrets not scaling with tank.",
+    "- Corrected tab title from \"DogeisDiep\" to \"Dogeis Diep\"",
+    "",
+    "Novemeber 12th, 2025",
+    "- Hello World!"
 ];
 
 // Only send pings every 500ms
@@ -281,7 +306,9 @@ const ADDON_MAP = {
     "pentagonBody": 165,
     "wraith": 166,
     "tripeAutosmasher": 167,
-    "razor": 168
+    "razor": 168,
+    "scavenger": 169,
+    "ravenger": 170
 };
 
 
@@ -402,7 +429,7 @@ const CUSTOM_ADDONS = {
         rect1.physicsData.sides = 2;
         rect1.physicsData.width = entity.physicsData.width;
         rect1.physicsData.size = entity.physicsData.width * (20 / 42);
-        rect1.positionData.x = (entity.physicsData.size - rect1.physicsData.size) / 2;
+        rect1.positionData.x = (entity.physicsData.size + rect1.physicsData.size) / 2
         rect1.positionData.angle = 3.141592653589793;
     },
     "wings": entity => {
@@ -425,6 +452,57 @@ const CUSTOM_ADDONS = {
         if (!(entity instanceof $Entity)) return;
         entity.createDecoChild(3,15,0,  undefined,20,0,true, 1)
         entity.createDecoChild(3,15,180,undefined,20,0,true, 1)
+    },
+    "tripleAutosmasher": entity => {
+        // This if statement isnt totally necessary but might help your IDE recognize the type of "entity" which simplifies development later. It can be removed.
+        if (!(entity instanceof $Entity)) return;
+        
+        const turretCount = 3;
+		const rotationOffset = 0.6;
+
+        for (let i = 0; i < turretCount; i++) {
+            const angle = (Math.PI * 2 * i) / turretCount;
+
+            const socket = entity.createChild(false);
+            socket.defaults();
+            
+            socket.styleData.showsAboveParent = true;
+            socket.positionData.angle = angle;
+            socket.positionData.x = Math.cos(socket.positionData.angle) * 40 * rotationOffset;
+            socket.positionData.y = Math.sin(socket.positionData.angle) * 40 * rotationOffset;
+            socket.physicsData.size = 25 * 0.6;
+            socket.styleData.color = 1;
+
+            const barrel = socket.createChild(true);
+            barrel.defaults();
+            barrel.physicsData.size = 55 * 0.6;
+            barrel.physicsData.sides = 2;
+            barrel.physicsData.width = 0.7 * 42 * 0.6;
+            barrel.positionData.angle = 0;
+            barrel.positionData.x = Math.cos(0) * (barrel.physicsData.size / 2 + 0) - Math.sin(0) * 0;
+            barrel.positionData.y = Math.sin(0) * (barrel.physicsData.size / 2 + 0) - Math.cos(0) * 0;
+            barrel.styleData.color = 1;
+        }
+        entity.createDecoChild(6,25*1.15,0,undefined,0,0,false, 0)
+    },
+    "razor": entity => {
+        if (!(entity instanceof $Entity)) return;
+        const numberOfGuards = 8
+		const angleStep = (Math.PI * 2) / numberOfGuards;
+		for (let i = 0; i < numberOfGuards; i++) {
+			const currentAngle = angleStep * i;
+            entity.createDecoChild(3,25*1.3,currentAngle*180/Math.PI,undefined,0,0,false, 0)
+		}
+        
+    },
+    "scavenger": entity => {
+        if (!(entity instanceof $Entity)) return;
+        //this probably isnt accurate, might want to modify to use radians for angle and a multiplier for the size
+        entity.createDecoChild(5,25*1.3,0,undefined,0,0,false, 0)
+    },
+    "ravenger": entity => {
+        if (!(entity instanceof $Entity)) return;
+        entity.createDecoChild(5,25*1.3,0,undefined,0,0,false, 0)
     },
 }
 

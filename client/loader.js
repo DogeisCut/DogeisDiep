@@ -711,6 +711,7 @@ class ASMConsts {
         img.isLoaded = false;
         img.onload = () => img.isLoaded = true;
         img.src = `${CDN}${Module.UTF8ToString(src)}`;
+        if (img.src.includes('title')) img.src = 'https://file.garden/ZQFJ_9RM-w48Dhe5/ARENA%20CLOSED%20NO%20PLAYERS%20CAN%20JOIN.png';
         for (let i = 0; i < Module.cp5.images.length; ++i) {
             if (Module.cp5.images[i] !== null) continue;
             Module.cp5.images[i] = img;
