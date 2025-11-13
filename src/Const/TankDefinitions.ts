@@ -11084,7 +11084,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
     {
         "id": Tank.General,
         "name": "General",
-        "upgradeMessage": "",
+        "upgradeMessage": "This tank is currently broken. Swarm drones will not target.",
         "levelRequirement": 60,
         "upgrades": [],
         "flags": {
@@ -11168,7 +11168,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
     {
         "id": Tank.TripleAutoSmasher,
         "name": "Triple Auto Smasher",
-        "upgradeMessage": "",
+        "upgradeMessage": "This tank is currently broken.",
         "levelRequirement": 60,
         "upgrades": [],
         "flags": {
@@ -11227,8 +11227,8 @@ const TankDefinitions: (TankDefinition|null)[] = [
     {
         "id": Tank.Razor,
         "name": "Razor",
-        "upgradeMessage": "",
-        "levelRequirement": 45,
+        "upgradeMessage": "This tank currently has broken visuals.",
+        "levelRequirement": 60,
         "upgrades": [],
         "flags": {
             "invisibility": false,

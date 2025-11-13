@@ -276,7 +276,12 @@ const ADDON_MAP = {
     "dompronounced": 160, // Dom1 (160) & Dom2 (161) 
     "auto7": 161,
     "tripleAutoturret": 162,
-    "WingsAddon": 163,
+    "wings": 163,
+    "-50distance": 164,
+    "pentagonBody": 165,
+    "wraith": 166,
+    "tripeAutosmasher": 167,
+    "razor": 168
 };
 
 
