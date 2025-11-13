@@ -10176,7 +10176,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
     {
         "id": Tank.Flamer,
         "name": "Flamer",
-        "upgradeMessage": "Flame launchers have infinite penetration, maximum stats have been adjusted.",
+        "upgradeMessage": "Flame launchers have infinite penetration, maximum stats have been adjusted. Flames do more damage the closer to the barrel!",
         "levelRequirement": 30,
         "upgrades": [
             Tank.Flamethrower,
@@ -11413,7 +11413,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
     {
         "id": Tank.FlameGuard,
         "name": "Flame Guard",
-        "upgradeMessage": "",
+        "upgradeMessage": "Flame launchers have infinite penetration, maximum stats have been adjusted. Flames do more damage the closer to the barrel!",
         "levelRequirement": 45,
         "upgrades": [
             Tank.TriFlamer
