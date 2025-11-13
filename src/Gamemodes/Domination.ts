@@ -31,7 +31,7 @@ const arenaSize = 11150;
 const baseSize = arenaSize / (3 + 1/3); // 3345, must scale with arena size
 const domBaseSize = baseSize / 2;
 
-const enableScoreboard = false;
+const enableScoreboard = true;
 
 const TEAM_COLORS = [Color.TeamBlue, Color.TeamRed]; // Only supports up to 4 teams
 

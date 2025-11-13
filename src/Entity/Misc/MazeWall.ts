@@ -20,11 +20,12 @@ import GameServer from "../../Game";
 import ObjectEntity from "../Object";
 
 import { PhysicsFlags, Color } from "../../Const/Enums";
+import LivingEntity from "../Live";
 /**
  * Only used for maze walls and nothing else.
  */
-export default class MazeWall extends ObjectEntity {
-    public constructor(game: GameServer, x: number, y: number, width: number, height: number) {
+export default class MazeWall extends LivingEntity {
+    public constructor(game: GameServer, x: number, y: number, width: number, height: number, isCrumble = Math.random() < 0.01) {
         super(game);
 
         this.setGlobalEntity();
