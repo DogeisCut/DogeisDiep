@@ -17,6 +17,7 @@
 */
 
 import Client from "../Client";
+import { scoreboardUpdateInterval } from "../config";
 import { Color, ColorsHexCode, ArenaFlags, ValidScoreboardIndex, ClientBound } from "../Const/Enums";
 import Dominator from "../Entity/Misc/Dominator";
 import TeamBase from "../Entity/Misc/TeamBase";
@@ -30,8 +31,6 @@ import { Entity } from "../Native/Entity";
 const arenaSize = 11150;
 const baseSize = arenaSize / (3 + 1/3); // 3345, must scale with arena size
 const domBaseSize = baseSize / 2;
-
-const enableScoreboard = true;
 
 const TEAM_COLORS = [Color.TeamBlue, Color.TeamRed]; // Only supports up to 4 teams
 
@@ -54,7 +53,6 @@ export default class DominationArena extends ArenaEntity {
         super(game);
         this.shapeScoreRewardMultiplier = 2.0;
         this.updateBounds(arenaSize * 2, arenaSize * 2);
-        this.arenaData.values.flags |= ArenaFlags.hiddenScores;
         let flipLeft = Math.random() > 0.5 ? 1 : -1;
         let flipRight = Math.random() > 0.5 ? -1 : 1;
         for (let i = 0; i < TEAM_COLORS.length; i++) {
@@ -108,29 +106,13 @@ export default class DominationArena extends ArenaEntity {
         return doms;
     }
     
-    public updateScoreboard() {
-        this.dominators.sort((d1, d2) => d2.healthData.values.health - d1.healthData.values.health);
-
-        const length = Math.min(10, this.dominators.length);
-        for (let i = 0; i < length; ++i) {
-            const dom = this.dominators[i];
-            const team = dom.relationsData.values.team;
-            const isTeamATeam = team instanceof TeamEntity;
-            if (dom.styleData.values.color === Color.Tank) this.arenaData.values.scoreboardColors[i as ValidScoreboardIndex] = Color.ScoreboardBar;
-            else this.arenaData.values.scoreboardColors[i as ValidScoreboardIndex] = dom.styleData.values.color;
-            this.arenaData.values.scoreboardNames[i as ValidScoreboardIndex] = dom.prefix || dom.nameData.values.name;
-            // TODO: Change id
-            // this.arenaData.values.scoreboardTanks[i as ValidScoreboardIndex] = dom['_currentTank'];
-            this.arenaData.values.scoreboardTanks[i as ValidScoreboardIndex] = -1
-            this.arenaData.values.scoreboardScores[i as ValidScoreboardIndex] = dom.healthData.values.health;
-            this.arenaData.values.scoreboardSuffixes[i as ValidScoreboardIndex] = " HP";
-        }
-       
-        this.arenaData.scoreboardAmount = length;
-    }
-    
     public updateArenaState() {
-        if (enableScoreboard) this.updateScoreboard();
+        const players = this.getAlivePlayers();
+
+        if ((this.game.tick % scoreboardUpdateInterval) === 0) {
+            // Sorts them too DONT FORGET
+            this.updateScoreboard(players);
+        }
 
         const dominatorCount = this.dominators.length; // Only count alive players for win condition
         for (const team of this.teams) {

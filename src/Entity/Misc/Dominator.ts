@@ -81,7 +81,7 @@ export default class Dominator extends TankBody {
         this.positionData.values.x = base.positionData.values.x;
         this.positionData.values.y = base.positionData.values.y;
         
-        this.scoreReward = 0;
+        this.scoreReward = 1200;
         camera.cameraData.values.player = this;
 
         this.base = base;
