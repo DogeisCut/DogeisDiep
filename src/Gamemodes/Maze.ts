@@ -61,6 +61,8 @@ export default class MazeArena extends ArenaEntity {
 
     protected shapes: ShapeManager = new MazeShapeManager(this);
 
+    private hasCircles: boolean
+
     /** Stores all the "seed"s */
     private SEEDS: VectorAbstract[] = [];
     /** Stores all the "wall"s, contains cell based coords */
@@ -70,6 +72,7 @@ export default class MazeArena extends ArenaEntity {
 
     public constructor(game: GameServer) {
         super(game);
+        this.hasCircles = Math.random() <= 0.5
         this.updateBounds(ARENA_SIZE, ARENA_SIZE);
         this.allowBoss = false;
         this._buildMaze();
@@ -80,16 +83,11 @@ export default class MazeArena extends ArenaEntity {
         const scaledH = gridH * CELL_SIZE;
         const scaledX = gridX * CELL_SIZE - ARENA_SIZE / 2 + (scaledW / 2);
         const scaledY = gridY * CELL_SIZE - ARENA_SIZE / 2 + (scaledH / 2);
-        if (Math.random() < 0.1) {
-            new RoughMazeWall(this.game, scaledX, scaledY, scaledH, scaledW);
+        if ((Math.random() < 0.1) && this.hasCircles) {
+            new MazeWallCircle(this.game, scaledX, scaledY, (scaledH + scaledW) / 2);
         } else {
-            if (Math.random() < 0.05) {
-                new MazeWallCircle(this.game, scaledX, scaledY, (scaledH + scaledW)/2);
-            } else {
-                new MazeWall(this.game, scaledX, scaledY, scaledH, scaledW);
-            }
+            new MazeWall(this.game, scaledX, scaledY, scaledH, scaledW);
         }
-        
     }
     /** Allows for easier (x, y) based getting of maze cells */
     private _get(x: number, y: number): number {

@@ -23,7 +23,7 @@ const API_URL = `${window.location.href}api/`;
 // may need to start commenting out logs as i run out of space
 const CHANGELOG = [
     "Welcome to Dogeis Diep, a diep.io private server created with diepcustom!",
-    "There are over 50+ tanks, features and additions for you to play around with,",
+    "There are over 100+ tanks, features and additions for you to play around with,",
     "And more features are being added almost every day! I encourage you to invite your freinds!",
     "",
     "You can level up to level 60 but stop growing at level 45,",
@@ -38,6 +38,7 @@ const CHANGELOG = [
     "- Buffed Pentamancer, it can now claim all shapes and those shapes can merge into higher shapes.",
     "- New Spike/Landmine tank: Claymore",
     "- New Landmine tank: Booby",
+    "- Removed 'Rough' maze walls as they added nothing...",
     "",
     "November 13th, 2025 - Evening",
     "- Changed stat names for Workshop to better match weapons.",

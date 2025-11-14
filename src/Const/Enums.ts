@@ -267,6 +267,9 @@ export const enum Tank {
     Two tanks that share one health bar and you can swap between them
     - Station
     orbiting auto cannons around a basic tank/two gunner
+    - Arena Opener
+    smasher or shooter thingy that spawns a circle of static pentagon things around it
+    ocasionally, trapping everything inside
     */
 }
 

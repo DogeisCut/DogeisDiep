@@ -9,12 +9,19 @@
 # Overview
 
 Welcome to **Dogeis Diep**, a diep.io private server created with diepcustom!   
-There are over 50+ tanks, features and additions for you to play around with, and more features are being added almost every day! I encourage you to invite your freinds!
+There are over 100+ tanks, features and additions for you to play around with, and more features are being added almost every day! I encourage you to invite your freinds!
 
 You can level up to level 60 but stop growing at level 45, level 60 tanks/tier 4 tanks are avialable! Hold K to level up and press O to retry.
 
 **Discord:** N/A (May change later)
 # Changelog
+
+**November 13th, 2025 - Night**
+- Fixed General's swarm drones not targeting properly
+- Buffed Pentamancer, it can now claim all shapes and those shapes can merge into higher shapes.
+- New Spike/Landmine tank: Claymore
+- New Landmine tank: Booby
+- Removed 'Rough' maze walls as they added nothing...
 
 **November 13th, 2025 - Evening**
 - Changed stat names for Workshop to better match weapons.
