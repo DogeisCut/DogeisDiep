@@ -33,7 +33,7 @@ const CHANGELOG = [
     "Discord: N/A (May change later)",
     "GitHub Repository: https://github.com/DogeisCut/DogeisDiep",
     "",
-    "November 13th, 2025 - Night",
+    "November 13th, 2025 - Evening",
     "- Changed stat names for Workshop to better match weapons.",
     "- Enabled leaderboard in Domination gamemode.",
     "- Clarified that flame launchers do more damage when close in upgrade message.",
