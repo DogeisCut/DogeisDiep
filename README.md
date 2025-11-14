@@ -16,7 +16,7 @@ You can level up to level 60 but stop growing at level 45, level 60 tanks/tier 4
 **Discord:** N/A (May change later)
 # Changelog
 
-**November 13th, 2025 - Night**
+**November 14th, 2025**
 - Fixed General's swarm drones not targeting properly
 - Buffed Pentamancer, it can now claim all shapes and those shapes can merge into higher shapes.
 - New Spike/Landmine tank: Claymore
