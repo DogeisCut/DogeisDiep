@@ -33,6 +33,12 @@ const CHANGELOG = [
     "Discord: N/A (May change later)",
     "GitHub Repository: https://github.com/DogeisCut/DogeisDiep",
     "",
+    "November 13th, 2025 - Night",
+    "- Fixed General's swarm drones not targeting properly",
+    "- Buffed Pentamancer, it can now claim all shapes and those shapes can merge into higher shapes.",
+    "- New Spike/Landmine tank: Claymore",
+    "- New Landmine tank: Booby",
+    "",
     "November 13th, 2025 - Evening",
     "- Changed stat names for Workshop to better match weapons.",
     "- Enabled leaderboard in Domination gamemode.",
@@ -53,13 +59,14 @@ const CHANGELOG = [
     "- Fixed new Smasher branch tanks.",
     "- Fixed Triple Auto Turrets not scaling with tank.",
     "- Corrected tab title from \"DogeisDiep\" to \"Dogeis Diep\"",
-    "",
-    "Novemeber 12th, 2025",
-    "- Hello World!",
-    "- TODO: fill in all the changes made the 12th and before",
-    "- But as a summary: Added level 60 tanks (except for a few), increased shiny chance,",
-    "Added Plane branch, added Flamer branch, allowed players to level up to level 60,",
-    "Added Auto Tank, and probably some other stuff."
+    // Off the screen
+    // "",
+    // "Novemeber 12th, 2025",
+    // "- Hello World!",
+    // "- TODO: fill in all the changes made the 12th and before",
+    // "- But as a summary: Added level 60 tanks (except for a few), increased shiny chance,",
+    // "Added Plane branch, added Flamer branch, allowed players to level up to level 60,",
+    // "Added Auto Tank, and probably some other stuff."
 ];
 
 // Only send pings every 500ms
