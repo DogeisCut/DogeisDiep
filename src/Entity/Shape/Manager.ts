@@ -51,14 +51,14 @@ export default class ShapeManager {
 		this.game = arena.game;
 
         this.fieldShapes = [
-            { weight: 1, create: () => new Hexagon(this.game, Math.random() <= 0.005) },
-            { weight: 3, create: () => new Pentagon(this.game, Math.random() <= 0.005) },
-            { weight: 16, create: () => new Triangle(this.game, Math.random() <= 0.005) },
+            { weight: 1, create: () => new Hexagon(this.game, Math.random() <= 0.011) },
+            { weight: 3, create: () => new Pentagon(this.game, Math.random() <= 0.009) },
+            { weight: 16, create: () => new Triangle(this.game, Math.random() <= 0.007) },
             { weight: 70, create: () => new Square(this.game, Math.random() <= 0.005) }
         ];
 
         this.pentagonNestShapes = [
-            { weight: 0.1, create: () => new Hexagon(this.game, Math.random() <= 0.05) },
+            { weight: 0.1, create: () => new Hexagon(this.game, Math.random() <= 0.06) },
 			{ weight: 1, create: () => new Pentagon(this.game, Math.random() <= 0.05) },
 		];
 

@@ -9446,15 +9446,15 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "max": 7
             },
             {
-                "name": "Bullet Damage",
+                "name": "Minion Swarm Damage",
                 "max": 7
             },
             {
-                "name": "Bullet Penetration",
+                "name": "Minion Swarm Health",
                 "max": 7
             },
             {
-                "name": "Bullet Speed",
+                "name": "Minion Swarm Speed",
                 "max": 7
             },
             {

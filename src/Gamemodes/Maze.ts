@@ -21,6 +21,8 @@ import MazeWall from "../Entity/Misc/MazeWall";
 import { VectorAbstract } from "../Physics/Vector";
 
 import ShapeManager from "../Entity/Shape/Manager";
+import RoughMazeWall from "../Entity/Misc/RoughMazeWall";
+import MazeWallCircle from "../Entity/Misc/MazeWallCircle";
 
 /**
  * Manage shape count
@@ -78,7 +80,16 @@ export default class MazeArena extends ArenaEntity {
         const scaledH = gridH * CELL_SIZE;
         const scaledX = gridX * CELL_SIZE - ARENA_SIZE / 2 + (scaledW / 2);
         const scaledY = gridY * CELL_SIZE - ARENA_SIZE / 2 + (scaledH / 2);
-        new MazeWall(this.game, scaledX, scaledY, scaledH, scaledW);
+        if (Math.random() < 0.1) {
+            new RoughMazeWall(this.game, scaledX, scaledY, scaledH, scaledW);
+        } else {
+            if (Math.random() < 0.05) {
+                new MazeWallCircle(this.game, scaledX, scaledY, (scaledH + scaledW)/2);
+            } else {
+                new MazeWall(this.game, scaledX, scaledY, scaledH, scaledW);
+            }
+        }
+        
     }
     /** Allows for easier (x, y) based getting of maze cells */
     private _get(x: number, y: number): number {

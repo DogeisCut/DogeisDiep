@@ -33,12 +33,15 @@ const CHANGELOG = [
     "Discord: N/A (May change later)",
     "GitHub Repository: https://github.com/DogeisCut/DogeisDiep",
     "",
-    "November 13th, 2025 - Evening",
+    "November 13th, 2025 - Night",
     "- Changed stat names for Workshop to better match weapons.",
     "- Enabled leaderboard in Domination gamemode.",
     "- Clarified that flame launchers do more damage when close in upgrade message.",
     "- Added flame launcher upgrade message to Flame Guard",
     "- Enabled rare alpha shapes around the map",
+    "- Added new Circle and 'Rough' maze walls.",
+    //"- Fixed General's swarm drones not targeting properly",
+    //"- Buffed Pentamancer, it can now claim all shapes and those shapes can merge into higher shapes.",
     "",
     "Novemeber 13th, 2025 - Morning",
     "- New title menu background! This will be replaced with a custom render at some point.",
@@ -54,7 +57,10 @@ const CHANGELOG = [
     "",
     "Novemeber 12th, 2025",
     "- Hello World!",
-    "- TODO: fill in all the changes made the 12th and before"
+    "- TODO: fill in all the changes made the 12th and before",
+    "- But as a summary: Added level 60 tanks (except for a few), increased shiny chance,",
+    "Added Plane branch, added Flamer branch, allowed players to level up to level 60,",
+    "Added Auto Tank, and probably some other stuff."
 ];
 
 // Only send pings every 500ms

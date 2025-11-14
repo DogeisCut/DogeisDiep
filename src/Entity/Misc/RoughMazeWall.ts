@@ -19,11 +19,12 @@
 import GameServer from "../../Game";
 import ObjectEntity from "../Object";
 
-import { PhysicsFlags, Color } from "../../Const/Enums";
+import { PhysicsFlags, Color, HealthFlags } from "../../Const/Enums";
+import LivingEntity from "../Live";
 /**
  * Only used for maze walls and nothing else.
  */
-export default class MazeWall extends ObjectEntity {
+export default class RoughMazeWall extends LivingEntity {
     public constructor(game: GameServer, x: number, y: number, width: number, height: number) {
         super(game);
 
@@ -38,12 +39,18 @@ export default class MazeWall extends ObjectEntity {
         this.physicsData.values.flags |= PhysicsFlags.isSolidWall;
         this.physicsData.values.pushFactor = 2;
         this.physicsData.values.absorbtionFactor = 0;
+        this.damagePerTick = 8;
 
         this.relationsData.values.team = this.game.arena;
 
         this.styleData.values.borderWidth = 10;
-        this.styleData.values.color = Color.Box;
+        this.styleData.values.color = Color.Barrel;
+
+        this.healthData.maxHealth = this.healthData.health = Infinity
+        this.healthData.flags |= HealthFlags.hiddenHealthbar
     }
 
-    public tick(tick: number) {} // No need to tick walls
+    public receiveDamage() {}
+
+    public tick(tick: number) {}
 }
