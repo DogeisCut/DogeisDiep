@@ -56,6 +56,8 @@ const TERMINATION_CHANCE = 0.2;
  * Maze map generator by damocles <github.com/SpanksMcYeet>
  *  - Added into codebase on December 3rd 2022
  */
+/* todo: better maze generator thats like arras and doesnt cover up the center 
+for two team maze*/
 export default class MazeArena extends ArenaEntity {
     static override GAMEMODE_ID: string = "maze";
 
