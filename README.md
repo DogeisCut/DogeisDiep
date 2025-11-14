@@ -13,7 +13,7 @@ There are over 100+ tanks, features and additions for you to play around with, a
 
 You can level up to level 60 but stop growing at level 45, level 60 tanks/tier 4 tanks are avialable! Hold K to level up and press O to retry.
 
-**Discord:** N/A (May change later)
+**Discord:** [https://discord.gg/98NwxqJacr](https://discord.gg/98NwxqJacr)
 # Changelog
 
 **November 14th, 2025**

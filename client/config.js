@@ -30,7 +30,7 @@ const CHANGELOG = [
     "Level 60 tanks/Tier 4 tanks are avialable!",
     "Hold K to level up and press O to retry.",
     "",
-    "Discord: N/A (May change later)",
+    "Discord: https://discord.gg/98NwxqJacr",
     "GitHub Repository: https://github.com/DogeisCut/DogeisDiep",
     "",
     "November 14th, 2025",
