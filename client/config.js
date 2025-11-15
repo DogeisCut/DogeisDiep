@@ -36,6 +36,8 @@ const CHANGELOG = [
     "November 15th, 2025",
     "- Fixed circle walls on minimap rendering incorrectly sometimes. (Thanks xScripty!)",
     "- Fixed several grammar issues in the changelog and readme.",
+    "- Added Crasher Clumps!",
+    "- Added unique color for Pentamancer triangles",
     "",
     "November 14th, 2025",
     "- Fixed General's swarm drones not targeting properly",
@@ -57,6 +59,10 @@ const CHANGELOG = [
     "- Added new Circle and 'Rough' maze walls.",
     "- Dominators now award 1,200 score on kill.",
     "",
+    "..."
+    // Off the screen
+    /*
+    "",
     "November 13rd, 2025 - Morning",
     "- New title menu background! This will be replaced with a custom render at some point.",
     "- New Incinerator tank: Atomizer",
@@ -68,14 +74,14 @@ const CHANGELOG = [
     "- Fixed new Smasher branch tanks.",
     "- Fixed Triple Auto Turrets not scaling with tank.",
     "- Corrected tab title from \"DogeisDiep\" to \"Dogeis Diep\"",
-    // Off the screen
-    // "",
-    // "November 12th, 2025",
-    // "- Hello World!",
-    // "- TODO: fill in all the changes made the 12th and before",
-    // "- But as a summary: Added level 60 tanks (except for a few), increased shiny chance,",
-    // "Added Plane branch, added Flamer branch, allowed players to level up to level 60,",
-    // "Added Auto Tank, and probably some other stuff."
+    "",
+    "November 12th, 2025",
+    "- Hello World!",
+    "- TODO: fill in all the changes made the 12th and before",
+    "- But as a summary: Added level 60 tanks (except for a few), increased shiny chance,",
+    "Added Plane branch, added Flamer branch, allowed players to level up to level 60,",
+    "Added Auto Tank, and probably some other stuff."
+    */
 ];
 
 // Only send pings every 500ms

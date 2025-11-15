@@ -39,7 +39,7 @@ export default class NecromergeShapePentagon extends AbstractNecromergeShape {
     public constructor(barrel: Barrel, tank: BarrelBase, tankDefinition: TankDefinition | null, shootAngle: number) {
         super(barrel, tank, tankDefinition, shootAngle);
         this.physicsData.values.sides = 5;
-        this.styleData.values.color = tank.relationsData.values.team?.teamData?.values.teamColor || Color.PentamancerPentagon
+        this.styleData.values.color = tank.relationsData.values.team?.teamData?.values.teamColor || Color.NecromancerPentagon
     }
 
     public static fromShape(barrel: Barrel, tank: BarrelBase, tankDefinition: TankDefinition | null, shape: AbstractShape): NecromergeShapePentagon {

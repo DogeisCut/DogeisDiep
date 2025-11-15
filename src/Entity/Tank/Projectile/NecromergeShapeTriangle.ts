@@ -41,7 +41,7 @@ export default class NecromergeShapeTriangle extends AbstractNecromergeShape {
     public constructor(barrel: Barrel, tank: BarrelBase, tankDefinition: TankDefinition | null, shootAngle: number) {
         super(barrel, tank, tankDefinition, shootAngle);
         this.physicsData.values.sides = 3;
-        this.styleData.values.color = tank.relationsData.values.team?.teamData?.values.teamColor || Color.TeamRed
+        this.styleData.values.color = tank.relationsData.values.team?.teamData?.values.teamColor || Color.NecromancerTriangle
     }
 
     public static fromShape(barrel: Barrel, tank: BarrelBase, tankDefinition: TankDefinition | null, shape: AbstractShape): NecromergeShapeTriangle {

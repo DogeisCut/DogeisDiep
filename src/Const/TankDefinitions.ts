@@ -12057,5 +12057,90 @@ const TankDefinitions: (TankDefinition|null)[] = [
             }
         ]
     },
+    {
+        "id": Tank.BaseProtector,
+        "name": "Base Protector",
+        "upgradeMessage": "",
+        "levelRequirement": 0,
+        "upgrades": [],
+        "flags": {
+            "invisibility": false,
+            "zoomAbility": false,
+            "canClaimSquares": false,
+            "devOnly": false
+        },
+        "visibilityRateShooting": 0.23,
+        "visibilityRateMoving": 0.08,
+        "invisibilityRate": 0.03,
+        "fieldFactor": 1,
+        "absorbtionFactor": 1,
+        "speed": 1,
+        "maxHealth": 6000,
+        "preAddon": "dombase",
+        "postAddon": null,//"protectorTurret",
+        "sides": 1,
+        "borderWidth": 15,
+        "allowInfiniteScaling": true,
+        "barrels": [
+            {
+                "angle": 0 * Math.PI/180,
+                "offset": 0,
+                "size": 60,
+                "width": 32,
+                "delay": 0,
+                "reload": 3,
+                "recoil": 0,
+                "isTrapezoid": true,
+                "trapezoidDirection": 0,
+                "addon": null,
+                "droneCount": 2,
+                "canControlDrones": true,
+                "bullet": {
+                    "type": "drone",
+                    "sizeRatio": 1,
+                    "health": 12,
+                    "damage": 3,
+                    "speed": 1.2,
+                    "scatterRate": 1,
+                    "lifeLength": -1,
+                    "absorbtionFactor": 1
+                }
+            },
+        ],
+        "stats": [
+            {
+                "name": "Movement Speed",
+                "max": 0
+            },
+            {
+                "name": "Reload",
+                "max": 0
+            },
+            {
+                "name": "Bullet Damage",
+                "max": 0
+            },
+            {
+                "name": "Bullet Penetration",
+                "max": 0
+            },
+            {
+                "name": "Bullet Speed",
+                "max": 0
+            },
+            {
+                "name": "Body Damage",
+                "max": 0
+            },
+            {
+                "name": "Max Health",
+                "max": 0
+            },
+            {
+                "name": "Health Regen",
+                "max": 0
+            }
+        ]
+    },
 ]
 export default TankDefinitions

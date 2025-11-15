@@ -19,6 +19,8 @@ You can level up to level 60 but stop growing at level 45, level 60 tanks/tier 4
 **November 15th, 2025**,
 - Fixed circle walls on minimap rendering incorrectly sometimes. (Thanks xScripty!)
 - Fixed several grammar issues in the changelog and readme.
+- Added Crasher Clumps!
+- Added unique color for Pentamancer triangles
 
 **November 14th, 2025**
 - Fixed General's swarm drones not targeting properly

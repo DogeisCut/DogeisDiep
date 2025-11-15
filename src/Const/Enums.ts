@@ -41,9 +41,10 @@ export const enum Color {
     NecromancerSquare = 16,
     Fallen = 17,
     EnemyHexagon = 18,
-    PentamancerPentagon = 19,
+    NecromancerPentagon = 19,
+    NecromancerTriangle = 20,
 
-    kMaxColors = 20
+    kMaxColors = 21
 }
 
 /**
@@ -69,7 +70,8 @@ export const ColorsHexCode: Record<Color, number> = {
     [Color.NecromancerSquare]: 0xFCC376,
     [Color.Fallen]: 0xC0C0C0,
     [Color.EnemyHexagon]: 0x7ADBBC,
-    [Color.PentamancerPentagon]: 0xa276fc,
+    [Color.NecromancerPentagon]: 0xa276fc,
+    [Color.NecromancerTriangle]: 0xF14E54,
     [Color.kMaxColors]: 0x000000
 }
 
@@ -263,7 +265,8 @@ export const enum Tank {
     Fumigator         = 98,
     Booby             = 99,
     Claymore          = 100,
-    DominatorDR       = 101
+    DominatorDR       = 101,
+    BaseProtector     = 102,
     
 
     /* General Ideas 
