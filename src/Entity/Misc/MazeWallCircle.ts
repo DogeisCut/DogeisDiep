@@ -42,7 +42,9 @@ export default class MazeWallCircle extends ObjectEntity {
 
         this.styleData.values.borderWidth = 10;
         this.styleData.values.color = Color.Box;
-    }
 
+        this.createWorkaround()
+    }
+    
     public tick(tick: number) {} // No need to tick walls
 }

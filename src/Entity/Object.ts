@@ -121,6 +121,12 @@ export default class ObjectEntity extends Entity {
         objB.receiveKnockback(objA);
     }
 
+    public createWorkaround() {
+        // Workaround due to a rendering bug in the diep.io client - must have an attached entity to properly render circles on the minimap
+        const workaroundEntity = new ObjectEntity(this.game);
+        workaroundEntity.setParent(this);
+    }
+
     /** Whether or not two objects are touching */
     public static isColliding(objA: ObjectEntity, objB: ObjectEntity): boolean {
         if (objA === objB) return false;
