@@ -231,6 +231,9 @@ export default class Barrel extends ObjectEntity {
             case 'leigon':
                 projectile = new Leigon(this, this.tank, tankDefinition, angle);
                 break;
+            case null:
+                projectile = null
+                break;
             default:
                 util.log('Ignoring attempt to spawn projectile of type ' + this.definition.bullet.type);
                 break;

@@ -20,11 +20,12 @@ import ObjectEntity from "../Object";
 import Barrel from "../Tank/Barrel";
 import TeamBase from "./TeamBase";
 
-import { BarrelBase } from "../Tank/TankBody";
-import { Color, StyleFlags, PhysicsFlags, InputFlags } from "../../Const/Enums";
+import TankBody, { BarrelBase } from "../Tank/TankBody";
+import { Color, StyleFlags, PhysicsFlags, InputFlags, Tank, NameFlags } from "../../Const/Enums";
 import { BarrelDefinition } from "../../Const/TankDefinitionsUtil";
-import { Inputs } from "../AI";
+import { AI, Inputs } from "../AI";
 import { CameraEntity } from "../../Native/Camera";
+import GameServer from "../../Game";
 
 /**
  * Base drone stats.
@@ -57,43 +58,50 @@ const DroneSpawnerDefinition = (count: number): BarrelDefinition => ({
 /**
  * Represents all base drones in game.
  */
-export default class BaseDrones extends ObjectEntity implements BarrelBase {
-    /** The base drone spawner barrel */
-    private droneSpawner: Barrel;
-
-    /** Fake camera entity, needed for BarrelBase. */
-    public cameraEntity: CameraEntity = this as unknown as CameraEntity;
-
+export default class BaseProtector extends TankBody {
     /** Base reload value for internal calculations. */
     public reloadTime = 15;
 
-    /** Needed for BarrelBase */
-    public inputs = new Inputs();
+    /** The AI that controls how the AC moves. */
+    public ai: AI;
 
-    public constructor(base: TeamBase, droneCount: number = 12) {
-        super(base.game);
+    public constructor(game: GameServer, base: TeamBase, droneCount: number = 12) {
+        const inputs = new Inputs();
+        const camera = new CameraEntity(game);
 
-        this.isPhysical = false;
-        this.physicsData.values.sides = 0;
-        this.physicsData.values.size = 50;
+        camera.setLevel(120);
+        camera.sizeFactor = 5
+
+        super(game, camera, inputs);
+
+        this.styleData.values.color = base.styleData.values.color;
+
+        this.setTank(Tank.BaseProtector);
+        const def = (this.definition = Object.assign({}, this.definition));
+        def.speed = camera.cameraData.values.movementSpeed = 0;
+
         this.physicsData.values.absorbtionFactor = 0;
         this.physicsData.values.pushFactor = 0;
         this.physicsData.values.flags |= PhysicsFlags.isBase;
+
+        this.ai = new AI(this);
+        this.ai.inputs = inputs;
+        this.ai.movementSpeed = 0;
+        this.ai.targetFilterShapes = true
+        this.ai.doAimPrediction = false;
 
         this.positionData.values.x = base.positionData.values.x;
         this.positionData.values.y = base.positionData.values.y;
 
         this.relationsData.values.owner = base;
         this.relationsData.values.team = base.relationsData.values.team;
-        
-        this.styleData.values.color = base.styleData.values.color;
 
-        this.droneSpawner = new Barrel(this, DroneSpawnerDefinition(droneCount));
-        this.droneSpawner.styleData.values.flags = this.styleData.values.flags ^= StyleFlags.isVisible;
-        
-    }
+        this.nameData.values.name = "Base Protector";
+        this.nameData.flags |= NameFlags.hiddenName
 
-    public get sizeFactor() {
-        return 5; // Large drone AI range, hacky
+        this.scoreReward = Infinity; // funny
+        camera.cameraData.values.player = this;
+
+        this.setInvulnerability(true);
     }
 }

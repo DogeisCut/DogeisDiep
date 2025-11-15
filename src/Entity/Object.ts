@@ -127,6 +127,10 @@ export default class ObjectEntity extends Entity {
         workaroundEntity.setParent(this);
     }
 
+    public makeRadiant(level: number) {
+        
+    }
+
     /** Whether or not two objects are touching */
     public static isColliding(objA: ObjectEntity, objB: ObjectEntity): boolean {
         if (objA === objB) return false;

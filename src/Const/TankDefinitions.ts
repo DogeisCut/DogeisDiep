@@ -12075,38 +12075,46 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "fieldFactor": 1,
         "absorbtionFactor": 1,
         "speed": 1,
-        "maxHealth": 6000,
-        "preAddon": "dombase",
-        "postAddon": null,//"protectorTurret",
+        "maxHealth": Infinity,
+        "preAddon": "protectorBase",
+        "postAddon": "protectorTurret",
         "sides": 1,
         "borderWidth": 15,
         "allowInfiniteScaling": true,
-        "barrels": [
-            {
-                "angle": 0 * Math.PI/180,
-                "offset": 0,
-                "size": 60,
-                "width": 32,
-                "delay": 0,
-                "reload": 3,
-                "recoil": 0,
-                "isTrapezoid": true,
-                "trapezoidDirection": 0,
-                "addon": null,
-                "droneCount": 2,
-                "canControlDrones": true,
-                "bullet": {
-                    "type": "drone",
-                    "sizeRatio": 1,
-                    "health": 12,
-                    "damage": 3,
-                    "speed": 1.2,
-                    "scatterRate": 1,
-                    "lifeLength": -1,
-                    "absorbtionFactor": 1
-                }
-            },
-        ],
+        "barrels": (() => {
+            const numberOfBarrels = 12
+            const angleIncrement = (2 * Math.PI) / numberOfBarrels
+            const generatedBarrels: BarrelDefinition[] = []
+            for (let barrelIndex = 0; barrelIndex < numberOfBarrels; barrelIndex++) {
+                const currentAngle = barrelIndex * angleIncrement
+                const isAlternateBarrel = barrelIndex % 2 === 1
+                generatedBarrels.push({
+                    angle: currentAngle,
+                    offset: 0,
+                    size: 60,
+                    width: 10,
+                    delay: 0,
+                    reload: isAlternateBarrel ? Infinity : 15,
+                    recoil: 0,
+                    isTrapezoid: true,
+                    trapezoidDirection: 0,
+                    addon: null,
+                    droneCount: isAlternateBarrel ? 0 : 1,
+                    canControlDrones: true,
+                    bullet: {
+                        type: isAlternateBarrel ? null : "baseDrone",
+                        sizeRatio: 1,
+                        health: Infinity,
+                        damage: 0.5,
+                        speed: 2.7,
+                        scatterRate: 1,
+                        lifeLength: -1,
+                        absorbtionFactor: 5
+                    }
+                })
+            }
+            return generatedBarrels
+        })(),
         "stats": [
             {
                 "name": "Movement Speed",

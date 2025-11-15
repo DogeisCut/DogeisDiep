@@ -21,7 +21,7 @@ import GameServer from "../../Game";
 import { HealthFlags, PhysicsFlags, StyleFlags } from "../../Const/Enums";
 import { TeamGroupEntity } from "./TeamEntity";
 import LivingEntity from "../Live";
-import BaseDrones from "./BaseDrones";
+import BaseProtector from "./BaseProtector";
 /**
  * Represents Team Bases in game.
  */
@@ -67,7 +67,7 @@ export default class TeamBase extends LivingEntity {
 
     public createDrones(droneSpawnerCount: number, droneCount: number) {
         for (let i = 0; i < droneSpawnerCount; ++i) {
-            const droneSpawner = new BaseDrones(this, droneCount);
+            const droneSpawner = new BaseProtector(this.game, this, droneCount);
             droneSpawner.positionData.values.x = this.positionData.values.x;
             // Don't spread drones around the base if it is a rectangle
             droneSpawner.positionData.values.y = this.physicsData.values.width === this.physicsData.values.size ? this.positionData.values.y :

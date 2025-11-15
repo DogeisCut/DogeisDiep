@@ -23,14 +23,14 @@ import _TankDefinitions from "./TankDefinitions";
 /** The types of post addons that exist in the game, by their id. */
 export type postAddonId = "dompronounced" | "auto5" | "auto3" | "autosmasher" | "spike" | "pronounced"
     | "smasher" | "landmine" | "autoturret" | "auto7" | "tripleAutoturret" | "wings" | "wraith" | "tripleAutosmasher"
-    | "razor" | "scavenger" | "ravenger"
+    | "razor" | "scavenger" | "ravenger" | "protectorTurret"
 /** The types of post addons that exist in the game, by their id. */
-export type preAddonId = "dombase" | "launcher" | "pentagonBody"
+export type preAddonId = "dombase" | "launcher" | "pentagonBody" | "protectorBase"
 /** A joint list of all post addon ids and pre addon ids. */
 export type addonId = preAddonId | postAddonId;
 
 /** The types of projectiles in the game */
-export type projectileId = "bullet" | "drone" | "baseDrone" | "trap" | "necrodrone" | "minion" | "skimmer" | "rocket" | "swarm" | "flame" | "wall" | "croc" | "swarmMinion" | "necromergeSquare" | "necromergeTriangle" | "necromergePentagon" | "wraithdrone" | "leigon";
+export type projectileId = "bullet" | "drone" | "baseDrone" | "trap" | "necrodrone" | "minion" | "skimmer" | "rocket" | "swarm" | "flame" | "wall" | "croc" | "swarmMinion" | "necromergeSquare" | "necromergeTriangle" | "necromergePentagon" | "wraithdrone" | "leigon" | null;
 
 /** The types of barrel addons that exist in the game */
 export type barrelAddonId = "trapLauncher" | "flameLauncher" | "-50Distance";

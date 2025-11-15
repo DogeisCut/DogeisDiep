@@ -38,6 +38,7 @@ const CHANGELOG = [
     "- Fixed several grammar issues in the changelog and readme.",
     "- Added Crasher Clumps!",
     "- Added unique color for Pentamancer triangles",
+    "- Added base protectors",
     "",
     "November 14th, 2025",
     "- Fixed General's swarm drones not targeting properly",

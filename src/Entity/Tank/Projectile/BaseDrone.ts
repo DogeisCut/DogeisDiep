@@ -21,6 +21,7 @@ import Barrel from "../Barrel";
 import { TankDefinition } from "../../../Const/TankDefinitionsUtil";
 import { BarrelBase } from "../TankBody";
 import Drone from "./Drone";
+import { PhysicsFlags, StyleFlags } from "../../../Const/Enums";
 
 /**
  * The drone class represents the drone (projectile) entity in diep.
@@ -30,6 +31,9 @@ export default class BaseDrone extends Drone {
     public constructor(barrel: Barrel, tank: BarrelBase, tankDefinition: TankDefinition | null, shootAngle: number) {
         super(barrel, tank, tankDefinition, shootAngle);
 
+        this.styleData.flags |= StyleFlags.renderFirst
+        this.styleData.flags |= StyleFlags.showsAboveParent
         this.ai.targetFilterShapes = true
+        this.physicsData.pushFactor = 10
     }
 }

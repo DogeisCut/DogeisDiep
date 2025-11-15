@@ -542,6 +542,27 @@ class RavengerAddon extends Addon {
     }
 }
 
+class ProtectorBaseAddon extends Addon {
+    public constructor(owner: BarrelBase) {
+        super(owner);
+
+        this.createGuard(8, 1.3, 0, 0);
+    }
+}
+
+class ProtectorTurretAddon extends Addon {
+    public constructor(owner: BarrelBase) {
+        super(owner);
+
+        const base = this.createGuard(8, 0.8, 0, 0)
+        base.styleData.flags |= StyleFlags.showsAboveParent
+        const topper = this.createGuard(1, 0.7, 0, 0)
+        topper.styleData.flags |= StyleFlags.showsAboveParent
+        topper.styleData.color = this.owner.styleData.color
+        
+    }
+}
+
 /**
  * All addons in the game by their ID.
  */
@@ -565,5 +586,7 @@ export const AddonById: Record<addonId, typeof Addon | null> = {
     tripleAutosmasher: TripleAutoSmasherAddon,
     razor: RazorAddon,
     scavenger: ScavengerAddon,
-    ravenger: RavengerAddon
+    ravenger: RavengerAddon,
+    protectorBase: ProtectorBaseAddon,
+    protectorTurret: ProtectorTurretAddon
 }
