@@ -22,6 +22,9 @@ You can level up to level 60 but stop growing at level 45, level 60 tanks/tier 4
 - New Spike/Landmine tank: Claymore
 - New Landmine tank: Booby
 - Removed 'Rough' maze walls as they added nothing...
+- Circle walls in maze are no longer guaranteed.
+- Added Discord server to ingame changelog
+- Base drones no longer target shapes
 
 **November 13th, 2025 - Evening**
 - Changed stat names for Workshop to better match weapons.

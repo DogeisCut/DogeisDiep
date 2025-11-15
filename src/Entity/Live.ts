@@ -20,6 +20,11 @@ import ObjectEntity from "./Object";
 
 import { StyleFlags } from "../Const/Enums";
 import { HealthGroup } from "../Native/FieldGroups";
+import AbstractNecromergeShape from "./Tank/Projectile/AbstractNecromergeShape";
+import NecromancerSquare from "./Tank/Projectile/NecromancerSquare";
+import NecromergeShapeSquare from "./Tank/Projectile/NecromergeShapeSquare";
+import NecromergeShapePentagon from "./Tank/Projectile/NecromergeShapePentagon";
+import NecromergeShapeTriangle from "./Tank/Projectile/NecromergeShapeTriangle";
 
 /**
  * An Abstract class for all entities with health.
@@ -57,9 +62,12 @@ export default class LivingEntity extends ObjectEntity {
 
         super.destroy(animate);
     }
+    
 
     /** Applies damage to two entity after colliding with eachother. */
     public static handleCollision(entity1: LivingEntity, entity2: LivingEntity) {
+        entity1.onCollide(entity1, entity2)
+        entity2.onCollide(entity2, entity1)
         if (entity1.relationsData.values.team && entity1.relationsData.values.team === entity2.relationsData.values.team) return;
 
         if (entity1.healthData.values.health <= 0 || entity2.healthData.values.health <= 0) return;
@@ -120,7 +128,9 @@ export default class LivingEntity extends ObjectEntity {
     public onKill(entity: LivingEntity) {}
 
     /** Called when the entity is killed via collision */
-    public onDeath(killer: LivingEntity) {}
+    public onDeath(killer: LivingEntity) { }
+    
+    public onCollide(entity1: LivingEntity, entity2: LivingEntity) {}
 
     /** Runs at the end of each tick. Will apply the damage then. */
     public applyPhysics() {

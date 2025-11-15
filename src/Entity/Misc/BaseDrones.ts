@@ -21,7 +21,7 @@ import Barrel from "../Tank/Barrel";
 import TeamBase from "./TeamBase";
 
 import { BarrelBase } from "../Tank/TankBody";
-import { Color, StyleFlags, PhysicsFlags } from "../../Const/Enums";
+import { Color, StyleFlags, PhysicsFlags, InputFlags } from "../../Const/Enums";
 import { BarrelDefinition } from "../../Const/TankDefinitionsUtil";
 import { Inputs } from "../AI";
 import { CameraEntity } from "../../Native/Camera";
@@ -90,7 +90,7 @@ export default class BaseDrones extends ObjectEntity implements BarrelBase {
 
         this.droneSpawner = new Barrel(this, DroneSpawnerDefinition(droneCount));
         this.droneSpawner.styleData.values.flags = this.styleData.values.flags ^= StyleFlags.isVisible;
-       
+        
     }
 
     public get sizeFactor() {

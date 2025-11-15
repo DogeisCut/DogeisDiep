@@ -2687,7 +2687,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "upgradeMessage": "",
         "levelRequirement": 45,
         "upgrades": [
-            69
+            Tank.Hawker
         ],
         "flags": {
             "invisibility": true,
@@ -4346,7 +4346,10 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "name": "Landmine",
         "upgradeMessage": "",
         "levelRequirement": 45,
-        "upgrades": [],
+        "upgrades": [
+            Tank.Booby,
+            Tank.Claymore
+        ],
         "flags": {
             "invisibility": true,
             "zoomAbility": false,
@@ -5996,7 +5999,8 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "upgradeMessage": "",
         "levelRequirement": 45,
         "upgrades": [
-            Tank.Razor
+            Tank.Razor,
+            Tank.Claymore
         ],
         "flags": {
             "invisibility": false,
@@ -10875,13 +10879,13 @@ const TankDefinitions: (TankDefinition|null)[] = [
     {
         "id": Tank.Pentamancer,
         "name": "Pentamancer",
-        "upgradeMessage": "",
+        "upgradeMessage": "Collect all shapes and touch them to merge them into higher shapes!",
         "levelRequirement": 60,
         "upgrades": [],
         "flags": {
             "invisibility": false,
             "zoomAbility": false,
-            "canClaimPentagons": true,
+            "canClaimPentaAndBelowMerge": true,
             "devOnly": false
         },
         "visibilityRateShooting": 0.23,
@@ -10897,7 +10901,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "borderWidth": 15,
         "barrels": [
             {
-                "angle": -90 * Math.PI/180,
+                "angle": 0 * Math.PI/180,
                 "offset": 0,
                 "size": 70,
                 "width": 42,
@@ -10910,7 +10914,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "droneCount": 0,
                 "canControlDrones": true,
                 "bullet": {
-                    "type": "pentadrone",
+                    "type": "necromergeSquare",
                     "sizeRatio": 1,
                     "health": 2,
                     "damage": 0.42,
@@ -10921,7 +10925,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             },
             {
-                "angle": 90 * Math.PI/180,
+                "angle": 120 * Math.PI/180,
                 "offset": 0,
                 "size": 70,
                 "width": 42,
@@ -10934,7 +10938,31 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "droneCount": 0,
                 "canControlDrones": true,
                 "bullet": {
-                    "type": "pentadrone",
+                    "type": "necromergeTriangle",
+                    "sizeRatio": 1,
+                    "health": 2,
+                    "damage": 0.42,
+                    "speed": 0.72,
+                    "scatterRate": 1,
+                    "lifeLength": -1,
+                    "absorbtionFactor": 1
+                }
+            },
+            {
+                "angle": 240 * Math.PI/180,
+                "offset": 0,
+                "size": 70,
+                "width": 42,
+                "delay": 0,
+                "reload": 6,
+                "recoil": 1,
+                "isTrapezoid": true,
+                "trapezoidDirection": 0,
+                "addon": null,
+                "droneCount": 0,
+                "canControlDrones": true,
+                "bullet": {
+                    "type": "necromergePentagon",
                     "sizeRatio": 1,
                     "health": 2,
                     "damage": 0.42,
@@ -11763,6 +11791,183 @@ const TankDefinitions: (TankDefinition|null)[] = [
             {
                 "name": "Flame Distance",
                 "max": 10
+            },
+            {
+                "name": "Body Damage",
+                "max": 10
+            },
+            {
+                "name": "Max Health",
+                "max": 10
+            },
+            {
+                "name": "Health Regen",
+                "max": 10
+            }
+        ]
+    },
+    {
+        "id": Tank.Claymore,
+        "name": "Claymore",
+        "upgradeMessage": "",
+        "levelRequirement": 60,
+        "upgrades": [],
+        "flags": {
+            "invisibility": true,
+            "zoomAbility": false,
+            "canClaimSquares": false,
+            "devOnly": false
+        },
+        "visibilityRateShooting": 0,
+        "visibilityRateMoving": 0.16,
+        "invisibilityRate": 0.003,
+        "fieldFactor": 0.9,
+        "absorbtionFactor": 1,
+        "speed": 1,
+        "maxHealth": 50,
+        "preAddon": null,
+        "postAddon": "landmine",
+        "sides": 1,
+        "borderWidth": 15,
+        "barrels": [],
+        "stats": [
+            {
+                "name": "Movement Speed",
+                "max": 10
+            },
+            {
+                "name": "Reload",
+                "max": 0
+            },
+            {
+                "name": "Bullet Damage",
+                "max": 0
+            },
+            {
+                "name": "Bullet Penetration",
+                "max": 0
+            },
+            {
+                "name": "Bullet Speed",
+                "max": 0
+            },
+            {
+                "name": "Body Damage",
+                "max": 10
+            },
+            {
+                "name": "Max Health",
+                "max": 10
+            },
+            {
+                "name": "Health Regen",
+                "max": 10
+            }
+        ]
+    },
+    {
+        "id": Tank.Booby,
+        "name": "Booby",
+        "upgradeMessage": "",
+        "levelRequirement": 60,
+        "upgrades": [],
+        "flags": {
+            "invisibility": true,
+            "zoomAbility": false,
+            "canClaimSquares": false,
+            "devOnly": false
+        },
+        "visibilityRateShooting": 0,
+        "visibilityRateMoving": 0.12,
+        "invisibilityRate": 0.01,
+        "fieldFactor": 0.9,
+        "absorbtionFactor": 1,
+        "speed": 1,
+        "maxHealth": 50,
+        "preAddon": null,
+        "postAddon": "landmine",
+        "sides": 1,
+        "borderWidth": 15,
+        "barrels": [],
+        "stats": [
+            {
+                "name": "Movement Speed",
+                "max": 10
+            },
+            {
+                "name": "Reload",
+                "max": 0
+            },
+            {
+                "name": "Bullet Damage",
+                "max": 0
+            },
+            {
+                "name": "Bullet Penetration",
+                "max": 0
+            },
+            {
+                "name": "Bullet Speed",
+                "max": 0
+            },
+            {
+                "name": "Body Damage",
+                "max": 10
+            },
+            {
+                "name": "Max Health",
+                "max": 10
+            },
+            {
+                "name": "Health Regen",
+                "max": 10
+            }
+        ]
+    },
+    {
+        "id": Tank.Claymore,
+        "name": "Claymore",
+        "upgradeMessage": "",
+        "levelRequirement": 60,
+        "upgrades": [],
+        "flags": {
+            "invisibility": true,
+            "zoomAbility": false,
+            "canClaimSquares": false,
+            "devOnly": false
+        },
+        "visibilityRateShooting": 0,
+        "visibilityRateMoving": 0.16,
+        "invisibilityRate": 0.003,
+        "fieldFactor": 0.9,
+        "absorbtionFactor": 1,
+        "speed": 1,
+        "maxHealth": 50,
+        "preAddon": null,
+        "postAddon": "spike",
+        "sides": 1,
+        "borderWidth": 15,
+        "barrels": [],
+        "stats": [
+            {
+                "name": "Movement Speed",
+                "max": 10
+            },
+            {
+                "name": "Reload",
+                "max": 0
+            },
+            {
+                "name": "Bullet Damage",
+                "max": 0
+            },
+            {
+                "name": "Bullet Penetration",
+                "max": 0
+            },
+            {
+                "name": "Bullet Speed",
+                "max": 0
             },
             {
                 "name": "Body Damage",

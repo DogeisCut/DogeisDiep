@@ -38,9 +38,11 @@ import { BarrelAddon, BarrelAddonById } from "./BarrelAddons";
 import { Swarm } from "./Projectile/Swarm";
 import { SwarmMinion } from "./Projectile/SwarmMinion"
 import NecromancerSquare from "./Projectile/NecromancerSquare";
-import PentamancerPentagon from "./Projectile/PentamancerPentagon";
 import WraithSquare from "./Projectile/WraithSquare";
 import Leigon from "./Projectile/Leigon";
+import NecromergeShapeSquare from "./Projectile/NecromergeShapeSquare";
+import NecromergeShapeTriangle from "./Projectile/NecromergeShapeTriangle";
+import NecromergeShapePentagon from "./Projectile/NecromergeShapePentagon";
 /**
  * Class that determines when barrels can shoot, and when they can't.
  */
@@ -210,8 +212,14 @@ export default class Barrel extends ObjectEntity {
             case 'swarmMinion':
                 projectile = new SwarmMinion(this, this.tank, tankDefinition, angle);
                 break;
-            case 'pentadrone':
-                projectile = new PentamancerPentagon(this, this.tank, tankDefinition, angle);
+            case 'necromergeSquare':
+                projectile = new NecromergeShapeSquare(this, this.tank, tankDefinition, angle);
+                break;
+            case 'necromergeTriangle':
+                projectile = new NecromergeShapeTriangle(this, this.tank, tankDefinition, angle);
+                break;
+            case 'necromergePentagon':
+                projectile = new NecromergeShapePentagon(this, this.tank, tankDefinition, angle);
                 break;
             case 'wraithdrone':
                 projectile = new WraithSquare(this, this.tank, tankDefinition, angle);

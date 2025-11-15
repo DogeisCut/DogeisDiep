@@ -102,6 +102,14 @@ export default class Bullet extends LivingEntity {
         this.positionData.values.angle = shootAngle;
     }
 
+    public getTank() {
+		return this.tank
+    }
+    
+    public getTankDefinition() {
+		return this.tankDefinition
+	}
+
     /** Extends LivingEntity.onKill - passes kill to the owner. */
     public onKill(killedEntity: LivingEntity) {
         (this.tank as unknown as LivingEntity)?.onKill?.(killedEntity);

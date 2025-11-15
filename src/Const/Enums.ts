@@ -260,6 +260,8 @@ export const enum Tank {
     TriFlamer         = 96,
     Atomizer          = 97,
     Fumigator         = 98,
+    Claymore          = 99,
+    Booby             = 100,
     
 
     /* General Ideas 

@@ -21,12 +21,6 @@ import * as util from "../../util";
 import type GameServer from "../../Game";
 import type { CameraEntity } from "../../Native/Camera";
 
-import Square from "../Shape/Square";
-import NecromancerSquare from "./Projectile/NecromancerSquare";
-import LivingEntity from "../Live";
-import ObjectEntity from "../Object";
-import Barrel from "./Barrel";
-
 import { Color, StyleFlags, StatCount, Tank, CameraFlags, Stat, InputFlags, PhysicsFlags, PositionFlags, NameFlags, HealthFlags } from "../../Const/Enums";
 import { Entity } from "../../Native/Entity";
 import { NameGroup, ScoreGroup } from "../../Native/FieldGroups";
@@ -36,12 +30,18 @@ import { DevTank } from "../../Const/DevTankDefinitions";
 import { Inputs } from "../AI";
 import { ArenaState } from "../../Native/Arena";
 import { AccessLevel, maxPlayerLevel, maxPlayerTankLevel, shinyRarity } from "../../config";
-import PentamancerPentagon from "./Projectile/PentamancerPentagon";
-import Pentagon from "../Shape/Pentagon";
-import WraithSquare from "./Projectile/WraithSquare";
-import AbstractShape from "../Shape/AbstractShape";
-import TrimancerTriangle from "./Projectile/TrimancerTriangle";
+
+import Square from "../Shape/Square";
 import Triangle from "../Shape/Triangle";
+import Pentagon from "../Shape/Pentagon";
+import NecromancerSquare from "./Projectile/NecromancerSquare";
+import WraithSquare from "./Projectile/WraithSquare";
+import NecromergeShapeSquare from "./Projectile/NecromergeShapeSquare";
+import NecromergeShapeTriangle from "./Projectile/NecromergeShapeTriangle";
+import NecromergeShapePentagon from "./Projectile/NecromergeShapePentagon";
+import LivingEntity from "../Live";
+import ObjectEntity from "../Object";
+import Barrel from "./Barrel";
 
 /**
  * Abstract type of entity which barrels can connect to.
@@ -235,15 +235,19 @@ export default class TankBody extends LivingEntity implements BarrelBase {
         }
 
         if (entity instanceof Square) {
-            this.claimEntity<Square>(entity, "canClaimSquares", "necrodrone", 11, NecromancerSquare);
-            this.claimEntity<Square>(entity, "canClaimSquaresWraith", "wraithdrone", 2, WraithSquare, undefined, 0.5);
+            this.claimEntity<Square>(entity, "canClaimSquares", "necrodrone", 11, NecromancerSquare, (e) => !e.isAlpha);
+            this.claimEntity<Square>(entity, "canClaimSquaresWraith", "wraithdrone", 2, WraithSquare, (e) => !e.isAlpha, 0.5);
         }
 
-        // if (entity instanceof Triangle)
-        //     this.claimEntity<Triangle>(entity, "canClaimTriangles", "tridrone", 6, TrimancerTriangle, undefined, undefined, 0.25);
-
+        if (entity instanceof Square)
+            this.claimEntity<Square>(  entity, "canClaimPentaAndBelowMerge", "necromergeSquare",   3, NecromergeShapeSquare,   (e) => !e.isAlpha, 0, 0);
+        if (entity instanceof Triangle)
+            this.claimEntity<Triangle>(entity, "canClaimPentaAndBelowMerge", "necromergeTriangle", 3, NecromergeShapeTriangle, (e) => !e.isAlpha, 0, 0.0);
         if (entity instanceof Pentagon)
-            this.claimEntity<Pentagon>(entity, "canClaimPentagons", "pentadrone", 6, PentamancerPentagon, (e) => !e.isAlpha, undefined, 0.75);
+            this.claimEntity<Pentagon>(entity, "canClaimPentaAndBelowMerge", "necromergePentagon", 3, NecromergeShapePentagon, (e) => !e.isAlpha, 0, 0.25);
+
+        //if (entity instanceof Pentagon)
+        //    this.claimEntity<Pentagon>(entity, "canClaimPentagons", "pentadrone", 6, PentamancerPentagon, (e) => !e.isAlpha, 0, 0.75);
             
     }
 
@@ -364,7 +368,7 @@ export default class TankBody extends LivingEntity implements BarrelBase {
         updateStats: {
             // Damage
             this.damagePerTick = this.cameraEntity.cameraData.statLevels[Stat.BodyDamage] + 5;
-            if (this._currentTank === Tank.Spike) this.damagePerTick += 2;
+            if (([Tank.Spike, Tank.Claymore] as (Tank | DevTank)[]).includes(this._currentTank )) this.damagePerTick += 2;
             if (this._currentTank === Tank.Razor) this.damagePerTick += 4;
 
             // Max Health

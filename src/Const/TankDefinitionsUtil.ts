@@ -30,7 +30,7 @@ export type preAddonId = "dombase" | "launcher" | "pentagonBody"
 export type addonId = preAddonId | postAddonId;
 
 /** The types of projectiles in the game */
-export type projectileId = "bullet" | "drone" | "trap" | "necrodrone" | "minion" | "skimmer" | "rocket" | "swarm" | "flame" | "wall" | "croc" | "swarmMinion" | "pentadrone" | "wraithdrone" | "leigon";
+export type projectileId = "bullet" | "drone" | "trap" | "necrodrone" | "minion" | "skimmer" | "rocket" | "swarm" | "flame" | "wall" | "croc" | "swarmMinion" | "necromergeSquare" | "necromergeTriangle" | "necromergePentagon" | "wraithdrone" | "leigon";
 
 /** The types of barrel addons that exist in the game */
 export type barrelAddonId = "trapLauncher" | "flameLauncher" | "-50Distance";
@@ -134,6 +134,7 @@ export interface TankDefinition {
         canClaimSquares?: boolean;
         canClaimPentagons?: boolean;
         canClaimSquaresWraith?: boolean;
+        canClaimPentaAndBelowMerge?: boolean;
         /** If the tank requires devmode to access (unused). */
         devOnly: boolean;
         /** If the tank should be rendered as a star (eg. traps are stars with 3 sides). */

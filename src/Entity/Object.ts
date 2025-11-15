@@ -113,6 +113,8 @@ export default class ObjectEntity extends Entity {
 
     /** Receives collision pairs from CollisionManager and applies kb */
     public static handleCollision(objA: ObjectEntity, objB: ObjectEntity) {
+        objA.onCollide(objA, objB);
+        objB.onCollide(objB, objA);
         objA.receiveKnockback(objB);
         objB.receiveKnockback(objA);
     }
@@ -302,6 +304,8 @@ export default class ObjectEntity extends Entity {
             this.addAcceleration(kbAngle, kbMagnitude);
         }
     }
+
+    public onCollide(objA: ObjectEntity, objB: ObjectEntity) {}
 
     /** Sets the parent in align with everything else. */
     public setParent(parent: ObjectEntity) {
