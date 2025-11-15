@@ -11119,7 +11119,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
     {
         "id": Tank.General,
         "name": "General",
-        "upgradeMessage": "This tank is currently broken. Swarm drones will not target.",
+        "upgradeMessage": "",
         "levelRequirement": 60,
         "upgrades": [],
         "flags": {

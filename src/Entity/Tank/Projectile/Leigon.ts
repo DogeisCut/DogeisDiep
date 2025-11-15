@@ -40,7 +40,7 @@ const leigonBarrelDefinition: BarrelDefinition = {
     "trapezoidDirection": 3.141592653589793,
     "addon": null,
     "droneCount": 4294967295,
-    "canControlDrones": true,
+    "canControlDrones": false,
     "bullet": {
         "type": "swarm",
         "sizeRatio": 0.7,
@@ -78,16 +78,17 @@ export default class Leigon extends Drone implements BarrelBase {
         return this.physicsData.values.size / 50;
     }
 
-    // protected tickMixin(tick: number) {
-    //     this.reloadTime = this.tank.reloadTime;
+    protected tickMixin(tick: number) {
+        this.reloadTime = this.tank.reloadTime;
 
-    //     const usingAI = !this.canControlDrones || !this.tank.inputs.attemptingShot() && !this.tank.inputs.attemptingRepel();
+        this.inputs = this.tank.inputs
+        // const usingAI = !this.canControlDrones || !this.tank.inputs.attemptingShot() && !this.tank.inputs.attemptingRepel();
 
-    //     if (usingAI && this.ai.state === AIState.idle) {
-    //     } else {
-    //         this.inputs.flags |= InputFlags.leftclick;
-    //     }
+        // if (usingAI && this.ai.state === AIState.idle) {
+        // } else {
+        //     this.inputs.flags |= InputFlags.leftclick;
+        // }
 
-    //     super.tickMixin(tick);
-    // }
+        super.tickMixin(tick);
+    }
 }
