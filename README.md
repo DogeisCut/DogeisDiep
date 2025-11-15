@@ -9,12 +9,16 @@
 # Overview
 
 Welcome to **Dogeis Diep**, a diep.io private server created with diepcustom!   
-There are over 100+ tanks, features and additions for you to play around with, and more features are being added almost every day! I encourage you to invite your freinds!
+There are over 100+ tanks, features and additions for you to play around with, and more features are being added almost every day! I encourage you to invite your friends!
 
-You can level up to level 60 but stop growing at level 45, level 60 tanks/tier 4 tanks are avialable! Hold K to level up and press O to retry.
+You can level up to level 60 but stop growing at level 45, level 60 tanks/tier 4 tanks are available! Hold K to level up and press O to retry.
 
 **Discord:** [https://discord.gg/98NwxqJacr](https://discord.gg/98NwxqJacr)
 # Changelog
+
+**November 15th, 2025**,
+- Fixed circle walls on minimap rendering incorrectly sometimes. (Thanks xScripty!),
+- Fixed several grammar issues in the changelog and readme.,
 
 **November 14th, 2025**
 - Fixed General's swarm drones not targeting properly
@@ -23,11 +27,11 @@ You can level up to level 60 but stop growing at level 45, level 60 tanks/tier 4
 - New Landmine tank: Booby
 - Removed 'Rough' maze walls as they added nothing...
 - Circle walls in maze are no longer guaranteed.
-- Added Discord server to ingame changelog
+- Added Discord server to in-game changelog
 - Base drones no longer target shapes
 - Added Drone Dominators
 
-**November 13th, 2025 - Evening**
+**November 13rd, 2025 - Evening**
 - Changed stat names for Workshop to better match weapons.
 - Enabled leaderboard in Domination gamemode.
 - Clarified that flame launchers do more damage when close in upgrade message.
@@ -36,7 +40,7 @@ You can level up to level 60 but stop growing at level 45, level 60 tanks/tier 4
 - Added new Circle and 'Rough' maze walls.
 - Dominators now award 1,200 score on kill.
 
-**Novemeber 13th, 2025 - Morning**
+**November 13rd, 2025 - Morning**
 - New title menu background! This will be replaced with a custom render at some point.
 - New Incinerator tank: Atomizer
 - New Flamer tank: Flame Guard
@@ -48,7 +52,7 @@ You can level up to level 60 but stop growing at level 45, level 60 tanks/tier 4
 - Fixed Triple Auto Turrets not scaling with tank.
 - Corrected tab title from \"DogeisDiep\" to \"Dogeis Diep\"
 
-**Novemeber 12th, 2025**
+**November 12th, 2025**
 - Hello World!
 - TODO: fill in all the changes made the 12th and before
 - But as a summary: Added level 60 tanks (except for a few), increased shiny chance, Added Plane branch, added Flamer branch, allowed players to level up to level 60, Added Auto Tank, and probably some other stuff.
