@@ -33,6 +33,7 @@ export default class BaseDrone extends Drone {
 
         this.styleData.flags |= StyleFlags.renderFirst
         this.styleData.flags |= StyleFlags.showsAboveParent
+        this.styleData.zIndex = 1000000000
         this.ai.targetFilterShapes = true
         this.physicsData.pushFactor = 10
     }

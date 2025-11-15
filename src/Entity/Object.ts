@@ -22,7 +22,7 @@ import Vector from "../Physics/Vector";
 
 import { PhysicsGroup, PositionGroup, RelationsGroup, StyleGroup } from "../Native/FieldGroups";
 import { Entity } from "../Native/Entity";
-import { PositionFlags, PhysicsFlags } from "../Const/Enums";
+import { PositionFlags, PhysicsFlags, StyleFlags, Color } from "../Const/Enums";
 
 /**
  * The animator for how entities delete (the opacity and size fade out).
@@ -97,6 +97,8 @@ export default class ObjectEntity extends Entity {
 
     public allowInfiniteScaling: boolean = false;
 
+    public radiance: number = 0
+
     /** For internal spatial hash grid */
     private _queryId: number = -1;
 
@@ -128,7 +130,72 @@ export default class ObjectEntity extends Entity {
     }
 
     public makeRadiant(level: number) {
-        
+        class RadiantFader extends ObjectEntity {
+            public constructor(source: ObjectEntity) {
+                super(source.game)
+
+                //this.positionData.x = source.positionData.values.x
+                //this.positionData.y = source.positionData.values.y
+                //this.positionData.angle = source.positionData.values.angle
+                this.physicsData.sides = source.physicsData.values.sides
+                this.physicsData.size = source.physicsData.values.size
+                this.physicsData.flags = source.physicsData.values.flags
+                this.styleData.borderWidth = source.styleData.values.borderWidth
+                this.styleData.flags |= StyleFlags.showsAboveParent
+                this.setParent(source)
+                this.styleData.color = Color.RadiantG
+                this.styleData.opacity = 0
+                this.tick = (tick: number) => {
+                    super.tick(tick)
+
+                    this.physicsData.size = source.physicsData.values.size
+
+                    /* phase order:
+                    0-400: source R, this G, opacity 0 -> 1
+                    400-800: source B, this G, opacity 1 -> 0
+                    800-1200: source R, this R, opacity 0 -> 1
+                    */
+
+                    let totalCycleDuration = 2400
+                    let phaseDuration = 400
+                    let phaseValue = tick*25 % totalCycleDuration
+                    let currentPhaseIndex = Math.floor(phaseValue / phaseDuration)
+                    let phaseProgress = (phaseValue % phaseDuration) / phaseDuration
+
+                    if (currentPhaseIndex === 0) {
+                        source.styleData.color = Color.RadiantR
+                        this.styleData.color = Color.RadiantG
+                        this.styleData.opacity = phaseProgress
+                    } else if (currentPhaseIndex === 1) {
+                        source.styleData.color = Color.RadiantB
+                        this.styleData.color = Color.RadiantG
+                        this.styleData.opacity = 1 - phaseProgress
+                    } else if (currentPhaseIndex === 2) {
+                        source.styleData.color = Color.RadiantB
+                        this.styleData.color = Color.RadiantR
+                        this.styleData.opacity = phaseProgress
+                    } else if (currentPhaseIndex === 3) {
+                        source.styleData.color = Color.RadiantG
+                        this.styleData.color = Color.RadiantR
+                        this.styleData.opacity = 1 - phaseProgress
+                    } else if (currentPhaseIndex === 4) {
+                        source.styleData.color = Color.RadiantG
+                        this.styleData.color = Color.RadiantB
+                        this.styleData.opacity = phaseProgress
+                    } else {
+                        source.styleData.color = Color.RadiantR
+                        this.styleData.color = Color.RadiantB
+                        this.styleData.opacity = 1 - phaseProgress
+                    }
+                }
+            }
+        }
+        /* Crash :(
+        for (let child of this.children) {
+            child.makeRadiant(level)
+        }*/
+        this.radiance = 1
+        new RadiantFader(this)
     }
 
     /** Whether or not two objects are touching */
