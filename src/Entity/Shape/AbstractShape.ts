@@ -143,4 +143,7 @@ export default class AbstractShape extends LivingEntity {
 
         super.tick(tick);
     }
+
+    public readonly isShapeEntity: boolean = true
+
 }

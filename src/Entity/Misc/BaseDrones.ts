@@ -43,7 +43,7 @@ const DroneSpawnerDefinition = (count: number): BarrelDefinition => ({
     droneCount: count,
     canControlDrones: true,
     bullet: {
-        type: "drone",
+        type: "baseDrone",
         sizeRatio: 1,
         health: 1000,
         damage: 1,

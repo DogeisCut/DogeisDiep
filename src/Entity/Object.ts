@@ -111,6 +111,8 @@ export default class ObjectEntity extends Entity {
         this.styleData.zIndex = game.entities.zIndex++;
     }
 
+    public readonly isShapeEntity: boolean = false
+
     /** Receives collision pairs from CollisionManager and applies kb */
     public static handleCollision(objA: ObjectEntity, objB: ObjectEntity) {
         objA.onCollide(objA, objB);

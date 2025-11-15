@@ -24,6 +24,7 @@ import { InputFlags, PhysicsFlags } from "../Const/Enums";
 import { Entity } from "../Native/Entity";
 import { PhysicsGroup, PositionGroup, RelationsGroup } from "../Native/FieldGroups";
 import PackedEntitySet from "../Physics/PackedEntitySet";
+import AbstractShape from "./Shape/AbstractShape";
 
 // Beware
 // The logic in this file is somewhat messed up
@@ -98,6 +99,8 @@ export class AI {
 
     /** Optionally filter targets for health */
     public targetFilterNonLiving = true;
+    /** Optionally filter targets for shapes */
+    public targetFilterShapes = false;
     /** Target filter letting owner classes filter what can't be a target by position - false = not valid target */
     public targetFilter: (possibleTargetPos: VectorAbstract) => boolean;
 
@@ -175,6 +178,8 @@ export class AI {
                 if (!entity.isPhysical) continue;
                 // Check if the target is living
                 if (this.targetFilterNonLiving && !entity.healthData) continue;
+                // Check if the target is a shape
+                if (this.targetFilterShapes && entity.isShapeEntity) continue;
                 // Check if the target is a base
                 if (entity.physicsData.values.flags & PhysicsFlags.isBase) continue;
                 // Don't target entities who have an object owner

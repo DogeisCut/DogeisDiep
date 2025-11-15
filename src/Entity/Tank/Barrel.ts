@@ -43,6 +43,7 @@ import Leigon from "./Projectile/Leigon";
 import NecromergeShapeSquare from "./Projectile/NecromergeShapeSquare";
 import NecromergeShapeTriangle from "./Projectile/NecromergeShapeTriangle";
 import NecromergeShapePentagon from "./Projectile/NecromergeShapePentagon";
+import BaseDrone from "./Projectile/BaseDrone";
 /**
  * Class that determines when barrels can shoot, and when they can't.
  */
@@ -67,7 +68,7 @@ export class ShootCycle {
             this.reloadTime = reloadTime;
         }
 
-        const alwaysShoot = (this.barrelEntity.definition.forceFire) || (this.barrelEntity.definition.bullet.type === 'drone') || (this.barrelEntity.definition.bullet.type === 'minion') || (this.barrelEntity.definition.bullet.type === 'leigon');
+        const alwaysShoot = (this.barrelEntity.definition.forceFire) || (this.barrelEntity.definition.bullet.type === 'drone') || (this.barrelEntity.definition.bullet.type === 'minion') || (this.barrelEntity.definition.bullet.type === 'leigon') || (this.barrelEntity.definition.bullet.type == 'baseDrone');
 
         if (this.pos >= reloadTime) {
             // When its not shooting dont shoot, unless its a drone
@@ -186,6 +187,9 @@ export default class Barrel extends ObjectEntity {
                 break;
             case 'drone':
                 projectile = new Drone(this, this.tank, tankDefinition, angle);
+                break;
+            case 'baseDrone':
+                projectile = new BaseDrone(this, this.tank, tankDefinition, angle);
                 break;
             case 'necrodrone':
                 projectile = new NecromancerSquare(this, this.tank, tankDefinition, angle);

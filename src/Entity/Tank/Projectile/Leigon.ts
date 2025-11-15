@@ -78,17 +78,16 @@ export default class Leigon extends Drone implements BarrelBase {
         return this.physicsData.values.size / 50;
     }
 
-    /** This allows for factory to hook in before the entity moves. */
-    protected tickMixin(tick: number) {
-        this.reloadTime = this.tank.reloadTime;
+    // protected tickMixin(tick: number) {
+    //     this.reloadTime = this.tank.reloadTime;
 
-        const usingAI = !this.canControlDrones || !this.tank.inputs.attemptingShot() && !this.tank.inputs.attemptingRepel();
+    //     const usingAI = !this.canControlDrones || !this.tank.inputs.attemptingShot() && !this.tank.inputs.attemptingRepel();
 
-        if (usingAI && this.ai.state === AIState.idle) {
-        } else {
-            this.inputs.flags |= InputFlags.leftclick;
-        }
+    //     if (usingAI && this.ai.state === AIState.idle) {
+    //     } else {
+    //         this.inputs.flags |= InputFlags.leftclick;
+    //     }
 
-        super.tickMixin(tick);
-    }
+    //     super.tickMixin(tick);
+    // }
 }

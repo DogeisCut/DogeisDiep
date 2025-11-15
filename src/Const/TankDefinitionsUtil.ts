@@ -30,7 +30,7 @@ export type preAddonId = "dombase" | "launcher" | "pentagonBody"
 export type addonId = preAddonId | postAddonId;
 
 /** The types of projectiles in the game */
-export type projectileId = "bullet" | "drone" | "trap" | "necrodrone" | "minion" | "skimmer" | "rocket" | "swarm" | "flame" | "wall" | "croc" | "swarmMinion" | "necromergeSquare" | "necromergeTriangle" | "necromergePentagon" | "wraithdrone" | "leigon";
+export type projectileId = "bullet" | "drone" | "baseDrone" | "trap" | "necrodrone" | "minion" | "skimmer" | "rocket" | "swarm" | "flame" | "wall" | "croc" | "swarmMinion" | "necromergeSquare" | "necromergeTriangle" | "necromergePentagon" | "wraithdrone" | "leigon";
 
 /** The types of barrel addons that exist in the game */
 export type barrelAddonId = "trapLauncher" | "flameLauncher" | "-50Distance";
