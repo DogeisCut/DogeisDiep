@@ -272,6 +272,11 @@ export const enum Tank {
     - Arena Opener
     smasher or shooter thingy that spawns a circle of static pentagon things around it
     ocasionally, trapping everything inside
+    - Implement post 2019 classes
+    - Explosive Bullets Branch (4 pointed star)
+        - Firecracker obv
+        - One that explodes into traps
+        - One that explodes into swarm drones
     */
 }
 
