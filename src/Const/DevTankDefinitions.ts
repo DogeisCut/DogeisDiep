@@ -47,6 +47,7 @@ const DevTankDefinitions: TankDefinition[] = [
         upgradeMessage: "Use your right mouse button to teleport to where your mouse is",
         // upgrades dont have any affect
         upgrades: [],
+        allowInfiniteScaling: true,
         barrels: [
             {
                 angle: 0,

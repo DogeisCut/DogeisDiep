@@ -115,6 +115,7 @@ export const enum Tank {
     */
     Predator          = 28,
     Sprayer           = 29,
+    
     Trapper           = 31,
     GunnerTrapper     = 32,
     Overtrapper       = 33,
@@ -260,8 +261,9 @@ export const enum Tank {
     TriFlamer         = 96,
     Atomizer          = 97,
     Fumigator         = 98,
-    Claymore          = 99,
-    Booby             = 100,
+    Booby             = 99,
+    Claymore          = 100,
+    DominatorDR       = 101
     
 
     /* General Ideas 

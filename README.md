@@ -25,6 +25,7 @@ You can level up to level 60 but stop growing at level 45, level 60 tanks/tier 4
 - Circle walls in maze are no longer guaranteed.
 - Added Discord server to ingame changelog
 - Base drones no longer target shapes
+- Added Drone Dominators
 
 **November 13th, 2025 - Evening**
 - Changed stat names for Workshop to better match weapons.

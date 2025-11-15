@@ -44,12 +44,18 @@ export default class Dominator extends TankBody {
     public constructor(arena: ArenaEntity, base: TeamBase, pTankId: Tank | null = null) {
         let tankId: Tank;
         if (pTankId === null) {
-            const r = Math.random() * 3;
+            const possibleTankIdentifiers = [
+                Tank.DominatorD,
+                Tank.DominatorG,
+                Tank.DominatorT,
+                Tank.DominatorDR
+            ]
 
-            if (r < 1) tankId = Tank.DominatorD;
-            else if (r < 2) tankId = Tank.DominatorG;
-            else tankId = Tank.DominatorT;
-        } else tankId = pTankId;
+            const randomIndex = Math.floor(Math.random() * possibleTankIdentifiers.length)
+            tankId = possibleTankIdentifiers[randomIndex]
+        } else {
+            tankId = pTankId
+        }
 
         const inputs = new Inputs();
         const camera = new CameraEntity(arena.game);

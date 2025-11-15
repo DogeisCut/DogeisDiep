@@ -42,6 +42,7 @@ const CHANGELOG = [
     "- Circle walls in maze are no longer guaranteed.",
     "- Added Discord server to ingame changelog",
     "- Base drones no longer target shapes",
+    "- Added Drone Dominators",
     "",
     "November 13th, 2025 - Evening",
     "- Changed stat names for Workshop to better match weapons.",
