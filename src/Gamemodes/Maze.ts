@@ -86,7 +86,7 @@ export default class MazeArena extends ArenaEntity {
         const scaledX = gridX * CELL_SIZE - ARENA_SIZE / 2 + (scaledW / 2);
         const scaledY = gridY * CELL_SIZE - ARENA_SIZE / 2 + (scaledH / 2);
         if ((Math.random() < 0.1) && this.hasCircles) {
-            new MazeWallCircle(this.game, scaledX, scaledY, (scaledH + scaledW) / 2);
+            new MazeWallCircle(this.game, scaledX, scaledY, (scaledH + scaledW) / 2 / Math.PI);
         } else {
             new MazeWall(this.game, scaledX, scaledY, scaledH, scaledW);
         }

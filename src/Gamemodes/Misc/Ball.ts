@@ -34,7 +34,7 @@ class CustomShapeManager extends SandboxShapeManager {
     protected spawnShape(): AbstractShape {
         const {x, y} = this.arena.findSpawnLocation();
 
-        const penta = new Pentagon(this.game, Math.random() < 0.25, Math.random() < 0.1);
+        const penta = new Pentagon(this.game, Math.random() < 0.25);
 
         penta.positionData.values.x = Math.sign(x) * (Math.abs(x) - 200);
         penta.positionData.values.y = Math.sign(y) * (Math.abs(y) - 200);
