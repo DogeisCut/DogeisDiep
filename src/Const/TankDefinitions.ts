@@ -12075,7 +12075,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "fieldFactor": 1,
         "absorbtionFactor": 1,
         "speed": 1,
-        "maxHealth": Infinity,
+        "maxHealth": 10000000,
         "preAddon": "protectorBase",
         "postAddon": "protectorTurret",
         "sides": 1,
@@ -12104,7 +12104,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                     bullet: {
                         type: isAlternateBarrel ? null : "baseDrone",
                         sizeRatio: 1,
-                        health: Infinity,
+                        health: 10000000,
                         damage: 1.0,
                         speed: 2.7,
                         scatterRate: 1,
