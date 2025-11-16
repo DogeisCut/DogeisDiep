@@ -81,7 +81,6 @@ export default class BaseProtector extends TankBody {
         def.speed = camera.cameraData.values.movementSpeed = 0;
 
         this.physicsData.values.absorbtionFactor = 0;
-        this.physicsData.values.pushFactor = 0;
         this.physicsData.values.flags |= PhysicsFlags.isBase;
 
         this.ai = new AI(this);

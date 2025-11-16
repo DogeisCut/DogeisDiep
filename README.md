@@ -16,7 +16,10 @@ You can level up to level 60 but stop growing at level 45, level 60 tanks/tier 4
 **Discord:** [https://discord.gg/98NwxqJacr](https://discord.gg/98NwxqJacr)
 # Changelog
 
-**November 16th, 2025**,
+**November 16th, 2025 - Evening**
+- Base protectors no longer modify pushFactor due to strange behavior.
+
+**November 16th, 2025 - Morning**
 - Buffed base drone damage (0.5 -> 1.0)
 - Nerfed base drone push factor (10 -> 8)
 - Fix base drones rendering under the base protectors.
