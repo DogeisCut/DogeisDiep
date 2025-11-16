@@ -23,6 +23,7 @@ import Vector from "../Physics/Vector";
 import { PhysicsGroup, PositionGroup, RelationsGroup, StyleGroup } from "../Native/FieldGroups";
 import { Entity } from "../Native/Entity";
 import { PositionFlags, PhysicsFlags, StyleFlags, Color } from "../Const/Enums";
+import { shinyRarity, shinyRarityIncrease } from "../config";
 
 /**
  * The animator for how entities delete (the opacity and size fade out).
@@ -58,6 +59,7 @@ class DeletionAnimation {
         }
 
         this.frame -= 1;
+        
     }
 }
 
@@ -97,7 +99,7 @@ export default class ObjectEntity extends Entity {
 
     public allowInfiniteScaling: boolean = false;
 
-    public radiance: number | null = null
+    public shinyLevel: number | null = null
 
     /** For internal spatial hash grid */
     private _queryId: number = -1;
@@ -129,59 +131,38 @@ export default class ObjectEntity extends Entity {
         workaroundEntity.setParent(this);
     }
 
-    public makeRadiant(level: number, particles: boolean = true) {
-        class Particle extends ObjectEntity {
-            public life: number;
-            public driftX: number;
-            public driftY: number;
-            public constructor(game: GameServer, size: number = 10, life: number, driftX: number, driftY: number, color: Color) {
-                super(game)
-
-                this.physicsData.sides = 1
-                this.styleData.color = Color.Radiant
-                this.physicsData.size = size
-                this.physicsData.pushFactor = 0
-                this.physicsData.absorbtionFactor = 0
-                this.life = life
-                this.driftX = driftX
-                this.driftY = driftY
-                const maxLife = this.life
-
-                this.tick = (tick: number) => {
-                    super.tick(tick)
-                    this.velocity.x = this.driftX
-                    this.velocity.y = this.driftY
-                    const normalizedLife = this.life / maxLife
-                    this.styleData.opacity = normalizedLife
-                    if (this.life <= 0) {
-                       this.destroy(false)
-                    }
-                    this.life -= 1
-                }
-            }
-        }
-
-        // still crash :(
+    public makeShiny(level?: number | null) {
+        if (level === undefined) level = this.determineShinyTier()
+        if (level === null) return
         for (let child of this.children) {
             if (child.styleData.values.color == this.styleData.values.color && child != this)
-                child.makeRadiant(0, false)
+                child.styleData.values.color = Color.Shiny
         }
-        this.radiance = level
-        this.styleData.color = Color.Radiant
-        const particleGenerator = new ObjectEntity(this.game)
-        particleGenerator.setParent(this)
-        particleGenerator.tick = (tick: number) => {
-            if (particles) {
-                if (tick % 3 == 0) {
-                    const part = new Particle(this.game, 10, 10, (Math.random() - 0.5) * 2 * 10, (Math.random() - 0.5) * 2 * 10, this.styleData.color)
-                    part.positionData.x = this.positionData.values.x + (Math.random() - 0.5) * 2 * this.physicsData.size
-                    part.positionData.y = this.positionData.values.y + (Math.random() - 0.5) * 2 * this.physicsData.size
-                    part.styleData.zIndex = this.styleData.values.zIndex + 1
-                }
-            }
-        }
+        this.shinyLevel = level
+        this.styleData.color = Color.Shiny
     }
 
+    public determineShinyTier(): number | null {
+        let randomnessValue = Math.random()
+        let tierIndex = 0
+        let chanceForCurrentTier = shinyRarity
+        let lastPassedTier: number | null = null
+
+        while (chanceForCurrentTier > 1/1843200) {
+            if (randomnessValue <= chanceForCurrentTier) {
+                lastPassedTier = tierIndex
+            } else {
+                break
+            }
+
+            randomnessValue /= chanceForCurrentTier
+            chanceForCurrentTier /= shinyRarityIncrease
+            tierIndex++
+        }
+
+        return lastPassedTier
+    }
+    
     /** Whether or not two objects are touching */
     public static isColliding(objA: ObjectEntity, objB: ObjectEntity): boolean {
         if (objA === objB) return false;
@@ -418,6 +399,15 @@ export default class ObjectEntity extends Entity {
     public tick(tick: number) {
         this.deletionAnimation?.tick();
 
+        if (this.shinyLevel !== null) {
+            if (tick % 3 == 0) {
+                const part = new Particle(this.game, 10, 10, (Math.random() - 0.5) * 2 * 10, (Math.random() - 0.5) * 2 * 10, this.styleData.color)
+                part.positionData.x = this.positionData.values.x + (Math.random() - 0.5) * 2 * this.physicsData.size
+                part.positionData.y = this.positionData.values.y + (Math.random() - 0.5) * 2 * this.physicsData.size
+                part.styleData.zIndex = this.styleData.values.zIndex + 1
+            }
+        }
+
         for (let i = 0; i < this.children.length; ++i) this.children[i].tick(tick);
     
         // Keep things in the arena
@@ -433,6 +423,41 @@ export default class ObjectEntity extends Entity {
                 else if (this.positionData.values.y > arena.arenaData.values.bottomY + arena.ARENA_PADDING) this.positionData.y = arena.arenaData.values.bottomY + arena.ARENA_PADDING;
                 else break yPos;
             }
+        }
+    }
+}
+
+class Particle extends ObjectEntity {
+    public life: number;
+    public driftX: number;
+    public driftY: number;
+    public constructor(game: GameServer, size: number = 10, life: number, driftX: number, driftY: number, color: Color) {
+        super(game)
+
+        this.physicsData.sides = 1
+        this.styleData.color = Color.Shiny
+        this.physicsData.flags |= PhysicsFlags.canEscapeArena
+        this.physicsData.flags |= PhysicsFlags.noOwnTeamCollision
+        this.physicsData.flags |= PhysicsFlags.onlySameOwnerCollision
+        this.physicsData.flags |= PhysicsFlags.isBase
+        this.physicsData.size = size
+        this.physicsData.pushFactor = 0
+        this.physicsData.absorbtionFactor = 0
+        this.life = life
+        this.driftX = driftX
+        this.driftY = driftY
+        const maxLife = this.life
+
+        this.tick = (tick: number) => {
+            super.tick(tick)
+            this.velocity.x = this.driftX
+            this.velocity.y = this.driftY
+            const normalizedLife = this.life / maxLife
+            this.styleData.opacity = normalizedLife
+            if (this.life <= 0) {
+                this.destroy(false)
+            }
+            this.life -= 1
         }
     }
 }

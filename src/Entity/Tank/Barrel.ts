@@ -243,6 +243,8 @@ export default class Barrel extends ObjectEntity {
             if (this.definition.bullet.sides) projectile.physicsData.values.sides = this.definition.bullet.sides;
 
             if (this.definition.bullet.color) projectile.styleData.values.color = this.definition.bullet.color;
+            
+            if (this.tank && this.tank.shinyLevel !== null) projectile.makeShiny(this.tank.shinyLevel)
         }
     }
 

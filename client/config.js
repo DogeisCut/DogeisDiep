@@ -35,6 +35,11 @@ const CHANGELOG = [
     "",
     "November 16th, 2025 - Evening",
     "- Base protectors no longer modify pushFactor due to strange behavior.",
+    "- Animated color support.",
+    "- Radience no longer uses two extra entities and functions alone.",
+    "- Radience has been renamed back to Shiny. (Though there are multiple levels now)",
+    "- Refactored Radiance/Shiny to have multiple levels, adjusted rarities. (Currently no extra visuals)",
+    "- Made circle maze walls half as large due to shapes getting stuck and lagging the server.",
     "",
     "November 16th, 2025 - Morning",
     "- Buffed base drone damage (0.5 -> 1.0)",
@@ -49,6 +54,9 @@ const CHANGELOG = [
     "- Added base protectors",
     "- Replaced shiny variants with \"Radiant\" variants (more radiance levels coming soon)",
     "",
+    "More in the repository..."
+    // Off the screen
+    /*
     "November 14th, 2025",
     "- Fixed General's swarm drones not targeting properly",
     "- Buffed Pentamancer, it can now claim all shapes and those shapes can merge into higher shapes.",
@@ -60,9 +68,6 @@ const CHANGELOG = [
     "- Base drones no longer target shapes",
     "- Added Drone Dominators",
     "",
-    "..."
-    // Off the screen
-    /*
     "November 13rd, 2025 - Evening",
     "- Changed stat names for Workshop to better match weapons.",
     "- Enabled leaderboard in Domination gamemode.",

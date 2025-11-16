@@ -556,8 +556,7 @@ export default class Client {
   
         if (camera.cameraData.values.flags & CameraFlags.gameWaitingStart) camera.cameraData.values.flags &= ~CameraFlags.gameWaitingStart;
 
-        if (Math.random() < config.shinyRarity)
-            tank.makeRadiant(0)
+        tank.makeShiny()
     }
 
     public tick(tick: number) {

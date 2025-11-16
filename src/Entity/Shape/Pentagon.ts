@@ -21,6 +21,7 @@ import AbstractShape from "./AbstractShape";
 
 import { Color } from "../../Const/Enums";
 import { shinyRarity } from "../../config";
+import ObjectEntity from "../Object";
 
 /**
  * Pentagon entity class.
@@ -30,7 +31,7 @@ export default class Pentagon extends AbstractShape {
     protected static BASE_ORBIT = AbstractShape.BASE_ORBIT / 2;
     protected static BASE_VELOCITY = AbstractShape.BASE_VELOCITY / 2;
 
-    public constructor(game: GameServer, isAlpha=false, isShiny=Math.random() < shinyRarity) {
+    public constructor(game: GameServer, isAlpha=false, shinyLevel?: number|null) {
         super(game);
         
         this.nameData.values.name = "Pentagon";
@@ -47,8 +48,6 @@ export default class Pentagon extends AbstractShape {
         this.scoreReward = 130;
 
         this.constructAlpha(isAlpha);
-        if (isShiny) {
-            this.makeRadiant(0)
-        }
+        this.makeShiny(shinyLevel)
     }
 }

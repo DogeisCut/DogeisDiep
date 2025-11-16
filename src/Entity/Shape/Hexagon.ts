@@ -22,7 +22,7 @@ import { Color } from "../../Const/Enums"
 import { shinyRarity } from "../../config"
 
 export default class Hexagon extends AbstractShape {
-	public constructor(game: GameServer, isAlpha=false, isShiny=Math.random() < shinyRarity) {
+	public constructor(game: GameServer, isAlpha=false, shinyLevel?: number|null) {
 		super(game)
 
 		this.nameData.values.name = "Hexagon"
@@ -38,8 +38,6 @@ export default class Hexagon extends AbstractShape {
 		this.scoreReward = 400
 
 		this.constructAlpha(isAlpha);
-        if (isShiny) {
-            this.makeRadiant(0)
-        }
+        this.makeShiny(shinyLevel)
 	}
 }

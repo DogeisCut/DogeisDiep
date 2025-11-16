@@ -21,9 +21,10 @@ import AbstractShape from "./AbstractShape";
 
 import { Color } from "../../Const/Enums";
 import { shinyRarity } from "../../config";
+import ObjectEntity from "../Object";
 
 export default class Triangle extends AbstractShape {
-    public constructor(game: GameServer, isAlpha=false, isShiny=Math.random() < shinyRarity) {
+    public constructor(game: GameServer, isAlpha=false, shinyLevel?: number|null) {
         super(game);
         
         this.nameData.values.name = "Triangle";
@@ -36,8 +37,6 @@ export default class Triangle extends AbstractShape {
         this.scoreReward = 25;
 
         this.constructAlpha(isAlpha);
-        if (isShiny) {
-            this.makeRadiant(0)
-        }
+        this.makeShiny(shinyLevel)
     }
 }

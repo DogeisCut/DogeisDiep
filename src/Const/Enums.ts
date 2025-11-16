@@ -29,7 +29,7 @@ export const enum Color {
     TeamRed = 4,
     TeamPurple = 5,
     TeamGreen = 6,
-    Shiny = 7,
+    OldShiny = 7,
     EnemySquare = 8,
     EnemyTriangle = 9,
     EnemyPentagon = 10,
@@ -43,10 +43,10 @@ export const enum Color {
     EnemyHexagon = 18,
     NecromancerPentagon = 19,
     NecromancerTriangle = 20,
-    RadiantR = 21,
-    RadiantG = 22,
-    RadiantB = 23,
-    Radiant = 24,
+    ShinyR = 21,
+    ShinyG = 22,
+    ShinyB = 23,
+    Shiny = 24,
 
     kMaxColors = 25
 }
@@ -64,7 +64,7 @@ export const ColorsHexCode: Record<Color, ColorValue > = {
     [Color.TeamRed]: 0xF14E54,
     [Color.TeamPurple]: 0xBF7FF5,
     [Color.TeamGreen]: 0x00E16E,
-    [Color.Shiny]: 0x8AFF69,
+    [Color.OldShiny]: 0x8AFF69,
     [Color.EnemySquare]: 0xFFE869,
     [Color.EnemyTriangle]: 0xFC7677,
     [Color.EnemyPentagon]: 0x768DFC,
@@ -78,14 +78,14 @@ export const ColorsHexCode: Record<Color, ColorValue > = {
     [Color.EnemyHexagon]: 0x7ADBBC,
     [Color.NecromancerPentagon]: 0xa276fc,
     [Color.NecromancerTriangle]: 0xF14E54,
-    [Color.RadiantR]: 0xCC9999,
-    [Color.RadiantG]: 0x99CC99,
-    [Color.RadiantB]: 0x9999CC,
-    [Color.Radiant]: 0x000000,
+    [Color.ShinyR]: 0xCC9999,
+    [Color.ShinyG]: 0x99CC99,
+    [Color.ShinyB]: 0x9999CC,
+    [Color.Shiny]: 0x000000,
     [Color.kMaxColors]: 0x000000
 }
 
-ColorsHexCode[Color.Radiant] = [1, Color.RadiantR, Color.RadiantG, Color.RadiantB]
+ColorsHexCode[Color.Shiny] = [1, Color.ShinyR, Color.ShinyG, Color.ShinyB]
 
 export function getResolvedColor(colorValue: ColorValue): number {
 	if (Array.isArray(colorValue)) {

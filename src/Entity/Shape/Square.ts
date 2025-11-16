@@ -23,7 +23,7 @@ import { Color } from "../../Const/Enums";
 import { shinyRarity } from "../../config";
 
 export default class Square extends AbstractShape {
-    public constructor(game: GameServer, isAlpha=false, isShiny=Math.random() < shinyRarity) {
+    public constructor(game: GameServer, isAlpha=false, shinyLevel?: number|null) {
         super(game);
         this.nameData.values.name = "Square";
         this.healthData.values.health = this.healthData.values.maxHealth = 10;
@@ -35,8 +35,6 @@ export default class Square extends AbstractShape {
         this.scoreReward = 10;
 
         this.constructAlpha(isAlpha);
-        if (isShiny) {
-            this.makeRadiant(0)
-        }
+        this.makeShiny(shinyLevel);
     }
 }

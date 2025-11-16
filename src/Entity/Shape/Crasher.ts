@@ -36,7 +36,7 @@ export default class Crasher extends AbstractShape {
     /** The max speed the crasher can move when targetting a player.s */
     private targettingSpeed: number;
 
-    public constructor(game: GameServer, large=false, isShiny=Math.random() < shinyRarity) {
+    public constructor(game: GameServer, large=false, shinyLevel?: number|null) {
         super(game);
 
         this.nameData.values.name = "Crasher";
@@ -60,9 +60,7 @@ export default class Crasher extends AbstractShape {
         this.ai.aimSpeed = (this.ai.movementSpeed = this.targettingSpeed);
         this.ai['_findTargetInterval'] = tps;
 
-        if (isShiny) {
-            this.makeRadiant(0)
-        }
+        this.makeShiny(shinyLevel)
     }
 
     tick(tick: number) {

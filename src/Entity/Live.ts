@@ -63,14 +63,31 @@ export default class LivingEntity extends ObjectEntity {
         super.destroy(animate);
     }
 
-    public makeRadiant(level: number): void {
-        super.makeRadiant(level)
-        this.scoreReward *= 100 + (level > 0 ? (10**level) : 0);
-        this.healthData.values.health = this.healthData.values.maxHealth *= 10 + (level > 0 ? (5**level) : 0);
+    public makeShiny(level?: number | null): void {
+        if (level === undefined) level = this.determineShinyTier()
+        if (level === null) return
+        super.makeShiny(level)
+        this.scoreReward *= 100 * ((4 * level) || 1);
+        this.healthData.values.health = this.healthData.values.maxHealth *= 10;
+        const prefix = (() => {
+            switch (level) {
+                case 0:
+                    return "Shiny "
+                case 1:
+                    return "Sparkling "
+                case 2:
+                    return "Glinting "
+                case 3:
+                    return "Glamorious"
+                case 4:
+                    return "Charismatic "
+                default:
+                    return "Incredibly Shiny "
+            }
+        })()
         if (this.nameData) 
-            this.nameData.values.name = "Radiant " + this.nameData.values.name;
+            this.nameData.values.name = prefix + this.nameData.values.name;
     }
-    
 
     /** Applies damage to two entity after colliding with eachother. */
     public static handleCollision(entity1: LivingEntity, entity2: LivingEntity) {
