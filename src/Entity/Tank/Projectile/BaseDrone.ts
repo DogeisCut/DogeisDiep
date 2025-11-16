@@ -31,7 +31,7 @@ export default class BaseDrone extends Drone {
     public constructor(barrel: Barrel, tank: BarrelBase, tankDefinition: TankDefinition | null, shootAngle: number) {
         super(barrel, tank, tankDefinition, shootAngle);
 
-        this.styleData.zIndex = tank.styleData.values.zIndex + 1
+        this.styleData.zIndex = tank.styleData.values.zIndex + 100
         this.ai.targetFilterShapes = true
         this.physicsData.pushFactor = 10
     }
