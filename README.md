@@ -16,6 +16,10 @@ You can level up to level 60 but stop growing at level 45, level 60 tanks/tier 4
 **Discord:** [https://discord.gg/98NwxqJacr](https://discord.gg/98NwxqJacr)
 # Changelog
 
+**November 16th, 2025**,
+- Buffed base drone damage (0.5 -> 1.0)
+- Fix base drones rendering under the base protectors.
+
 **November 15th, 2025**,
 - Fixed circle walls on minimap rendering incorrectly sometimes. (Thanks xScripty!)
 - Fixed several grammar issues in the changelog and readme.
