@@ -39,6 +39,7 @@ const CHANGELOG = [
     "- Added Crasher Clumps!",
     "- Added unique color for Pentamancer triangles",
     "- Added base protectors",
+    "- Replaced shiny variants with \"Radiant\" variants (more radiance levels coming soon)",
     "",
     "November 14th, 2025",
     "- Fixed General's swarm drones not targeting properly",

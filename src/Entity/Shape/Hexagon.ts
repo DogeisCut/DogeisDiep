@@ -38,6 +38,8 @@ export default class Hexagon extends AbstractShape {
 		this.scoreReward = 400
 
 		this.constructAlpha(isAlpha);
-        this.constructShiny(isShiny);
+        if (isShiny) {
+            this.makeRadiant(0)
+        }
 	}
 }

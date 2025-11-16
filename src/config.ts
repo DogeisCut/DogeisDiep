@@ -88,11 +88,14 @@ export const devPasswordHash: string | undefined = process.env.DEV_PASSWORD_HASH
 /** Whether or not Verbose Logs should be logged */
 export const doVerboseLogs: boolean = false;
 
-type Shiny = "shiny"
-
-export const shinyRarity = 0.001//0.000001
-export const shinyRarities: Record<Shiny, number> = {
-    shiny: 1
+// TODO: enum for this lol
+export const shinyRarity = 0.003//0.000001
+export const shinyRarities: Record<number, number> = {
+    0: 1, // no effects
+    1: 0.1, // glow
+    2: 0.01, // spiky
+    3: 0.001, // bigger
+    4: 0.0001 // even bigger and faster
 }
 
 /** Access levels of each client. */

@@ -84,7 +84,7 @@ export default class TankBody extends LivingEntity implements BarrelBase {
 
     public isShiny: boolean = false;
 
-    public constructor(game: GameServer, camera: CameraEntity, inputs: Inputs, isShiny=Math.random() < shinyRarity) {
+    public constructor(game: GameServer, camera: CameraEntity, inputs: Inputs) {
         super(game);
         this.cameraEntity = camera;
         this.inputs = inputs;
@@ -108,18 +108,6 @@ export default class TankBody extends LivingEntity implements BarrelBase {
         this.damagePerTick = 5;
         this.maxDamageMultiplier = 6;
         this.setTank(Tank.Basic);
-        
-        this.constructShiny(isShiny)
-    }
-
-    public constructShiny(isShiny: boolean) {
-        this.isShiny = isShiny;
-        if (isShiny) {
-            this.scoreReward *= 100;
-            this.healthData.values.health = this.healthData.values.maxHealth *= 10;
-            this.styleData.values.color = Color.Shiny
-            this.nameData.values.name = "Shiny " + this.nameData.values.name;
-        }
     }
 
     /** The active change in size from the base size to the current. Contributes to barrel and addon sizes. */

@@ -36,6 +36,8 @@ export default class Triangle extends AbstractShape {
         this.scoreReward = 25;
 
         this.constructAlpha(isAlpha);
-        this.constructShiny(isShiny);
+        if (isShiny) {
+            this.makeRadiant(0)
+        }
     }
 }

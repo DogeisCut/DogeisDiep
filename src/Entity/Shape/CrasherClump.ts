@@ -37,7 +37,9 @@ export default class CrasherClump extends AbstractShape {
         this.damagePerTick = 2;
         this.scoreReward = 1000;
 
-        this.constructShiny(isShiny);
+        if (isShiny) {
+            this.makeRadiant(0)
+        }
 
         const createTriangle = (x: number, y: number, angle: number) => {
             const triangle = new ObjectEntity(this.game)
@@ -50,6 +52,9 @@ export default class CrasherClump extends AbstractShape {
             triangle.styleData.color = this.styleData.color
             triangle.physicsData.sides = 3
             triangle.physicsData.size = 55 * Math.SQRT1_2;
+            if (this.radiance !== null) {
+                triangle.makeRadiant(this.radiance, false)
+            }
         }
 
         for (let currentIndex = 0; currentIndex < 3; currentIndex++) {
@@ -65,7 +70,10 @@ export default class CrasherClump extends AbstractShape {
     public onDeath(killer: LivingEntity): void {
         const crasherCount = 6
         for (let count = 0; count < crasherCount; count++) {
-            const crasher = new Crasher(this.game, true, this.isShiny)
+            const crasher = new Crasher(this.game, true, false)
+            if (this.radiance !== null) {
+                crasher.makeRadiant(this.radiance)
+            }
             const spawnAngle = (Math.PI * 2) / crasherCount * count
             const spawnSpeedMagnitude = 4
 

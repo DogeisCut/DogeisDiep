@@ -97,7 +97,7 @@ export default class ObjectEntity extends Entity {
 
     public allowInfiniteScaling: boolean = false;
 
-    public radiance: number = 0
+    public radiance: number | null = null
 
     /** For internal spatial hash grid */
     private _queryId: number = -1;
@@ -129,7 +129,38 @@ export default class ObjectEntity extends Entity {
         workaroundEntity.setParent(this);
     }
 
-    public makeRadiant(level: number) {
+    public makeRadiant(level: number, particles: boolean = true) {
+        class Particle extends ObjectEntity {
+            public life: number;
+            public driftX: number;
+            public driftY: number;
+            public constructor(game: GameServer, size: number = 10, life: number, driftX: number, driftY: number, color: Color) {
+                super(game)
+
+                this.physicsData.sides = 1
+                this.styleData.color = color
+                //this.makeRadiant(0, false)
+                this.physicsData.size = size
+                this.physicsData.pushFactor = 0
+                this.physicsData.absorbtionFactor = 0
+                this.life = life
+                this.driftX = driftX
+                this.driftY = driftY
+                const maxLife = this.life
+
+                this.tick = (tick: number) => {
+                    super.tick(tick)
+                    this.velocity.x = this.driftX
+                    this.velocity.y = this.driftY
+                    const normalizedLife = this.life / maxLife
+                    this.styleData.opacity = normalizedLife
+                    if (this.life <= 0) {
+                       this.destroy(false)
+                    }
+                    this.life -= 1
+                }
+            }
+        }
         class RadiantFader extends ObjectEntity {
             public constructor(source: ObjectEntity) {
                 super(source.game)
@@ -186,6 +217,15 @@ export default class ObjectEntity extends Entity {
                         source.styleData.color = Color.RadiantR
                         this.styleData.color = Color.RadiantB
                         this.styleData.opacity = 1 - phaseProgress
+                    }
+
+                    if (particles) {
+                        if (tick % 3 == 0) {
+                            const part = new Particle(source.game, 10, 10, (Math.random() - 0.5) * 2 * 10, (Math.random() - 0.5) * 2 * 10, this.styleData.color)
+                            part.positionData.x = source.positionData.values.x + (Math.random() - 0.5) * 2 * this.physicsData.size
+                            part.positionData.y = source.positionData.values.y + (Math.random() - 0.5) * 2 * this.physicsData.size
+                            part.styleData.zIndex = source.styleData.values.zIndex + 1
+                        }
                     }
                 }
             }

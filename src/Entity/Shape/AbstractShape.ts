@@ -78,16 +78,6 @@ export default class AbstractShape extends LivingEntity {
         this.maxDamageMultiplier = 4.0;
     }
 
-    public constructShiny(isShiny: boolean) {
-        this.isShiny = isShiny;
-        if (isShiny) {
-            this.scoreReward *= 100;
-            this.healthData.values.health = this.healthData.values.maxHealth *= 10;
-            this.styleData.values.color = Color.Shiny
-            this.nameData.values.name = "Shiny " + this.nameData.values.name;
-        }
-    }
-
     public constructAlpha(isAlpha: boolean) {
         this.isAlpha = isAlpha;
         if (isAlpha) {

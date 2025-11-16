@@ -35,6 +35,8 @@ export default class Square extends AbstractShape {
         this.scoreReward = 10;
 
         this.constructAlpha(isAlpha);
-        this.constructShiny(isShiny);
+        if (isShiny) {
+            this.makeRadiant(0)
+        }
     }
 }

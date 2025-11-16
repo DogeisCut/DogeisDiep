@@ -62,6 +62,14 @@ export default class LivingEntity extends ObjectEntity {
 
         super.destroy(animate);
     }
+
+    public makeRadiant(level: number): void {
+        super.makeRadiant(level)
+        this.scoreReward *= 100 + (level > 0 ? (10**level) : 0);
+        this.healthData.values.health = this.healthData.values.maxHealth *= 10 + (level > 0 ? (5**level) : 0);
+        if (this.nameData) 
+            this.nameData.values.name = "Radiant " + this.nameData.values.name;
+    }
     
 
     /** Applies damage to two entity after colliding with eachother. */

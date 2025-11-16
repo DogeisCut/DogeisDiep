@@ -47,6 +47,8 @@ export default class Pentagon extends AbstractShape {
         this.scoreReward = 130;
 
         this.constructAlpha(isAlpha);
-        this.constructShiny(isShiny);
+        if (isShiny) {
+            this.makeRadiant(0)
+        }
     }
 }

@@ -60,7 +60,9 @@ export default class Crasher extends AbstractShape {
         this.ai.aimSpeed = (this.ai.movementSpeed = this.targettingSpeed);
         this.ai['_findTargetInterval'] = tps;
 
-        this.constructShiny(isShiny)
+        if (isShiny) {
+            this.makeRadiant(0)
+        }
     }
 
     tick(tick: number) {
