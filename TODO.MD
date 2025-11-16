@@ -1,0 +1,6 @@
+- [ ] **Tanks**
+    - [ ] Remaining Tank Ideas
+    - [ ] Claymore Visuals
+    - [ ] Booby Visuals
+- [ ] **Features**
+    - [ ] Kill messages for rare shapes. (New property?)
