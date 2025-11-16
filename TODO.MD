@@ -1,5 +1,6 @@
 - [ ] **Tanks**
     - [ ] Remaining Tank Ideas
+        - [ ] Move them into here.
     - [ ] Claymore Visuals
     - [ ] Booby Visuals
 - [ ] **Features**
