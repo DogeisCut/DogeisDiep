@@ -18,6 +18,7 @@ You can level up to level 60 but stop growing at level 45, level 60 tanks/tier 4
 
 **November 16th, 2025**,
 - Buffed base drone damage (0.5 -> 1.0)
+- Nerfed base drone push factor (10 -> 8)
 - Fix base drones rendering under the base protectors.
 
 **November 15th, 2025**,

@@ -33,6 +33,6 @@ export default class BaseDrone extends Drone {
 
         this.styleData.zIndex = tank.styleData.values.zIndex + 100
         this.ai.targetFilterShapes = true
-        this.physicsData.pushFactor = 10
+        this.physicsData.pushFactor = 8
     }
 }

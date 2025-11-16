@@ -35,6 +35,7 @@ const CHANGELOG = [
     "",
     "November 16th, 2025",
     "- Buffed base drone damage (0.5 -> 1.0)",
+    "- Nerfed base drone push factor (10 -> 8)",
     "- Fix base drones rendering under the base protectors.",
     "",
     "November 15th, 2025",
