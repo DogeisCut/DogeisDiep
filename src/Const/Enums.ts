@@ -46,14 +46,17 @@ export const enum Color {
     RadiantR = 21,
     RadiantG = 22,
     RadiantB = 23,
+    Radiant = 24,
 
-    kMaxColors = 24
+    kMaxColors = 25
 }
 
 /**
  * The hex color codes of each color (by ID), expressed as an int (0x00RRGGBB)
  */
-export const ColorsHexCode: Record<Color, number> = {
+export type ColorValue = number | [number, ...Color[]]
+
+export const ColorsHexCode: Record<Color, ColorValue > = {
     [Color.Border]: 0x555555,
     [Color.Barrel]: 0x999999,
     [Color.Tank]: 0x00B2E1,
@@ -78,7 +81,49 @@ export const ColorsHexCode: Record<Color, number> = {
     [Color.RadiantR]: 0xCC9999,
     [Color.RadiantG]: 0x99CC99,
     [Color.RadiantB]: 0x9999CC,
+    [Color.Radiant]: 0x000000,
     [Color.kMaxColors]: 0x000000
+}
+
+ColorsHexCode[Color.Radiant] = [1, Color.RadiantR, Color.RadiantG, Color.RadiantB]
+
+export function getResolvedColor(colorValue: ColorValue): number {
+	if (Array.isArray(colorValue)) {
+		let rate = colorValue[0]
+		let list = colorValue.slice(1)
+		return getAnimatedColor(rate, ...list)
+	}
+	return colorValue
+}
+
+export function getAnimatedColor(resolutionRateSeconds: number, ...colorIndexList: Color[]): number {
+	let currentTimeSeconds = Date.now() / 1000
+	let totalCycleTimeSeconds = resolutionRateSeconds * colorIndexList.length
+	let timeInCycleSeconds = currentTimeSeconds % totalCycleTimeSeconds
+	let currentIndexFloat = timeInCycleSeconds / resolutionRateSeconds
+	let currentColorListIndex = Math.floor(currentIndexFloat)
+	let nextColorListIndex = (currentColorListIndex + 1) % colorIndexList.length
+	let blendAmount = currentIndexFloat - currentColorListIndex
+
+	let currentColorIndex = colorIndexList[currentColorListIndex]
+	let nextColorIndex = colorIndexList[nextColorListIndex]
+
+	let currentColorValue = ColorsHexCode[currentColorIndex] as number
+	let nextColorValue = ColorsHexCode[nextColorIndex] as number
+
+	let currentRed = (currentColorValue >> 16) & 0xff
+	let currentGreen = (currentColorValue >> 8) & 0xff
+	let currentBlue = currentColorValue & 0xff
+
+	let nextRed = (nextColorValue >> 16) & 0xff
+	let nextGreen = (nextColorValue >> 8) & 0xff
+	let nextBlue = nextColorValue & 0xff
+
+	let blendedRed = Math.round(currentRed + (nextRed - currentRed) * blendAmount)
+	let blendedGreen = Math.round(currentGreen + (nextGreen - currentGreen) * blendAmount)
+	let blendedBlue = Math.round(currentBlue + (nextBlue - currentBlue) * blendAmount)
+
+	return (blendedRed << 16) | (blendedGreen << 8) | blendedBlue
 }
 
 /**

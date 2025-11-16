@@ -138,8 +138,7 @@ export default class ObjectEntity extends Entity {
                 super(game)
 
                 this.physicsData.sides = 1
-                this.styleData.color = color
-                //this.makeRadiant(0, false)
+                this.styleData.color = Color.Radiant
                 this.physicsData.size = size
                 this.physicsData.pushFactor = 0
                 this.physicsData.absorbtionFactor = 0
@@ -161,81 +160,26 @@ export default class ObjectEntity extends Entity {
                 }
             }
         }
-        class RadiantFader extends ObjectEntity {
-            public constructor(source: ObjectEntity) {
-                super(source.game)
 
-                //this.positionData.x = source.positionData.values.x
-                //this.positionData.y = source.positionData.values.y
-                //this.positionData.angle = source.positionData.values.angle
-                this.physicsData.sides = source.physicsData.values.sides
-                this.physicsData.size = source.physicsData.values.size
-                this.physicsData.flags = source.physicsData.values.flags
-                this.styleData.borderWidth = source.styleData.values.borderWidth
-                this.styleData.flags |= StyleFlags.showsAboveParent
-                this.setParent(source)
-                this.styleData.color = Color.RadiantG
-                this.styleData.opacity = 0
-                this.tick = (tick: number) => {
-                    super.tick(tick)
-
-                    this.physicsData.size = source.physicsData.values.size
-
-                    /* phase order:
-                    0-400: source R, this G, opacity 0 -> 1
-                    400-800: source B, this G, opacity 1 -> 0
-                    800-1200: source R, this R, opacity 0 -> 1
-                    */
-
-                    let totalCycleDuration = 2400
-                    let phaseDuration = 400
-                    let phaseValue = tick*25 % totalCycleDuration
-                    let currentPhaseIndex = Math.floor(phaseValue / phaseDuration)
-                    let phaseProgress = (phaseValue % phaseDuration) / phaseDuration
-
-                    if (currentPhaseIndex === 0) {
-                        source.styleData.color = Color.RadiantR
-                        this.styleData.color = Color.RadiantG
-                        this.styleData.opacity = phaseProgress
-                    } else if (currentPhaseIndex === 1) {
-                        source.styleData.color = Color.RadiantB
-                        this.styleData.color = Color.RadiantG
-                        this.styleData.opacity = 1 - phaseProgress
-                    } else if (currentPhaseIndex === 2) {
-                        source.styleData.color = Color.RadiantB
-                        this.styleData.color = Color.RadiantR
-                        this.styleData.opacity = phaseProgress
-                    } else if (currentPhaseIndex === 3) {
-                        source.styleData.color = Color.RadiantG
-                        this.styleData.color = Color.RadiantR
-                        this.styleData.opacity = 1 - phaseProgress
-                    } else if (currentPhaseIndex === 4) {
-                        source.styleData.color = Color.RadiantG
-                        this.styleData.color = Color.RadiantB
-                        this.styleData.opacity = phaseProgress
-                    } else {
-                        source.styleData.color = Color.RadiantR
-                        this.styleData.color = Color.RadiantB
-                        this.styleData.opacity = 1 - phaseProgress
-                    }
-
-                    if (particles) {
-                        if (tick % 3 == 0) {
-                            const part = new Particle(source.game, 10, 10, (Math.random() - 0.5) * 2 * 10, (Math.random() - 0.5) * 2 * 10, this.styleData.color)
-                            part.positionData.x = source.positionData.values.x + (Math.random() - 0.5) * 2 * this.physicsData.size
-                            part.positionData.y = source.positionData.values.y + (Math.random() - 0.5) * 2 * this.physicsData.size
-                            part.styleData.zIndex = source.styleData.values.zIndex + 1
-                        }
-                    }
+        // still crash :(
+        for (let child of this.children) {
+            if (child.styleData.values.color == this.styleData.values.color && child != this)
+                child.makeRadiant(0, false)
+        }
+        this.radiance = level
+        this.styleData.color = Color.Radiant
+        const particleGenerator = new ObjectEntity(this.game)
+        particleGenerator.setParent(this)
+        particleGenerator.tick = (tick: number) => {
+            if (particles) {
+                if (tick % 3 == 0) {
+                    const part = new Particle(this.game, 10, 10, (Math.random() - 0.5) * 2 * 10, (Math.random() - 0.5) * 2 * 10, this.styleData.color)
+                    part.positionData.x = this.positionData.values.x + (Math.random() - 0.5) * 2 * this.physicsData.size
+                    part.positionData.y = this.positionData.values.y + (Math.random() - 0.5) * 2 * this.physicsData.size
+                    part.styleData.zIndex = this.styleData.values.zIndex + 1
                 }
             }
         }
-        /* Crash :(
-        for (let child of this.children) {
-            child.makeRadiant(level)
-        }*/
-        this.radiance = 1
-        new RadiantFader(this)
     }
 
     /** Whether or not two objects are touching */

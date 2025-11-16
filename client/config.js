@@ -60,6 +60,9 @@ const CHANGELOG = [
     "- Base drones no longer target shapes",
     "- Added Drone Dominators",
     "",
+    "..."
+    // Off the screen
+    /*
     "November 13rd, 2025 - Evening",
     "- Changed stat names for Workshop to better match weapons.",
     "- Enabled leaderboard in Domination gamemode.",
@@ -68,10 +71,6 @@ const CHANGELOG = [
     "- Enabled rare alpha shapes around the map",
     "- Added new Circle and 'Rough' maze walls.",
     "- Dominators now award 1,200 score on kill.",
-    "",
-    "..."
-    // Off the screen
-    /*
     "",
     "November 13rd, 2025 - Morning",
     "- New title menu background! This will be replaced with a custom render at some point.",

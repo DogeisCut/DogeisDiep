@@ -177,13 +177,82 @@ Module.loadChangelog = (changelog) => {
     $(MOD_CONFIG.memory.changelogLoaded).i8 = 1; // not understood
 };
 
-// Replaces current colors with serverside ones
+let animatedColorRegistry = {}
+let isAnimationActive = false
+
+function getColorFromIndex(colorIndex) {
+	return Module.colors[colorIndex]
+}
+
+function startColorAnimationLoop() {
+	if (isAnimationActive) return
+	isAnimationActive = true
+
+	function loop() {
+		let currentTimeSeconds = Date.now() / 1000
+
+		for (let indexKey in animatedColorRegistry) {
+			let entry = animatedColorRegistry[indexKey]
+			let rate = entry.rate
+			let list = entry.list
+
+			let totalCycleTimeSeconds = rate * list.length
+			let timeInCycleSeconds = currentTimeSeconds % totalCycleTimeSeconds
+			let currentIndexFloat = timeInCycleSeconds / rate
+
+			let currentColorIndex = Math.floor(currentIndexFloat)
+			let nextColorIndex = (currentColorIndex + 1) % list.length
+			let blendAmount = currentIndexFloat - currentColorIndex
+
+			let a = getColorFromIndex(list[currentColorIndex])
+            let b = getColorFromIndex(list[nextColorIndex])
+
+			let ar = (a >> 16) & 0xff
+			let ag = (a >> 8) & 0xff
+			let ab = a & 0xff
+
+			let br = (b >> 16) & 0xff
+			let bg = (b >> 8) & 0xff
+			let bb = b & 0xff
+
+			let rr = Math.round(ar + (br - ar) * blendAmount)
+			let gg = Math.round(ag + (bg - ag) * blendAmount)
+			let bb2 = Math.round(ab + (bb - ab) * blendAmount)
+
+			let finalColor = (rr << 16) | (gg << 8) | bb2
+
+			window.input.execute(`net_replace_color ${indexKey} ${finalColor}`)
+		}
+
+		requestAnimationFrame(loop)
+	}
+
+	requestAnimationFrame(loop)
+}
+
+function clearColorAnimations() {
+	animatedColorRegistry = {}
+}
+
 Module.loadColors = () => {
-    if(!window.input || !Module.colors) return;
-    for(const [idx, color] of Object.entries(Module.colors)) {
-        window.input.execute(`net_replace_color ${idx} ${color}`);
-    }
-};
+    if (!window.input || !Module.colors) return
+    
+	clearColorAnimations()
+
+	for (const [indexKey, colorValue] of Object.entries(Module.colors)) {
+        if (Array.isArray(colorValue)) {
+			animatedColorRegistry[indexKey] = {
+				rate: colorValue[0],
+				list: colorValue.slice(1)
+			}
+			continue
+		}
+
+		window.input.execute(`net_replace_color ${indexKey} ${colorValue}`)
+	}
+
+	startColorAnimationLoop()
+}
 
 // Ignore Hashtable, instead read from custom table
 Module.getTankDefinition = tankId => {

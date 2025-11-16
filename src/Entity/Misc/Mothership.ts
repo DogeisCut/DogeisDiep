@@ -18,7 +18,7 @@
 
 import { ClientInputs } from "../../Client";
 import { tps } from "../../config";
-import { Color, Tank, Stat, ColorsHexCode, ClientBound, TeamFlags } from "../../Const/Enums";
+import { Color, Tank, Stat, ColorsHexCode, ClientBound, TeamFlags, getResolvedColor } from "../../Const/Enums";
 import GameServer from "../../Game";
 import ArenaEntity, { ArenaState } from "../../Native/Arena";
 import { CameraEntity } from "../../Native/Camera";
@@ -90,7 +90,7 @@ export default class Mothership extends TankBody {
             .u8(ClientBound.Notification)
             // If mothership has a team name, use it, otherwise just say has destroyed a mothership
             .stringNT(`${killerTeamIsATeam ? killerTeam.teamName : (killer.nameData?.values.name || "an unnamed tank")} has destroyed ${teamIsATeam ? team.teamName + "'s" : "a"} Mothership!`)
-            .u32(killerTeamIsATeam ? ColorsHexCode[killerTeam.teamData.values.teamColor] : 0x000000)
+            .u32(killerTeamIsATeam ? getResolvedColor(ColorsHexCode[killerTeam.teamData.values.teamColor]) : 0x000000)
             .float(-1)
             .stringNT("").send();   
     }
@@ -129,7 +129,7 @@ export default class Mothership extends TankBody {
                 if (tick - this.possessionStartTick >= POSSESSION_TIMER) {
                     this.inputs.deleted = true;
                 } else if (tick - this.possessionStartTick === Math.floor(POSSESSION_TIMER - 10 * tps)) {
-                    this.inputs.client.notify("You only have 10 seconds left in control of the Mothership", ColorsHexCode[this.styleData.values.color], 5_000, "");
+                    this.inputs.client.notify("You only have 10 seconds left in control of the Mothership", getResolvedColor(ColorsHexCode[this.styleData.values.color]), 5_000, "");
                 }
             }
         }

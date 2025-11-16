@@ -18,7 +18,7 @@
 
 import Client from "../Client";
 import { scoreboardUpdateInterval } from "../config";
-import { Color, ColorsHexCode, ArenaFlags, ValidScoreboardIndex, ClientBound } from "../Const/Enums";
+import { Color, ColorsHexCode, ArenaFlags, ValidScoreboardIndex, ClientBound, getResolvedColor } from "../Const/Enums";
 import Dominator from "../Entity/Misc/Dominator";
 import TeamBase from "../Entity/Misc/TeamBase";
 import { TeamEntity } from "../Entity/Misc/TeamEntity";
@@ -121,7 +121,7 @@ export default class DominationArena extends ArenaEntity {
                     this.game.broadcast()
                         .u8(ClientBound.Notification)
                         .stringNT(`${team.teamName} HAS WON THE GAME!`)
-                        .u32(ColorsHexCode[team.teamData.values.teamColor])
+                        .u32(getResolvedColor(ColorsHexCode[team.teamData.values.teamColor]))
                         .float(-1)
                         .stringNT("").send();
                             

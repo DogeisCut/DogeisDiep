@@ -16,7 +16,7 @@
     along with this program. If not, see <https://www.gnu.org/licenses/>
 */
 
-import { Color, ColorsHexCode, NameFlags, StyleFlags, Tank, ClientBound } from "../../Const/Enums";
+import { Color, ColorsHexCode, NameFlags, StyleFlags, Tank, ClientBound, getResolvedColor } from "../../Const/Enums";
 import ArenaEntity from "../../Native/Arena";
 import ClientCamera, { CameraEntity } from "../../Native/Camera";
 import { AI, AIState, Inputs } from "../AI";
@@ -113,7 +113,7 @@ export default class Dominator extends TankBody {
             this.game.broadcast()
                 .u8(ClientBound.Notification)
                 .stringNT(`The ${this.prefix}${this.nameData.values.name} is now controlled by ${killerTeam.teamName}`)
-                .u32(ColorsHexCode[killerTeam.teamData.values.teamColor])
+                .u32(getResolvedColor(ColorsHexCode[killerTeam.teamData.values.teamColor]))
                 .float(7500)
                 .stringNT("").send();
                 
@@ -121,7 +121,7 @@ export default class Dominator extends TankBody {
                 const camera = client.camera;
                 if (!camera) continue;
 
-                if (camera.relationsData.values.team === this.relationsData.values.team) client.notify(`Press H to take control of the ${this.nameData.values.name}`, ColorsHexCode[killerTeam.teamData.values.teamColor])
+                if (camera.relationsData.values.team === this.relationsData.values.team) client.notify(`Press H to take control of the ${this.nameData.values.name}`, getResolvedColor(ColorsHexCode[killerTeam.teamData.values.teamColor]))
             }
         } else {
             this.relationsData.team = this.game.arena
@@ -130,7 +130,7 @@ export default class Dominator extends TankBody {
            this.game.broadcast()
                .u8(ClientBound.Notification)
                .stringNT(`The ${this.prefix}${this.nameData.values.name} is being contested`)
-               .u32(ColorsHexCode[Color.Neutral])
+               .u32(getResolvedColor(ColorsHexCode[Color.Neutral]))
                .float(7500)
                .stringNT("").send();  
         }

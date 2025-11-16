@@ -17,7 +17,7 @@
 */
 
 import Client from "../Client";
-import { Color, ColorsHexCode, ArenaFlags, ValidScoreboardIndex, ClientBound } from "../Const/Enums";
+import { Color, ColorsHexCode, ArenaFlags, ValidScoreboardIndex, ClientBound, getResolvedColor } from "../Const/Enums";
 import { TeamEntity } from "../Entity/Misc/TeamEntity";
 import TankBody from "../Entity/Tank/TankBody";
 import LivingEntity from "../Entity/Live";
@@ -164,7 +164,7 @@ export default class TagArena extends ArenaEntity {
                     this.game.broadcast()
                         .u8(ClientBound.Notification)
                         .stringNT(`${leaderTeam.teamName} HAS WON THE GAME!`)
-                        .u32(ColorsHexCode[leaderTeam.teamData.values.teamColor])
+                        .u32(getResolvedColor(ColorsHexCode[leaderTeam.teamData.values.teamColor]))
                         .float(-1)
                         .stringNT("").send();
 						

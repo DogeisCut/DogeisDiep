@@ -18,7 +18,7 @@
 
 import ObjectEntity from "./Object";
 
-import { StyleFlags } from "../Const/Enums";
+import { Color, ColorsHexCode, StyleFlags } from "../Const/Enums";
 import { HealthGroup } from "../Native/FieldGroups";
 import AbstractNecromergeShape from "./Tank/Projectile/AbstractNecromergeShape";
 import NecromancerSquare from "./Tank/Projectile/NecromancerSquare";
