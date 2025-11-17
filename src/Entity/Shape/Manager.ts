@@ -43,32 +43,11 @@ export default class ShapeManager {
 	protected arena: ArenaEntity;
 	protected shapes: AbstractShape[] = [];
 
-	protected fieldShapes: { weight: number, create: () => AbstractShape }[] = [];
-	protected pentagonNestShapes: { weight: number, create: () => AbstractShape }[] = [];
-	protected crasherZoneShapes: { weight: number, create: () => AbstractShape }[] = [];
-
 	public constructor(arena: ArenaEntity) {
 		this.arena = arena;
 		this.game = arena.game;
 
-		this.fieldShapes = [
-			{ weight: 0.5, create: () => new CrasherClump(this.game) },
-            { weight: 1, create: () => new Hexagon(this.game, Math.random() <= 0.011) },
-            { weight: 3, create: () => new Pentagon(this.game, Math.random() <= 0.009) },
-            { weight: 16, create: () => new Triangle(this.game, Math.random() <= 0.007) },
-            { weight: 70, create: () => new Square(this.game, Math.random() <= 0.005) }
-        ];
-
-		this.pentagonNestShapes = [
-			{ weight: 0.1, create: () => new CrasherClump(this.game) },
-            { weight: 0.1, create: () => new Hexagon(this.game, Math.random() <= 0.06) },
-			{ weight: 1, create: () => new Pentagon(this.game, Math.random() <= 0.05) },
-		];
-
-		this.crasherZoneShapes = [
-			{ weight: 0.1, create: () => new CrasherClump(this.game) },
-			{ weight: 1, create: () => new Crasher(this.game, Math.random() < 0.2) },
-		];
+		
 	}
 
 	protected spawnShape(): AbstractShape {
@@ -99,6 +78,31 @@ export default class ShapeManager {
 
 	protected get wantedShapes() {
 		return 1000;
+	}
+
+	protected get fieldShapes(): { weight: number, create: () => AbstractShape }[] {
+		return [
+			{ weight: 0.5, create: () => new CrasherClump(this.game) },
+            { weight: 1, create: () => new Hexagon(this.game, Math.random() <= 0.011) },
+            { weight: 3, create: () => new Pentagon(this.game, Math.random() <= 0.009) },
+            { weight: 16, create: () => new Triangle(this.game, Math.random() <= 0.007) },
+            { weight: 70, create: () => new Square(this.game, Math.random() <= 0.005) }
+        ];
+	} 
+
+	protected get pentagonNestShapes(): { weight: number, create: () => AbstractShape }[] {
+		return [
+			{ weight: 0.1, create: () => new CrasherClump(this.game) },
+            { weight: 0.1, create: () => new Hexagon(this.game, Math.random() <= 0.06) },
+			{ weight: 1, create: () => new Pentagon(this.game, Math.random() <= 0.05) },
+		];
+	}
+
+	protected get crasherZoneShapes(): { weight: number, create: () => AbstractShape }[] {
+		return [
+			{ weight: 0.1, create: () => new CrasherClump(this.game) },
+			{ weight: 1, create: () => new Crasher(this.game, Math.random() < 0.2) },
+		];
 	}
 
 	public tick() {

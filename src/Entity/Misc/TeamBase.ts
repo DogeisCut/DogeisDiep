@@ -58,16 +58,16 @@ export default class TeamBase extends LivingEntity {
             this.physicsData.values.pushFactor = 0;
             this.damagePerTick = 0;
         } else {
-            this.createDrones(droneSpawnerCount, droneCount);
+            this.createDrones(droneSpawnerCount);
         }
 
         this.healthData.flags |= HealthFlags.hiddenHealthbar
         this.healthData.health = this.healthData.values.maxHealth = 0xABCFF; // ;)
     }
 
-    public createDrones(droneSpawnerCount: number, droneCount: number) {
+    public createDrones(droneSpawnerCount: number) {
         for (let i = 0; i < droneSpawnerCount; ++i) {
-            const droneSpawner = new BaseProtector(this.game, this, droneCount);
+            const droneSpawner = new BaseProtector(this.game, this);
             droneSpawner.positionData.values.x = this.positionData.values.x;
             // Don't spread drones around the base if it is a rectangle
             droneSpawner.positionData.values.y = this.physicsData.values.width === this.physicsData.values.size ? this.positionData.values.y :

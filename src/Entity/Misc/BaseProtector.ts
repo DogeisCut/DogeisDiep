@@ -65,7 +65,7 @@ export default class BaseProtector extends TankBody {
     /** The AI that controls how the AC moves. */
     public ai: AI;
 
-    public constructor(game: GameServer, base: TeamBase, droneCount: number = 12) {
+    public constructor(game: GameServer, base?: TeamBase) {
         const inputs = new Inputs();
         const camera = new CameraEntity(game);
 
@@ -74,7 +74,8 @@ export default class BaseProtector extends TankBody {
 
         super(game, camera, inputs);
 
-        this.styleData.values.color = base.styleData.values.color;
+        this.styleData.values.color = base ? base.styleData.values.color : Color.Neutral;
+        this.styleData.flags |= StyleFlags.renderFirst
 
         this.setTank(Tank.BaseProtector);
         const def = (this.definition = Object.assign({}, this.definition));
@@ -89,11 +90,13 @@ export default class BaseProtector extends TankBody {
         this.ai.targetFilterShapes = true
         this.ai.doAimPrediction = false;
 
-        this.positionData.values.x = base.positionData.values.x;
-        this.positionData.values.y = base.positionData.values.y;
+        if (base) {
+            this.positionData.values.x = base.positionData.values.x;
+            this.positionData.values.y = base.positionData.values.y;
 
-        this.relationsData.values.owner = base;
-        this.relationsData.values.team = base.relationsData.values.team;
+            this.relationsData.values.owner = base;
+            this.relationsData.values.team = base.relationsData.values.team;
+        }
 
         this.nameData.values.name = "Base Protector";
         this.nameData.flags |= NameFlags.hiddenName

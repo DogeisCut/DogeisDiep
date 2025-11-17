@@ -92,6 +92,15 @@ export const doVerboseLogs: boolean = false;
 export const shinyRarity = 10 / 2048
 /** How many times rarer each tier of shiny becomes. */
 export const shinyRarityIncrease = 9
+//TODO: unhardcode these
+/* The base rarity for a shiny in Dark Travels */
+export const darkTravelsShinyRarity = 10 / 16
+/** How many times rarer each tier of shiny becomes in Dark Travels. */
+export const darkTravelsShinyRarityIncrease = 2
+/** Self Explanatory */
+export const shinyPlayerChance = 1 / 6769
+
+
 
 /** Access levels of each client. */
 export const enum AccessLevel {

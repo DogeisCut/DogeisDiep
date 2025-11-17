@@ -23,7 +23,7 @@ import Vector from "../Physics/Vector";
 import { PhysicsGroup, PositionGroup, RelationsGroup, StyleGroup } from "../Native/FieldGroups";
 import { Entity } from "../Native/Entity";
 import { PositionFlags, PhysicsFlags, StyleFlags, Color } from "../Const/Enums";
-import { shinyRarity, shinyRarityIncrease } from "../config";
+import { darkTravelsShinyRarity, darkTravelsShinyRarityIncrease, shinyRarity, shinyRarityIncrease } from "../config";
 
 /**
  * The animator for how entities delete (the opacity and size fade out).
@@ -132,20 +132,41 @@ export default class ObjectEntity extends Entity {
     }
 
     public makeShiny(level?: number | null) {
-        if (level === undefined) level = this.determineShinyTier()
+        if (this.shinyLevel !== null) {
+            for (const child of this.children) {
+                if (child instanceof RadianceGlow || child instanceof RadianceShine) {
+                    child.destroy(false)
+                }
+            }
+        }
+        if (level === undefined) level = this.determineShinyTier(this.game)
         if (level === null) return
+        this.styleData.values.flags &= ~StyleFlags.isCachable;
         for (let child of this.children) {
             if (child.styleData.values.color == this.styleData.values.color && child != this)
-                child.styleData.values.color = Color.Shiny
+                // this broke barrels somehow
+                //child.styleData.values.flags &= ~StyleFlags.isCachable;
+                child.styleData.values.color = level > 0 ? Color.Shinier : Color.Shiny
         }
         this.shinyLevel = level
-        this.styleData.color = Color.Shiny
+        this.styleData.color = level > 0 ? Color.Shinier : Color.Shiny
+        if (level > 0) {
+            new RadianceGlow(this, 25 * (level/2)+(1/2))
+        } 
+        if (level > 2) {
+            new RadianceShine(this, 45 * (level/2)+(1/2), 3)
+        }
+        if (level > 1) {
+            new RadianceShine(this, 25 * (level/2)+(1/2))
+        }
+        
     }
 
-    public determineShinyTier(): number | null {
+    public determineShinyTier(game: GameServer): number | null {
+        let isDarkTravels = game.gamemode == "darkTravels"
         let randomnessValue = Math.random()
         let tierIndex = 0
-        let chanceForCurrentTier = shinyRarity
+        let chanceForCurrentTier = isDarkTravels ? darkTravelsShinyRarity : shinyRarity
         let lastPassedTier: number | null = null
 
         while (chanceForCurrentTier > 1/1843200) {
@@ -156,7 +177,7 @@ export default class ObjectEntity extends Entity {
             }
 
             randomnessValue /= chanceForCurrentTier
-            chanceForCurrentTier /= shinyRarityIncrease
+            chanceForCurrentTier /= isDarkTravels ? darkTravelsShinyRarityIncrease : shinyRarityIncrease
             tierIndex++
         }
 
@@ -401,7 +422,7 @@ export default class ObjectEntity extends Entity {
 
         if (this.shinyLevel !== null) {
             if (tick % 3 == 0) {
-                const part = new Particle(this.game, 10, 10, (Math.random() - 0.5) * 2 * 10, (Math.random() - 0.5) * 2 * 10, this.styleData.color)
+                const part = new Particle(this.game, 10 + (this.shinyLevel*2) + (Math.random()*5), 10, (Math.random() - 0.5) * 2 * 10, (Math.random() - 0.5) * 2 * 10, this.styleData.color)
                 part.positionData.x = this.positionData.values.x + (Math.random() - 0.5) * 2 * this.physicsData.size
                 part.positionData.y = this.positionData.values.y + (Math.random() - 0.5) * 2 * this.physicsData.size
                 part.styleData.zIndex = this.styleData.values.zIndex + 1
@@ -435,7 +456,7 @@ class Particle extends ObjectEntity {
         super(game)
 
         this.physicsData.sides = 1
-        this.styleData.color = Color.Shiny
+        this.styleData.color = color
         this.physicsData.flags |= PhysicsFlags.canEscapeArena
         this.physicsData.flags |= PhysicsFlags.noOwnTeamCollision
         this.physicsData.flags |= PhysicsFlags.onlySameOwnerCollision
@@ -458,6 +479,47 @@ class Particle extends ObjectEntity {
                 this.destroy(false)
             }
             this.life -= 1
+        }
+    }
+}
+
+class RadianceGlow extends ObjectEntity {
+    public constructor(source: ObjectEntity, energy: number = 25) {
+        super(source.game)
+
+        this.physicsData.sides = source.physicsData.values.sides
+        this.styleData.color = source.styleData.values.color
+        this.setParent(source)
+        this.styleData.opacity = 0.25
+        this.styleData.zIndex -= 100
+
+        this.tick = (tick: number) => {
+            super.tick(tick)
+            const currentTimeSeconds = Date.now() / 1000
+
+            this.physicsData.size = source.physicsData.values.size + (Math.sin(currentTimeSeconds * (energy/15)) * energy) + (energy) + 25
+        }
+    }
+}
+
+class RadianceShine extends ObjectEntity {
+    public constructor(source: ObjectEntity, energy: number = 25, sides: number = 6) {
+        super(source.game)
+
+        this.physicsData.sides = sides
+        this.styleData.flags |= StyleFlags.isStar
+        this.styleData.color = source.styleData.values.color
+        this.positionData.flags |= PositionFlags.absoluteRotation
+        this.setParent(source)
+        this.styleData.opacity = 0.5
+        this.styleData.zIndex -= 100
+
+        this.tick = (tick: number) => {
+            super.tick(tick)
+            const currentTimeSeconds = Date.now() / 1000
+
+            this.physicsData.size = (source.physicsData.values.size + ((energy/25)*25)+40) * (Math.abs(Math.sin(currentTimeSeconds * (energy/25))))
+            this.positionData.angle += (energy / 500 * Math.sign(Math.sin(currentTimeSeconds * (energy / 25))))
         }
     }
 }

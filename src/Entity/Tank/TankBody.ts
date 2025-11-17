@@ -184,6 +184,7 @@ export default class TankBody extends LivingEntity implements BarrelBase {
         // Yeah, yeah why not
         this.cameraEntity.cameraData.tankOverride = tank.name;
         camera.setFieldFactor(tank.fieldFactor);
+        this.makeShiny(this.shinyLevel);
     }
 
     // TODO(ABC):

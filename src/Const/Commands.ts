@@ -28,6 +28,7 @@ import { saveToVLog } from "../util";
 import { ClientBound, Stat, StatCount, PhysicsFlags, StyleFlags, Tank } from "./Enums";
 import { getTankByName } from "./TankDefinitionsUtil";
 import Hexagon from "../Entity/Shape/Hexagon";
+import BaseProtector from "../Entity/Misc/BaseProtector";
 
 const RELATIVE_POS_REGEX = new RegExp(/~(-?\d+)?/);
 
@@ -140,7 +141,7 @@ export const commandDefinitions = {
     },
     admin_summon: {
         id: CommandID.adminSummon,
-        usage: "[entityName] [?count] [?x] [?y]",
+        usage: "[entityName] [?count] [?x] [?y] [?shinyLevel]",
         description: "Spawns entities at the given coordinates",
         permissionLevel: AccessLevel.FullAccess,
         isCheat: false
@@ -276,10 +277,12 @@ export const commandCallbacks = {
     game_golden_name: (client: Client, activeArg?: string) => {
         client.setHasCheated(!client.hasCheated());
     },
-    admin_summon: (client: Client, entityArg: string, countArg?: string, xArg?: string, yArg?: string) => {
+    admin_summon: (client: Client, entityArg: string, countArg?: string, xArg?: string, yArg?: string, shinyLevelArg?: string) => {
         const count = countArg ? parseInt(countArg) : 1;
         let x = parseInt(xArg || "0", 10);
         let y = parseInt(yArg || "0", 10);
+        let shinyLevel: number | undefined = parseInt(shinyLevelArg || "-1", 10);
+        shinyLevel = shinyLevel == -1 ? undefined : shinyLevel
 
         const player = client.camera?.cameraData.player;
         if (Entity.exists(player) && player instanceof ObjectEntity) {
@@ -307,7 +310,8 @@ export const commandCallbacks = {
             ["Hexagon", Hexagon],
             ["Pentagon", Pentagon],
             ["Square", Square],
-            ["Triangle", Triangle]
+            ["Triangle", Triangle],
+            ["BaseProtector", BaseProtector]
         ] as [string, typeof ObjectEntity][]).get(entityArg);
 
         if (isNaN(count) || count < 0 || !game || !TEntity) return;
@@ -317,6 +321,7 @@ export const commandCallbacks = {
             if (!isNaN(x) && !isNaN(y)) {
                 boss.positionData.x = x;
                 boss.positionData.y = y;
+                boss.makeShiny(shinyLevel);
             }
         }
     },

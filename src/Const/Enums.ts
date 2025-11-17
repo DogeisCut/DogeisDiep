@@ -47,8 +47,13 @@ export const enum Color {
     ShinyG = 22,
     ShinyB = 23,
     Shiny = 24,
+    ShinierR = 25,
+    ShinierG = 26,
+    ShinierB = 27,
+    Shinier = 28,
+    PitchBlack = 29,
 
-    kMaxColors = 25
+    kMaxColors = 30
 }
 
 /**
@@ -82,10 +87,16 @@ export const ColorsHexCode: Record<Color, ColorValue > = {
     [Color.ShinyG]: 0x99CC99,
     [Color.ShinyB]: 0x9999CC,
     [Color.Shiny]: 0x000000,
+    [Color.ShinierR]: 0xDD6666,
+    [Color.ShinierG]: 0x66DD66,
+    [Color.ShinierB]: 0x6666DD,
+    [Color.Shinier]: 0x000000,
+    [Color.PitchBlack]: 0x000000,
     [Color.kMaxColors]: 0x000000
 }
 
 ColorsHexCode[Color.Shiny] = [1, Color.ShinyR, Color.ShinyG, Color.ShinyB]
+ColorsHexCode[Color.Shinier] = [1, Color.ShinierR, Color.ShinierG, Color.ShinierB]
 
 export function getResolvedColor(colorValue: ColorValue): number {
 	if (Array.isArray(colorValue)) {

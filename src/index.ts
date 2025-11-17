@@ -32,6 +32,7 @@ import MothershipArena from "./Gamemodes/Mothership";
 import DominationArena from "./Gamemodes/Domination";
 import Teams2Arena from "./Gamemodes/Team2";
 import MazeArena from "./Gamemodes/Maze";
+import DarkTravelsArena from "./Gamemodes/DarkTravels";
 
 const PORT = config.serverPort;
 const ENABLE_API = config.enableApi && config.apiLocation;
@@ -163,8 +164,9 @@ app.listen(PORT, (success) => {
     const teams2 = new GameServer(Teams2Arena, "2 Teams");
     const dom = new GameServer(DominationArena, "Domination");
     const sbx = new GameServer(SandboxArena, "Sandbox");
+    const darkTravels = new GameServer(DarkTravelsArena, "Dark Travels");
     
-    games.push(maze, teams2, dom, sbx);
+    games.push(maze, teams2, dom, sbx, darkTravels);
 
     util.saveToLog("Servers up", "All servers booted up.", 0x37F554);
     util.log("Dumping endpoint -> gamemode routing table");

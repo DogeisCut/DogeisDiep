@@ -64,7 +64,7 @@ export default class LivingEntity extends ObjectEntity {
     }
 
     public makeShiny(level?: number | null): void {
-        if (level === undefined) level = this.determineShinyTier()
+        if (level === undefined) level = this.determineShinyTier(this.game)
         if (level === null) return
         super.makeShiny(level)
         this.scoreReward *= 100 * ((4 * level) || 1);
@@ -78,15 +78,17 @@ export default class LivingEntity extends ObjectEntity {
                 case 2:
                     return "Glinting "
                 case 3:
-                    return "Glamorious"
+                    return "Glamorious "
                 case 4:
                     return "Charismatic "
                 default:
                     return "Incredibly Shiny "
             }
         })()
-        if (this.nameData) 
-            this.nameData.values.name = prefix + this.nameData.values.name;
+        if (this.nameData) {
+            this.nameData.values.preShinyName = this.nameData.values.preShinyName ?? this.nameData.values.name
+            this.nameData.values.name = prefix + (this.nameData.values.preShinyName ?? this.nameData.values.name);
+        }
     }
 
     /** Applies damage to two entity after colliding with eachother. */

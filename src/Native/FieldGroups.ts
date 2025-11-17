@@ -428,7 +428,7 @@ export class ArenaGroup {
 export class NameGroup {
     entity: Entity;
     state: Uint8Array = new Uint8Array(2);
-    values: { flags: number, name: string } = {
+    values: { flags: number, name: string, preShinyName?: string } = {
         flags: 0,
         name: ""
     };
