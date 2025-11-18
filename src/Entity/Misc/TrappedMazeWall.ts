@@ -45,6 +45,8 @@ export default class TrappedMazeWall extends LivingEntity implements BarrelBase 
 
         this.setGlobalEntity();
 
+        const normalizedScale = scale / 465
+        
         this.nameData.name = "Trapped Wall"
         this.nameData.flags |= NameFlags.hiddenName
 
@@ -69,7 +71,6 @@ export default class TrappedMazeWall extends LivingEntity implements BarrelBase 
 
         this.styleData.values.borderWidth = 10;
         this.styleData.values.color = Color.Border;
-        this.styleData.flags |= StyleFlags.hasNoDmgIndicator
         this.regenPerTick = 0
 
         //this.damagePerTick = 0
@@ -109,14 +110,15 @@ export default class TrappedMazeWall extends LivingEntity implements BarrelBase 
             addon: null,
             bullet: {
                 type: "bullet",
-                health: 5,
+                health: 3 + (normalizedScale*2),
                 damage: 0.9,
-                speed: 1.5,
+                speed: 1.5/normalizedScale,
                 scatterRate: 1,
-                lifeLength: 1,
+                lifeLength: 1.5,
                 sizeRatio: 1,
                 absorbtionFactor: 1,
-                color: Color.Neutral
+                color: Color.Neutral,
+                aboveParent: true
             }
         }, 25 / 4)
         this.turret.relationsData.values.team = this.game.arena;
@@ -131,6 +133,7 @@ export default class TrappedMazeWall extends LivingEntity implements BarrelBase 
         this.damageReduction = 0.25;
         this.disabled = true
         this.regenPerTick = 1
+        this.styleData.flags |= StyleFlags.hasNoDmgIndicator
     }
 
     // public onCollide(entity1: LivingEntity, entity2: LivingEntity): void {
@@ -146,6 +149,8 @@ export default class TrappedMazeWall extends LivingEntity implements BarrelBase 
     public tick(tick: number) {
         this.inputs = this.ai.inputs;
 
+        this.relationsData.values.team = this.game.arena //bandaid fix, dont know why the team isnt being set
+ 
         if (this.ai.state === AIState.idle) {
             const angle = this.positionData.values.angle + this.ai.passiveRotation;
             const mag = Math.sqrt((this.inputs.mouse.x - this.positionData.values.x) ** 2 + (this.inputs.mouse.y - this.positionData.values.y) ** 2);
@@ -161,6 +166,7 @@ export default class TrappedMazeWall extends LivingEntity implements BarrelBase 
             this.turret.styleData.flags |= StyleFlags.showsAboveParent
             this.damageReduction = 1;
             this.regenPerTick = 0
+            this.styleData.flags &= ~StyleFlags.hasNoDmgIndicator
         }
 
         super.tick(tick);

@@ -23,9 +23,9 @@ import _TankDefinitions from "./TankDefinitions";
 /** The types of post addons that exist in the game, by their id. */
 export type postAddonId = "dompronounced" | "auto5" | "auto3" | "autosmasher" | "spike" | "pronounced"
     | "smasher" | "landmine" | "autoturret" | "auto7" | "tripleAutoturret" | "wings" | "wraith" | "tripleAutosmasher"
-    | "razor" | "scavenger" | "ravenger" | "protectorTurret" | "crasherGrunt"
+    | "razor" | "scavenger" | "ravenger" | "protectorTurret" | "crasherGrunt" | "preDarkGuardian"
 /** The types of post addons that exist in the game, by their id. */
-export type preAddonId = "dombase" | "launcher" | "pentagonBody" | "protectorBase"
+export type preAddonId = "dombase" | "launcher" | "pentagonBody" | "protectorBase" | "postDarkGuardian"
 /** A joint list of all post addon ids and pre addon ids. */
 export type addonId = preAddonId | postAddonId;
 
@@ -62,6 +62,8 @@ export interface BulletDefinition {
     color?: Color;
     /** Overrides number of sides for projectile. */
     sides?: number;
+    
+    aboveParent?: boolean
 }
 
 /**

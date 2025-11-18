@@ -575,7 +575,7 @@ class CrasherGruntAddon extends Addon {
             size: 35,
             width: 42 * 0.7,
             delay: 0.01,
-            reload: 0.4,
+            reload: 0.55,
             recoil: 0,
             isTrapezoid: false,
             trapezoidDirection: 0,
@@ -592,6 +592,25 @@ class CrasherGruntAddon extends Addon {
             }
         }
         new AutoTurret(owner, turretDef);
+    }
+}
+
+class PreDarkGuardianAddon extends Addon {
+    public constructor(owner: BarrelBase) {
+        super(owner);
+
+        const base = this.createGuard(10, 1.8, 0, 0)
+        base.positionData.flags &= ~PositionFlags.absoluteRotation
+    }
+}
+
+class PostDarkGuardianAddon extends Addon {
+    public constructor(owner: BarrelBase) {
+        super(owner);
+
+        const base = this.createGuard(1, 1, 0, 0)
+        base.styleData.flags |= StyleFlags.showsAboveParent
+        base.positionData.flags &= ~PositionFlags.absoluteRotation
     }
 }
 
@@ -621,5 +640,7 @@ export const AddonById: Record<addonId, typeof Addon | null> = {
     ravenger: RavengerAddon,
     protectorBase: ProtectorBaseAddon,
     protectorTurret: ProtectorTurretAddon,
-    crasherGrunt: CrasherGruntAddon
+    crasherGrunt: CrasherGruntAddon,
+    preDarkGuardian: PreDarkGuardianAddon,
+    postDarkGuardian: PostDarkGuardianAddon 
 }

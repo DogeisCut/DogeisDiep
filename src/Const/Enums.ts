@@ -339,7 +339,8 @@ export const enum Tank {
     Claymore          = 100,
     DominatorDR       = 101,
     BaseProtector     = 102,
-    CrasherGrunt      = 103
+    CrasherGrunt      = 103,
+    DarkGuardian      = 104,
     
 
     /* General Ideas 

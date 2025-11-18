@@ -10220,7 +10220,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "bullet": {
                     "type": "flame",
                     "sizeRatio": 0.8,
-                    "health": Infinity,
+                    "health": 100000000,
                     "damage": 1,
                     "speed": 2,
                     "scatterRate": 1.8,
@@ -10302,7 +10302,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "bullet": {
                     "type": "flame",
                     "sizeRatio": 0.8,
-                    "health": Infinity,
+                    "health": 100000000,
                     "damage": 1,
                     "speed": 2,
                     "scatterRate": 1.8,
@@ -10386,7 +10386,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "bullet": {
                     "type": "flame",
                     "sizeRatio": 1,
-                    "health": Infinity,
+                    "health": 100000000,
                     "damage": 1.1,
                     "speed": 2,
                     "scatterRate": 2.4,
@@ -11483,7 +11483,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                     bullet: {
                         type: "flame",
                         sizeRatio: 0.8,
-                        health: Infinity,
+                        health: 100000000,
                         damage: 1,
                         speed: 2,
                         scatterRate: 1.8,
@@ -11573,7 +11573,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                     bullet: {
                         type: "flame",
                         sizeRatio: 0.8,
-                        health: Infinity,
+                        health: 100000000,
                         damage: 1,
                         speed: 2,
                         scatterRate: 1.8,
@@ -11658,7 +11658,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "bullet": {
                     "type": "flame",
                     "sizeRatio": 1,
-                    "health": Infinity,
+                    "health": 100000000,
                     "damage": 1.2,
                     "speed": 2,
                     "scatterRate": 2.4,
@@ -11762,7 +11762,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "bullet": {
                     "type": "flame",
                     "sizeRatio": 0.8,
-                    "health": Infinity,
+                    "health": 100000000,
                     "damage": 0.8,
                     "speed": 2,
                     "scatterRate": 1.8,
@@ -12168,7 +12168,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "fieldFactor": 0.9,
         "absorbtionFactor": 1,
         "speed": 0.3,
-        "maxHealth": 250,
+        "maxHealth": 100,
         "preAddon": null,
         "postAddon": "crasherGrunt",
         "sides": 7,
@@ -12188,7 +12188,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "bullet": {
                     "type": "bullet",
                     "sizeRatio": 1,
-                    "health": 3,
+                    "health": 1,
                     "damage": 1.5,
                     "speed": 2,
                     "scatterRate": 1,
@@ -12197,6 +12197,98 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 }
             }
         ],
+        "stats": [
+            {
+                "name": "Movement Speed",
+                "max": 0
+            },
+            {
+                "name": "Reload",
+                "max": 0
+            },
+            {
+                "name": "Bullet Damage",
+                "max": 0
+            },
+            {
+                "name": "Bullet Penetration",
+                "max": 0
+            },
+            {
+                "name": "Bullet Speed",
+                "max": 0
+            },
+            {
+                "name": "Body Damage",
+                "max": 0
+            },
+            {
+                "name": "Max Health",
+                "max": 0
+            },
+            {
+                "name": "Health Regen",
+                "max": 0
+            }
+        ]
+    },
+    {
+        "id": Tank.DarkGuardian,
+        "name": "Dark Guardian",
+        "upgradeMessage": "",
+        "levelRequirement": 0,
+        "upgrades": [],
+        "allowInfiniteScaling": true,
+        "flags": {
+            "invisibility": false,
+            "zoomAbility": false,
+            "canClaimSquares": false,
+            "devOnly": false
+        },
+        "visibilityRateShooting": 0.23,
+        "visibilityRateMoving": 0.08,
+        "invisibilityRate": 0.03,
+        "fieldFactor": 0.9,
+        "absorbtionFactor": 1,
+        "speed": 0.1,
+        "maxHealth": 10000,
+        "preAddon": "preDarkGuardian",
+        "postAddon": "postDarkGuardian",
+        "sides": 10,
+        "borderWidth": 15,
+        "barrels":  (() => {
+            const numberOfFlameLaunchers = 10
+            const barrelAngleOffset = (Math.PI * 2) / numberOfFlameLaunchers
+            const barrelArray: BarrelDefinition[] = []
+
+            for (let i = 0; i < numberOfFlameLaunchers; i++) {
+                barrelArray.push({
+                    angle: (i * barrelAngleOffset) + (Math.PI/10),
+                    offset: 0,
+                    size: 80,
+                    width: 22,
+                    delay: 0,
+                    reload: 0.5,
+                    recoil: 0.4,
+                    isTrapezoid: false,
+                    trapezoidDirection: 0,
+                    addon: "trapLauncher",
+                    forceFire: true,
+                    bullet: {
+                        type: "trap",
+                        sizeRatio: 1,
+                        health: 5,
+                        damage: 0.3,
+                        speed: 2,
+                        scatterRate: 2,
+                        lifeLength: 0.3,
+                        absorbtionFactor: 1
+                    }
+                })
+            }
+
+            return barrelArray
+        })(),
         "stats": [
             {
                 "name": "Movement Speed",

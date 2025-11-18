@@ -136,7 +136,7 @@ export default class Dominator extends TankBody {
         }
 
         this.base.styleData.color = this.styleData.values.color;
-        this.base.relationsData.team = this.relationsData.values.team;;
+        this.base.relationsData.team = this.relationsData.values.team;
 
         this.healthData.health = this.healthData.values.maxHealth;
 
