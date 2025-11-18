@@ -26,17 +26,21 @@ import Client from "../../Client";
 import { TeamEntity } from "../../Entity/Misc/TeamEntity";
 import { Color } from "../../Const/Enums";
 import { SandboxShapeManager } from "../Sandbox";
+import ObjectEntity from "../../Entity/Object";
+import LivingEntity from "../../Entity/Live";
 
 /**
  * Manage shape count
  */
 class JungleShapeManager extends SandboxShapeManager {
-    protected spawnShape(): AbstractShape {
+    protected spawnShape(): ObjectEntity {
         const shape = super.spawnShape();
         shape.physicsData.values.size *= 2.6;
-        shape.healthData.values.health = (shape.healthData.values.maxHealth *= 4.3);
         shape.physicsData.values.absorbtionFactor /= 6;
-        shape.scoreReward *= 19
+        if (shape instanceof LivingEntity) {
+            shape.healthData.values.health = (shape.healthData.values.maxHealth *= 4.3);
+            shape.scoreReward *= 19
+        }
 
         return shape;
     }

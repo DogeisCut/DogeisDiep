@@ -58,14 +58,14 @@ export default class TrappedMazeWall extends LivingEntity implements BarrelBase 
         this.physicsData.values.pushFactor = 2;
         this.physicsData.values.absorbtionFactor = 0;
 
+        this.relationsData.values.team = this.game.arena;
+
         this.ai = new AI(this);
         this.ai.viewRange = 2000;
         this.inputs = this.ai.inputs;
         this.ai.movementSpeed = 0;
         this.ai.targetFilterShapes = true
         this.ai.doAimPrediction = false;
-
-        this.relationsData.values.team = this.game.arena;
 
         this.styleData.values.borderWidth = 10;
         this.styleData.values.color = Color.Border;
