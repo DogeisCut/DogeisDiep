@@ -26,8 +26,9 @@ import Triangle from "./Triangle";
 import Square from "./Square";
 import AbstractShape from "./AbstractShape";
 import CrasherClump from "./CrasherClump";
+import ObjectEntity from "../Object";
 
-function pickWeightedRandomShape(shapes: { weight: number, create: () => AbstractShape }[]): AbstractShape {
+function pickWeightedRandomShape(shapes: { weight: number, create: () => ObjectEntity }[]): ObjectEntity {
 	let totalWeight = 0;
 	for (const entry of shapes) totalWeight += entry.weight;
 	let choice = Math.random() * totalWeight;
@@ -41,7 +42,7 @@ function pickWeightedRandomShape(shapes: { weight: number, create: () => Abstrac
 export default class ShapeManager {
 	protected game: GameServer;
 	protected arena: ArenaEntity;
-	protected shapes: AbstractShape[] = [];
+	protected shapes: ObjectEntity[] = [];
 
 	public constructor(arena: ArenaEntity) {
 		this.arena = arena;
@@ -50,8 +51,8 @@ export default class ShapeManager {
 		
 	}
 
-	protected spawnShape(): AbstractShape {
-		let shape: AbstractShape;
+	protected spawnShape(): ObjectEntity {
+		let shape: ObjectEntity;
 		const { x, y } = this.arena.findSpawnLocation();
 		const rightX = this.arena.arenaData.values.rightX;
 		const leftX = this.arena.arenaData.values.leftX;
@@ -67,7 +68,8 @@ export default class ShapeManager {
 		shape.positionData.values.x = x;
 		shape.positionData.values.y = y;
 		shape.relationsData.values.owner = shape.relationsData.values.team = this.arena;
-		shape.scoreReward *= this.arena.shapeScoreRewardMultiplier;
+		if ("scoreReward" in shape && typeof shape.scoreReward === "number")
+			shape.scoreReward *= this.arena.shapeScoreRewardMultiplier;
 
 		return shape;
 	}
@@ -80,7 +82,7 @@ export default class ShapeManager {
 		return 1000;
 	}
 
-	protected get fieldShapes(): { weight: number, create: () => AbstractShape }[] {
+	protected get fieldShapes(): { weight: number, create: () => ObjectEntity }[] {
 		return [
 			{ weight: 0.5, create: () => new CrasherClump(this.game) },
             { weight: 1, create: () => new Hexagon(this.game, Math.random() <= 0.011) },
@@ -90,7 +92,7 @@ export default class ShapeManager {
         ];
 	} 
 
-	protected get pentagonNestShapes(): { weight: number, create: () => AbstractShape }[] {
+	protected get pentagonNestShapes(): { weight: number, create: () => ObjectEntity }[] {
 		return [
 			{ weight: 0.1, create: () => new CrasherClump(this.game) },
             { weight: 0.1, create: () => new Hexagon(this.game, Math.random() <= 0.06) },
@@ -98,7 +100,7 @@ export default class ShapeManager {
 		];
 	}
 
-	protected get crasherZoneShapes(): { weight: number, create: () => AbstractShape }[] {
+	protected get crasherZoneShapes(): { weight: number, create: () => ObjectEntity }[] {
 		return [
 			{ weight: 0.1, create: () => new CrasherClump(this.game) },
 			{ weight: 1, create: () => new Crasher(this.game, Math.random() < 0.2) },

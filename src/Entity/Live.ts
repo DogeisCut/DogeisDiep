@@ -63,7 +63,7 @@ export default class LivingEntity extends ObjectEntity {
         super.destroy(animate);
     }
 
-    public makeShiny(level?: number | null): void {
+    public makeShiny(level?: number | null, name: boolean = true): void {
         if (level === undefined) level = this.determineShinyTier(this.game)
         if (level === null) return
         super.makeShiny(level)
@@ -85,7 +85,7 @@ export default class LivingEntity extends ObjectEntity {
                     return "Incredibly Shiny "
             }
         })()
-        if (this.nameData) {
+        if (this.nameData && name) {
             this.nameData.values.preShinyName = this.nameData.values.preShinyName ?? this.nameData.values.name
             this.nameData.values.name = prefix + (this.nameData.values.preShinyName ?? this.nameData.values.name);
         }

@@ -29,6 +29,7 @@ import { ClientBound, Stat, StatCount, PhysicsFlags, StyleFlags, Tank } from "./
 import { getTankByName } from "./TankDefinitionsUtil";
 import Hexagon from "../Entity/Shape/Hexagon";
 import BaseProtector from "../Entity/Misc/BaseProtector";
+import CrasherGrunt from "../Entity/Misc/CrasherGrunt";
 
 const RELATIVE_POS_REGEX = new RegExp(/~(-?\d+)?/);
 
@@ -311,7 +312,8 @@ export const commandCallbacks = {
             ["Pentagon", Pentagon],
             ["Square", Square],
             ["Triangle", Triangle],
-            ["BaseProtector", BaseProtector]
+            ["BaseProtector", BaseProtector],
+            ["CrasherGrunt", CrasherGrunt]
         ] as [string, typeof ObjectEntity][]).get(entityArg);
 
         if (isNaN(count) || count < 0 || !game || !TEntity) return;

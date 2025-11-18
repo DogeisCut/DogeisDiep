@@ -151,13 +151,13 @@ export default class ObjectEntity extends Entity {
         this.shinyLevel = level
         this.styleData.color = level > 0 ? Color.Shinier : Color.Shiny
         if (level > 0) {
-            new RadianceGlow(this, 25 * (level/2)+(1/2))
+            new RadianceGlow(this, 25 * (level/2)+(1/2), Color.ShinyPale)
         } 
         if (level > 2) {
-            new RadianceShine(this, 45 * (level/2)+(1/2), 3)
+            new RadianceBigShine(this, 45 * (level/2)+(1/2), 3, Color.ShinyPale)
         }
         if (level > 1) {
-            new RadianceShine(this, 25 * (level/2)+(1/2))
+            new RadianceShine(this, 25 * (level/2)+(1/2), 6, Color.ShinyPale)
         }
         
     }
@@ -484,13 +484,13 @@ class Particle extends ObjectEntity {
 }
 
 class RadianceGlow extends ObjectEntity {
-    public constructor(source: ObjectEntity, energy: number = 25) {
+    public constructor(source: ObjectEntity, energy: number = 25, color = source.styleData.values.color) {
         super(source.game)
 
         this.physicsData.sides = source.physicsData.values.sides
-        this.styleData.color = source.styleData.values.color
+        this.styleData.color = color
         this.setParent(source)
-        this.styleData.opacity = 0.25
+        this.styleData.opacity = 0.5
         this.styleData.zIndex -= 100
 
         this.tick = (tick: number) => {
@@ -503,15 +503,15 @@ class RadianceGlow extends ObjectEntity {
 }
 
 class RadianceShine extends ObjectEntity {
-    public constructor(source: ObjectEntity, energy: number = 25, sides: number = 6) {
+    public constructor(source: ObjectEntity, energy: number = 25, sides: number = 6, color = source.styleData.values.color) {
         super(source.game)
 
         this.physicsData.sides = sides
         this.styleData.flags |= StyleFlags.isStar
-        this.styleData.color = source.styleData.values.color
+        this.styleData.color = color
         this.positionData.flags |= PositionFlags.absoluteRotation
         this.setParent(source)
-        this.styleData.opacity = 0.5
+        this.styleData.opacity = 1
         this.styleData.zIndex -= 100
 
         this.tick = (tick: number) => {
@@ -520,6 +520,26 @@ class RadianceShine extends ObjectEntity {
 
             this.physicsData.size = (source.physicsData.values.size + ((energy/25)*25)+40) * (Math.abs(Math.sin(currentTimeSeconds * (energy/25))))
             this.positionData.angle += (energy / 500 * Math.sign(Math.sin(currentTimeSeconds * (energy / 25))))
+        }
+    }
+}
+
+class RadianceBigShine extends ObjectEntity {
+    public constructor(source: ObjectEntity, energy: number = 25, sides: number = 3, color = source.styleData.values.color) {
+        super(source.game)
+
+        this.physicsData.sides = sides
+        this.styleData.flags |= StyleFlags.isStar
+        this.styleData.color = color
+        this.positionData.flags |= PositionFlags.absoluteRotation
+        this.setParent(source)
+        this.styleData.opacity = 1
+        this.styleData.zIndex -= 100
+
+        this.tick = (tick: number) => {
+            super.tick(tick)
+            this.physicsData.size = (source.physicsData.values.size + ((energy/25)*25)+40)
+            this.positionData.angle += energy / 500
         }
     }
 }

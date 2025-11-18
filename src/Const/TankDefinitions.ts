@@ -12150,5 +12150,87 @@ const TankDefinitions: (TankDefinition|null)[] = [
             }
         ]
     },
+    {
+        "id": Tank.CrasherGrunt,
+        "name": "Crasher Grunt",
+        "upgradeMessage": "",
+        "levelRequirement": 0,
+        "upgrades": [],
+        "flags": {
+            "invisibility": false,
+            "zoomAbility": false,
+            "canClaimSquares": false,
+            "devOnly": false
+        },
+        "visibilityRateShooting": 0.23,
+        "visibilityRateMoving": 0.08,
+        "invisibilityRate": 0.03,
+        "fieldFactor": 0.9,
+        "absorbtionFactor": 1,
+        "speed": 0.3,
+        "maxHealth": 250,
+        "preAddon": null,
+        "postAddon": "crasherGrunt",
+        "sides": 7,
+        "borderWidth": 15,
+        "barrels": [
+            {
+                "angle": 0,
+                "offset": 0,
+                "size": 110,
+                "width": 50,
+                "delay": 0,
+                "reload": 0.9,
+                "recoil": 0,
+                "isTrapezoid": false,
+                "trapezoidDirection": 0,
+                "addon": null,
+                "bullet": {
+                    "type": "bullet",
+                    "sizeRatio": 1,
+                    "health": 3,
+                    "damage": 1.5,
+                    "speed": 2,
+                    "scatterRate": 1,
+                    "lifeLength": 1,
+                    "absorbtionFactor": 1
+                }
+            }
+        ],
+        "stats": [
+            {
+                "name": "Movement Speed",
+                "max": 0
+            },
+            {
+                "name": "Reload",
+                "max": 0
+            },
+            {
+                "name": "Bullet Damage",
+                "max": 0
+            },
+            {
+                "name": "Bullet Penetration",
+                "max": 0
+            },
+            {
+                "name": "Bullet Speed",
+                "max": 0
+            },
+            {
+                "name": "Body Damage",
+                "max": 0
+            },
+            {
+                "name": "Max Health",
+                "max": 0
+            },
+            {
+                "name": "Health Regen",
+                "max": 0
+            }
+        ]
+    },
 ]
 export default TankDefinitions

@@ -35,6 +35,9 @@ import Pentagon from "../Entity/Shape/Pentagon";
 import Triangle from "../Entity/Shape/Triangle";
 import Square from "../Entity/Shape/Square";
 import Crasher from "../Entity/Shape/Crasher";
+import { create } from "domain";
+import CrasherGrunt from "../Entity/Misc/CrasherGrunt";
+import TrappedMazeWall from "../Entity/Misc/TrappedMazeWall";
 
 
 export class DarkBackground extends ObjectEntity {
@@ -73,6 +76,7 @@ export class DarkTravelsShapeManager extends ShapeManager {
 
     protected get fieldShapes() {
         return [
+            { weight: 0.25, create: () => new CrasherGrunt(this.game) },
             { weight: 1, create: () => new Hexagon(this.game, Math.random() <= 0.5) },
             { weight: 1, create: () => new Pentagon(this.game, Math.random() <= 0.5) },
             { weight: 1, create: () => new Triangle(this.game, Math.random() <= 0.5) },
@@ -142,7 +146,7 @@ export default class DarkTravelsArena extends ArenaEntity {
         const scaledH = gridH * CELL_SIZE;
         const scaledX = gridX * CELL_SIZE - ARENA_SIZE / 2 + (scaledW / 2);
         const scaledY = gridY * CELL_SIZE - ARENA_SIZE / 2 + (scaledH / 2);
-        const wall = new MazeWall(this.game, scaledX, scaledY, scaledH, scaledW);
+        const wall = gridW == gridH ? new TrappedMazeWall(this.game, scaledX, scaledY, scaledH) : new MazeWall(this.game, scaledX, scaledY, scaledH, scaledW);
         wall.styleData.color = Color.Border
     }
     /** Allows for easier (x, y) based getting of maze cells */

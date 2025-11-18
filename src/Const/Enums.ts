@@ -52,8 +52,12 @@ export const enum Color {
     ShinierB = 27,
     Shinier = 28,
     PitchBlack = 29,
+    ShinyPaleR = 30,
+    ShinyPaleG = 31,
+    ShinyPaleB = 32,
+    ShinyPale = 33,
 
-    kMaxColors = 30
+    kMaxColors = 34
 }
 
 /**
@@ -92,11 +96,17 @@ export const ColorsHexCode: Record<Color, ColorValue > = {
     [Color.ShinierB]: 0x6666DD,
     [Color.Shinier]: 0x000000,
     [Color.PitchBlack]: 0x000000,
+    [Color.ShinyPaleR]: 0xFF8888,
+    [Color.ShinyPaleG]: 0x88FF88,
+    [Color.ShinyPaleB]: 0x8888FF,
+    [Color.ShinyPale]: 0x000000,
     [Color.kMaxColors]: 0x000000
 }
 
 ColorsHexCode[Color.Shiny] = [1, Color.ShinyR, Color.ShinyG, Color.ShinyB]
 ColorsHexCode[Color.Shinier] = [1, Color.ShinierR, Color.ShinierG, Color.ShinierB]
+ColorsHexCode[Color.ShinyPale] = [1, Color.ShinyPaleR, Color.ShinyPaleG, Color.ShinyPaleB]
+
 
 export function getResolvedColor(colorValue: ColorValue): number {
 	if (Array.isArray(colorValue)) {
@@ -329,6 +339,7 @@ export const enum Tank {
     Claymore          = 100,
     DominatorDR       = 101,
     BaseProtector     = 102,
+    CrasherGrunt      = 103
     
 
     /* General Ideas 

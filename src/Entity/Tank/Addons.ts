@@ -563,6 +563,38 @@ class ProtectorTurretAddon extends Addon {
     }
 }
 
+class CrasherGruntAddon extends Addon {
+    public constructor(owner: BarrelBase) {
+        super(owner);
+
+        const topper = this.createGuard(1, 1.2, 0, 0)
+        topper.styleData.flags |= StyleFlags.showsAboveParent
+        const turretDef: BarrelDefinition = {
+            angle: 0,
+            offset: 0,
+            size: 35,
+            width: 42 * 0.7,
+            delay: 0.01,
+            reload: 0.4,
+            recoil: 0,
+            isTrapezoid: false,
+            trapezoidDirection: 0,
+            addon: "trapLauncher",
+            bullet: {
+                type: "trap",
+                health: 5,
+                damage: 2,
+                speed: 4.5,
+                scatterRate: 2,
+                lifeLength: 2,
+                sizeRatio: 1,
+                absorbtionFactor: 1
+            }
+        }
+        new AutoTurret(owner, turretDef);
+    }
+}
+
 /**
  * All addons in the game by their ID.
  */
@@ -588,5 +620,6 @@ export const AddonById: Record<addonId, typeof Addon | null> = {
     scavenger: ScavengerAddon,
     ravenger: RavengerAddon,
     protectorBase: ProtectorBaseAddon,
-    protectorTurret: ProtectorTurretAddon
+    protectorTurret: ProtectorTurretAddon,
+    crasherGrunt: CrasherGruntAddon
 }
