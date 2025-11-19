@@ -24,7 +24,7 @@ import TeamBase from "../Entity/Misc/TeamBase";
 import TankBody from "../Entity/Tank/TankBody";
 
 import { TeamEntity } from "../Entity/Misc/TeamEntity";
-import { Color, PhysicsFlags, StyleFlags } from "../Const/Enums";
+import { ArenaFlags, Color, PhysicsFlags, StyleFlags, Tank, ValidScoreboardIndex } from "../Const/Enums";
 import ShapeManager from "../Entity/Shape/Manager";
 import { VectorAbstract } from "../Physics/Vector";
 import MazeWall from "../Entity/Misc/MazeWall";
@@ -59,12 +59,14 @@ export class DarkBackground extends ObjectEntity {
         this.physicsData.values.flags |= PhysicsFlags.noOwnTeamCollision | PhysicsFlags.isBase;
         this.physicsData.values.absorbtionFactor = 0;
 
-        this.styleData.values.opacity = 0.7;
+        this.styleData.values.opacity = 0.75;
         this.styleData.values.borderWidth = 0;
         this.styleData.values.color = Color.PitchBlack;
         this.styleData.values.flags |= StyleFlags.renderFirst | StyleFlags.hasNoDmgIndicator;
 
         this.physicsData.values.pushFactor = 0;
+
+        //TODO: render question mark lol
     }
 }
 
@@ -153,6 +155,38 @@ export default class DarkTravelsArena extends ArenaEntity {
 
         this.darkGuardian = this.createDarkGuardian()
 
+        this.arenaData.values.flags &= ~ArenaFlags.showsLeaderArrow;
+    }
+
+    public tick(tick: number): void {
+        super.tick(tick)
+        for (let i = this.game.entities.globalEntities.length - 1; i >= 0; i--) {
+            const id = this.game.entities.globalEntities[i]
+            const entity = this.game.entities.inner[id]
+            if (entity instanceof ObjectEntity && !(entity instanceof DarkBackground)) {
+                entity.physicsData.flags &= ~PhysicsFlags.showsOnMap
+                this.game.entities.globalEntities.splice(i, 1)
+            }
+        }
+    }
+
+    protected updateScoreboard(scoreboardPlayers: TankBody[]) {
+        const scoreboardCount = this.arenaData.scoreboardAmount = (this.arenaData.values.flags & ArenaFlags.hiddenScores) ? 0 : Math.min(scoreboardPlayers.length, 10);
+
+
+        scoreboardPlayers.sort((p1, p2) => p2.scoreData.values.score - p1.scoreData.values.score);
+        this.leader = scoreboardPlayers[0];
+        
+        for (let i: ValidScoreboardIndex = 0; i < scoreboardCount; i = (i + 1) as ValidScoreboardIndex) {
+            const player = scoreboardPlayers[i];
+            
+            if (player.styleData.values.color === Color.Tank) this.arenaData.values.scoreboardColors[i] = Color.ScoreboardBar;
+            else this.arenaData.values.scoreboardColors[i] = Color.Barrel;
+            this.arenaData.values.scoreboardNames[i] = player.nameData.values.name.replace(/\S/g, "?");
+            this.arenaData.values.scoreboardScores[i] = player.scoreData.values.score;
+            // _currentTank only since ts ignore
+            this.arenaData.values.scoreboardTanks[i] = Tank[""];
+        }
     }
 
     private createDarkGuardian() {
