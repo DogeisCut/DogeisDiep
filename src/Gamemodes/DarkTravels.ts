@@ -38,6 +38,9 @@ import Crasher from "../Entity/Shape/Crasher";
 import { create } from "domain";
 import CrasherGrunt from "../Entity/Misc/CrasherGrunt";
 import TrappedMazeWall from "../Entity/Misc/TrappedMazeWall";
+import DarkGuardian from "../Entity/Misc/DarkGuardian";
+import LivingEntity from "../Entity/Live";
+import EmbossedCrasher from "../Entity/Shape/EmbossedCrasher";
 
 
 export class DarkBackground extends ObjectEntity {
@@ -76,7 +79,8 @@ export class DarkTravelsShapeManager extends ShapeManager {
 
     protected get fieldShapes() {
         return [
-            { weight: 0.25, create: () => new CrasherGrunt(this.game) },
+            { weight: 0.25, create: () => new EmbossedCrasher(this.game) },
+            { weight: 0.33, create: () => new CrasherGrunt(this.game) },
             { weight: 1, create: () => new Hexagon(this.game, Math.random() <= 0.5) },
             { weight: 1, create: () => new Pentagon(this.game, Math.random() <= 0.5) },
             { weight: 1, create: () => new Triangle(this.game, Math.random() <= 0.5) },
@@ -85,11 +89,17 @@ export class DarkTravelsShapeManager extends ShapeManager {
     } 
 
     protected get pentagonNestShapes() {
-        return this.fieldShapes
+        return [
+            ...this.fieldShapes,
+            { weight: 0.25, create: () => new EmbossedCrasher(this.game) }
+        ]
     }
 
     protected get crasherZoneShapes() {
-        return this.fieldShapes
+        return [
+            ...this.fieldShapes,
+            { weight: 0.25, create: () => new EmbossedCrasher(this.game) }
+        ]
     }
 }
 
@@ -126,6 +136,8 @@ export default class DarkTravelsArena extends ArenaEntity {
     /** Maps clients to their teams */
     public playerTeamMap: WeakMap<Client, TeamEntity> = new WeakMap();
 
+    public darkGuardian: DarkGuardian
+
     public constructor(game: GameServer) {
         super(game);
         this.updateBounds(arenaSize * 2, arenaSize * 2);
@@ -138,6 +150,25 @@ export default class DarkTravelsArena extends ArenaEntity {
         this.purpleTeam = new TeamEntity(this.game, Color.TeamPurple)
 
         this._buildMaze();
+
+        this.darkGuardian = this.createDarkGuardian()
+
+    }
+
+    private createDarkGuardian() {
+        this.darkGuardian = new DarkGuardian(this.game)
+        const originalOnDeath = this.darkGuardian.onDeath
+        this.darkGuardian.onDeath = (killer: LivingEntity) => {
+            originalOnDeath.call(this.darkGuardian, killer)
+            this.startDarkGuardianRespawn()
+        }
+        return this.darkGuardian // just cause ts complains
+    }
+
+    private startDarkGuardianRespawn() {
+        setTimeout(() => {
+            this.darkGuardian = this.createDarkGuardian()
+        }, 10000)
     }
 
     /** Creates a maze wall from cell coords */

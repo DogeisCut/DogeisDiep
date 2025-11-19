@@ -43,7 +43,6 @@ export default class CustomAutoTurret extends ObjectEntity {
     
     //TODO: make this an interface so i can use define on more entities
     protected barrels: Barrel[] = [];
-    protected addons: Addon[] = [];
 
     /** The AI controlling the turret. */
     public ai: AI;
@@ -60,7 +59,7 @@ export default class CustomAutoTurret extends ObjectEntity {
     /** The size of the auto turret base */
     public baseSize: number;
 
-    public constructor(owner: BarrelBase, definition: TankDefinition = TankDefinitions[Tank.Basic] as TankDefinition, color: Color = Color.Barrel, baseSize: number = 25) {
+    public constructor(owner: BarrelBase, barrels: BarrelDefinition[] = [], baseSize: number = 25) {
         super(owner.game);
 
         this.cameraEntity = owner.cameraEntity;
@@ -78,8 +77,7 @@ export default class CustomAutoTurret extends ObjectEntity {
         this.physicsData.values.sides = 1;
         this.baseSize = baseSize;
         this.physicsData.values.size = this.baseSize * this.sizeFactor;
-
-        this.styleData.values.color = color;
+        
         this.styleData.values.flags |= StyleFlags.showsAboveParent;
 
         this.positionData.values.flags |= PositionFlags.absoluteRotation;
@@ -87,16 +85,14 @@ export default class CustomAutoTurret extends ObjectEntity {
         this.nameData.values.name = "Mounted Turret";
         this.nameData.values.flags |= NameFlags.hiddenName;
 
-        for (const barrelDefinition of definition.barrels) {
-            const def = Object.assign({}, barrelDefinition, {reload: 4});
-            def.bullet = Object.assign({}, def.bullet, { speed: 1.7, damage: 20, health: 20, });
+        for (const barrelDefinition of barrels) {
+            const def: BarrelDefinition = Object.assign({}, barrelDefinition);
             this.barrels.push(new Barrel(this, def));
         }
         this.ai.aimSpeed = this.barrels.length > 0
         ? this.barrels.reduce((totalBulletAcceleration, currentBarrel) => totalBulletAcceleration + currentBarrel.bulletAccel, 0) / this.barrels.length
         : 0
     }
-    
     /**
      * Size factor, used for calculation of the turret and base size.
      */

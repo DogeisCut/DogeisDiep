@@ -16,6 +16,9 @@ You can level up to level 60 but stop growing at level 45, level 60 tanks/tier 4
 **Discord:** [https://discord.gg/98NwxqJacr](https://discord.gg/98NwxqJacr)
 # Changelog
 
+**November 18th, 2025**
+- Introduced the Dark Travels gamemode. Good luck.
+
 **November 16th, 2025 - Evening**
 - Base protectors no longer modify pushFactor due to strange behavior.
 - Animated color support.

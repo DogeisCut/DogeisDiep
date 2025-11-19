@@ -30,6 +30,8 @@ import { getTankByName } from "./TankDefinitionsUtil";
 import Hexagon from "../Entity/Shape/Hexagon";
 import BaseProtector from "../Entity/Misc/BaseProtector";
 import CrasherGrunt from "../Entity/Misc/CrasherGrunt";
+import EmbossedCrasher from "../Entity/Shape/EmbossedCrasher";
+import DarkGuardian from "../Entity/Misc/DarkGuardian";
 
 const RELATIVE_POS_REGEX = new RegExp(/~(-?\d+)?/);
 
@@ -313,7 +315,9 @@ export const commandCallbacks = {
             ["Square", Square],
             ["Triangle", Triangle],
             ["BaseProtector", BaseProtector],
-            ["CrasherGrunt", CrasherGrunt]
+            ["CrasherGrunt", CrasherGrunt],
+            ["EmbossedCrasher", EmbossedCrasher],
+            ["DarkGuardian", DarkGuardian]
         ] as [string, typeof ObjectEntity][]).get(entityArg);
 
         if (isNaN(count) || count < 0 || !game || !TEntity) return;

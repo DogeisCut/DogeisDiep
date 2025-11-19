@@ -359,6 +359,13 @@ export default class TankBody extends LivingEntity implements BarrelBase {
             this.damagePerTick = this.cameraEntity.cameraData.statLevels[Stat.BodyDamage] + 5;
             if (([Tank.Spike, Tank.Claymore] as (Tank | DevTank)[]).includes(this._currentTank )) this.damagePerTick += 2;
             if (this._currentTank === Tank.Razor) this.damagePerTick += 4;
+            if (this._currentTank === Tank.DarkGuardian) {
+                this.damagePerTick += 10;
+                this.physicsData.pushFactor = 0.1
+                this.physicsData.absorbtionFactor = 0.1
+                this.physicsData.flags |= PhysicsFlags.canEscapeArena
+                this.positionData.flags |= PositionFlags.canMoveThroughWalls
+            } 
 
             // Max Health
             const maxHealthCache = this.healthData.values.maxHealth;

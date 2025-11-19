@@ -12250,45 +12250,79 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "invisibilityRate": 0.03,
         "fieldFactor": 0.9,
         "absorbtionFactor": 1,
-        "speed": 0.1,
-        "maxHealth": 10000,
+        "speed": 80,
+        "maxHealth": 5000,
         "preAddon": "preDarkGuardian",
         "postAddon": "postDarkGuardian",
         "sides": 10,
         "borderWidth": 15,
-        "barrels":  (() => {
-            const numberOfFlameLaunchers = 10
-            const barrelAngleOffset = (Math.PI * 2) / numberOfFlameLaunchers
-            const barrelArray: BarrelDefinition[] = []
+        "barrels": [
+            ...(() => {
+                const barrelCount = 10
+                const barrelAngleOffset = (Math.PI * 2) / barrelCount
+                const barrelArray: BarrelDefinition[] = []
 
-            for (let i = 0; i < numberOfFlameLaunchers; i++) {
-                barrelArray.push({
-                    angle: (i * barrelAngleOffset) + (Math.PI/10),
-                    offset: 0,
-                    size: 80,
-                    width: 22,
-                    delay: 0,
-                    reload: 0.5,
-                    recoil: 0.4,
-                    isTrapezoid: false,
-                    trapezoidDirection: 0,
-                    addon: "trapLauncher",
-                    forceFire: true,
-                    bullet: {
-                        type: "trap",
-                        sizeRatio: 1,
-                        health: 5,
-                        damage: 0.3,
-                        speed: 2,
-                        scatterRate: 2,
-                        lifeLength: 0.3,
-                        absorbtionFactor: 1
-                    }
-                })
-            }
+                for (let i = 0; i < barrelCount; i++) {
+                    barrelArray.push({
+                        angle: (i * barrelAngleOffset) + (Math.PI/10),
+                        offset: 0,
+                        size: 80,
+                        width: 22,
+                        delay: 0,
+                        reload: 0.5,
+                        recoil: 0,
+                        isTrapezoid: false,
+                        trapezoidDirection: 0,
+                        addon: "trapLauncher",
+                        forceFire: true,
+                        bullet: {
+                            type: "trap",
+                            sizeRatio: 1,
+                            health: 5,
+                            damage: 0.6,
+                            speed: 2,
+                            scatterRate: 2,
+                            lifeLength: 0.3,
+                            absorbtionFactor: 1
+                        }
+                    })
+                }
 
-            return barrelArray
-        })(),
+                return barrelArray
+            })(),
+            ...(() => {
+                const barrelCount = 5
+                const barrelAngleOffset = (Math.PI * 2) / barrelCount
+                const barrelArray: BarrelDefinition[] = []
+
+                for (let i = 0; i < barrelCount; i++) {
+                    barrelArray.push({
+                        angle: (i * barrelAngleOffset),
+                        offset: 0,
+                        size: 100,
+                        width: 32,
+                        delay: 0,//i / barrelCount,
+                        reload: 8,
+                        recoil: 0,
+                        isTrapezoid: false,
+                        trapezoidDirection: 0,
+                        addon: null,
+                        bullet: {
+                            type: "bullet",
+                            sizeRatio: 1,
+                            health: 150,
+                            damage: 2,
+                            speed: 0.75,
+                            scatterRate: 0.4,
+                            lifeLength: 3,
+                            absorbtionFactor: 0.03
+                        }
+                    })
+                }
+
+                return barrelArray
+            })(),
+        ],
         "stats": [
             {
                 "name": "Movement Speed",

@@ -22,11 +22,12 @@ import AutoTurret from "./AutoTurret";
 
 import { Color, PositionFlags, PhysicsFlags, StyleFlags } from "../../Const/Enums";
 import { BarrelBase } from "./TankBody";
-import { addonId, BarrelDefinition } from "../../Const/TankDefinitionsUtil";
+import { addonId, BarrelDefinition, TankDefinition } from "../../Const/TankDefinitionsUtil";
 import { AI, AIState, Inputs } from "../AI";
 import LivingEntity from "../Live";
 import { normalizeAngle, PI2 } from "../../util";
 import { CameraEntity } from "../../Native/Camera";
+import CustomAutoTurret from "./CustomAutoTurret";
 
 /**
  * Abstract class to represent an addon in game.
@@ -599,7 +600,7 @@ class PreDarkGuardianAddon extends Addon {
     public constructor(owner: BarrelBase) {
         super(owner);
 
-        const base = this.createGuard(10, 1.8, 0, 0)
+        const base = this.createGuard(10, 1.7, 0, 0)
         base.positionData.flags &= ~PositionFlags.absoluteRotation
     }
 }
@@ -608,9 +609,144 @@ class PostDarkGuardianAddon extends Addon {
     public constructor(owner: BarrelBase) {
         super(owner);
 
-        const base = this.createGuard(1, 1, 0, 0)
+        const base = this.createGuard(1, 1.1, 0, 0)
         base.styleData.flags |= StyleFlags.showsAboveParent
         base.positionData.flags &= ~PositionFlags.absoluteRotation
+
+        const sideTurretDef: BarrelDefinition[] = [
+            {
+                angle: 0,
+                offset: -3,
+                size: 12,
+                width: 8 * 0.7,
+                delay: 0,
+                reload: 5,
+                recoil: 0,
+                isTrapezoid: false,
+                trapezoidDirection: 0,
+                addon: null,
+                bullet: {
+                    type: "bullet",
+                    health: 5,
+                    damage: 1,
+                    speed: 1.2,
+                    scatterRate: 1,
+                    lifeLength: 1,
+                    sizeRatio: 1,
+                    absorbtionFactor: 1,
+                    aboveParent: true
+                }
+            },
+            {
+                angle: 0,
+                offset: 3,
+                size: 12,
+                width: 8 * 0.7,
+                delay: 0.5,
+                reload: 5,
+                recoil: 0,
+                isTrapezoid: false,
+                trapezoidDirection: 0,
+                addon: null,
+                bullet: {
+                    type: "bullet",
+                    health: 5,
+                    damage: 1,
+                    speed: 1.2,
+                    scatterRate: 1,
+                    lifeLength: 1,
+                    sizeRatio: 1,
+                    absorbtionFactor: 1
+                }
+            },
+        ]
+
+        const turretCount = 10;
+		const distance = 1.1;
+
+		for (let i = 0; i < turretCount; i++) {
+            const angle = (Math.PI * 2 * i) / turretCount;
+			const turret = new CustomAutoTurret(owner, sideTurretDef, 6);
+            turret.styleData.color = Color.Barrel
+            turret.ai.viewRange = Infinity
+
+            const turretDeco = new ObjectEntity(turret.game)
+            turretDeco.setParent(turret)
+            turretDeco.styleData.color = Color.Border
+            turretDeco.physicsData.sides = 1
+            turretDeco.styleData.zIndex -= 30
+
+            const turretDecoColored = new ObjectEntity(turret.game)
+            turretDecoColored.setParent(turret)
+            
+            turretDecoColored.physicsData.sides = 1
+            turretDecoColored.styleData.zIndex -= 30
+            
+            const tickBase = turret.tick;
+            turret.tick = (tick: number) => {
+                turret.positionData.y = this.owner.physicsData.values.size * Math.sin(angle) * distance;
+                turret.positionData.x = this.owner.physicsData.values.size * Math.cos(angle) * distance;
+                turretDecoColored.physicsData.size = turret.sizeFactor * 10
+                turretDeco.physicsData.size = turret.sizeFactor * 14
+                turretDecoColored.styleData.color = owner.styleData.color
+
+                tickBase.call(turret, tick);
+            }
+		}
+
+        const turretDef: BarrelDefinition[] = [
+            {
+                angle: 0,
+                offset: 0,
+                size: 105,
+                width: 32 * 0.7,
+                delay: 0.01,
+                reload: 4,
+                recoil: 0,
+                isTrapezoid: false,
+                trapezoidDirection: 0,
+                addon: null,
+                bullet: {
+                    type: "bullet",
+                    health: 30,
+                    damage: 10,
+                    speed: 2,
+                    scatterRate: 0.1,
+                    lifeLength: 1.1,
+                    sizeRatio: 0.8,
+                    absorbtionFactor: 1
+                }
+            },
+            {
+                angle: 0,
+                offset: 0,
+                size: 55,
+                width: 42 * 0.7,
+                delay: 0.01,
+                reload: 4,
+                recoil: 0.3,
+                isTrapezoid: false,
+                trapezoidDirection: 0,
+                addon: null,
+                bullet: {
+                    type: null,
+                    health: 1,
+                    damage: 0.3,
+                    speed: 1.2,
+                    scatterRate: 1,
+                    lifeLength: 1,
+                    sizeRatio: 1,
+                    absorbtionFactor: 1
+                }
+            }
+        ]
+        const mainTurret = new CustomAutoTurret(owner, turretDef)
+        const tickBase = mainTurret.tick;
+        mainTurret.tick = (tick: number) => {
+            mainTurret.styleData.color = owner.styleData.color
+            tickBase.call(mainTurret, tick);
+        }
+        mainTurret.ai.viewRange = Infinity
     }
 }
 

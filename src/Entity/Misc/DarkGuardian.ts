@@ -18,14 +18,15 @@
 
 import GameServer from "../../Game";
 
-import { Color, NameFlags, Tank } from "../../Const/Enums";
+import { ClientBound, Color, NameFlags, Tank } from "../../Const/Enums";
 import TankBody from "../Tank/TankBody";
 import { CameraEntity } from "../../Native/Camera";
 import { AI, AIState, Inputs } from "../AI";
+import LivingEntity from "../Live";
 
-const CRASHER_GRUNT_SIZE = 50
+const DARK_GUARDIAN_SIZE = 400
 
-export default class CrasherGrunt extends TankBody {
+export default class DarkGuardian extends TankBody {
     public movementSpeed = 0.3;
 
     public ai: AI;
@@ -34,24 +35,21 @@ export default class CrasherGrunt extends TankBody {
         const inputs = new Inputs();
         const camera = new CameraEntity(game);
 
-        camera.setLevel(30);
-        camera.sizeFactor = (CRASHER_GRUNT_SIZE / 50);
+        camera.setLevel(400);
+        camera.sizeFactor = (DARK_GUARDIAN_SIZE / 50);
 
         super(game, camera, inputs);
         
-       
-
-        this.setTank(Tank.CrasherGrunt)
+        this.setTank(Tank.DarkGuardian)
         const def = (this.definition = Object.assign({}, this.definition));
 
-        this.nameData.values.name = "Crasher Grunt";
+        this.nameData.values.name = "Dark Guardian";
         this.styleData.values.color = Color.Neutral;
         this.relationsData.values.team = this.game.arena;
-        this.nameData.values.flags |= NameFlags.hiddenName;
         
         this.ai = new AI(this);
         this.ai.inputs = inputs;
-        this.ai.viewRange = 1750;
+        this.ai.viewRange = Infinity;
         this.ai.aimSpeed = this.barrels[0].bulletAccel;
         this.ai.targetFilterShapes = true
         
@@ -59,7 +57,24 @@ export default class CrasherGrunt extends TankBody {
         
         this.makeShiny(0, false)
 
-        this.scoreReward = 5_000
+        this.scoreReward = 500_000_000
+    }
+
+    public onDeath(killer: LivingEntity) {
+        let killerName: string;
+
+        if ((killer.nameData && killer.nameData.values.name && !(killer.nameData.values.flags & NameFlags.hiddenName))) {
+            killerName = killer.nameData.values.name;
+        } else {
+            killerName = "an unnamed tank";
+        }
+
+        this.game.broadcast()
+            .u8(ClientBound.Notification)
+            .stringNT(`The ${this.nameData.values.name} has been temporarily banished by ${killerName}!`)
+            .u32(0x000000)
+            .float(10000)
+            .stringNT("").send();
     }
 
     public tick(tick: number) {
