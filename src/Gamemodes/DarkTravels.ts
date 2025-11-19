@@ -184,8 +184,7 @@ export default class DarkTravelsArena extends ArenaEntity {
             else this.arenaData.values.scoreboardColors[i] = Color.Barrel;
             this.arenaData.values.scoreboardNames[i] = player.nameData.values.name.replace(/\S/g, "?");
             this.arenaData.values.scoreboardScores[i] = player.scoreData.values.score;
-            // _currentTank only since ts ignore
-            this.arenaData.values.scoreboardTanks[i] = Tank[""];
+            this.arenaData.values.scoreboardTanks[i] = -1;
         }
     }
 
