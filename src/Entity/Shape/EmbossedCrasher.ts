@@ -88,7 +88,7 @@ export default class EmbossedCrasher extends AbstractShape implements BarrelBase
         const guard = new GuardObject(this.game, this, 3, 2.4, 0, 0)
         guard.positionData.flags &= ~PositionFlags.absoluteRotation
 
-        this.makeShiny(0, true)
+        this.makeShiny(0, false)
 
         this.scoreReward = 9_000;
     }

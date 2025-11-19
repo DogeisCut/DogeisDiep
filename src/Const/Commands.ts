@@ -235,7 +235,8 @@ export const commandCallbacks = {
           ["Mothership", Mothership],
           ["Shape", AbstractShape],
           ["Boss", AbstractBoss],
-          ["AutoTurret", AutoTurret]
+          ["AutoTurret", AutoTurret],
+          ["Tank", TankBody]
         ] as [string, typeof ObjectEntity][]).get(entityArg)
 
         if (!TEntity || !client.camera?.game.entities.AIs.length) return;
@@ -284,8 +285,8 @@ export const commandCallbacks = {
         const count = countArg ? parseInt(countArg) : 1;
         let x = parseInt(xArg || "0", 10);
         let y = parseInt(yArg || "0", 10);
-        let shinyLevel: number | undefined = parseInt(shinyLevelArg || "-1", 10);
-        shinyLevel = shinyLevel == -1 ? undefined : shinyLevel
+        let shinyLevel: number | null = parseInt(shinyLevelArg || "-1", 10);
+        shinyLevel = shinyLevel == -1 ? null : shinyLevel
 
         const player = client.camera?.cameraData.player;
         if (Entity.exists(player) && player instanceof ObjectEntity) {
