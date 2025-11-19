@@ -79,7 +79,7 @@ export class DarkTravelsShapeManager extends ShapeManager {
 
     protected get fieldShapes() {
         return [
-            { weight: 0.25, create: () => new EmbossedCrasher(this.game) },
+            { weight: 0.1, create: () => new EmbossedCrasher(this.game) },
             { weight: 0.33, create: () => new CrasherGrunt(this.game) },
             { weight: 1, create: () => new Hexagon(this.game, Math.random() <= 0.5) },
             { weight: 1, create: () => new Pentagon(this.game, Math.random() <= 0.5) },
@@ -91,14 +91,14 @@ export class DarkTravelsShapeManager extends ShapeManager {
     protected get pentagonNestShapes() {
         return [
             ...this.fieldShapes,
-            { weight: 0.25, create: () => new EmbossedCrasher(this.game) }
+            { weight: 0.4, create: () => new EmbossedCrasher(this.game) }
         ]
     }
 
     protected get crasherZoneShapes() {
         return [
             ...this.fieldShapes,
-            { weight: 0.25, create: () => new EmbossedCrasher(this.game) }
+            { weight: 0.4, create: () => new EmbossedCrasher(this.game) }
         ]
     }
 }

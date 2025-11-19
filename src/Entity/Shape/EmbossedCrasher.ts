@@ -46,15 +46,15 @@ export default class EmbossedCrasher extends AbstractShape implements BarrelBase
         this.nameData.values.name = "Embossed Crasher";
 
         this.positionData.values.flags |= PositionFlags.canMoveThroughWalls;
-        this.healthData.values.health = this.healthData.values.maxHealth = 100;
+        this.healthData.values.health = this.healthData.values.maxHealth = 75;
         this.physicsData.values.size = 45 * Math.SQRT1_2;
         this.physicsData.values.sides = 3;
         this.physicsData.values.absorbtionFactor = 3.5;
         this.physicsData.values.pushFactor = 20;
 
         this.styleData.values.color = Color.Neutral;
-        this.damagePerTick = 2;
-        this.targettingSpeed = 3;
+        this.damagePerTick = 1.4;
+        this.targettingSpeed = 2.4;
 
         this.ai = new AI(this);
         this.ai.viewRange = 2000;
