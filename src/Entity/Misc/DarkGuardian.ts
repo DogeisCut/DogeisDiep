@@ -96,5 +96,5 @@ export default class DarkGuardian extends TankBody {
         this.ai.movementSpeed = this.cameraEntity.cameraData.movementSpeed = this.movementSpeed;
     }
 
-    public readonly isShapeEntity: boolean = true
+    //public readonly isShapeEntity: boolean = true
 }

@@ -38,23 +38,21 @@ export default class EmbossedCrasher extends AbstractShape implements BarrelBase
     /** The max speed the crasher can move when targetting a player.s */
     private targettingSpeed: number;
 
-    public reloadTime = 15;
+    public reloadTime = 7;
 
     public constructor(game: GameServer) {
         super(game);
 
-        this.nameData.values.name = "Crasher";
+        this.nameData.values.name = "Embossed Crasher";
 
         this.positionData.values.flags |= PositionFlags.canMoveThroughWalls;
-        this.healthData.values.health = this.healthData.values.maxHealth = 300;
-        this.physicsData.values.size = 65 * Math.SQRT1_2;
+        this.healthData.values.health = this.healthData.values.maxHealth = 100;
+        this.physicsData.values.size = 45 * Math.SQRT1_2;
         this.physicsData.values.sides = 3;
-        this.physicsData.values.absorbtionFactor = 0.05;
-        this.physicsData.values.pushFactor = 15;
+        this.physicsData.values.absorbtionFactor = 3.5;
+        this.physicsData.values.pushFactor = 20;
 
         this.styleData.values.color = Color.Neutral;
-
-        this.scoreReward = 33;
         this.damagePerTick = 2;
         this.targettingSpeed = 3;
 
@@ -64,12 +62,35 @@ export default class EmbossedCrasher extends AbstractShape implements BarrelBase
         this.ai['_findTargetInterval'] = tps;
         this.inputs = this.ai.inputs;
 
-        const turret = new AutoTurret(this, undefined, 6)
+        const turret = new AutoTurret(this, {
+            angle: 0,
+            offset: 0,
+            size: 55,
+            width: 42 * 0.7,
+            delay: 0.01,
+            reload: 1,
+            recoil: 0.3,
+            isTrapezoid: false,
+            trapezoidDirection: 0,
+            addon: null,
+            bullet: {
+                type: "bullet",
+                health: 3,
+                damage: 0.4,
+                speed: 1.8,
+                scatterRate: 1,
+                lifeLength: 1,
+                sizeRatio: 1,
+                absorbtionFactor: 1
+            }
+        }, 25)
 
-        const guard = new GuardObject(this.game, this, 3, 1.2, 0, 0)
+        const guard = new GuardObject(this.game, this, 3, 2.4, 0, 0)
         guard.positionData.flags &= ~PositionFlags.absoluteRotation
 
-        this.makeShiny(0)
+        this.makeShiny(0, true)
+
+        this.scoreReward = 9_000;
     }
 
     public get sizeFactor() {
