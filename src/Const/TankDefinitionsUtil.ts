@@ -35,7 +35,7 @@ export type projectileId = "bullet" | "drone" | "baseDrone" | "trap" | "necrodro
     | "satellite" | "invisiTrap";
 
 /** The types of barrel addons that exist in the game */
-export type barrelAddonId = "trapLauncher" | "flameLauncher" | "-50Distance" | "satelliteAntenna";
+export type barrelAddonId = "trapLauncher" | "flameLauncher" | "-50Distance" | `satelliteAntenna${1|2|3|4|5|6|8}`;
 
 /** Increase in opacity when taking damage. */
 export const visibilityRateDamage = 0.2;

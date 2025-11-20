@@ -419,6 +419,7 @@ const CUSTOM_ADDONS = {
     },
     "auto7": entity => {
         if(!(entity instanceof $Entity)) return;
+        if (!(entity instanceof $Entity)) return;
                 
         const rotator = entity.createChild(false);
         rotator.defaults();
@@ -718,32 +719,48 @@ const CUSTOM_ADDONS = {
 			clone.styleData.color = 1
 		}
     },
-    
-    "satelliteAntenna": entity => {
-        if (!(entity instanceof $Entity)) return
-        
-        const baseEntity = entity.createChild(false)
-        baseEntity.defaults()
-        baseEntity.styleData.color = 1
-        baseEntity.styleData.showsAboveParent = true
-        baseEntity.physicsData.sides = 2
-
-        baseEntity.physicsData.width = entity.physicsData.width
-        baseEntity.physicsData.size = entity.physicsData.size * (2/3)
-        baseEntity.positionData.x = (-entity.physicsData.size / 2) + (baseEntity.physicsData.size / 2)
-        
-        const bulbEntity = entity.createChild(false)
-        bulbEntity.defaults()
-        bulbEntity.styleData.color = 1
-        bulbEntity.styleData.showsAboveParent = true
-        bulbEntity.physicsData.sides = 1
-
-        bulbEntity.physicsData.size = entity.physicsData.width / 2
-        bulbEntity.positionData.x = entity.physicsData.size / 2
-
-        entity.physicsData.width /= 2
-    }
 }
+
+function makeSatelliteAntennaAddon(satelliteCount) {
+	return entity => {
+		if (!(entity instanceof $Entity)) return
+		
+		const satellites = satelliteCount
+		
+		const baseEntity = entity.createChild(false)
+		baseEntity.defaults()
+		baseEntity.styleData.color = 1
+		baseEntity.styleData.showsAboveParent = true
+		baseEntity.physicsData.sides = 2
+		
+		baseEntity.physicsData.width = entity.physicsData.width
+		baseEntity.physicsData.size = entity.physicsData.size * (2/3)
+		baseEntity.positionData.x = (-entity.physicsData.size / 2) + (baseEntity.physicsData.size / 2)
+		
+		const bulbEntity = entity.createChild(false)
+		bulbEntity.defaults()
+		bulbEntity.styleData.color = 1
+		bulbEntity.styleData.showsAboveParent = true
+		bulbEntity.physicsData.sides = satellites
+		
+		entity.physicsData.width /= 2
+		
+        bulbEntity.physicsData.size = entity.physicsData.width
+        bulbEntity.physicsData.size *= satellites === 2 ? 1.2 : Math.SQRT1_2
+		bulbEntity.physicsData.width = entity.physicsData.width / 2
+		bulbEntity.positionData.x = entity.physicsData.size / 2
+		bulbEntity.positionData.angle = satellites === 4 ? Math.PI / 4 : satellites === 3 ? Math.PI : 0
+	}
+}
+
+
+CUSTOM_ADDONS["satelliteAntenna1"] = makeSatelliteAntennaAddon(1)
+CUSTOM_ADDONS["satelliteAntenna2"] = makeSatelliteAntennaAddon(2)
+CUSTOM_ADDONS["satelliteAntenna3"] = makeSatelliteAntennaAddon(3)
+CUSTOM_ADDONS["satelliteAntenna4"] = makeSatelliteAntennaAddon(4)
+CUSTOM_ADDONS["satelliteAntenna5"] = makeSatelliteAntennaAddon(5)
+CUSTOM_ADDONS["satelliteAntenna6"] = makeSatelliteAntennaAddon(6)
+CUSTOM_ADDONS["satelliteAntenna8"] = makeSatelliteAntennaAddon(8)
 
 const CUSTOM_COMMANDS = [
     {
@@ -889,7 +906,7 @@ const FIELD_OFFSETS = {
         opacity: 64
     },
     cannon: {
-        shootingAngle: 8
+        shootingAngle: 8,
     }
 };
 

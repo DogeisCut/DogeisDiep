@@ -5,6 +5,8 @@ import Barrel from "../Barrel";
 import { BarrelBase } from "../TankBody";
 import Bullet from "./Bullet";
 
+const SATELLITE_TARGET_FOLLOW_SPEED = 0.5
+
 export default class Satellite extends Bullet {
     public orbitPerTick: number;
     public orbitDistance: number;
@@ -90,8 +92,15 @@ export default class Satellite extends Bullet {
         const targetX = centerEntity.positionData.x + Math.cos(orbitAngle) * orbitRadius * centerEntity.physicsData.size / 50
         const targetY = centerEntity.positionData.y + Math.sin(orbitAngle) * orbitRadius * centerEntity.physicsData.size / 50
 
-        this.positionData.x = targetX
-        this.positionData.y = targetY
+        const desiredVelocityX = (targetX - this.positionData.x) * SATELLITE_TARGET_FOLLOW_SPEED
+        const desiredVelocityY = (targetY - this.positionData.y) * SATELLITE_TARGET_FOLLOW_SPEED
+
+        this.velocity.x *= 0.75
+        this.velocity.y *= 0.75
+
+        this.velocity.x += desiredVelocityX
+        this.velocity.y += desiredVelocityY
+
         
         if (!Entity.exists(this.barrelEntity)) this.destroy();
         

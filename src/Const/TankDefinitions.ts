@@ -12818,14 +12818,14 @@ const TankDefinitions: (TankDefinition|null)[] = [
             {
                 angle: 0,
                 offset: 0,
-                size: 0,
+                size: 100,
                 width: 42,
                 delay: 0,
                 reload: 8,
                 recoil: 0,
                 isTrapezoid: false,
                 trapezoidDirection: 0,
-                addon: null,
+                addon: "satelliteAntenna4",
                 satelliteCount: 4,
                 bullet: {
                     type: "satellite",
@@ -12837,39 +12837,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                     lifeLength: -1,
                     absorbtionFactor: 1
                 }
-            },
-            ...(() => {
-                const numberOfAntennaBarrels = 4
-                const startingAngleRadians = 0//45 * (Math.PI / 180)
-                const angleIncrementRadians = (2 * Math.PI) / numberOfAntennaBarrels
-                const generatedAntennaBarrels: BarrelDefinition[] = []
-                for (let antennaIndex = 0; antennaIndex < numberOfAntennaBarrels; antennaIndex++) {
-                    const currentAngle = startingAngleRadians + angleIncrementRadians * antennaIndex
-                    generatedAntennaBarrels.push({
-                        angle: currentAngle,
-                        offset: 0,
-                        size: 100,
-                        width: 42,
-                        delay: 0,
-                        reload: 1,
-                        recoil: 0,
-                        isTrapezoid: false,
-                        trapezoidDirection: 0,
-                        addon: "satelliteAntenna",
-                        bullet: {
-                            type: null,
-                            sizeRatio: 1,
-                            health: 1,
-                            damage: 1,
-                            speed: 1,
-                            scatterRate: 0,
-                            lifeLength: -1,
-                            absorbtionFactor: 1
-                        }
-                    })
-                }
-                return generatedAntennaBarrels
-            })()
+            }
         ],
         "stats": [
             {
@@ -12912,7 +12880,8 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "upgradeMessage": "",
         "levelRequirement": 30,
         "upgrades": [
-            Tank.Spindler
+            Tank.Spindler,
+            Tank.Pummeler
         ],
         "flags": {
             "invisibility": false,
@@ -12935,18 +12904,18 @@ const TankDefinitions: (TankDefinition|null)[] = [
             {
                 "angle": 0,
                 "offset": 0,
-                "size": 0,
-                "width": 42,
+                "size": 95,
+                "width": 42/(4/3),
                 "delay": 0,
                 "reload": 8/(4/3),
                 "recoil": 0,
                 "isTrapezoid": false,
                 "trapezoidDirection": 0,
-                "addon": null,
+                "addon": "satelliteAntenna6",
                 satelliteCount: 6,
                 "bullet": {
                     "type": "satellite",
-                    "sizeRatio": 1/(4/3),
+                    "sizeRatio": 1,
                     "health": 1/(4/3),
                     "damage": 1,
                     "speed": 1,
@@ -12954,39 +12923,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                     "lifeLength": -1,
                     "absorbtionFactor": 1
                 }
-            },
-            ...(() => {
-                const numberOfAntennaBarrels = 6
-                const startingAngleRadians = 0//45 * (Math.PI / 180)
-                const angleIncrementRadians = (2 * Math.PI) / numberOfAntennaBarrels
-                const generatedAntennaBarrels: BarrelDefinition[] = []
-                for (let antennaIndex = 0; antennaIndex < numberOfAntennaBarrels; antennaIndex++) {
-                    const currentAngle = startingAngleRadians + angleIncrementRadians * antennaIndex
-                    generatedAntennaBarrels.push({
-                        angle: currentAngle,
-                        offset: 0,
-                        size: 95,
-                        width: 42/(4/3),
-                        delay: 0,
-                        reload: 1,
-                        recoil: 0,
-                        isTrapezoid: false,
-                        trapezoidDirection: 0,
-                        addon: "satelliteAntenna",
-                        bullet: {
-                            type: null,
-                            sizeRatio: 1,
-                            health: 1,
-                            damage: 1,
-                            speed: 1,
-                            scatterRate: 0,
-                            lifeLength: -1,
-                            absorbtionFactor: 1
-                        }
-                    })
-                }
-                return generatedAntennaBarrels
-            })()
+            }
         ],
         "stats": [
             {
@@ -13050,18 +12987,18 @@ const TankDefinitions: (TankDefinition|null)[] = [
             {
                 "angle": 0,
                 "offset": 0,
-                "size": 0,
-                "width": 42,
+                "size": 90,
+                "width": 42/(5/3),
                 "delay": 0,
                 "reload": 4,
                 "recoil": 0,
                 "isTrapezoid": false,
                 "trapezoidDirection": 0,
-                "addon": null,
+                "addon": "satelliteAntenna8",
                 satelliteCount: 8,
                 "bullet": {
                     "type": "satellite",
-                    "sizeRatio": 1/(5/3),
+                    "sizeRatio": 1,
                     "health": 1/(5/3),
                     "damage": 1,
                     "speed": 1,
@@ -13069,39 +13006,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                     "lifeLength": -1,
                     "absorbtionFactor": 1
                 }
-            },
-            ...(() => {
-                const numberOfAntennaBarrels = 8
-                const startingAngleRadians = 0//45 * (Math.PI / 180)
-                const angleIncrementRadians = (2 * Math.PI) / numberOfAntennaBarrels
-                const generatedAntennaBarrels: BarrelDefinition[] = []
-                for (let antennaIndex = 0; antennaIndex < numberOfAntennaBarrels; antennaIndex++) {
-                    const currentAngle = startingAngleRadians + angleIncrementRadians * antennaIndex
-                    generatedAntennaBarrels.push({
-                        angle: currentAngle,
-                        offset: 0,
-                        size: 90,
-                        width: 42/(5/3),
-                        delay: 0,
-                        reload: 1,
-                        recoil: 0,
-                        isTrapezoid: false,
-                        trapezoidDirection: 0,
-                        addon: "satelliteAntenna",
-                        bullet: {
-                            type: null,
-                            sizeRatio: 1,
-                            health: 1,
-                            damage: 1,
-                            speed: 1,
-                            scatterRate: 0,
-                            lifeLength: -1,
-                            absorbtionFactor: 1
-                        }
-                    })
-                }
-                return generatedAntennaBarrels
-            })()
+            }
         ],
         "stats": [
             {
@@ -13144,7 +13049,8 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "upgradeMessage": "",
         "levelRequirement": 30,
         "upgrades": [
-            Tank.Plower
+            Tank.Plower,
+            Tank.Pummeler
         ],
         "flags": {
             "invisibility": false,
@@ -13167,18 +13073,18 @@ const TankDefinitions: (TankDefinition|null)[] = [
             {
                 "angle": 0,
                 "offset": 0,
-                "size": 0,
-                "width": 42,
+                "size": 110,
+                "width": 42*1.5,
                 "delay": 0,
                 "reload": 8.5,
                 "recoil": 0,
                 "isTrapezoid": false,
                 "trapezoidDirection": 0,
-                "addon": null,
+                "addon": "satelliteAntenna3",
                 satelliteCount: 3,
                 "bullet": {
                     "type": "satellite",
-                    "sizeRatio": 1.5,
+                    "sizeRatio": 1,
                     "health": 1.5,
                     "damage": 1.1,
                     "speed": 0.8,
@@ -13186,39 +13092,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                     "lifeLength": -1,
                     "absorbtionFactor": 1
                 }
-            },
-            ...(() => {
-                const numberOfAntennaBarrels = 3
-                const startingAngleRadians = 0//45 * (Math.PI / 180)
-                const angleIncrementRadians = (2 * Math.PI) / numberOfAntennaBarrels
-                const generatedAntennaBarrels: BarrelDefinition[] = []
-                for (let antennaIndex = 0; antennaIndex < numberOfAntennaBarrels; antennaIndex++) {
-                    const currentAngle = startingAngleRadians + angleIncrementRadians * antennaIndex
-                    generatedAntennaBarrels.push({
-                        angle: currentAngle,
-                        offset: 0,
-                        size: 100,
-                        width: 42 * 1.5,
-                        delay: 0,
-                        reload: 1,
-                        recoil: 0,
-                        isTrapezoid: false,
-                        trapezoidDirection: 0,
-                        addon: "satelliteAntenna",
-                        bullet: {
-                            type: null,
-                            sizeRatio: 1,
-                            health: 1,
-                            damage: 1,
-                            speed: 1,
-                            scatterRate: 0,
-                            lifeLength: -1,
-                            absorbtionFactor: 1
-                        }
-                    })
-                }
-                return generatedAntennaBarrels
-            })()
+            }
         ],
         "stats": [
             {
@@ -13284,18 +13158,18 @@ const TankDefinitions: (TankDefinition|null)[] = [
             {
                 "angle": 0,
                 "offset": 0,
-                "size": 0,
-                "width": 42,
+                "size": 115,
+                "width": 42*2,
                 "delay": 0,
                 "reload": 9,
                 "recoil": 0,
                 "isTrapezoid": false,
                 "trapezoidDirection": 0,
-                "addon": null,
+                "addon": "satelliteAntenna2",
                 satelliteCount: 2,
                 "bullet": {
                     "type": "satellite",
-                    "sizeRatio": 2,
+                    "sizeRatio": 1,
                     "health": 2,
                     "damage": 1.2,
                     "speed": 0.7,
@@ -13303,39 +13177,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                     "lifeLength": -1,
                     "absorbtionFactor": 1
                 }
-            },
-            ...(() => {
-                const numberOfAntennaBarrels = 2
-                const startingAngleRadians = 0//45 * (Math.PI / 180)
-                const angleIncrementRadians = (2 * Math.PI) / numberOfAntennaBarrels
-                const generatedAntennaBarrels: BarrelDefinition[] = []
-                for (let antennaIndex = 0; antennaIndex < numberOfAntennaBarrels; antennaIndex++) {
-                    const currentAngle = startingAngleRadians + angleIncrementRadians * antennaIndex
-                    generatedAntennaBarrels.push({
-                        angle: currentAngle,
-                        offset: 0,
-                        size: 100,
-                        width: 42 * 2,
-                        delay: 0,
-                        reload: 1,
-                        recoil: 0,
-                        isTrapezoid: false,
-                        trapezoidDirection: 0,
-                        addon: "satelliteAntenna",
-                        bullet: {
-                            type: null,
-                            sizeRatio: 1,
-                            health: 1,
-                            damage: 1,
-                            speed: 1,
-                            scatterRate: 0,
-                            lifeLength: -1,
-                            absorbtionFactor: 1
-                        }
-                    })
-                }
-                return generatedAntennaBarrels
-            })()
+            }
         ],
         "stats": [
             {
@@ -13399,46 +13241,24 @@ const TankDefinitions: (TankDefinition|null)[] = [
             {
                 "angle": 0,
                 "offset": 0,
-                "size": 0,
-                "width": 42,
+                "size": 120,
+                "width": 42*2.4,
                 "delay": 0,
                 "reload": 9.5,
                 "recoil": 0,
                 "isTrapezoid": false,
                 "trapezoidDirection": 0,
-                "addon": null,
+                "addon": "satelliteAntenna1",
                 satelliteCount: 1,
                 "bullet": {
                     "type": "satellite",
-                    "sizeRatio": 2.4,
+                    "sizeRatio": 1,
                     "health": 3,
                     "damage": 1.3,
                     "speed": 0.6,
                     "scatterRate": 0,
                     "lifeLength": -1,
                     "absorbtionFactor": 1
-                }
-            },
-            {
-                angle: 0,
-                offset: 0,
-                size: 100,
-                width: 42 * 2.4,
-                delay: 0,
-                reload: 1,
-                recoil: 0,
-                isTrapezoid: false,
-                trapezoidDirection: 0,
-                addon: "satelliteAntenna",
-                bullet: {
-                    type: null,
-                    sizeRatio: 1,
-                    health: 1,
-                    damage: 1,
-                    speed: 1,
-                    scatterRate: 0,
-                    lifeLength: -1,
-                    absorbtionFactor: 1
                 }
             }
         ],
@@ -13478,6 +13298,89 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     null,
+    {
+        "id": Tank.Pummeler,
+        "name": "Pummeler",
+        "upgradeMessage": "",
+        "levelRequirement": 45,
+        "upgrades": [],
+        "flags": {
+            "invisibility": false,
+            "zoomAbility": false,
+            "canClaimSquares": false,
+            "devOnly": false
+        },
+        "visibilityRateShooting": 0.23,
+        "visibilityRateMoving": 0.08,
+        "invisibilityRate": 0.03,
+        "fieldFactor": 1,
+        "absorbtionFactor": 1,
+        "speed": 1,
+        "maxHealth": 50,
+        "preAddon": null,
+        "postAddon": null,
+        "sides": 1,
+        "borderWidth": 15,
+        "barrels": [
+            {
+                "angle": 0,
+                "offset": 0,
+                "size": 110,
+                "width": 42*1.5,
+                "delay": 0,
+                "reload": 7,
+                "recoil": 0,
+                "isTrapezoid": false,
+                "trapezoidDirection": 0,
+                "addon": "satelliteAntenna5",
+                satelliteCount: 5,
+                "bullet": {
+                    "type": "satellite",
+                    "sizeRatio": 1,
+                    "health": 1.5,
+                    "damage": 1.1,
+                    "speed": 0.8,
+                    "scatterRate": 0,
+                    "lifeLength": -1,
+                    "absorbtionFactor": 1
+                }
+            }
+        ],
+        "stats": [
+            {
+                "name": "Movement Speed",
+                "max": 7
+            },
+            {
+                "name": "Reload",
+                "max": 7
+            },
+            {
+                "name": "Satellite Damage",
+                "max": 7
+            },
+            {
+                "name": "Satellite Penetration",
+                "max": 7
+            },
+            {
+                "name": "Satellite Speed",
+                "max": 7
+            },
+            {
+                "name": "Body Damage",
+                "max": 7
+            },
+            {
+                "name": "Max Health",
+                "max": 7
+            },
+            {
+                "name": "Health Regen",
+                "max": 7
+            }
+        ]
+    },
 ]
 
 function makeAutoOf(tank: Tank, newTank: Tank, level: number = 60, preAddonInstead: boolean = false, custom: Partial<TankDefinition> = {}, addon: addonId = "autoturret", prefix: string = "Auto ", pushUpgrade: boolean = true ) {

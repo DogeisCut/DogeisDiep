@@ -388,7 +388,8 @@ export const enum Tank {
     Rumbler           = 145,
     Plower            = 146,
     Binary            = 147,
-    AutoPlower        = 148
+    AutoPlower        = 148,
+    Pummeler          = 149
     
 
     /* General Ideas 

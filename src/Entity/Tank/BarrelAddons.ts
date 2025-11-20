@@ -143,6 +143,8 @@ export class SatelliteAntennaAddon extends BarrelAddon {
     public constructor(owner: Barrel) {
         super(owner);
 
+        const satellites = owner.definition.satelliteCount ?? 1
+
         const base = new ObjectEntity(owner.game)
         base.setParent(owner);
         base.relationsData.values.team = owner;
@@ -162,14 +164,17 @@ export class SatelliteAntennaAddon extends BarrelAddon {
         bulb.setParent(owner);
         bulb.relationsData.values.team = owner;
         bulb.styleData.values.color = Color.Barrel;
-        bulb.physicsData.sides = 1;
+        bulb.physicsData.sides = satellites;
         bulb.styleData.flags |= StyleFlags.showsAboveParent
         const bulbTick = bulb.tick
         bulb.tick = function(tick: number) {
             bulbTick.call(bulb, tick)
             owner.physicsData.values.width /= 2
             this.physicsData.size = owner.physicsData.width
-            this.positionData.x = owner.physicsData.values.size/2
+            this.physicsData.size *= satellites === 2 ? 1.2 : Math.SQRT1_2
+            this.physicsData.width = owner.physicsData.width / 2
+            this.positionData.x = owner.physicsData.values.size / 2
+            this.positionData.angle = satellites === 4 ? Math.PI / 4 : satellites === 3 ? Math.PI : 0
         }
     }
 }
@@ -181,5 +186,11 @@ export const BarrelAddonById: Record<barrelAddonId, typeof BarrelAddon | null> =
     trapLauncher: TrapLauncherAddon,
     flameLauncher: FlameLauncherAddon,
     "-50Distance": null,
-    satelliteAntenna: SatelliteAntennaAddon
+    satelliteAntenna1: SatelliteAntennaAddon,
+    satelliteAntenna2: SatelliteAntennaAddon,
+    satelliteAntenna3: SatelliteAntennaAddon,
+    satelliteAntenna4: SatelliteAntennaAddon,
+    satelliteAntenna6: SatelliteAntennaAddon,
+    satelliteAntenna5: SatelliteAntennaAddon,
+    satelliteAntenna8: SatelliteAntennaAddon
 }
