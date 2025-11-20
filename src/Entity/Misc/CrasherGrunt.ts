@@ -51,7 +51,7 @@ export default class CrasherGrunt extends TankBody {
         
         this.ai = new AI(this);
         this.ai.inputs = inputs;
-        this.ai.viewRange = 1750;
+        this.ai.viewRange = 1500;
         this.ai.aimSpeed = this.barrels[0].bulletAccel;
         this.ai.targetFilterShapes = true
         

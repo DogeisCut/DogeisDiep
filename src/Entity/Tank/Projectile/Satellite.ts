@@ -18,7 +18,7 @@ export default class Satellite extends Bullet {
     public orbitOffset: number;
     public extraRoom: number;
     public siblingIndex: number;
-    constructor(barrel: Barrel, tank: BarrelBase, tankDefinition: TankDefinition | null, shootAngle: number, orbitPerTick: number = 0.1, minOrbitPerTick: number = 0.1, maxOrbitPerTick: number = 0.1, orbitDistance: number = 200, minOrbitDistance: number = 100, maxOrbitDistance: number = 400, maxSiblings: number = 0, orbitOffset: number = 0, extraRoom: number = 0) {
+    constructor(barrel: Barrel, tank: BarrelBase, tankDefinition: TankDefinition | null, shootAngle: number, orbitPerTick: number = 0.1, minOrbitPerTick: number = orbitPerTick, maxOrbitPerTick: number = orbitPerTick, orbitDistance: number = 200, minOrbitDistance: number = 100, maxOrbitDistance: number = 400, maxSiblings: number = 0, orbitOffset: number = 0, extraRoom: number = 0) {
         super(barrel, tank, tankDefinition, shootAngle);
 
         this.styleData.zIndex = barrel.rootParent.styleData.zIndex * 2

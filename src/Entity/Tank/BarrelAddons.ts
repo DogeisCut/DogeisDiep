@@ -163,7 +163,6 @@ export class SatelliteAntennaAddon extends BarrelAddon {
         const bulb = new ObjectEntity(owner.game)
         bulb.setParent(owner);
         bulb.relationsData.values.team = owner;
-        bulb.styleData.values.color = Color.Barrel;
         bulb.physicsData.sides = satellites;
         bulb.styleData.flags |= StyleFlags.showsAboveParent
         const bulbTick = bulb.tick
@@ -175,6 +174,7 @@ export class SatelliteAntennaAddon extends BarrelAddon {
             this.physicsData.width = owner.physicsData.width / 2
             this.positionData.x = owner.physicsData.values.size / 2
             this.positionData.angle = satellites === 4 ? Math.PI / 4 : satellites === 3 ? Math.PI : 0
+            this.styleData.color = owner.tank.inputs.attemptingRepel() ? Color.Border : owner.tank.inputs.attemptingShot() ? Color.Box : Color.Barrel;
         }
     }
 }

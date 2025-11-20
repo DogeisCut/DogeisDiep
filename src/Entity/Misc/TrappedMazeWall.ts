@@ -134,7 +134,7 @@ export default class TrappedMazeWall extends LivingEntity implements BarrelBase 
         this.turret.styleData.flags &= ~StyleFlags.showsAboveParent
         this.damageReduction = 0.25;
         this.disabled = true
-        this.regenPerTick = 1
+        this.regenPerTick = 0.5
         this.styleData.flags |= StyleFlags.hasNoDmgIndicator
     }
 

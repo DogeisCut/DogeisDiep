@@ -13303,7 +13303,9 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "name": "Pummeler",
         "upgradeMessage": "",
         "levelRequirement": 45,
-        "upgrades": [],
+        "upgrades": [
+            Tank.Squasher
+        ],
         "flags": {
             "invisibility": false,
             "zoomAbility": false,
@@ -13336,6 +13338,113 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 satelliteCount: 5,
                 "bullet": {
                     "type": "satellite",
+                    "sizeRatio": 1,
+                    "health": 1.5,
+                    "damage": 1.1,
+                    "speed": 0.8,
+                    "scatterRate": 0,
+                    "lifeLength": -1,
+                    "absorbtionFactor": 1
+                }
+            }
+        ],
+        "stats": [
+            {
+                "name": "Movement Speed",
+                "max": 7
+            },
+            {
+                "name": "Reload",
+                "max": 7
+            },
+            {
+                "name": "Satellite Damage",
+                "max": 7
+            },
+            {
+                "name": "Satellite Penetration",
+                "max": 7
+            },
+            {
+                "name": "Satellite Speed",
+                "max": 7
+            },
+            {
+                "name": "Body Damage",
+                "max": 7
+            },
+            {
+                "name": "Max Health",
+                "max": 7
+            },
+            {
+                "name": "Health Regen",
+                "max": 7
+            }
+        ]
+    },
+    {
+        "id": Tank.Squasher,
+        "name": "Squasher",
+        "upgradeMessage": "",
+        "levelRequirement": 60,
+        "upgrades": [],
+        "flags": {
+            "invisibility": false,
+            "zoomAbility": false,
+            "canClaimSquares": false,
+            "devOnly": false
+        },
+        "visibilityRateShooting": 0.23,
+        "visibilityRateMoving": 0.08,
+        "invisibilityRate": 0.03,
+        "fieldFactor": 1,
+        "absorbtionFactor": 1,
+        "speed": 1,
+        "maxHealth": 50,
+        "preAddon": null,
+        "postAddon": null,
+        "sides": 1,
+        "borderWidth": 15,
+        "barrels": [
+            {
+                "angle": 15 * Math.PI/180,
+                "offset": 19,
+                "size": 110,
+                "width": 42*1.5,
+                "delay": 0,
+                "reload": 7,
+                "recoil": 0,
+                "isTrapezoid": false,
+                "trapezoidDirection": 0,
+                "addon": "satelliteAntenna4",
+                satelliteCount: 4,
+                "bullet": {
+                    "type": "satellite",
+                    "sizeRatio": 1,
+                    "health": 1.5,
+                    "damage": 1.1,
+                    "speed": 0.8,
+                    "scatterRate": 0,
+                    "lifeLength": -1,
+                    "absorbtionFactor": 1
+                }
+            },
+            {
+                "angle": -15 * Math.PI/180,
+                "offset": -19,
+                "size": 110,
+                "width": 42*1.5,
+                "delay": 0.5,
+                "reload": 7,
+                "recoil": 0,
+                "isTrapezoid": false,
+                "trapezoidDirection": 0,
+                "addon": "satelliteAntenna4",
+                satelliteCount: 4,
+                "bullet": {
+                    "type": "satellite",
+                    satelliteOrbitPerTick: -0.1,
                     "sizeRatio": 1,
                     "health": 1.5,
                     "damage": 1.1,
