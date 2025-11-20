@@ -38,6 +38,8 @@ const CHANGELOG = [
     "- Nerfed Trapped Wall health.",
     "- New Spread Shot tank: Splash Shot",
     "- New level 60 \"meta\" tanks for Auto Basic, Sniper, Machine Gun, and Flank Guard",
+    "- Darkened Dark Travels... just a tad, enough to not blend in with Smasher guards.",
+    "- Obfuscated both the minimap and leaderboard in Dark Travels",
     "",
     "November 18th, 2025",
     "- Introduced the Dark Travels gamemode. Good luck.",
@@ -55,6 +57,9 @@ const CHANGELOG = [
     "- Nerfed base drone push factor (10 -> 8)",
     "- Fix base drones rendering under the base protectors.",
     "",
+    "More in the repository..."
+    // Off the screen
+    /*
     "November 15th, 2025",
     "- Fixed circle walls on minimap rendering incorrectly sometimes. (Thanks xScripty!)",
     "- Fixed several grammar issues in the changelog and readme.",
@@ -63,9 +68,6 @@ const CHANGELOG = [
     "- Added base protectors",
     "- Replaced shiny variants with \"Radiant\" variants (more radiance levels coming soon)",
     "",
-    "More in the repository..."
-    // Off the screen
-    /*
     "November 14th, 2025",
     "- Fixed General's swarm drones not targeting properly",
     "- Buffed Pentamancer, it can now claim all shapes and those shapes can merge into higher shapes.",
