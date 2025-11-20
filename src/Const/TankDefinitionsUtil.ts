@@ -30,7 +30,9 @@ export type preAddonId = "dombase" | "launcher" | "pentagonBody" | "protectorBas
 export type addonId = preAddonId | postAddonId;
 
 /** The types of projectiles in the game */
-export type projectileId = "bullet" | "drone" | "baseDrone" | "trap" | "necrodrone" | "minion" | "skimmer" | "rocket" | "swarm" | "flame" | "wall" | "croc" | "swarmMinion" | "necromergeSquare" | "necromergeTriangle" | "necromergePentagon" | "wraithdrone" | "leigon" | null;
+export type projectileId = "bullet" | "drone" | "baseDrone" | "trap" | "necrodrone" | "minion" | "skimmer" | "rocket" | "swarm" | "flame"
+    | "wall" | "croc" | "swarmMinion" | "necromergeSquare" | "necromergeTriangle" | "necromergePentagon" | "wraithdrone" | "leigon" | null
+    | "satellite" | "invisiTrap";
 
 /** The types of barrel addons that exist in the game */
 export type barrelAddonId = "trapLauncher" | "flameLauncher" | "-50Distance";
@@ -62,6 +64,17 @@ export interface BulletDefinition {
     color?: Color;
     /** Overrides number of sides for projectile. */
     sides?: number;
+
+    /** Orbit rotation per tick. */
+    satelliteOrbitPerTick?: number
+    satelliteMinOrbitPerTick?: number
+    satelliteMaxOrbitPerTick?: number
+    /** Default orbit distance. */
+    satelliteOrbitDistance?: number
+    /** Minimum orbit distance (Right Mouse). */
+    satelliteMinOrbitDistance?: number
+    /** Maximum orbit distance (Left Mouse). */
+    satelliteMaxOrbitDistance?: number
     
     aboveParent?: boolean
 }
@@ -94,6 +107,8 @@ export interface BarrelDefinition {
     addon: barrelAddonId | null;
     /** The maximum numbers of drones the barrel can spawn - only present if `bullet.type` === 'drone'. */
     droneCount?: number;
+    /** The maximum numbers of satellites the barrel can spawn - only present if `bullet.type` === 'satellite'. */
+    satelliteCount?: number;
     /** Whether or not the drones are controllable - only present if `bullet.type` === 'drone'. */
     canControlDrones?: boolean;
     /** Whether or not the barrel should always shoot (Trapper Dominator, Defender). */

@@ -15,7 +15,8 @@ const TankDefinitions: (TankDefinition|null)[] = [
             7,
             8,
             36,
-            61
+            61,
+            Tank.Planet
         ],
         "flags": {
             "invisibility": false,
@@ -12786,6 +12787,90 @@ const TankDefinitions: (TankDefinition|null)[] = [
     null, // Auto Generated
     null, // Auto Generated
     null, // Auto Generated
+    null, // Auto Generated
+    {
+        "id": Tank.Planet,
+        "name": "Planet",
+        "upgradeMessage": "",
+        "levelRequirement": 15,
+        "upgrades": [],
+        "flags": {
+            "invisibility": false,
+            "zoomAbility": false,
+            "canClaimSquares": false,
+            "devOnly": false
+        },
+        "visibilityRateShooting": 0.23,
+        "visibilityRateMoving": 0.08,
+        "invisibilityRate": 0.03,
+        "fieldFactor": 1,
+        "absorbtionFactor": 1,
+        "speed": 1,
+        "maxHealth": 50,
+        "preAddon": null,
+        "postAddon": null,
+        "sides": 1,
+        "borderWidth": 15,
+        "barrels": [
+            {
+                "angle": 0,
+                "offset": 0,
+                "size": 0,
+                "width": 42,
+                "delay": 0,
+                "reload": 8,
+                "recoil": 0,
+                "isTrapezoid": false,
+                "trapezoidDirection": 0,
+                "addon": null,
+                satelliteCount: 3,
+                "bullet": {
+                    "type": "satellite",
+                    "sizeRatio": 1,
+                    "health": 1,
+                    "damage": 1,
+                    "speed": 1,
+                    "scatterRate": 1,
+                    "lifeLength": -1,
+                    "absorbtionFactor": 1
+                }
+            }
+        ],
+        "stats": [
+            {
+                "name": "Movement Speed",
+                "max": 7
+            },
+            {
+                "name": "Reload",
+                "max": 7
+            },
+            {
+                "name": "Satellite Damage",
+                "max": 7
+            },
+            {
+                "name": "Satellite Penetration",
+                "max": 7
+            },
+            {
+                "name": "Satellite Speed",
+                "max": 7
+            },
+            {
+                "name": "Body Damage",
+                "max": 7
+            },
+            {
+                "name": "Max Health",
+                "max": 7
+            },
+            {
+                "name": "Health Regen",
+                "max": 7
+            }
+        ]
+    },
 ]
 
 function makeAutoOf(tank: Tank, newTank: Tank, level: number = 60, preAddonInstead: boolean = false, custom: Partial<TankDefinition> = {}, addon: addonId = "autoturret", prefix: string = "Auto ", pushUpgrade: boolean = true ) {

@@ -44,6 +44,8 @@ import NecromergeShapeSquare from "./Projectile/NecromergeShapeSquare";
 import NecromergeShapeTriangle from "./Projectile/NecromergeShapeTriangle";
 import NecromergeShapePentagon from "./Projectile/NecromergeShapePentagon";
 import BaseDrone from "./Projectile/BaseDrone";
+import Satellite from "./Projectile/Satellite";
+import InvisiTrap from "./Projectile/InvisiTrap";
 /**
  * Class that determines when barrels can shoot, and when they can't.
  */
@@ -68,7 +70,7 @@ export class ShootCycle {
             this.reloadTime = reloadTime;
         }
 
-        const alwaysShoot = (this.barrelEntity.definition.forceFire) || (this.barrelEntity.definition.bullet.type === 'drone') || (this.barrelEntity.definition.bullet.type === 'minion') || (this.barrelEntity.definition.bullet.type === 'leigon') || (this.barrelEntity.definition.bullet.type == 'baseDrone');
+        const alwaysShoot = (this.barrelEntity.definition.forceFire) || (this.barrelEntity.definition.bullet.type === 'drone') || (this.barrelEntity.definition.bullet.type === 'minion') || (this.barrelEntity.definition.bullet.type === 'leigon') || (this.barrelEntity.definition.bullet.type == 'baseDrone') || (this.barrelEntity.definition.bullet.type == 'satellite');
 
         if (this.pos >= reloadTime) {
             // When its not shooting dont shoot, unless its a drone
@@ -78,6 +80,11 @@ export class ShootCycle {
             }
             // When it runs out of drones, dont shoot
             if (typeof this.barrelEntity.definition.droneCount === 'number' && this.barrelEntity.droneCount >= this.barrelEntity.definition.droneCount) {
+                this.pos = reloadTime;
+                return;
+            }
+            // When it runs out of satellites, dont shoot
+            if (typeof this.barrelEntity.definition.satelliteCount === 'number' && this.barrelEntity.satelliteChildren.filter(item => item !== null).length >= this.barrelEntity.definition.satelliteCount) {
                 this.pos = reloadTime;
                 return;
             }
@@ -111,6 +118,8 @@ export default class Barrel extends ObjectEntity {
     public bulletAccel = 20;
     /** Number of drones that this barrel shot that are still alive. */
     public droneCount = 0;
+    /** Living satellites that this barrel shot that are still alive, null if not. */
+    public satelliteChildren: (Satellite | null)[] = []
 
     /** The barrel's addons */
     public addons: BarrelAddon[] = [];
@@ -233,6 +242,12 @@ export default class Barrel extends ObjectEntity {
                 break;
             case null:
                 projectile = null
+                break;
+            case 'satellite':
+                projectile = new Satellite(this, this.tank, tankDefinition, angle, this.definition.bullet.satelliteOrbitPerTick, this.definition.bullet.satelliteMinOrbitPerTick, this.definition.bullet.satelliteMaxOrbitPerTick, this.definition.bullet.satelliteOrbitDistance, this.definition.bullet.satelliteMinOrbitDistance, this.definition.bullet.satelliteMaxOrbitDistance, this.definition.satelliteCount)
+                break;
+            case 'invisiTrap':
+                projectile = new InvisiTrap(this, this.tank, tankDefinition, angle)
                 break;
             default:
                 util.log('Ignoring attempt to spawn projectile of type ' + this.definition.bullet.type);

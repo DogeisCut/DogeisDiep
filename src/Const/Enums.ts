@@ -378,6 +378,7 @@ export const enum Tank {
     MetaFlankGuard    = 139,
     MetaTwin          = 140,
     MetaTank          = 141,
+    Planet            = 142
     
 
     /* General Ideas 
