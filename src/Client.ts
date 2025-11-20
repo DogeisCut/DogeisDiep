@@ -322,7 +322,7 @@ export default class Client {
 
                 if ((flags & InputFlags.suicide) && (!player.deletionAnimation)) {
                     if (this.accessLevel >= config.cheatsMinimum.suicide || (this.game.arena.arenaData.values.flags & ArenaFlags.canUseCheats)) {
-                        this.setHasCheated(true);
+                        this.setHasCheated(config.cheatsIsCheating.suicide);
 
                         player.destroy();
                         player.onKill(player);

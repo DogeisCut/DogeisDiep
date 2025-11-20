@@ -16,7 +16,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
             8,
             36,
             61,
-            Tank.Planet
+            Tank.Twirler
         ],
         "flags": {
             "invisibility": false,
@@ -12789,11 +12789,14 @@ const TankDefinitions: (TankDefinition|null)[] = [
     null, // Auto Generated
     null, // Auto Generated
     {
-        "id": Tank.Planet,
-        "name": "Planet",
+        "id": Tank.Twirler,
+        "name": "Twirler",
         "upgradeMessage": "",
         "levelRequirement": 15,
-        "upgrades": [],
+        "upgrades": [
+            Tank.Scatterer,
+            Tank.Rumbler
+        ],
         "flags": {
             "invisibility": false,
             "zoomAbility": false,
@@ -12823,14 +12826,14 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "isTrapezoid": false,
                 "trapezoidDirection": 0,
                 "addon": null,
-                satelliteCount: 3,
+                satelliteCount: 4,
                 "bullet": {
                     "type": "satellite",
                     "sizeRatio": 1,
                     "health": 1,
                     "damage": 1,
                     "speed": 1,
-                    "scatterRate": 1,
+                    "scatterRate": 0,
                     "lifeLength": -1,
                     "absorbtionFactor": 1
                 }
@@ -12871,6 +12874,428 @@ const TankDefinitions: (TankDefinition|null)[] = [
             }
         ]
     },
+    {
+        "id": Tank.Scatterer,
+        "name": "Scatterer",
+        "upgradeMessage": "",
+        "levelRequirement": 30,
+        "upgrades": [
+            Tank.Spindler
+        ],
+        "flags": {
+            "invisibility": false,
+            "zoomAbility": false,
+            "canClaimSquares": false,
+            "devOnly": false
+        },
+        "visibilityRateShooting": 0.23,
+        "visibilityRateMoving": 0.08,
+        "invisibilityRate": 0.03,
+        "fieldFactor": 1,
+        "absorbtionFactor": 1,
+        "speed": 1,
+        "maxHealth": 50,
+        "preAddon": null,
+        "postAddon": null,
+        "sides": 1,
+        "borderWidth": 15,
+        "barrels": [
+            {
+                "angle": 0,
+                "offset": 0,
+                "size": 0,
+                "width": 42,
+                "delay": 0,
+                "reload": 8/(4/3),
+                "recoil": 0,
+                "isTrapezoid": false,
+                "trapezoidDirection": 0,
+                "addon": null,
+                satelliteCount: 6,
+                "bullet": {
+                    "type": "satellite",
+                    "sizeRatio": 1/(4/3),
+                    "health": 1/(4/3),
+                    "damage": 1,
+                    "speed": 1,
+                    "scatterRate": 0,
+                    "lifeLength": -1,
+                    "absorbtionFactor": 1
+                }
+            }
+        ],
+        "stats": [
+            {
+                "name": "Movement Speed",
+                "max": 7
+            },
+            {
+                "name": "Reload",
+                "max": 7
+            },
+            {
+                "name": "Satellite Damage",
+                "max": 7
+            },
+            {
+                "name": "Satellite Penetration",
+                "max": 7
+            },
+            {
+                "name": "Satellite Speed",
+                "max": 7
+            },
+            {
+                "name": "Body Damage",
+                "max": 7
+            },
+            {
+                "name": "Max Health",
+                "max": 7
+            },
+            {
+                "name": "Health Regen",
+                "max": 7
+            }
+        ]
+    },
+    {
+        "id": Tank.Spindler,
+        "name": "Spindler",
+        "upgradeMessage": "",
+        "levelRequirement": 45,
+        "upgrades": [],
+        "flags": {
+            "invisibility": false,
+            "zoomAbility": false,
+            "canClaimSquares": false,
+            "devOnly": false
+        },
+        "visibilityRateShooting": 0.23,
+        "visibilityRateMoving": 0.08,
+        "invisibilityRate": 0.03,
+        "fieldFactor": 1,
+        "absorbtionFactor": 1,
+        "speed": 1,
+        "maxHealth": 50,
+        "preAddon": null,
+        "postAddon": null,
+        "sides": 1,
+        "borderWidth": 15,
+        "barrels": [
+            {
+                "angle": 0,
+                "offset": 0,
+                "size": 0,
+                "width": 42,
+                "delay": 0,
+                "reload": 4,
+                "recoil": 0,
+                "isTrapezoid": false,
+                "trapezoidDirection": 0,
+                "addon": null,
+                satelliteCount: 8,
+                "bullet": {
+                    "type": "satellite",
+                    "sizeRatio": 1/(5/3),
+                    "health": 1/(5/3),
+                    "damage": 1,
+                    "speed": 1,
+                    "scatterRate": 0,
+                    "lifeLength": -1,
+                    "absorbtionFactor": 1
+                }
+            }
+        ],
+        "stats": [
+            {
+                "name": "Movement Speed",
+                "max": 7
+            },
+            {
+                "name": "Reload",
+                "max": 7
+            },
+            {
+                "name": "Satellite Damage",
+                "max": 7
+            },
+            {
+                "name": "Satellite Penetration",
+                "max": 7
+            },
+            {
+                "name": "Satellite Speed",
+                "max": 7
+            },
+            {
+                "name": "Body Damage",
+                "max": 7
+            },
+            {
+                "name": "Max Health",
+                "max": 7
+            },
+            {
+                "name": "Health Regen",
+                "max": 7
+            }
+        ]
+    },
+    {
+        "id": Tank.Rumbler,
+        "name": "Rumbler",
+        "upgradeMessage": "",
+        "levelRequirement": 30,
+        "upgrades": [
+            Tank.Plower
+        ],
+        "flags": {
+            "invisibility": false,
+            "zoomAbility": false,
+            "canClaimSquares": false,
+            "devOnly": false
+        },
+        "visibilityRateShooting": 0.23,
+        "visibilityRateMoving": 0.08,
+        "invisibilityRate": 0.03,
+        "fieldFactor": 1,
+        "absorbtionFactor": 1,
+        "speed": 1,
+        "maxHealth": 50,
+        "preAddon": null,
+        "postAddon": null,
+        "sides": 1,
+        "borderWidth": 15,
+        "barrels": [
+            {
+                "angle": 0,
+                "offset": 0,
+                "size": 0,
+                "width": 42,
+                "delay": 0,
+                "reload": 8.5,
+                "recoil": 0,
+                "isTrapezoid": false,
+                "trapezoidDirection": 0,
+                "addon": null,
+                satelliteCount: 3,
+                "bullet": {
+                    "type": "satellite",
+                    "sizeRatio": 1.5,
+                    "health": 1.5,
+                    "damage": 1.1,
+                    "speed": 0.8,
+                    "scatterRate": 0,
+                    "lifeLength": -1,
+                    "absorbtionFactor": 1
+                }
+            }
+        ],
+        "stats": [
+            {
+                "name": "Movement Speed",
+                "max": 7
+            },
+            {
+                "name": "Reload",
+                "max": 7
+            },
+            {
+                "name": "Satellite Damage",
+                "max": 7
+            },
+            {
+                "name": "Satellite Penetration",
+                "max": 7
+            },
+            {
+                "name": "Satellite Speed",
+                "max": 7
+            },
+            {
+                "name": "Body Damage",
+                "max": 7
+            },
+            {
+                "name": "Max Health",
+                "max": 7
+            },
+            {
+                "name": "Health Regen",
+                "max": 7
+            }
+        ]
+    },
+    {
+        "id": Tank.Plower,
+        "name": "Plower",
+        "upgradeMessage": "",
+        "levelRequirement": 45,
+        "upgrades": [
+            Tank.Binary
+        ],
+        "flags": {
+            "invisibility": false,
+            "zoomAbility": false,
+            "canClaimSquares": false,
+            "devOnly": false
+        },
+        "visibilityRateShooting": 0.23,
+        "visibilityRateMoving": 0.08,
+        "invisibilityRate": 0.03,
+        "fieldFactor": 1,
+        "absorbtionFactor": 1,
+        "speed": 1,
+        "maxHealth": 50,
+        "preAddon": null,
+        "postAddon": null,
+        "sides": 1,
+        "borderWidth": 15,
+        "barrels": [
+            {
+                "angle": 0,
+                "offset": 0,
+                "size": 0,
+                "width": 42,
+                "delay": 0,
+                "reload": 9,
+                "recoil": 0,
+                "isTrapezoid": false,
+                "trapezoidDirection": 0,
+                "addon": null,
+                satelliteCount: 2,
+                "bullet": {
+                    "type": "satellite",
+                    "sizeRatio": 2,
+                    "health": 2,
+                    "damage": 1.2,
+                    "speed": 0.7,
+                    "scatterRate": 0,
+                    "lifeLength": -1,
+                    "absorbtionFactor": 1
+                }
+            }
+        ],
+        "stats": [
+            {
+                "name": "Movement Speed",
+                "max": 7
+            },
+            {
+                "name": "Reload",
+                "max": 7
+            },
+            {
+                "name": "Satellite Damage",
+                "max": 7
+            },
+            {
+                "name": "Satellite Penetration",
+                "max": 7
+            },
+            {
+                "name": "Satellite Speed",
+                "max": 7
+            },
+            {
+                "name": "Body Damage",
+                "max": 7
+            },
+            {
+                "name": "Max Health",
+                "max": 7
+            },
+            {
+                "name": "Health Regen",
+                "max": 7
+            }
+        ]
+    },
+    {
+        "id": Tank.Binary,
+        "name": "Binary",
+        "upgradeMessage": "",
+        "levelRequirement": 60,
+        "upgrades": [],
+        "flags": {
+            "invisibility": false,
+            "zoomAbility": false,
+            "canClaimSquares": false,
+            "devOnly": false
+        },
+        "visibilityRateShooting": 0.23,
+        "visibilityRateMoving": 0.08,
+        "invisibilityRate": 0.03,
+        "fieldFactor": 1,
+        "absorbtionFactor": 1,
+        "speed": 1,
+        "maxHealth": 50,
+        "preAddon": null,
+        "postAddon": null,
+        "sides": 1,
+        "borderWidth": 15,
+        "barrels": [
+            {
+                "angle": 0,
+                "offset": 0,
+                "size": 0,
+                "width": 42,
+                "delay": 0,
+                "reload": 9.5,
+                "recoil": 0,
+                "isTrapezoid": false,
+                "trapezoidDirection": 0,
+                "addon": null,
+                satelliteCount: 1,
+                "bullet": {
+                    "type": "satellite",
+                    "sizeRatio": 2.4,
+                    "health": 3,
+                    "damage": 1.3,
+                    "speed": 0.6,
+                    "scatterRate": 0,
+                    "lifeLength": -1,
+                    "absorbtionFactor": 1
+                }
+            }
+        ],
+        "stats": [
+            {
+                "name": "Movement Speed",
+                "max": 7
+            },
+            {
+                "name": "Reload",
+                "max": 7
+            },
+            {
+                "name": "Satellite Damage",
+                "max": 7
+            },
+            {
+                "name": "Satellite Penetration",
+                "max": 7
+            },
+            {
+                "name": "Satellite Speed",
+                "max": 7
+            },
+            {
+                "name": "Body Damage",
+                "max": 7
+            },
+            {
+                "name": "Max Health",
+                "max": 7
+            },
+            {
+                "name": "Health Regen",
+                "max": 7
+            }
+        ]
+    },
+    null,
 ]
 
 function makeAutoOf(tank: Tank, newTank: Tank, level: number = 60, preAddonInstead: boolean = false, custom: Partial<TankDefinition> = {}, addon: addonId = "autoturret", prefix: string = "Auto ", pushUpgrade: boolean = true ) {
@@ -12960,5 +13385,7 @@ makeAutoOf(Tank.MachineGun, Tank.MetaMachineGun, undefined, undefined, undefined
 makeAutoOf(Tank.FlankGuard, Tank.MetaFlankGuard, undefined, undefined, undefined, "metaturret", "Meta ")
 makeAutoOf(Tank.Twin, Tank.MetaTwin, undefined, undefined, undefined, "metaturret", "Meta ")
 makeAutoOf(Tank.Basic, Tank.MetaTank, undefined, undefined, undefined, "metaturret", "Meta ", false)
+
+makeAutoOf(Tank.Plower, Tank.AutoPlower)
 
 export default TankDefinitions

@@ -1,4 +1,4 @@
-import { StyleFlags } from "../../../Const/Enums";
+import { PhysicsFlags, StyleFlags } from "../../../Const/Enums";
 import { TankDefinition } from "../../../Const/TankDefinitionsUtil";
 import { Entity } from "../../../Native/Entity";
 import Barrel from "../Barrel";
@@ -14,7 +14,7 @@ export default class Satellite extends Bullet {
     public maxOrbitDistance: number;
     public maxSiblings: number;
     public siblingIndex: number;
-    constructor(barrel: Barrel, tank: BarrelBase, tankDefinition: TankDefinition | null, shootAngle: number, orbitPerTick: number = 0.2, minOrbitPerTick: number = 0.2, maxOrbitPerTick: number = 0.2, orbitDistance: number = 200, minOrbitDistance: number = 100, maxOrbitDistance: number = 400, maxSiblings: number = 0) {
+    constructor(barrel: Barrel, tank: BarrelBase, tankDefinition: TankDefinition | null, shootAngle: number, orbitPerTick: number = 0.1, minOrbitPerTick: number = 0.1, maxOrbitPerTick: number = 0.1, orbitDistance: number = 200, minOrbitDistance: number = 100, maxOrbitDistance: number = 400, maxSiblings: number = 0) {
         super(barrel, tank, tankDefinition, shootAngle);
 
         this.orbitPerTick = orbitPerTick
@@ -53,6 +53,9 @@ export default class Satellite extends Bullet {
         } else {
             this.lifeLength = Infinity;
         }
+
+        this.velocity.x = 0
+        this.velocity.y = 0
     }
 
     protected tickMixin(tick: number) {
@@ -68,6 +71,10 @@ export default class Satellite extends Bullet {
         let orbitPerTick = this.orbitPerTick
         if (this.tank.inputs.attemptingShot()) orbitPerTick = this.maxOrbitPerTick
         if (this.tank.inputs.attemptingRepel()) orbitPerTick = this.minOrbitPerTick
+        orbitPerTick *= this.barrelEntity.bulletAccel / 20
+        
+        this.physicsData.values.flags ^= PhysicsFlags.canEscapeArena;
+        this.styleData.values.flags &= ~StyleFlags.hasNoDmgIndicator;
 
         const orbitAngle = baseAngle + tick * orbitPerTick
 

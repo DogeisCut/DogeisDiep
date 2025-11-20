@@ -378,7 +378,13 @@ export const enum Tank {
     MetaFlankGuard    = 139,
     MetaTwin          = 140,
     MetaTank          = 141,
-    Planet            = 142
+    Twirler           = 142,
+    Scatterer         = 143,
+    Spindler          = 144,
+    Rumbler           = 145,
+    Plower            = 146,
+    Binary            = 147,
+    AutoPlower        = 148
     
 
     /* General Ideas 
