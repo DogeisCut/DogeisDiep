@@ -11,10 +11,14 @@
 Welcome to **Dogeis Diep**, a diep.io private server created with diepcustom!   
 There are over 100+ tanks, features and additions for you to play around with, and more features are being added almost every day! I encourage you to invite your friends!
 
-You can level up to level 60 but stop growing at level 45, level 60 tanks/tier 4 tanks are available! Hold K to level up and press O to retry.
+You can level up to level 60 but stop growing at level 45, level 60 tanks/tier 5 tanks are available! Hold K to level up and press O to retry.
 
 **Discord:** [https://discord.gg/98NwxqJacr](https://discord.gg/98NwxqJacr)
 # Changelog
+
+**November 19th, 2025**
+- Added auto variants for (almost) every single tier 4 tank.
+- Nerfed Trapped Wall health.
 
 **November 18th, 2025**
 - Introduced the Dark Travels gamemode. Good luck.
@@ -52,7 +56,7 @@ You can level up to level 60 but stop growing at level 45, level 60 tanks/tier 4
 - Base drones no longer target shapes
 - Added Drone Dominators
 
-**November 13rd, 2025 - Evening**
+**November 13th, 2025 - Evening**
 - Changed stat names for Workshop to better match weapons.
 - Enabled leaderboard in Domination gamemode.
 - Clarified that flame launchers do more damage when close in upgrade message.
@@ -61,7 +65,7 @@ You can level up to level 60 but stop growing at level 45, level 60 tanks/tier 4
 - Added new Circle and 'Rough' maze walls.
 - Dominators now award 1,200 score on kill.
 
-**November 13rd, 2025 - Morning**
+**November 13th, 2025 - Morning**
 - New title menu background! This will be replaced with a custom render at some point.
 - New Incinerator tank: Atomizer
 - New Flamer tank: Flame Guard

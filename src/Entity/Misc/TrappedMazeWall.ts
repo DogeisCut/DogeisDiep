@@ -123,7 +123,9 @@ export default class TrappedMazeWall extends LivingEntity implements BarrelBase 
         }, 25 / 4)
         this.turret.relationsData.values.team = this.game.arena;
         this.turret.ai.targetFilterShapes = true;
-        this.healthData.health = this.healthData.values.maxHealth = 100 + scale
+        //TODO: maybe nerf health?
+        //TODO: maybe make it a mix of a fixed amount of hits AND damage?
+        this.healthData.health = this.healthData.values.maxHealth = (100 + scale) / 1.65
     }
     
     public onDeath(killer: LivingEntity) {

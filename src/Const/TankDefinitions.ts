@@ -1,5 +1,5 @@
 import { Tank } from "./Enums";
-import { BarrelDefinition, BulletDefinition, TankDefinition } from "./TankDefinitionsUtil";
+import { BarrelDefinition, BulletDefinition, StatDefinition, TankDefinition } from "./TankDefinitionsUtil";
 
 
 //TODO: fix stat names so multi weapon classes use the term "Weapon" and trap classes use the term "Trap"
@@ -12358,5 +12358,149 @@ const TankDefinitions: (TankDefinition|null)[] = [
             }
         ]
     },
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    {
+        id: Tank.SplashShot,
+        name: "Splash Shot",
+        upgradeMessage: "",
+        levelRequirement: 60,
+        upgrades: [],
+        flags: {
+            invisibility: false,
+            zoomAbility: false,
+            canClaimSquares: undefined,
+            canClaimPentagons: undefined,
+            canClaimSquaresWraith: undefined,
+            canClaimPentaAndBelowMerge: undefined,
+            devOnly: false,
+            displayAsStar: undefined,
+            displayAsTrapezoid: undefined
+        },
+        visibilityRateShooting: 0,
+        visibilityRateMoving: 0,
+        invisibilityRate: 0,
+        fieldFactor: 0,
+        speed: 0,
+        absorbtionFactor: 0,
+        maxHealth: 0,
+        preAddon: null,
+        postAddon: null,
+        sides: 0,
+        borderWidth: 0,
+        barrels: [],
+        stats: []
+    },
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
 ]
+
+function makeAutoOf(tank: Tank, newTank: Tank, level: number = 60, preAddonInstead: boolean = false, custom: Partial<TankDefinition> = {}, ) {
+    const originalTankDefinition = TankDefinitions[tank]
+    TankDefinitions[newTank] = {
+        ...originalTankDefinition,
+        id: newTank,
+        name: "Auto " + originalTankDefinition?.name,
+        postAddon: preAddonInstead ? originalTankDefinition?.postAddon : "autoturret",
+        preAddon: !preAddonInstead ? originalTankDefinition?.preAddon : "autoturret",
+        levelRequirement: level,
+        upgrades: [],
+        ...custom
+    } as TankDefinition
+    originalTankDefinition?.upgrades.push(newTank)
+}
+makeAutoOf(Tank.Ranger, Tank.AutoRanger, undefined, true)
+makeAutoOf(Tank.Streamliner, Tank.AutoStreamliner)
+makeAutoOf(Tank.GunnerTrapper, Tank.AutoGunnerTrapper)
+makeAutoOf(Tank.Battleship, Tank.AutoBattleship)
+makeAutoOf(Tank.TripleTwin, Tank.AutoTripleTwin)
+makeAutoOf(Tank.Auto5, Tank.AutoAuto5, undefined, true) // lol??
+makeAutoOf(Tank.OctoTank, Tank.AutoOctoTank)
+
+makeAutoOf(Tank.SpreadShot, Tank.AutoSpreadShot)
+makeAutoOf(Tank.PentaShot, Tank.AutoPentaShot)
+makeAutoOf(Tank.Triplet, Tank.AutoTriplet)
+makeAutoOf(Tank.FlameGuard, Tank.AutoFlameGuard)
+makeAutoOf(Tank.FighterJet, Tank.AutoFighterJet, undefined, true)
+makeAutoOf(Tank.Fighter, Tank.AutoFighter)
+makeAutoOf(Tank.Booster, Tank.AutoBooster)
+const extendedFlamerStats: StatDefinition[] = [
+    {
+        "name": "Movement Speed",
+        "max": 10
+    },
+    {
+        "name": "Flame Density",
+        "max": 10
+    },
+    {
+        "name": "Flame Damage",
+        "max": 10
+    },
+    {
+        "name": "Bullet Penetration",
+        "max": 10
+    },
+    {
+        "name": "Flame Distance",
+        "max": 10
+    },
+    {
+        "name": "Body Damage",
+        "max": 10
+    },
+    {
+        "name": "Max Health",
+        "max": 10
+    },
+    {
+        "name": "Health Regen",
+        "max": 10
+    }
+]
+makeAutoOf(Tank.Fumigator, Tank.AutoFumigator, undefined, undefined, { stats: extendedFlamerStats, upgradeMessage: "" })
+makeAutoOf(Tank.Incinerator, Tank.AutoIncinerator, undefined, undefined, { stats: extendedFlamerStats, upgradeMessage: "" })
+makeAutoOf(Tank.Flamethrower, Tank.AutoFlamethrower, undefined, undefined, { stats: extendedFlamerStats, upgradeMessage: "" })
+makeAutoOf(Tank.Factory, Tank.AutoFactory)
+makeAutoOf(Tank.Overtrapper, Tank.AutoOvertrapper)
+//makeAutoOf(Tank.Manager, Tank.AutoManager)
+makeAutoOf(Tank.Necromancer, Tank.AutoNecromancer)
+makeAutoOf(Tank.Overlord, Tank.AutoOverlord)
+makeAutoOf(Tank.Sprayer, Tank.AutoSprayer)
+makeAutoOf(Tank.Rocketeer, Tank.AutoRocketeer)
+makeAutoOf(Tank.Skimmer, Tank.AutoSkimmer)
+makeAutoOf(Tank.Annihilator, Tank.AutoAnnihilator)
+makeAutoOf(Tank.Hybrid, Tank.AutoHybrid)
+makeAutoOf(Tank.MegaTrapper, Tank.AutoMegaTrapper)
+makeAutoOf(Tank.TriTrapper, Tank.AutoTriTrapper)
+makeAutoOf(Tank.Predator, Tank.AutoPredator)
+//makeAutoOf(Tank.Stalker, Tank.AutoStalker)
+
 export default TankDefinitions
