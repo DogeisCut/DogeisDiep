@@ -1,4 +1,4 @@
-import { PhysicsFlags, StyleFlags } from "../../../Const/Enums";
+import { PhysicsFlags, PositionFlags, StyleFlags } from "../../../Const/Enums";
 import { TankDefinition } from "../../../Const/TankDefinitionsUtil";
 import { Entity } from "../../../Native/Entity";
 import Barrel from "../Barrel";
@@ -56,6 +56,7 @@ export default class Satellite extends Bullet {
         this.physicsData.values.sides = 1
 
         this.physicsData.values.flags |= PhysicsFlags.canEscapeArena;
+        this.positionData.values.flags |= PositionFlags.canMoveThroughWalls;
         this.styleData.values.flags &= ~StyleFlags.hasNoDmgIndicator;
 
         if (barrel.definition.bullet.lifeLength !== -1) {
