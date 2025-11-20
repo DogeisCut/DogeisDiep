@@ -379,6 +379,10 @@ export const enum Tank {
     MetaTwin          = 140,
     MetaTank          = 141,
     Twirler           = 142,
+    /* Ideas
+    - Mixer
+    3 small sats and 3 big ones at the same distance but alternating
+    */
     Scatterer         = 143,
     Spindler          = 144,
     Rumbler           = 145,

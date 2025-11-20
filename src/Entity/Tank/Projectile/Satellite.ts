@@ -13,9 +13,13 @@ export default class Satellite extends Bullet {
     public minOrbitDistance: number;
     public maxOrbitDistance: number;
     public maxSiblings: number;
+    public orbitOffset: number;
+    public extraRoom: number;
     public siblingIndex: number;
-    constructor(barrel: Barrel, tank: BarrelBase, tankDefinition: TankDefinition | null, shootAngle: number, orbitPerTick: number = 0.1, minOrbitPerTick: number = 0.1, maxOrbitPerTick: number = 0.1, orbitDistance: number = 200, minOrbitDistance: number = 100, maxOrbitDistance: number = 400, maxSiblings: number = 0) {
+    constructor(barrel: Barrel, tank: BarrelBase, tankDefinition: TankDefinition | null, shootAngle: number, orbitPerTick: number = 0.1, minOrbitPerTick: number = 0.1, maxOrbitPerTick: number = 0.1, orbitDistance: number = 200, minOrbitDistance: number = 100, maxOrbitDistance: number = 400, maxSiblings: number = 0, orbitOffset: number = 0, extraRoom: number = 0) {
         super(barrel, tank, tankDefinition, shootAngle);
+
+        this.styleData.zIndex = barrel.rootParent.styleData.zIndex * 2
 
         this.orbitPerTick = orbitPerTick
         this.orbitDistance = orbitDistance
@@ -24,10 +28,12 @@ export default class Satellite extends Bullet {
         this.minOrbitDistance = minOrbitDistance
         this.maxOrbitDistance = maxOrbitDistance
         this.maxSiblings = maxSiblings
+        this.extraRoom = extraRoom
+        this.orbitOffset = orbitOffset
 
         if (!barrel.satelliteChildren) barrel.satelliteChildren = new Array(maxSiblings).fill(null)
 
-       const siblingArray = barrel.satelliteChildren
+        const siblingArray = barrel.satelliteChildren
         let foundIndex = -1
 
         for (let i = 0; i < siblingArray.length; i++) {
@@ -45,8 +51,10 @@ export default class Satellite extends Bullet {
         this.siblingIndex = foundIndex
         siblingArray[foundIndex] = this
         
-        this.physicsData.values.sides = 1//5
-        this.styleData.values.flags |= StyleFlags.isStar
+        this.physicsData.values.sides = 1
+
+        this.physicsData.values.flags |= PhysicsFlags.canEscapeArena;
+        this.styleData.values.flags &= ~StyleFlags.hasNoDmgIndicator;
 
         if (barrel.definition.bullet.lifeLength !== -1) {
             this.lifeLength = 88 * barrel.definition.bullet.lifeLength;
@@ -66,17 +74,14 @@ export default class Satellite extends Bullet {
         const centerEntity = this.tank.rootParent
         if (!centerEntity) return
 
-        const baseAngle = (2 * Math.PI / Math.max(this.maxSiblings, 1)) * this.siblingIndex
+        const baseAngle = (2 * Math.PI / Math.max(this.maxSiblings + this.extraRoom, 1)) * this.siblingIndex
 
         let orbitPerTick = this.orbitPerTick
         if (this.tank.inputs.attemptingShot()) orbitPerTick = this.maxOrbitPerTick
         if (this.tank.inputs.attemptingRepel()) orbitPerTick = this.minOrbitPerTick
         orbitPerTick *= this.barrelEntity.bulletAccel / 20
-        
-        this.physicsData.values.flags ^= PhysicsFlags.canEscapeArena;
-        this.styleData.values.flags &= ~StyleFlags.hasNoDmgIndicator;
 
-        const orbitAngle = baseAngle + tick * orbitPerTick
+        const orbitAngle = this.orbitOffset + baseAngle + tick * orbitPerTick
 
         let orbitRadius = this.orbitDistance
         if (this.tank.inputs.attemptingShot()) orbitRadius = this.maxOrbitDistance

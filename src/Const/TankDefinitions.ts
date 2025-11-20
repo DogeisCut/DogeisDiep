@@ -12816,28 +12816,60 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "borderWidth": 15,
         "barrels": [
             {
-                "angle": 0,
-                "offset": 0,
-                "size": 0,
-                "width": 42,
-                "delay": 0,
-                "reload": 8,
-                "recoil": 0,
-                "isTrapezoid": false,
-                "trapezoidDirection": 0,
-                "addon": null,
+                angle: 0,
+                offset: 0,
+                size: 0,
+                width: 42,
+                delay: 0,
+                reload: 8,
+                recoil: 0,
+                isTrapezoid: false,
+                trapezoidDirection: 0,
+                addon: null,
                 satelliteCount: 4,
-                "bullet": {
-                    "type": "satellite",
-                    "sizeRatio": 1,
-                    "health": 1,
-                    "damage": 1,
-                    "speed": 1,
-                    "scatterRate": 0,
-                    "lifeLength": -1,
-                    "absorbtionFactor": 1
+                bullet: {
+                    type: "satellite",
+                    sizeRatio: 1,
+                    health: 1,
+                    damage: 1,
+                    speed: 1,
+                    scatterRate: 0,
+                    lifeLength: -1,
+                    absorbtionFactor: 1
                 }
-            }
+            },
+            ...(() => {
+                const numberOfAntennaBarrels = 4
+                const startingAngleRadians = 0//45 * (Math.PI / 180)
+                const angleIncrementRadians = (2 * Math.PI) / numberOfAntennaBarrels
+                const generatedAntennaBarrels: BarrelDefinition[] = []
+                for (let antennaIndex = 0; antennaIndex < numberOfAntennaBarrels; antennaIndex++) {
+                    const currentAngle = startingAngleRadians + angleIncrementRadians * antennaIndex
+                    generatedAntennaBarrels.push({
+                        angle: currentAngle,
+                        offset: 0,
+                        size: 100,
+                        width: 42,
+                        delay: 0,
+                        reload: 1,
+                        recoil: 0,
+                        isTrapezoid: false,
+                        trapezoidDirection: 0,
+                        addon: "satelliteAntenna",
+                        bullet: {
+                            type: null,
+                            sizeRatio: 1,
+                            health: 1,
+                            damage: 1,
+                            speed: 1,
+                            scatterRate: 0,
+                            lifeLength: -1,
+                            absorbtionFactor: 1
+                        }
+                    })
+                }
+                return generatedAntennaBarrels
+            })()
         ],
         "stats": [
             {
@@ -12922,7 +12954,39 @@ const TankDefinitions: (TankDefinition|null)[] = [
                     "lifeLength": -1,
                     "absorbtionFactor": 1
                 }
-            }
+            },
+            ...(() => {
+                const numberOfAntennaBarrels = 6
+                const startingAngleRadians = 0//45 * (Math.PI / 180)
+                const angleIncrementRadians = (2 * Math.PI) / numberOfAntennaBarrels
+                const generatedAntennaBarrels: BarrelDefinition[] = []
+                for (let antennaIndex = 0; antennaIndex < numberOfAntennaBarrels; antennaIndex++) {
+                    const currentAngle = startingAngleRadians + angleIncrementRadians * antennaIndex
+                    generatedAntennaBarrels.push({
+                        angle: currentAngle,
+                        offset: 0,
+                        size: 95,
+                        width: 42/(4/3),
+                        delay: 0,
+                        reload: 1,
+                        recoil: 0,
+                        isTrapezoid: false,
+                        trapezoidDirection: 0,
+                        addon: "satelliteAntenna",
+                        bullet: {
+                            type: null,
+                            sizeRatio: 1,
+                            health: 1,
+                            damage: 1,
+                            speed: 1,
+                            scatterRate: 0,
+                            lifeLength: -1,
+                            absorbtionFactor: 1
+                        }
+                    })
+                }
+                return generatedAntennaBarrels
+            })()
         ],
         "stats": [
             {
@@ -13005,7 +13069,39 @@ const TankDefinitions: (TankDefinition|null)[] = [
                     "lifeLength": -1,
                     "absorbtionFactor": 1
                 }
-            }
+            },
+            ...(() => {
+                const numberOfAntennaBarrels = 8
+                const startingAngleRadians = 0//45 * (Math.PI / 180)
+                const angleIncrementRadians = (2 * Math.PI) / numberOfAntennaBarrels
+                const generatedAntennaBarrels: BarrelDefinition[] = []
+                for (let antennaIndex = 0; antennaIndex < numberOfAntennaBarrels; antennaIndex++) {
+                    const currentAngle = startingAngleRadians + angleIncrementRadians * antennaIndex
+                    generatedAntennaBarrels.push({
+                        angle: currentAngle,
+                        offset: 0,
+                        size: 90,
+                        width: 42/(5/3),
+                        delay: 0,
+                        reload: 1,
+                        recoil: 0,
+                        isTrapezoid: false,
+                        trapezoidDirection: 0,
+                        addon: "satelliteAntenna",
+                        bullet: {
+                            type: null,
+                            sizeRatio: 1,
+                            health: 1,
+                            damage: 1,
+                            speed: 1,
+                            scatterRate: 0,
+                            lifeLength: -1,
+                            absorbtionFactor: 1
+                        }
+                    })
+                }
+                return generatedAntennaBarrels
+            })()
         ],
         "stats": [
             {
@@ -13090,7 +13186,39 @@ const TankDefinitions: (TankDefinition|null)[] = [
                     "lifeLength": -1,
                     "absorbtionFactor": 1
                 }
-            }
+            },
+            ...(() => {
+                const numberOfAntennaBarrels = 3
+                const startingAngleRadians = 0//45 * (Math.PI / 180)
+                const angleIncrementRadians = (2 * Math.PI) / numberOfAntennaBarrels
+                const generatedAntennaBarrels: BarrelDefinition[] = []
+                for (let antennaIndex = 0; antennaIndex < numberOfAntennaBarrels; antennaIndex++) {
+                    const currentAngle = startingAngleRadians + angleIncrementRadians * antennaIndex
+                    generatedAntennaBarrels.push({
+                        angle: currentAngle,
+                        offset: 0,
+                        size: 100,
+                        width: 42 * 1.5,
+                        delay: 0,
+                        reload: 1,
+                        recoil: 0,
+                        isTrapezoid: false,
+                        trapezoidDirection: 0,
+                        addon: "satelliteAntenna",
+                        bullet: {
+                            type: null,
+                            sizeRatio: 1,
+                            health: 1,
+                            damage: 1,
+                            speed: 1,
+                            scatterRate: 0,
+                            lifeLength: -1,
+                            absorbtionFactor: 1
+                        }
+                    })
+                }
+                return generatedAntennaBarrels
+            })()
         ],
         "stats": [
             {
@@ -13175,7 +13303,39 @@ const TankDefinitions: (TankDefinition|null)[] = [
                     "lifeLength": -1,
                     "absorbtionFactor": 1
                 }
-            }
+            },
+            ...(() => {
+                const numberOfAntennaBarrels = 2
+                const startingAngleRadians = 0//45 * (Math.PI / 180)
+                const angleIncrementRadians = (2 * Math.PI) / numberOfAntennaBarrels
+                const generatedAntennaBarrels: BarrelDefinition[] = []
+                for (let antennaIndex = 0; antennaIndex < numberOfAntennaBarrels; antennaIndex++) {
+                    const currentAngle = startingAngleRadians + angleIncrementRadians * antennaIndex
+                    generatedAntennaBarrels.push({
+                        angle: currentAngle,
+                        offset: 0,
+                        size: 100,
+                        width: 42 * 2,
+                        delay: 0,
+                        reload: 1,
+                        recoil: 0,
+                        isTrapezoid: false,
+                        trapezoidDirection: 0,
+                        addon: "satelliteAntenna",
+                        bullet: {
+                            type: null,
+                            sizeRatio: 1,
+                            health: 1,
+                            damage: 1,
+                            speed: 1,
+                            scatterRate: 0,
+                            lifeLength: -1,
+                            absorbtionFactor: 1
+                        }
+                    })
+                }
+                return generatedAntennaBarrels
+            })()
         ],
         "stats": [
             {
@@ -13257,6 +13417,28 @@ const TankDefinitions: (TankDefinition|null)[] = [
                     "scatterRate": 0,
                     "lifeLength": -1,
                     "absorbtionFactor": 1
+                }
+            },
+            {
+                angle: 0,
+                offset: 0,
+                size: 100,
+                width: 42 * 2.4,
+                delay: 0,
+                reload: 1,
+                recoil: 0,
+                isTrapezoid: false,
+                trapezoidDirection: 0,
+                addon: "satelliteAntenna",
+                bullet: {
+                    type: null,
+                    sizeRatio: 1,
+                    health: 1,
+                    damage: 1,
+                    speed: 1,
+                    scatterRate: 0,
+                    lifeLength: -1,
+                    absorbtionFactor: 1
                 }
             }
         ],

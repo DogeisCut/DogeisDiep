@@ -374,7 +374,8 @@ const ADDON_MAP = {
     "crasherGrunt": 173,
     "preDarkGuardian": 174,
     "postDarkGuardian": 175,
-    "metaturret": 176
+    "metaturret": 176,
+    "satelliteAntenna": 177
 };
 
 
@@ -716,7 +717,32 @@ const CUSTOM_ADDONS = {
 			clone.positionData.angle = original.positionData.angle
 			clone.styleData.color = 1
 		}
-	},
+    },
+    
+    "satelliteAntenna": entity => {
+        if (!(entity instanceof $Entity)) return
+        
+        const baseEntity = entity.createChild(false)
+        baseEntity.defaults()
+        baseEntity.styleData.color = 1
+        baseEntity.styleData.showsAboveParent = true
+        baseEntity.physicsData.sides = 2
+
+        baseEntity.physicsData.width = entity.physicsData.width
+        baseEntity.physicsData.size = entity.physicsData.size * (2/3)
+        baseEntity.positionData.x = (-entity.physicsData.size / 2) + (baseEntity.physicsData.size / 2)
+        
+        const bulbEntity = entity.createChild(false)
+        bulbEntity.defaults()
+        bulbEntity.styleData.color = 1
+        bulbEntity.styleData.showsAboveParent = true
+        bulbEntity.physicsData.sides = 1
+
+        bulbEntity.physicsData.size = entity.physicsData.width / 2
+        bulbEntity.positionData.x = entity.physicsData.size / 2
+
+        entity.physicsData.width /= 2
+    }
 }
 
 const CUSTOM_COMMANDS = [

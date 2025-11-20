@@ -139,11 +139,47 @@ export class FlameLauncherAddon extends BarrelAddon {
     }
 }
 
+export class SatelliteAntennaAddon extends BarrelAddon {
+    public constructor(owner: Barrel) {
+        super(owner);
+
+        const base = new ObjectEntity(owner.game)
+        base.setParent(owner);
+        base.relationsData.values.team = owner;
+        base.styleData.values.color = Color.Barrel;
+        base.physicsData.sides = 2;
+        base.styleData.flags |= StyleFlags.showsAboveParent
+        const baseTick = base.tick
+        base.tick = function(tick: number) {
+            baseTick.call(base, tick)
+            this.physicsData.width = owner.physicsData.values.width
+            this.physicsData.size = owner.physicsData.values.size * 2/3
+            this.positionData.x = (-owner.physicsData.values.size / 2) + (owner.physicsData.values.size * 2/3) / 2
+
+        }
+
+        const bulb = new ObjectEntity(owner.game)
+        bulb.setParent(owner);
+        bulb.relationsData.values.team = owner;
+        bulb.styleData.values.color = Color.Barrel;
+        bulb.physicsData.sides = 1;
+        bulb.styleData.flags |= StyleFlags.showsAboveParent
+        const bulbTick = bulb.tick
+        bulb.tick = function(tick: number) {
+            bulbTick.call(bulb, tick)
+            owner.physicsData.values.width /= 2
+            this.physicsData.size = owner.physicsData.width
+            this.positionData.x = owner.physicsData.values.size/2
+        }
+    }
+}
+
 /**
  * All barrel addons in the game by their ID.
  */
- export const BarrelAddonById: Record<barrelAddonId, typeof BarrelAddon | null> = {
+export const BarrelAddonById: Record<barrelAddonId, typeof BarrelAddon | null> = {
     trapLauncher: TrapLauncherAddon,
     flameLauncher: FlameLauncherAddon,
-    "-50Distance": null
- }
+    "-50Distance": null,
+    satelliteAntenna: SatelliteAntennaAddon
+}
