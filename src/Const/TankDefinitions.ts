@@ -13490,6 +13490,89 @@ const TankDefinitions: (TankDefinition|null)[] = [
             }
         ]
     },
+    // Wanted to make a tank with a circular barrel that went all around, and it would shoot zero speed bullets that would expand based on bullet speed.
+    // but barrels move client side so i cant get it to animate :(
+    /* {
+        id: Tank.Zoner,
+        name: "Zoner",
+        upgradeMessage: "",
+        levelRequirement: 0,
+        upgrades: [],
+        flags: {
+            invisibility: false,
+            zoomAbility: false,
+            devOnly: false,
+        },
+        visibilityRateShooting: 0,
+        visibilityRateMoving: 0,
+        invisibilityRate: 0,
+        fieldFactor: 1,
+        speed: 1,
+        absorbtionFactor: 0,
+        maxHealth: 50,
+        preAddon: null,
+        postAddon: null,
+        sides: 1,
+        borderWidth: 15,
+        barrels: [
+            {
+                angle: 0,
+                offset: 0,
+                size: 95,
+                width: 30,
+                delay: 0,
+                reload: 1,
+                recoil: 0,
+                isTrapezoid: false,
+                trapezoidDirection: 0,
+                addon: "zoner",
+                bullet: {
+                    type: "bullet",
+                    sizeRatio: 1,
+                    health: 1,
+                    damage: 1,
+                    speed: 1,
+                    scatterRate: 0,
+                    lifeLength: 1,
+                    absorbtionFactor: 1
+                }
+            }
+        ],
+        stats: [
+            {
+                "name": "Movement Speed",
+                "max": 7
+            },
+            {
+                "name": "Reload",
+                "max": 7
+            },
+            {
+                "name": "Bullet Damage",
+                "max": 7
+            },
+            {
+                "name": "Bullet Penetration",
+                "max": 7
+            },
+            {
+                "name": "Bullet Speed",
+                "max": 7
+            },
+            {
+                "name": "Body Damage",
+                "max": 7
+            },
+            {
+                "name": "Max Health",
+                "max": 7
+            },
+            {
+                "name": "Health Regen",
+                "max": 7
+            }
+        ]
+    } */
 ]
 
 function makeAutoOf(tank: Tank, newTank: Tank, level: number = 60, preAddonInstead: boolean = false, custom: Partial<TankDefinition> = {}, addon: addonId = "autoturret", prefix: string = "Auto ", pushUpgrade: boolean = true ) {

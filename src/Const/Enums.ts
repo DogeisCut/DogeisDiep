@@ -390,7 +390,8 @@ export const enum Tank {
     Binary            = 147,
     AutoPlower        = 148,
     Pummeler          = 149,
-    Squasher          = 150
+    Squasher          = 150,
+    Zoner             = 151
     
 
     /* General Ideas 

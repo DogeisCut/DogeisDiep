@@ -179,6 +179,27 @@ export class SatelliteAntennaAddon extends BarrelAddon {
     }
 }
 
+/* export class ZonerAddon extends BarrelAddon {
+    public constructor(owner: Barrel) {
+        super(owner);
+
+        const circleCannon = new ObjectEntity(owner.game)
+        circleCannon.styleData.color = Color.Barrel
+        circleCannon.setParent(owner.tank);
+        circleCannon.relationsData.values.team = owner;
+        circleCannon.physicsData.sides = 1;
+        //circleCannon.styleData.flags |= StyleFlags.showsAboveParent
+        const circleCannonTick = circleCannon.tick
+        circleCannon.tick = function(tick: number) {
+            circleCannonTick.call(circleCannon, tick)
+            console.log(owner.getWorldPosition())
+            this.physicsData.size = owner.physicsData.values.width;
+            this.styleData.zIndex = owner.styleData.zIndex
+            //owner.physicsData.sides = 0
+        }
+    }
+} */
+
 /**
  * All barrel addons in the game by their ID.
  */
@@ -192,5 +213,6 @@ export const BarrelAddonById: Record<barrelAddonId, typeof BarrelAddon | null> =
     satelliteAntenna4: SatelliteAntennaAddon,
     satelliteAntenna6: SatelliteAntennaAddon,
     satelliteAntenna5: SatelliteAntennaAddon,
-    satelliteAntenna8: SatelliteAntennaAddon
+    satelliteAntenna8: SatelliteAntennaAddon,
+    //zoner: ZonerAddon
 }
