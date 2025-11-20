@@ -21,7 +21,7 @@ import ObjectEntity from "../Object";
 import AutoTurret from "./AutoTurret";
 
 import { Color, PositionFlags, PhysicsFlags, StyleFlags } from "../../Const/Enums";
-import { BarrelBase } from "./TankBody";
+import TankBody, { BarrelBase } from "./TankBody";
 import { addonId, BarrelDefinition, TankDefinition } from "../../Const/TankDefinitionsUtil";
 import { AI, AIState, Inputs } from "../AI";
 import LivingEntity from "../Live";
@@ -750,6 +750,24 @@ class PostDarkGuardianAddon extends Addon {
     }
 }
 
+class MetaAutoTurretAddon extends Addon {
+    public constructor(owner: BarrelBase) {
+        super(owner);
+
+        const def: BarrelDefinition[] = structuredClone((owner as TankBody).definition.barrels)
+        for (const barrel of def) {
+            barrel.offset /= 2
+            barrel.width /= 2
+            barrel.size /= 2
+            barrel.recoil /= 4
+        }
+        const turret = new CustomAutoTurret(owner, def);
+        turret.styleData.color = Color.Barrel
+        
+    }
+}
+
+
 /**
  * All addons in the game by their ID.
  */
@@ -778,5 +796,6 @@ export const AddonById: Record<addonId, typeof Addon | null> = {
     protectorTurret: ProtectorTurretAddon,
     crasherGrunt: CrasherGruntAddon,
     preDarkGuardian: PreDarkGuardianAddon,
-    postDarkGuardian: PostDarkGuardianAddon 
+    postDarkGuardian: PostDarkGuardianAddon,
+    metaturret: MetaAutoTurretAddon
 }

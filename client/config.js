@@ -36,6 +36,8 @@ const CHANGELOG = [
     "November 19th, 2025",
     "- Added auto variants for (almost) every single tier 4 tank.",
     "- Nerfed Trapped Wall health.",
+    "- New Spread Shot tank: Splash Shot",
+    "- New level 60 \"meta\" tanks for Auto Basic, Sniper, Machine Gun, and Flank Guard",
     "",
     "November 18th, 2025",
     "- Introduced the Dark Travels gamemode. Good luck.",
@@ -364,7 +366,13 @@ const ADDON_MAP = {
     "tripeAutosmasher": 167,
     "razor": 168,
     "scavenger": 169,
-    "ravenger": 170
+    "ravenger": 170,
+    "protectorBase": 171,
+    "protectorTurret": 172,
+    "crasherGrunt": 173,
+    "preDarkGuardian": 174,
+    "postDarkGuardian": 175,
+    "metaturret": 176
 };
 
 
@@ -560,6 +568,153 @@ const CUSTOM_ADDONS = {
         if (!(entity instanceof $Entity)) return;
         entity.createDecoChild(5,25*1.3,0,undefined,0,0,false, 0)
     },
+	
+    /* Broken */
+	"protectorBase": entity => {
+		if (!(entity instanceof $Entity)) return
+		
+		const shieldEntity = entity.createChild(false)
+		shieldEntity.defaults()
+		
+		shieldEntity.physicsData.sides = 8
+		shieldEntity.physicsData.size = entity.physicsData.size * 1.3
+	},
+	
+    /* Broken */
+	"protectorTurret": entity => {
+		if (!(entity instanceof $Entity)) return
+		
+		const baseGuard = entity.createChild(false)
+		baseGuard.defaults()
+		baseGuard.physicsData.sides = 8
+		baseGuard.physicsData.size = entity.physicsData.size * 0.8
+		baseGuard.styleData.showsAboveParent = true
+		
+		const topperGuard = entity.createChild(false)
+		topperGuard.defaults()
+		topperGuard.physicsData.sides = 1
+		topperGuard.physicsData.size = entity.physicsData.size * 0.7
+		topperGuard.styleData.showsAboveParent = true
+		topperGuard.styleData.color = entity.styleData.color
+	},
+	
+    /* Broken */
+	"crasherGrunt": entity => {
+        if (!(entity instanceof $Entity)) return
+        
+        entity.physicsData.sides = 7
+		
+		const topper = entity.createChild(false)
+		topper.defaults()
+		topper.physicsData.sides = 1
+		topper.physicsData.size = entity.physicsData.size * 1.2
+		topper.styleData.showsAboveParent = true
+		
+		const turretEntity = entity.createChild(true)
+		turretEntity.defaults()
+		turretEntity.physicsData.size = 35
+		turretEntity.physicsData.width = 42 * 0.7
+		turretEntity.styleData.color = 1
+		
+		turretEntity.positionData.x = (turretEntity.physicsData.size / 2)
+	},
+	
+    /* Broken */
+	"preDarkGuardian": entity => {
+		if (!(entity instanceof $Entity)) return
+		
+        entity.physicsData.sides = 10
+
+		const guardEntity = entity.createChild(false)
+		guardEntity.defaults()
+		guardEntity.physicsData.sides = 10
+		guardEntity.physicsData.size = entity.physicsData.size * 1.7
+		guardEntity.positionData.isAngleAbsolute = false
+	},
+	
+    /* Broken */
+    "postDarkGuardian": entity => {
+		if (!(entity instanceof $Entity)) return
+		
+		const baseGuard = entity.createChild(false)
+		baseGuard.defaults()
+		baseGuard.physicsData.sides = 1
+		baseGuard.physicsData.size = entity.physicsData.size * 1.1
+		baseGuard.styleData.showsAboveParent = true
+		baseGuard.positionData.isAngleAbsolute = false
+		
+		const numberOfSideTurrets = 10
+		const distanceScale = 1.1
+		
+		for (let i = 0; i < numberOfSideTurrets; i++) {
+			const orbitAngle = (Math.PI * 2 * i) / numberOfSideTurrets
+			
+			const socketEntity = entity.createChild(false)
+			socketEntity.defaults()
+			socketEntity.styleData.color = 1
+			
+			socketEntity.positionData.x = Math.cos(orbitAngle) * entity.physicsData.size * distanceScale
+			socketEntity.positionData.y = Math.sin(orbitAngle) * entity.physicsData.size * distanceScale
+			
+			const decoOuter = socketEntity.createChild(false)
+			decoOuter.defaults()
+			decoOuter.physicsData.sides = 1
+			decoOuter.physicsData.size = 14
+			
+			const decoInner = socketEntity.createChild(false)
+			decoInner.defaults()
+			decoInner.physicsData.sides = 1
+			decoInner.physicsData.size = 10
+			decoInner.styleData.color = entity.styleData.color
+			
+			const barrelEntity = socketEntity.createChild(true)
+			barrelEntity.defaults()
+			barrelEntity.physicsData.size = 12
+			barrelEntity.physicsData.width = 8 * 0.7
+			barrelEntity.positionData.x = barrelEntity.physicsData.size / 2
+			barrelEntity.styleData.color = 1
+		}
+		
+		const mainBarrelA = entity.createChild(true)
+		mainBarrelA.defaults()
+		mainBarrelA.physicsData.size = 105
+		mainBarrelA.physicsData.width = 32 * 0.7
+		mainBarrelA.positionData.x = mainBarrelA.physicsData.size / 2
+		mainBarrelA.styleData.color = entity.styleData.color
+		
+		const mainBarrelB = entity.createChild(true)
+		mainBarrelB.defaults()
+		mainBarrelB.physicsData.size = 55
+		mainBarrelB.physicsData.width = 42 * 0.7
+		mainBarrelB.positionData.x = mainBarrelB.physicsData.size / 2
+		mainBarrelB.styleData.color = entity.styleData.color
+    },
+    
+    /* Broken */
+    "metaturret": entity => {
+		if (!(entity instanceof $Entity)) return
+		
+		const rotatorEntity = entity.createChild(false)
+		rotatorEntity.defaults()
+		rotatorEntity.styleData.isVisible = false
+        rotatorEntity.positionData.isAngleAbsolute = true
+        rotatorEntity.styleData.showsAboveParent = true
+		
+		const parentBarrels = []
+        for (const childEntity of entity.children) {
+            if (childEntity.barrelData) parentBarrels.push(childEntity)
+        }
+		
+		for (const original of parentBarrels) {
+			const clone = rotatorEntity.createChild(true)
+			clone.defaults()
+			
+			clone.physicsData.size = original.physicsData.size / 2
+			clone.physicsData.width = original.physicsData.width / 2
+			clone.positionData.angle = original.positionData.angle
+			clone.styleData.color = 1
+		}
+	},
 }
 
 const CUSTOM_COMMANDS = [

@@ -19,6 +19,8 @@ You can level up to level 60 but stop growing at level 45, level 60 tanks/tier 5
 **November 19th, 2025**
 - Added auto variants for (almost) every single tier 4 tank.
 - Nerfed Trapped Wall health.
+- New Spread Shot tank: Splash Shot
+- New level 60 "meta" tanks for Auto Basic, Sniper, Machine Gun, and Flank Guard
 
 **November 18th, 2025**
 - Introduced the Dark Travels gamemode. Good luck.

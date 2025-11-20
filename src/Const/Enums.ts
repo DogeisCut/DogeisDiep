@@ -372,7 +372,13 @@ export const enum Tank {
 	AutoMegaTrapper   = 133,
 	AutoTriTrapper    = 134,
 	AutoPredator      = 135,
-	//AutoStalker       = 136
+    //AutoStalker       = 136
+    MetaSniper        = 137,
+    MetaMachineGun    = 138,
+    MetaFlankGuard    = 139,
+    MetaTwin          = 140,
+    MetaTank          = 141,
+    
 
     /* General Ideas 
     - Split

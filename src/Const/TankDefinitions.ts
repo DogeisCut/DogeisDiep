@@ -1,5 +1,5 @@
 import { Tank } from "./Enums";
-import { BarrelDefinition, BulletDefinition, StatDefinition, TankDefinition } from "./TankDefinitionsUtil";
+import { addonId, BarrelDefinition, BulletDefinition, StatDefinition, TankDefinition } from "./TankDefinitionsUtil";
 
 
 //TODO: fix stat names so multi weapon classes use the term "Weapon" and trap classes use the term "Trap"
@@ -4681,7 +4681,9 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "name": "Spread Shot",
         "upgradeMessage": "",
         "levelRequirement": 45,
-        "upgrades": [],
+        "upgrades": [
+            Tank.SplashShot
+        ],
         "flags": {
             "invisibility": false,
             "zoomAbility": false,
@@ -7177,7 +7179,8 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "upgradeMessage": "",
         "levelRequirement": 45,
         "upgrades": [
-            78
+            Tank.TripleAutoTank,
+            Tank.MetaTank
         ],
         "flags": {
             "invisibility": false,
@@ -12358,83 +12361,359 @@ const TankDefinitions: (TankDefinition|null)[] = [
             }
         ]
     },
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
+    null, // Auto Generated
+    null, // Auto Generated
+    null, // Auto Generated
+    null, // Auto Generated
+    null, // Auto Generated
+    null, // Auto Generated
+    null, // Auto Generated
     {
-        id: Tank.SplashShot,
-        name: "Splash Shot",
-        upgradeMessage: "",
-        levelRequirement: 60,
-        upgrades: [],
-        flags: {
-            invisibility: false,
-            zoomAbility: false,
-            canClaimSquares: undefined,
-            canClaimPentagons: undefined,
-            canClaimSquaresWraith: undefined,
-            canClaimPentaAndBelowMerge: undefined,
-            devOnly: false,
-            displayAsStar: undefined,
-            displayAsTrapezoid: undefined
+        "id": Tank.SplashShot,
+        "name": "Splash Shot",
+        "upgradeMessage": "",
+        "levelRequirement": 60,
+        "upgrades": [],
+        "flags": {
+            "invisibility": false,
+            "zoomAbility": false,
+            "canClaimSquares": false,
+            "devOnly": false
         },
-        visibilityRateShooting: 0,
-        visibilityRateMoving: 0,
-        invisibilityRate: 0,
-        fieldFactor: 0,
-        speed: 0,
-        absorbtionFactor: 0,
-        maxHealth: 0,
-        preAddon: null,
-        postAddon: null,
-        sides: 0,
-        borderWidth: 0,
-        barrels: [],
-        stats: []
+        "visibilityRateShooting": 0.23,
+        "visibilityRateMoving": 0.08,
+        "invisibilityRate": 0.03,
+        "fieldFactor": 1,
+        "absorbtionFactor": 1,
+        "speed": 1,
+        "maxHealth": 50,
+        "preAddon": null,
+        "postAddon": null,
+        "sides": 1,
+        "borderWidth": 15,
+        "barrels": [
+            {
+                "angle": 75 * Math.PI/180,
+                "offset": 0,
+                "size": 65,
+                "width": 29.4,
+                "delay": 0.833325,
+                "reload": 2,
+                "recoil": 0.1,
+                "isTrapezoid": false,
+                "trapezoidDirection": 0,
+                "addon": null,
+                "bullet": {
+                    "type": "bullet",
+                    "sizeRatio": 1,
+                    "health": 1,
+                    "damage": 0.6,
+                    "speed": 1,
+                    "scatterRate": 1,
+                    "lifeLength": 1,
+                    "absorbtionFactor": 1
+                }
+            },
+            {
+                "angle": -75 * Math.PI/180,
+                "offset": 0,
+                "size": 65,
+                "width": 29.4,
+                "delay": 0.833325,
+                "reload": 2,
+                "recoil": 0.1,
+                "isTrapezoid": false,
+                "trapezoidDirection": 0,
+                "addon": null,
+                "bullet": {
+                    "type": "bullet",
+                    "sizeRatio": 1,
+                    "health": 1,
+                    "damage": 0.6,
+                    "speed": 1,
+                    "scatterRate": 1,
+                    "lifeLength": 1,
+                    "absorbtionFactor": 1
+                }
+            },
+            {
+                "angle": 60 * Math.PI/180,
+                "offset": 0,
+                "size": 71,
+                "width": 29.4,
+                "delay": 2/3,
+                "reload": 2,
+                "recoil": 0.1,
+                "isTrapezoid": false,
+                "trapezoidDirection": 0,
+                "addon": null,
+                "bullet": {
+                    "type": "bullet",
+                    "sizeRatio": 1,
+                    "health": 1,
+                    "damage": 0.6,
+                    "speed": 1,
+                    "scatterRate": 1,
+                    "lifeLength": 1,
+                    "absorbtionFactor": 1
+                }
+            },
+            {
+                "angle": -60 * Math.PI/180,
+                "offset": 0,
+                "size": 71,
+                "width": 29.4,
+                "delay": 2/3,
+                "reload": 2,
+                "recoil": 0.1,
+                "isTrapezoid": false,
+                "trapezoidDirection": 0,
+                "addon": null,
+                "bullet": {
+                    "type": "bullet",
+                    "sizeRatio": 1,
+                    "health": 1,
+                    "damage": 0.6,
+                    "speed": 1,
+                    "scatterRate": 1,
+                    "lifeLength": 1,
+                    "absorbtionFactor": 1
+                }
+            },
+            {
+                "angle": 45 * Math.PI/180,
+                "offset": 0,
+                "size": 77,
+                "width": 29.4,
+                "delay": 0.5,
+                "reload": 2,
+                "recoil": 0.1,
+                "isTrapezoid": false,
+                "trapezoidDirection": 0,
+                "addon": null,
+                "bullet": {
+                    "type": "bullet",
+                    "sizeRatio": 1,
+                    "health": 1,
+                    "damage": 0.6,
+                    "speed": 1,
+                    "scatterRate": 1,
+                    "lifeLength": 1,
+                    "absorbtionFactor": 1
+                }
+            },
+            {
+                "angle": -45 * Math.PI/180,
+                "offset": 0,
+                "size": 77,
+                "width": 29.4,
+                "delay": 0.5,
+                "reload": 2,
+                "recoil": 0.1,
+                "isTrapezoid": false,
+                "trapezoidDirection": 0,
+                "addon": null,
+                "bullet": {
+                    "type": "bullet",
+                    "sizeRatio": 1,
+                    "health": 1,
+                    "damage": 0.6,
+                    "speed": 1,
+                    "scatterRate": 1,
+                    "lifeLength": 1,
+                    "absorbtionFactor": 1
+                }
+            },
+            {
+                "angle": 30 * Math.PI/180,
+                "offset": 0,
+                "size": 83,
+                "width": 29.4,
+                "delay": 1/3,
+                "reload": 2,
+                "recoil": 0.1,
+                "isTrapezoid": false,
+                "trapezoidDirection": 0,
+                "addon": null,
+                "bullet": {
+                    "type": "bullet",
+                    "sizeRatio": 1,
+                    "health": 1,
+                    "damage": 0.6,
+                    "speed": 1,
+                    "scatterRate": 1,
+                    "lifeLength": 1,
+                    "absorbtionFactor": 1
+                }
+            },
+            {
+                "angle": -30 * Math.PI/180,
+                "offset": 0,
+                "size": 83,
+                "width": 29.4,
+                "delay": 1/3,
+                "reload": 2,
+                "recoil": 0.1,
+                "isTrapezoid": false,
+                "trapezoidDirection": 0,
+                "addon": null,
+                "bullet": {
+                    "type": "bullet",
+                    "sizeRatio": 1,
+                    "health": 1,
+                    "damage": 0.6,
+                    "speed": 1,
+                    "scatterRate": 1,
+                    "lifeLength": 1,
+                    "absorbtionFactor": 1
+                }
+            },
+            {
+                "angle": 15 * Math.PI/180,
+                "offset": 0,
+                "size": 89,
+                "width": 29.4,
+                "delay": 0.166675,
+                "reload": 2,
+                "recoil": 0.1,
+                "isTrapezoid": false,
+                "trapezoidDirection": 0,
+                "addon": null,
+                "bullet": {
+                    "type": "bullet",
+                    "sizeRatio": 1,
+                    "health": 1,
+                    "damage": 0.6,
+                    "speed": 1,
+                    "scatterRate": 1,
+                    "lifeLength": 1,
+                    "absorbtionFactor": 1
+                }
+            },
+            {
+                "angle": -15 * Math.PI/180,
+                "offset": 0,
+                "size": 89,
+                "width": 29.4,
+                "delay": 0.166675,
+                "reload": 2,
+                "recoil": 0.1,
+                "isTrapezoid": false,
+                "trapezoidDirection": 0,
+                "addon": null,
+                "bullet": {
+                    "type": "bullet",
+                    "sizeRatio": 1,
+                    "health": 1,
+                    "damage": 0.6,
+                    "speed": 1,
+                    "scatterRate": 1,
+                    "lifeLength": 1,
+                    "absorbtionFactor": 1
+                }
+            },
+            {
+                "angle": 0,
+                "offset": 0,
+                "size": 95,
+                "width": 42,
+                "delay": 0,
+                "reload": 2,
+                "recoil": 0.1,
+                "isTrapezoid": false,
+                "trapezoidDirection": 0,
+                "addon": null,
+                "bullet": {
+                    "type": "bullet",
+                    "sizeRatio": 1,
+                    "health": 1,
+                    "damage": 1,
+                    "speed": 1,
+                    "scatterRate": 1,
+                    "lifeLength": 1,
+                    "absorbtionFactor": 1
+                }
+            }
+        ],
+        "stats": [
+            {
+                "name": "Movement Speed",
+                "max": 7
+            },
+            {
+                "name": "Reload",
+                "max": 7
+            },
+            {
+                "name": "Bullet Damage",
+                "max": 7
+            },
+            {
+                "name": "Bullet Penetration",
+                "max": 7
+            },
+            {
+                "name": "Bullet Speed",
+                "max": 7
+            },
+            {
+                "name": "Body Damage",
+                "max": 7
+            },
+            {
+                "name": "Max Health",
+                "max": 7
+            },
+            {
+                "name": "Health Regen",
+                "max": 7
+            }
+        ]
     },
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null
+    null, // Auto Generated
+    null, // Auto Generated
+    null, // Auto Generated
+    null, // Auto Generated
+    null, // Auto Generated
+    null, // Auto Generated
+    null, // Auto Generated
+    null, // Auto Generated
+    null, // Auto Generated
+    null, // Auto Generated
+    null, // Auto Generated
+    null, // Auto Generated
+    null, // Auto Generated
+    null, // Auto Generated
+    null, // Auto Generated
+    null, // Auto Generated
+    null, // Auto Generated
+    null, // Auto Generated
+    null, // Auto Generated
+    null, // Auto Generated
+    null, // Auto Generated
+    null, // Auto Generated
+    null, // Auto Generated
+    null, // Auto Generated
+    null, // Auto Generated
+    null, // Auto Generated
+    null, // Auto Generated
+    null, // Auto Generated
 ]
 
-function makeAutoOf(tank: Tank, newTank: Tank, level: number = 60, preAddonInstead: boolean = false, custom: Partial<TankDefinition> = {}, ) {
+function makeAutoOf(tank: Tank, newTank: Tank, level: number = 60, preAddonInstead: boolean = false, custom: Partial<TankDefinition> = {}, addon: addonId = "autoturret", prefix: string = "Auto ", pushUpgrade: boolean = true ) {
     const originalTankDefinition = TankDefinitions[tank]
     TankDefinitions[newTank] = {
         ...originalTankDefinition,
         id: newTank,
-        name: "Auto " + originalTankDefinition?.name,
-        postAddon: preAddonInstead ? originalTankDefinition?.postAddon : "autoturret",
-        preAddon: !preAddonInstead ? originalTankDefinition?.preAddon : "autoturret",
+        name: prefix + originalTankDefinition?.name,
+        postAddon: preAddonInstead ? originalTankDefinition?.postAddon : addon,
+        preAddon: !preAddonInstead ? originalTankDefinition?.preAddon : addon,
         levelRequirement: level,
         upgrades: [],
         ...custom
     } as TankDefinition
-    originalTankDefinition?.upgrades.push(newTank)
+    if (pushUpgrade)
+        originalTankDefinition?.upgrades.push(newTank)
 }
 makeAutoOf(Tank.Ranger, Tank.AutoRanger, undefined, true)
 makeAutoOf(Tank.Streamliner, Tank.AutoStreamliner)
@@ -12502,5 +12781,11 @@ makeAutoOf(Tank.MegaTrapper, Tank.AutoMegaTrapper)
 makeAutoOf(Tank.TriTrapper, Tank.AutoTriTrapper)
 makeAutoOf(Tank.Predator, Tank.AutoPredator)
 //makeAutoOf(Tank.Stalker, Tank.AutoStalker)
+
+makeAutoOf(Tank.Sniper, Tank.MetaSniper, undefined, undefined, undefined, "metaturret", "Meta ")
+makeAutoOf(Tank.MachineGun, Tank.MetaMachineGun, undefined, undefined, undefined, "metaturret", "Meta ")
+makeAutoOf(Tank.FlankGuard, Tank.MetaFlankGuard, undefined, undefined, undefined, "metaturret", "Meta ")
+makeAutoOf(Tank.Twin, Tank.MetaTwin, undefined, undefined, undefined, "metaturret", "Meta ")
+makeAutoOf(Tank.Basic, Tank.MetaTank, undefined, undefined, undefined, "metaturret", "Meta ", false)
 
 export default TankDefinitions
