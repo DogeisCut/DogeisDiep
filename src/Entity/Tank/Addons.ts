@@ -797,5 +797,6 @@ export const AddonById: Record<addonId, typeof Addon | null> = {
     crasherGrunt: CrasherGruntAddon,
     preDarkGuardian: PreDarkGuardianAddon,
     postDarkGuardian: PostDarkGuardianAddon,
-    metaturret: MetaAutoTurretAddon
+    metaturret: MetaAutoTurretAddon,
+    vrcDeco: null
 }

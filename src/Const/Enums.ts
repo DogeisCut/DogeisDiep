@@ -395,8 +395,10 @@ export const enum Tank {
     Mixer             = 152,
     AutoMixer         = 153,
     VCR               = 154,
-    Asteroid          = 155,
+    Comet             = 155,
     Thrasher          = 156,
+    Asteroid          = 157,
+    Generator         = 158,
     
 
     /* General Ideas 
