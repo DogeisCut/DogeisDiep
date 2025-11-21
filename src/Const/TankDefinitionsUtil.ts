@@ -75,6 +75,10 @@ export interface BulletDefinition {
     satelliteMinOrbitDistance?: number
     /** Maximum orbit distance (Left Mouse). */
     satelliteMaxOrbitDistance?: number
+
+    satelliteOrbitOffset?: number
+
+    satelliteExtraRoom?: number
     
     aboveParent?: boolean
 }

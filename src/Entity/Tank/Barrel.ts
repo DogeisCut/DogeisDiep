@@ -244,7 +244,7 @@ export default class Barrel extends ObjectEntity {
                 projectile = null
                 break;
             case 'satellite':
-                projectile = new Satellite(this, this.tank, tankDefinition, angle, this.definition.bullet.satelliteOrbitPerTick, this.definition.bullet.satelliteMinOrbitPerTick, this.definition.bullet.satelliteMaxOrbitPerTick, this.definition.bullet.satelliteOrbitDistance, this.definition.bullet.satelliteMinOrbitDistance, this.definition.bullet.satelliteMaxOrbitDistance, this.definition.satelliteCount)
+                projectile = new Satellite(this, this.tank, tankDefinition, angle, this.definition.bullet.satelliteOrbitPerTick, this.definition.bullet.satelliteMinOrbitPerTick, this.definition.bullet.satelliteMaxOrbitPerTick, this.definition.bullet.satelliteOrbitDistance, this.definition.bullet.satelliteMinOrbitDistance, this.definition.bullet.satelliteMaxOrbitDistance, this.definition.satelliteCount, this.definition.bullet.satelliteOrbitOffset, this.definition.bullet.satelliteExtraRoom)
                 break;
             case 'invisiTrap':
                 projectile = new InvisiTrap(this, this.tank, tankDefinition, angle)

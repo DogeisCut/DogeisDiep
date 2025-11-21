@@ -391,7 +391,12 @@ export const enum Tank {
     AutoPlower        = 148,
     Pummeler          = 149,
     Squasher          = 150,
-    Zoner             = 151
+    Zoner             = 151,
+    Mixer             = 152,
+    AutoMixer         = 153,
+    VCR               = 154,
+    Asteroid          = 155,
+    Thrasher          = 156,
     
 
     /* General Ideas 

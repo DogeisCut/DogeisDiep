@@ -1144,8 +1144,9 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "upgradeMessage": "",
         "levelRequirement": 30,
         "upgrades": [
-            23,
-            24
+            Tank.Booster,
+            Tank.Fighter,
+            Tank.Asteroid
         ],
         "flags": {
             "invisibility": false,
@@ -12795,7 +12796,8 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "levelRequirement": 15,
         "upgrades": [
             Tank.Scatterer,
-            Tank.Rumbler
+            Tank.Rumbler,
+            Tank.Thrasher
         ],
         "flags": {
             "invisibility": false,
@@ -12881,7 +12883,9 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "levelRequirement": 30,
         "upgrades": [
             Tank.Spindler,
-            Tank.Pummeler
+            Tank.Pummeler,
+            Tank.Mixer,
+            Tank.VCR
         ],
         "flags": {
             "invisibility": false,
@@ -13050,7 +13054,8 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "levelRequirement": 30,
         "upgrades": [
             Tank.Plower,
-            Tank.Pummeler
+            Tank.Pummeler,
+            Tank.Mixer
         ],
         "flags": {
             "invisibility": false,
@@ -13403,7 +13408,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "speed": 1,
         "maxHealth": 50,
         "preAddon": null,
-        "postAddon": null,
+        "postAddon": "vrcDeco",  //non rotating pause button
         "sides": 1,
         "borderWidth": 15,
         "barrels": [
@@ -13417,10 +13422,11 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "recoil": 0,
                 "isTrapezoid": false,
                 "trapezoidDirection": 0,
-                "addon": "satelliteAntenna4",
-                satelliteCount: 4,
+                "addon": "satelliteAntenna3",
+                satelliteCount: 3,
                 "bullet": {
                     "type": "satellite",
+                    satelliteOrbitOffset: Math.PI / 2,
                     "sizeRatio": 1,
                     "health": 1.5,
                     "damage": 1.1,
@@ -13440,10 +13446,11 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "recoil": 0,
                 "isTrapezoid": false,
                 "trapezoidDirection": 0,
-                "addon": "satelliteAntenna4",
-                satelliteCount: 4,
+                "addon": "satelliteAntenna3",
+                satelliteCount: 3,
                 "bullet": {
                     "type": "satellite",
+                    satelliteOrbitOffset: Math.PI / 2,
                     satelliteOrbitPerTick: -0.1,
                     "sizeRatio": 1,
                     "health": 1.5,
@@ -13492,6 +13499,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
     },
     // Wanted to make a tank with a circular barrel that went all around, and it would shoot zero speed bullets that would expand based on bullet speed.
     // but barrels move client side so i cant get it to animate :(
+    null,
     /* {
         id: Tank.Zoner,
         name: "Zoner",
@@ -13573,6 +13581,456 @@ const TankDefinitions: (TankDefinition|null)[] = [
             }
         ]
     } */
+    {
+        "id": Tank.Mixer,
+        "name": "Mixer",
+        "upgradeMessage": "",
+        "levelRequirement": 45,
+        "upgrades": [],
+        "flags": {
+            "invisibility": false,
+            "zoomAbility": false,
+            "canClaimSquares": false,
+            "devOnly": false
+        },
+        "visibilityRateShooting": 0.23,
+        "visibilityRateMoving": 0.08,
+        "invisibilityRate": 0.03,
+        "fieldFactor": 1,
+        "absorbtionFactor": 1,
+        "speed": 1,
+        "maxHealth": 50,
+        "preAddon": null,
+        "postAddon": null,
+        "sides": 1,
+        "borderWidth": 15,
+        "barrels": [
+            {
+                "angle": 0,
+                "offset": 0,
+                "size": 110,
+                "width": 42*1.5,
+                "delay": 0,
+                "reload": 8.5,
+                "recoil": 0,
+                "isTrapezoid": false,
+                "trapezoidDirection": 0,
+                "addon": "satelliteAntenna3",
+                satelliteCount: 3,
+                "bullet": {
+                    "type": "satellite",
+                    "sizeRatio": 1,
+                    "health": 1.5,
+                    "damage": 1.1,
+                    "speed": 0.9,
+                    "scatterRate": 0,
+                    "lifeLength": -1,
+                    "absorbtionFactor": 1
+                }
+            },
+            {
+                "angle": 0,
+                "offset": 0,
+                "size": 90,
+                "width": 42/(4/3),
+                "delay": 0.5,
+                "reload": 5,
+                "recoil": 0,
+                "isTrapezoid": false,
+                "trapezoidDirection": 0,
+                "addon": "satelliteAntenna3",
+                satelliteCount: 3,
+                "bullet": {
+                    satelliteOrbitOffset: Math.PI/3,
+                    "type": "satellite",
+                    "sizeRatio": 1/(4/3),
+                    "health": 1/(4/3),
+                    "damage": 1,
+                    "speed": 0.9,
+                    "scatterRate": 0,
+                    "lifeLength": -1,
+                    "absorbtionFactor": 1
+                }
+            }
+        ],
+        "stats": [
+            {
+                "name": "Movement Speed",
+                "max": 7
+            },
+            {
+                "name": "Reload",
+                "max": 7
+            },
+            {
+                "name": "Satellite Damage",
+                "max": 7
+            },
+            {
+                "name": "Satellite Penetration",
+                "max": 7
+            },
+            {
+                "name": "Satellite Speed",
+                "max": 7
+            },
+            {
+                "name": "Body Damage",
+                "max": 7
+            },
+            {
+                "name": "Max Health",
+                "max": 7
+            },
+            {
+                "name": "Health Regen",
+                "max": 7
+            }
+        ]
+    },
+    null,
+    {
+        "id": Tank.VCR,
+        "name": "VCR",
+        "upgradeMessage": "",
+        "levelRequirement": 45,
+        "upgrades": [],
+        "flags": {
+            "invisibility": false,
+            "zoomAbility": false,
+            "canClaimSquares": false,
+            "devOnly": false
+        },
+        "visibilityRateShooting": 0.23,
+        "visibilityRateMoving": 0.08,
+        "invisibilityRate": 0.03,
+        "fieldFactor": 1,
+        "absorbtionFactor": 1,
+        "speed": 1,
+        "maxHealth": 50,
+        "preAddon": null,
+        "postAddon": null,
+        "sides": 1,
+        "borderWidth": 15,
+        "barrels": [
+            {
+                "angle": 0,
+                "offset": 0,
+                "size": 95,
+                "width": 42/(4/3),
+                "delay": 0,
+                "reload": 8/(4/3),
+                "recoil": 0,
+                "isTrapezoid": false,
+                "trapezoidDirection": 0,
+                "addon": "satelliteAntenna6",
+                satelliteCount: 6,
+                "bullet": {
+                    satelliteOrbitPerTick: 0,
+                    satelliteMinOrbitPerTick: 0.1,
+                    satelliteMaxOrbitPerTick: -0.1,
+                    "type": "satellite",
+                    "sizeRatio": 1,
+                    "health": 1/(4/3),
+                    "damage": 1,
+                    "speed": 1,
+                    "scatterRate": 0,
+                    "lifeLength": -1,
+                    "absorbtionFactor": 1
+                }
+            }
+        ],
+        "stats": [
+            {
+                "name": "Movement Speed",
+                "max": 7
+            },
+            {
+                "name": "Reload",
+                "max": 7
+            },
+            {
+                "name": "Satellite Damage",
+                "max": 7
+            },
+            {
+                "name": "Satellite Penetration",
+                "max": 7
+            },
+            {
+                "name": "Satellite Speed",
+                "max": 7
+            },
+            {
+                "name": "Body Damage",
+                "max": 7
+            },
+            {
+                "name": "Max Health",
+                "max": 7
+            },
+            {
+                "name": "Health Regen",
+                "max": 7
+            }
+        ]
+    },
+    {
+        "id": Tank.Asteroid,
+        "name": "Asteroid",
+        "upgradeMessage": "",
+        "levelRequirement": 45,
+        "upgrades": [],
+        "flags": {
+            "invisibility": false,
+            "zoomAbility": false,
+            "canClaimSquares": false,
+            "devOnly": false
+        },
+        "visibilityRateShooting": 0.23,
+        "visibilityRateMoving": 0.08,
+        "invisibilityRate": 0.03,
+        "fieldFactor": 1,
+        "absorbtionFactor": 1,
+        "speed": 1,
+        "maxHealth": 50,
+        "preAddon": null,
+        "postAddon": null,
+        "sides": 1,
+        "borderWidth": 15,
+        "barrels": [
+            {
+                "angle": 0,
+                "offset": 0,
+                "size": 95,
+                "width": 42,
+                "delay": 0,
+                "reload": 1,
+                "recoil": 0.2,
+                "isTrapezoid": false,
+                "trapezoidDirection": 0,
+                "addon": null,
+                "bullet": {
+                    "type": "bullet",
+                    "sizeRatio": 1,
+                    "health": 1,
+                    "damage": 1,
+                    "speed": 1,
+                    "scatterRate": 1,
+                    "lifeLength": 1,
+                    "absorbtionFactor": 1
+                }
+            },
+            {
+                "angle": 210 * Math.PI/180,
+                "offset": 0,
+                "size": 80,
+                "width": 42,
+                "delay": 0.5,
+                "reload": 1,
+                "recoil": 2.5,
+                "isTrapezoid": false,
+                "trapezoidDirection": 0,
+                "addon": null,
+                "bullet": {
+                    "type": "bullet",
+                    "sizeRatio": 1,
+                    "health": 1,
+                    "damage": 0.2,
+                    "speed": 1,
+                    "scatterRate": 1,
+                    "lifeLength": 0.5,
+                    "absorbtionFactor": 1
+                }
+            },
+            {
+                "angle": 150 * Math.PI/180,
+                "offset": 0,
+                "size": 80,
+                "width": 42,
+                "delay": 0.5,
+                "reload": 1,
+                "recoil": 2.5,
+                "isTrapezoid": false,
+                "trapezoidDirection": 0,
+                "addon": null,
+                "bullet": {
+                    "type": "bullet",
+                    "sizeRatio": 1,
+                    "health": 1,
+                    "damage": 0.2,
+                    "speed": 1,
+                    "scatterRate": 1,
+                    "lifeLength": 0.5,
+                    "absorbtionFactor": 1
+                }
+            },
+            {
+                angle: Math.PI,
+                offset: 0,
+                size: 100,
+                width: 42,
+                delay: 0,
+                reload: 8,
+                recoil: 0,
+                isTrapezoid: false,
+                trapezoidDirection: 0,
+                addon: "satelliteAntenna4",
+                satelliteCount: 4,
+                bullet: {
+                    type: "satellite",
+                    sizeRatio: 1,
+                    health: 1,
+                    damage: 1,
+                    speed: 1,
+                    scatterRate: 0,
+                    lifeLength: -1,
+                    absorbtionFactor: 1
+                }
+            }
+        ],
+        "stats": [
+            {
+                "name": "Movement Speed",
+                "max": 7
+            },
+            {
+                "name": "Reload",
+                "max": 7
+            },
+            {
+                "name": "Weapon Damage",
+                "max": 7
+            },
+            {
+                "name": "Weapon Penetration",
+                "max": 7
+            },
+            {
+                "name": "Weapon Speed",
+                "max": 7
+            },
+            {
+                "name": "Body Damage",
+                "max": 7
+            },
+            {
+                "name": "Max Health",
+                "max": 7
+            },
+            {
+                "name": "Health Regen",
+                "max": 7
+            }
+        ]
+    },
+    {
+        "id": Tank.Thrasher,
+        "name": "Thrasher",
+        "upgradeMessage": "",
+        "levelRequirement": 30,
+        "upgrades": [
+            Tank.Asteroid
+        ],
+        "flags": {
+            "invisibility": false,
+            "zoomAbility": false,
+            "canClaimSquares": false,
+            "devOnly": false
+        },
+        "visibilityRateShooting": 0.23,
+        "visibilityRateMoving": 0.08,
+        "invisibilityRate": 0.03,
+        "fieldFactor": 1,
+        "absorbtionFactor": 1,
+        "speed": 1,
+        "maxHealth": 50,
+        "preAddon": null,
+        "postAddon": null,
+        "sides": 1,
+        "borderWidth": 15,
+        "barrels": [
+            {
+                "angle": 0,
+                "offset": 0,
+                "size": 95,
+                "width": 42,
+                "delay": 0,
+                "reload": 1,
+                "recoil": 0.2,
+                "isTrapezoid": false,
+                "trapezoidDirection": 0,
+                "addon": null,
+                "bullet": {
+                    "type": "bullet",
+                    "sizeRatio": 1,
+                    "health": 1,
+                    "damage": 1,
+                    "speed": 1,
+                    "scatterRate": 1,
+                    "lifeLength": 1,
+                    "absorbtionFactor": 1
+                }
+            },
+            {
+                angle: Math.PI,
+                offset: 0,
+                size: 100,
+                width: 42,
+                delay: 0,
+                reload: 8,
+                recoil: 0,
+                isTrapezoid: false,
+                trapezoidDirection: 0,
+                addon: "satelliteAntenna4",
+                satelliteCount: 4,
+                bullet: {
+                    type: "satellite",
+                    sizeRatio: 1,
+                    health: 1,
+                    damage: 1,
+                    speed: 1,
+                    scatterRate: 0,
+                    lifeLength: -1,
+                    absorbtionFactor: 1
+                }
+            }
+        ],
+        "stats": [
+            {
+                "name": "Movement Speed",
+                "max": 7
+            },
+            {
+                "name": "Reload",
+                "max": 7
+            },
+            {
+                "name": "Weapon Damage",
+                "max": 7
+            },
+            {
+                "name": "Weapon Penetration",
+                "max": 7
+            },
+            {
+                "name": "Weapon Speed",
+                "max": 7
+            },
+            {
+                "name": "Body Damage",
+                "max": 7
+            },
+            {
+                "name": "Max Health",
+                "max": 7
+            },
+            {
+                "name": "Health Regen",
+                "max": 7
+            }
+        ]
+    },
 ]
 
 function makeAutoOf(tank: Tank, newTank: Tank, level: number = 60, preAddonInstead: boolean = false, custom: Partial<TankDefinition> = {}, addon: addonId = "autoturret", prefix: string = "Auto ", pushUpgrade: boolean = true ) {
@@ -13664,5 +14122,6 @@ makeAutoOf(Tank.Twin, Tank.MetaTwin, undefined, undefined, undefined, "metaturre
 makeAutoOf(Tank.Basic, Tank.MetaTank, undefined, undefined, undefined, "metaturret", "Meta ", false)
 
 makeAutoOf(Tank.Plower, Tank.AutoPlower)
+makeAutoOf(Tank.Mixer, Tank.AutoMixer)
 
 export default TankDefinitions
