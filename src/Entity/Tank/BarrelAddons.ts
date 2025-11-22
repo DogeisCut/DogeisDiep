@@ -214,5 +214,7 @@ export const BarrelAddonById: Record<barrelAddonId, typeof BarrelAddon | null> =
     satelliteAntenna6: SatelliteAntennaAddon,
     satelliteAntenna5: SatelliteAntennaAddon,
     satelliteAntenna8: SatelliteAntennaAddon,
+    satelliteAntenna10: SatelliteAntennaAddon,
+    satelliteAntenna12: SatelliteAntennaAddon,
     //zoner: ZonerAddon
 }

@@ -112,12 +112,12 @@ export class Addon {
         return rotator;
     }
 
-    protected createDeco(sides: number, size: number, angle: number = 0, width: number = size, distance: number = 0, offset: number = 0, topper: boolean = true, color: Color = this.owner.styleData.values.color) {
+    protected createDeco(sides: number, size: number, angle: number = 0, width: number = size, distance: number = 0, offset: number = 0, topper: boolean = true, color: Color = this.owner.styleData.values.color, owner?: ObjectEntity) {
         const sizeRatio = size * Math.SQRT2 / 50
         const widthRatio = width / 50
         const deco = new ObjectEntity(this.game)
 
-        deco.setParent(this.owner)
+        deco.setParent(owner ?? this.owner)
         deco.relationsData.values.owner = this.owner
         deco.relationsData.values.team = this.owner.relationsData.values.team
 
@@ -496,7 +496,7 @@ class WingsAddon extends Addon {
 	}
 }
 
-class WraithAffon extends Addon{
+class WraithAddon extends Addon{
     public constructor(owner: BarrelBase) {
 		super(owner)
 
@@ -767,6 +767,16 @@ class MetaAutoTurretAddon extends Addon {
     }
 }
 
+class VCRDecoAddon extends Addon{
+    public constructor(owner: BarrelBase) {
+		super(owner)
+
+        const rotator = this.createGuard(0, 0.1, 0, 0);
+        rotator.styleData.flags |= StyleFlags.showsAboveParent
+        this.createDeco(2, 15, 0, 50, 20, 0, true, Color.Barrel, rotator) 
+        this.createDeco(2, 15, 180, 50, 20, 0, true, Color.Barrel, rotator)
+	}
+}
 
 /**
  * All addons in the game by their ID.
@@ -787,7 +797,7 @@ export const AddonById: Record<addonId, typeof Addon | null> = {
     tripleAutoturret: TripleAutoTurretAddon,
     wings: WingsAddon,
     pentagonBody: null,
-    wraith: WraithAffon,
+    wraith: WraithAddon,
     tripleAutosmasher: TripleAutoSmasherAddon,
     razor: RazorAddon,
     scavenger: ScavengerAddon,
@@ -798,5 +808,5 @@ export const AddonById: Record<addonId, typeof Addon | null> = {
     preDarkGuardian: PreDarkGuardianAddon,
     postDarkGuardian: PostDarkGuardianAddon,
     metaturret: MetaAutoTurretAddon,
-    vrcDeco: null
+    vcrDeco: VCRDecoAddon
 }

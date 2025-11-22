@@ -399,6 +399,11 @@ export const enum Tank {
     Thrasher          = 156,
     Asteroid          = 157,
     Generator         = 158,
+    Tricker           = 159,
+    DysonSwarm        = 160,
+    AutoTricker       = 161,
+    AutoVCR           = 162,
+    AutoGenerator     = 163,
     
 
     /* General Ideas 

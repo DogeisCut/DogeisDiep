@@ -375,7 +375,8 @@ const ADDON_MAP = {
     "preDarkGuardian": 174,
     "postDarkGuardian": 175,
     "metaturret": 176,
-    "satelliteAntenna": 177
+    "satelliteAntenna": 177,
+    "vcrDeco": 178
 };
 
 
@@ -719,6 +720,38 @@ const CUSTOM_ADDONS = {
 			clone.styleData.color = 1
 		}
     },
+
+    "vcrDeco": entity => {
+        if (!(entity instanceof $Entity)) return
+	
+        const rotatorEntity = entity.createChild(false)
+        rotatorEntity.defaults()
+        rotatorEntity.physicsData.sides = 0
+        rotatorEntity.styleData.showsAboveParent = true
+        rotatorEntity.positionData.absoluteRotation = true
+	
+        const leftEntity = rotatorEntity.createDecoChild(
+            2,
+            15,
+            0,
+            250,
+            20,
+            0,
+            true,
+            1
+        )
+	
+        const rightEntity = rotatorEntity.createDecoChild(
+            2,
+            15,
+            180,
+            250,
+            20,
+            0,
+            true,
+            1
+        )
+    }
 }
 
 function makeSatelliteAntennaAddon(satelliteCount) {
@@ -761,6 +794,8 @@ CUSTOM_ADDONS["satelliteAntenna4"] = makeSatelliteAntennaAddon(4)
 CUSTOM_ADDONS["satelliteAntenna5"] = makeSatelliteAntennaAddon(5)
 CUSTOM_ADDONS["satelliteAntenna6"] = makeSatelliteAntennaAddon(6)
 CUSTOM_ADDONS["satelliteAntenna8"] = makeSatelliteAntennaAddon(8)
+CUSTOM_ADDONS["satelliteAntenna10"] = makeSatelliteAntennaAddon(10)
+CUSTOM_ADDONS["satelliteAntenna12"] = makeSatelliteAntennaAddon(12)
 
 const CUSTOM_COMMANDS = [
     {

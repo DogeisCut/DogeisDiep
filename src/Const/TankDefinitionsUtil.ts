@@ -23,10 +23,9 @@ import _TankDefinitions from "./TankDefinitions";
 /** The types of post addons that exist in the game, by their id. */
 export type postAddonId = "dompronounced" | "auto5" | "auto3" | "autosmasher" | "spike" | "pronounced"
     | "smasher" | "landmine" | "autoturret" | "auto7" | "tripleAutoturret" | "wings" | "wraith" | "tripleAutosmasher"
-    | "razor" | "scavenger" | "ravenger" | "protectorTurret" | "crasherGrunt" | "preDarkGuardian" | "metaturret"
-    | "vrcDeco"
+    | "razor" | "scavenger" | "ravenger" | "protectorTurret" | "crasherGrunt" | "postDarkGuardian" | "metaturret"
 /** The types of post addons that exist in the game, by their id. */
-export type preAddonId = "dombase" | "launcher" | "pentagonBody" | "protectorBase" | "postDarkGuardian"
+export type preAddonId = "dombase" | "launcher" | "pentagonBody" | "protectorBase" | "preDarkGuardian" | "vcrDeco"
 /** A joint list of all post addon ids and pre addon ids. */
 export type addonId = preAddonId | postAddonId;
 
@@ -36,7 +35,7 @@ export type projectileId = "bullet" | "drone" | "baseDrone" | "trap" | "necrodro
     | "satellite" | "invisiTrap";
 
 /** The types of barrel addons that exist in the game */
-export type barrelAddonId = "trapLauncher" | "flameLauncher" | "-50Distance" | `satelliteAntenna${1|2|3|4|5|6|8}`;
+export type barrelAddonId = "trapLauncher" | "flameLauncher" | "-50Distance" | `satelliteAntenna${1|2|3|4|5|6|8|10|12}`;
 
 /** Increase in opacity when taking damage. */
 export const visibilityRateDamage = 0.2;
