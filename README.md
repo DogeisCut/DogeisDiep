@@ -16,7 +16,7 @@ You can level up to level 60 but stop growing at level 45, level 60 tanks/tier 5
 **Discord:** [https://discord.gg/98NwxqJacr](https://discord.gg/98NwxqJacr)
 # Changelog
 
-**November 21th, 2025**
+**November 22th, 2025**
 - Added Twirler branch (over 15+ new tanks).
 - Added Tricker tank to the Trapper branch.
 
