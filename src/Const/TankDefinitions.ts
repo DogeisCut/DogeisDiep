@@ -4623,8 +4623,9 @@ const TankDefinitions: (TankDefinition|null)[] = [
         "upgradeMessage": "",
         "levelRequirement": 30,
         "upgrades": [
-            40,
-            39
+            Tank.Auto5,
+            Tank.AutoGunner,
+            Tank.Array
         ],
         "flags": {
             "invisibility": false,
@@ -12793,7 +12794,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
     {
         "id": Tank.Twirler,
         "name": "Twirler",
-        "upgradeMessage": "",
+        "upgradeMessage": "Press the left mouse button to expand your satellites, press the right mouse button to condense them.",
         "levelRequirement": 15,
         "upgrades": [
             Tank.Scatterer,
@@ -14353,7 +14354,7 @@ const TankDefinitions: (TankDefinition|null)[] = [
                 "reload": 1.25,
                 "recoil": 1,
                 "isTrapezoid": true,
-                "trapezoidDirection": 0.2,
+                "trapezoidDirection": 0,
                 "addon": "trapLauncher",
                 "bullet": {
                     "type": "invisiTrap",
@@ -14486,7 +14487,112 @@ const TankDefinitions: (TankDefinition|null)[] = [
         ]
     },
     null,
-    null
+    null,
+    null,
+    {
+        "id": Tank.Array,
+        "name": "Array",
+        "upgradeMessage": "Hold left mouse to disable and retarget your turrets. (Unimplemented)",
+        "levelRequirement": 45,
+        "upgrades": [],
+        "flags": {
+            "invisibility": false,
+            "zoomAbility": false,
+            "canClaimSquares": false,
+            "devOnly": false
+        },
+        "visibilityRateShooting": 0.23,
+        "visibilityRateMoving": 0.08,
+        "invisibilityRate": 0.03,
+        "fieldFactor": 1,
+        "absorbtionFactor": 1,
+        "speed": 1,
+        "maxHealth": 50,
+        "preAddon": null,
+        "postAddon": "array",
+        "sides": 1,
+        "borderWidth": 15,
+        "barrels": [
+            {
+                "angle": 0,
+                "offset": 0,
+                "size": 200,
+                "width": 42,
+                "delay": Infinity,
+                "reload": 1,
+                "recoil": 1,
+                "isTrapezoid": false,
+                "trapezoidDirection": 0,
+                "addon": null,
+                "bullet": {
+                    "type": null,
+                    "sizeRatio": 1,
+                    "health": 1,
+                    "damage": 1,
+                    "speed": 1,
+                    "scatterRate": 1,
+                    "lifeLength": 1,
+                    "absorbtionFactor": 1
+                }
+            },
+            {
+                "angle": 0,
+                "offset": 0,
+                "size": 70,
+                "width": 55,
+                "delay": Infinity,
+                "reload": 1,
+                "recoil": 1,
+                "isTrapezoid": true,
+                "trapezoidDirection": 180 * Math.PI/180,
+                "addon": null,
+                "bullet": {
+                    "type": null,
+                    "sizeRatio": 1,
+                    "health": 1,
+                    "damage": 1,
+                    "speed": 1,
+                    "scatterRate": 1,
+                    "lifeLength": 1,
+                    "absorbtionFactor": 1
+                }
+            }
+        ],
+        "stats": [
+            {
+                "name": "Movement Speed",
+                "max": 7
+            },
+            {
+                "name": "Reload",
+                "max": 7
+            },
+            {
+                "name": "Bullet Damage",
+                "max": 7
+            },
+            {
+                "name": "Bullet Penetration",
+                "max": 7
+            },
+            {
+                "name": "Bullet Speed",
+                "max": 7
+            },
+            {
+                "name": "Body Damage",
+                "max": 7
+            },
+            {
+                "name": "Max Health",
+                "max": 7
+            },
+            {
+                "name": "Health Regen",
+                "max": 7
+            }
+        ]
+    },
 ]
 
 function makeAutoOf(tank: Tank, newTank: Tank, level: number = 60, preAddonInstead: boolean = false, custom: Partial<TankDefinition> = {}, addon: addonId = "autoturret", prefix: string = "Auto ", pushUpgrade: boolean = true ) {

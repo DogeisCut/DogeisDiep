@@ -72,8 +72,15 @@ export default class AutoTurret extends ObjectEntity {
     /** Camera entity / team of the turret. */
     public cameraEntity: CameraEntity;
 
-    /** If set to true, (auto 5 auto 3), player can influence auto turret's */
-    public influencedByOwnerInputs: boolean = false;
+    public ownerInputInfluenceMode: "none" | "aimAndRepel" | "disableRetarget" = "none"
+
+    /** @deprecated If set to true, (auto 5 auto 3), player can influence auto turret's */
+    public set influencedByOwnerInputs(to: boolean) {
+        this.ownerInputInfluenceMode = to ? "aimAndRepel" : "none"
+    }
+    public get influencedByOwnerInputs(): boolean {
+        return this.ownerInputInfluenceMode === "aimAndRepel"
+    }
 
     /** The reload time of the turret. */
     public reloadTime = 15;
@@ -140,30 +147,38 @@ export default class AutoTurret extends ObjectEntity {
         this.ai.movementSpeed = 0;
 
         this.reloadTime = this.owner.reloadTime;
-
-        let useAI = !(this.influencedByOwnerInputs && (this.owner.inputs.attemptingRepel() || this.owner.inputs.attemptingShot()));
-        if (!useAI) {
-            const {x, y} = this.getWorldPosition();
-            let flip = this.owner.inputs.attemptingRepel() ? -1 : 1;
-            const deltaPos = {x: (this.owner.inputs.mouse.x - x) * flip, y: (this.owner.inputs.mouse.y - y) * flip}
-
-            if (this.ai.targetFilter({x: x + deltaPos.x, y: y + deltaPos.y}) === false) useAI = true;
-            else {
-                // if (this.owner.inputs.attemptingRepel()) this.inputs.flags |= InputFlags.rightclick;
-                this.inputs.flags |= InputFlags.leftclick;
-                this.positionData.angle = Math.atan2(deltaPos.y, deltaPos.x);
-                this.ai.state = AIState.hasTarget;
-            }
-        }
-        if (useAI) {
-            if (this.ai.state === AIState.idle) {
-                this.positionData.angle += this.ai.passiveRotation;
-                this.turret.attemptingShot = false;
-            } else {
-                // Uh. Yeah
+        
+        if (this.ownerInputInfluenceMode === "disableRetarget" && this.owner.inputs.attemptingShot()) {
+            this.ai.state = AIState.idle
+            this.positionData.angle = this.owner.positionData.angle
+            this.turret.attemptingShot = false;
+            this.inputs = new Inputs()
+        } else {
+            let useAI = !(this.influencedByOwnerInputs && (this.owner.inputs.attemptingRepel() || this.owner.inputs.attemptingShot()));
+            if (!useAI) {
                 const {x, y} = this.getWorldPosition();
-                this.positionData.angle = Math.atan2(this.ai.inputs.mouse.y - y, this.ai.inputs.mouse.x - x);
+                let flip = this.owner.inputs.attemptingRepel() ? -1 : 1;
+                const deltaPos = {x: (this.owner.inputs.mouse.x - x) * flip, y: (this.owner.inputs.mouse.y - y) * flip}
+
+                if (this.ai.targetFilter({x: x + deltaPos.x, y: y + deltaPos.y}) === false) useAI = true;
+                else {
+                    // if (this.owner.inputs.attemptingRepel()) this.inputs.flags |= InputFlags.rightclick;
+                    this.inputs.flags |= InputFlags.leftclick;
+                    this.positionData.angle = Math.atan2(deltaPos.y, deltaPos.x);
+                    this.ai.state = AIState.hasTarget;
+                }
+            }
+            if (useAI) {
+                if (this.ai.state === AIState.idle) {
+                    this.positionData.angle += this.ai.passiveRotation;
+                    this.turret.attemptingShot = false;
+                } else {
+                    // Uh. Yeah
+                    const {x, y} = this.getWorldPosition();
+                    this.positionData.angle = Math.atan2(this.ai.inputs.mouse.y - y, this.ai.inputs.mouse.x - x);
+                }
             }
         }
+        
     }
 }

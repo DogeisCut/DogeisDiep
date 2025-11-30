@@ -404,6 +404,7 @@ export const enum Tank {
     AutoTricker       = 161,
     AutoVCR           = 162,
     AutoGenerator     = 163,
+    Array             = 164,
     
 
     /* General Ideas 

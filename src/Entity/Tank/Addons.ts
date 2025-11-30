@@ -778,6 +778,28 @@ class VCRDecoAddon extends Addon{
 	}
 }
 
+class ArrayAddon extends Addon {
+    public constructor(owner: BarrelBase) {
+        super(owner)
+
+        const holder = new ObjectEntity(owner.game);
+        holder.setParent(owner)
+        const turret1 = new AutoTurret(owner);
+        const turret2 = new AutoTurret(owner);
+        const turret3 = new AutoTurret(owner);
+
+        turret1.ownerInputInfluenceMode = "disableRetarget"
+        turret2.ownerInputInfluenceMode = "disableRetarget"
+        turret3.ownerInputInfluenceMode = "disableRetarget"
+
+        holder.tick = (tick: number) => {
+            turret1.positionData.x = this.owner.physicsData.values.size * 4;
+            turret2.positionData.x = this.owner.physicsData.values.size * 3;
+            turret3.positionData.x = this.owner.physicsData.values.size * 2;
+        }
+	}
+}
+
 /**
  * All addons in the game by their ID.
  */
@@ -808,5 +830,6 @@ export const AddonById: Record<addonId, typeof Addon | null> = {
     preDarkGuardian: PreDarkGuardianAddon,
     postDarkGuardian: PostDarkGuardianAddon,
     metaturret: MetaAutoTurretAddon,
-    vcrDeco: VCRDecoAddon
+    vcrDeco: VCRDecoAddon,
+    array: ArrayAddon
 }

@@ -93,6 +93,9 @@ export default class TankBody extends LivingEntity implements BarrelBase {
         this.physicsData.values.sides = 1;
         this.styleData.values.color = Color.Tank;
 
+        // fixes a wierd position bug with auto turrets
+        this.positionData.flags |= PositionFlags.absoluteRotation
+
         this.relationsData.values.team = camera;
         this.relationsData.values.owner = camera;
 
